@@ -14,3 +14,52 @@ time, mark, audio, video, details, summary {
     vertical-align: baseline;
     background: transparent;
 }
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+
+/* START HEADER */
+
+.top-header {
+    font-weight: 400;
+    color: whitesmoke;
+    background-color: rgb(61, 60, 60);
+    
+}
+
+    .top-header a {
+        color: whitesmoke;
+    }
+
+.bottom-header {
+    background-color: #969a9e;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+/* END HEADER */
+
+
+/* START FOOTER */
+.full-footer {
+    background-color: #969a9e;
+}
+
+.top-footer {
+    background-color: #969a9e;
+    color: white;
+    font-weight: 600;
+}
+
+    .top-footer a {
+        color: white;
+    }
+
+.bottom-footer {
+    background-color: rgb(61, 60, 60);
+    color: white;
+    font-weight: 600;
+}
+/* END FOOTER */

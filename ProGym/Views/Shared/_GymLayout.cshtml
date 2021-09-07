@@ -1,0 +1,119 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>_GymLayout</title>
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/FontAwesome/fontawesome-free-5.15.1-web/css/all.css")" rel="stylesheet" />
+</head>
+<body>
+    <header>
+        <section class="sticky-top">
+            <div class="container-fluid top-header">
+                <div class="row p-1">
+                    <div class="col-12 text-end">
+                        <a href="mailto:xxxxxxx@gmail.com"><i class="fas fa-envelope-square"></i> xxx@gmail.com</a>
+                        <a href="tel:+48 17546676"><i class="fas fa-phone-square"></i>+48 (17)17546676</a>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom-header sticky-top">
+                <div class="container-fluid pasek">
+                    <nav class="navbar navbar-expand-md navbar-dark pt-0 pb-0">
+                        <a class="navbar-brand p" href="#">
+                            <img class="img-fluid" src="@Url.Content("~/Content/Images/gym_logo.jpg")" width="100px" alt="">
+                        </a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent"><span class="navbar-toggler-icon"></span></button>
+                        <div class="collapse navbar-collapse" id="navbarToggleExternalContent">
+                            <ul class="navbar-nav">
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="index.html">Strona Główna <span class="sr-only">(current)</span></a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        xxxx
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                        <a class="dropdown-item" href="obrobkaCNC.html">Obróbka CNC</a>
+                                        <a class="dropdown-item" href="projektowanieCAD.html">Projektowanie CAD</a>
+                                        <a class="dropdown-item" href="programowanieCAM.html">Programowanie CAM</a>
+                                        <a class="dropdown-item" href="pomiaryCMM.html">Pomiary CMM</a>
+                                        <a class="dropdown-item" href="szkolenia.html">Szkolenia</a>
+                                    </div>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="oNas.html">xxxx</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="parkMaszynowy.html">xxx</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="kontakt.html">xxx</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </section>
+    </header>
+
+
+    <div>
+        @RenderBody()
+    </div>
+
+    <footer>
+        <div class="full-footer">
+            <div class="container top-footer p-md-3 p-1">
+                <div class="row">
+                    <div class="col-md-2 pl-4 pr-4">
+                        <img class="img-fluid" src="@Url.Content("~/Content/Images/gym_logo.jpg")" width="200px"  alt="">
+                    </div>
+                    <div class="col-md-3 pl-4 pr-4">
+                        <h4>
+                            <b>zzzzzz</b>
+                        </h4>
+                        <p>
+                            ul.Malownicza 35 <br>
+                            35-082 <br>
+                            Kraków
+                        </p>
+                    </div>
+                    <div class="col-md-3 pl-4 pr-4">
+                        <h3><b> zzzz zzz</b></h3>
+                        <a href="obrobkaCNC.html">xxxx</a><br>
+                        <a href="projektowanieCAD.html">zzzzz</a><br>
+                        <a href="programowanieCAM.html">cccccc</a><br>
+                        <a href="pomiaryCMM.html">ffffff</a><br>
+                        <a href="szkolenia.html">ppppppp</a>
+                    </div>
+                    <div class="col-md-4 pt-2 pb-2 pl-4 pr-4">
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d163975.34506844534!2d19.
+           864789619809116!3d50.046681351991964!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471644
+           c0354e18d1%3A0xb46bb6b576478abf!2zS3Jha8Ozdw!5e0!3m2!1spl!2spl!4v1604909189586!5m2!1spl!2spl" frameborder="0"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid bottom-footer pt-2">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <h5>Copyrights ® 2021 - All rights reserved</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    @RenderSection("ScriptsBottom",required: false)
+</body>
+</html>
