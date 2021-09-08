@@ -1752,6 +1752,12 @@
     <Content Include="Content\FontAwesome\fontawesome-free-5.15.1-web\webfonts\fa-brands-400.svg" />
     <Content Include="Content\FontAwesome\fontawesome-free-5.15.1-web\webfonts\fa-regular-400.svg" />
     <Content Include="Content\FontAwesome\fontawesome-free-5.15.1-web\webfonts\fa-solid-900.svg" />
+    <Content Include="Content\Images\gym_head2.jpeg" />
+    <Content Include="Content\Images\gym_head2p.jpg" />
+    <Content Include="Content\Images\gym_head2pp.jpg" />
+    <Content Include="Content\Images\gym_head2ppp.jpg" />
+    <Content Include="Content\Images\gym_head2pr.jpg" />
+    <Content Include="Content\Images\gym_head2rr.jpg" />
     <Content Include="Content\Images\gym_logo.jpg" />
     <Content Include="Content\Images\gym_logo2.jpg" />
     <Content Include="Content\Site.css" />
