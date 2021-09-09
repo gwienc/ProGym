@@ -188,5 +188,119 @@ body {
 }
 
 
-/*-------------------------------------------------*/
+.parallax {
+    height: 20vw;
+    background-image: url("Images/gym_head3.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
 
+
+
+@media (min-width: 1200px) {
+    .carousel-caption {
+        top: 78%;
+        transform: translateY(-42%);
+    }
+
+        .carousel-caption h1 {
+            font-size: 400%;
+        }
+
+        .carousel-caption p {
+            font-size: 100%;
+            font-weight: 600;
+            padding-bottom: .2rem;
+        }
+
+        .carousel-caption .btn {
+            font-size: 150%;
+            padding: 8px 12px;
+        }
+}
+
+@media (max-width: 1200px) {
+    .carousel-caption {
+        top: 82%;
+    }
+
+        .carousel-caption h1 {
+            font-size: 300%;
+        }
+
+        .carousel-caption p {
+            font-size: 100%;
+            font-weight: 600;
+            padding-bottom: .2rem;
+        }
+
+        .carousel-caption .btn {
+            font-size: 150%;
+            padding: 8px 12px;
+        }
+}
+
+@media (max-width: 994px) {
+    .carousel-caption {
+        top: 70%;
+    }
+
+        .carousel-caption h1 {
+            font-size: 300%;
+        }
+
+        .carousel-caption p {
+            font-size: 100%;
+            font-weight: 600;
+            padding-bottom: .2rem;
+        }
+
+        .carousel-caption .btn {
+            font-size: 150%;
+            padding: 8px 12px;
+        }
+}
+
+@media (max-width: 768px) {
+    .carousel-caption {
+        top: 25%;
+    }
+
+        .carousel-caption h1 {
+            font-size: 300%;
+        }
+
+        .carousel-caption p {
+            font-size: 100%;
+            font-weight: 600;
+            padding-bottom: .2rem;
+        }
+
+        .carousel-caption .btn {
+            font-size: 115%;
+            padding: 8px 12px;
+        }
+}
+
+@media (max-width: 576px) {
+    .carousel-caption {
+        top: 30%;
+    }
+
+        .carousel-caption h1 {
+            font-size: 150%;
+        }
+
+        .carousel-caption p {
+            font-size: 100%;
+            font-weight: 600;
+            padding-bottom: .2rem;
+        }
+
+        .carousel-caption .btn {
+            font-size: 100%;
+            padding: 2px 4px;
+        }
+}
