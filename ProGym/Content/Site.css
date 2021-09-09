@@ -106,8 +106,8 @@ ul.navbar-nav li a:hover, ul.nav li a:active {
 
 /*HOME PAGE*/
 
-/*@import url('https://fonts.googleapis.com/css?family=Poppins|Ubuntu&display=swap');
-*/
+/*@import url('https://fonts.googleapis.com/css?family=Poppins|Ubuntu&display=swap');*/
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -186,3 +186,7 @@ body {
     cursor: pointer;
     background-image: linear-gradient(-45deg, #27b88d 0%, #22dd73 100%)
 }
+
+
+/*-------------------------------------------------*/
+
