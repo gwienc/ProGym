@@ -102,3 +102,192 @@ ul.navbar-nav li a:hover, ul.nav li a:active {
     font-weight: 500;
 }
 /* END FOOTER */
+
+
+/*HOME PAGE*/
+
+/*@import url('https://fonts.googleapis.com/css?family=Poppins|Ubuntu&display=swap');*/
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0
+}
+
+body {
+    background: #eee;
+    font-family: 'Ubuntu', sans-serif
+}
+
+.box {
+    position: relative;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-bottom:15px;
+    
+}
+
+.our-services {
+    margin-top: 15px;
+    padding-bottom: 30px;
+    padding: 0 60px;
+    min-height: 138px;
+    text-align: center;
+    border-radius: 10px;
+    background-color: #fff;
+    transition: all .4s ease-in-out;
+    box-shadow: 0 0 25px 0 rgba(20, 27, 202, .17)
+}
+
+    .our-services .icon {
+        margin-bottom: -21px;
+        transform: translateY(-90%);
+        text-align: center
+    }
+
+    .our-services:hover h4,
+    .our-services:hover p {
+        color: #fff
+    }
+
+.speedup:hover {
+    box-shadow: 0 0 25px 0 rgba(20, 27, 201, .05);
+    cursor: pointer;
+    background-image: linear-gradient(-45deg, #fb0054 0%, #f55b2a 100%)
+}
+
+.settings:hover {
+    box-shadow: 0 0 25px 0 rgba(20, 27, 201, .05);
+    cursor: pointer;
+    background-image: linear-gradient(-45deg, #34b5bf 0%, #210c59 100%)
+}
+
+.privacy:hover {
+    box-shadow: 0 0 25px 0 rgba(20, 27, 201, .05);
+    cursor: pointer;
+    background-image: linear-gradient(-45deg, #3615e7 0%, #44a2f6 100%)
+}
+
+.backups:hover {
+    box-shadow: 0 0 25px 0 rgba(20, 27, 201, .05);
+    cursor: pointer;
+    background-image: linear-gradient(-45deg, #fc6a0e 0%, #fdb642 100%)
+}
+
+.ssl:hover {
+    box-shadow: 0 0 25px 0 rgba(20, 27, 201, .05);
+    cursor: pointer;
+    background-image: linear-gradient(-45deg, #8d40fb 0%, #5a57fb 100%)
+}
+
+.database:hover {
+    box-shadow: 0 0 25px 0 rgba(20, 27, 201, .05);
+    cursor: pointer;
+    background-image: linear-gradient(-45deg, #27b88d 0%, #22dd73 100%)
+}
+
+
+.parallax {
+    height: 20vw;
+    background-image: url("Images/gym_head3.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+
+#subsc h1{
+    font-weight:600;
+}
+
+
+
+
+/*@media (min-width: 576px) and (max-width: 900px) {
+    .carousel-caption {
+        top: 72%;
+        transform: translateY(-42%);
+    }
+
+        .carousel-caption h1 {
+            font-size: 400%;
+        }
+
+        .carousel-caption p {
+            font-size: 100%;
+            font-weight: 600;
+            padding-bottom: .2rem;
+        }
+
+        .carousel-caption .btn {
+            font-size: 80%;
+            padding: 8px 12px;
+        }
+}*/
+
+@media (min-width: 500px) and (max-width: 820px) {
+    .carousel-caption {
+        top: 72%;
+        transform: translateY(-42%);
+    }
+
+        .carousel-caption h1 {
+            font-size: 400%;
+        }
+
+        .carousel-caption p {
+            font-size: 100%;
+            font-weight: 600;
+            padding-bottom: .2rem;
+        }
+
+        .carousel-caption .btn {
+            font-size: 80%;
+            padding: 8px 12px;
+        }
+}
+@media (min-width: 400px) and (max-width: 550px) {
+    .carousel-caption {
+        top: 72%;
+        transform: translateY(-42%);
+    }
+
+        .carousel-caption h1 {
+            font-size: 400%;
+        }
+
+        .carousel-caption p {
+            font-size: 100%;
+            font-weight: 600;
+            padding-bottom: .2rem;
+        }
+
+        .carousel-caption .btn {
+            font-size: 50%;
+            padding: 8px 12px;
+        }
+}
+
+@media (min-width: 200px) and (max-width: 400px) {
+    .carousel-caption {
+        top: 72%;
+        transform: translateY(-42%);
+    }
+
+        .carousel-caption h1 {
+            font-size: 400%;
+        }
+
+        .carousel-caption p {
+            font-size: 100%;
+            font-weight: 600;
+            padding-bottom: .2rem;
+        }
+
+        .carousel-caption .btn {
+            font-size: 40%;
+            padding: 8px 12px;
+        }
+}
