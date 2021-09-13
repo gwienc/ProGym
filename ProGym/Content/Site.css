@@ -196,6 +196,7 @@ body {
     background-size: cover;
 }
 
+
 .index {
     background-image: url("Images/gym_head3.jpg");
 }
@@ -254,30 +255,21 @@ body {
     
 }
 
+/* START ABOUT US*/
+
+.about-us {
+    height:35vw;
+    background-image: url("Images/gym_head5.jpg");
+}
+
+/* END ABOUT US*/
 
 
 
-/*@media (min-width: 576px) and (max-width: 900px) {
-    .carousel-caption {
-        top: 72%;
-        transform: translateY(-42%);
-    }
 
-        .carousel-caption h1 {
-            font-size: 400%;
-        }
 
-        .carousel-caption p {
-            font-size: 100%;
-            font-weight: 600;
-            padding-bottom: .2rem;
-        }
 
-        .carousel-caption .btn {
-            font-size: 80%;
-            padding: 8px 12px;
-        }
-}*/
+
 
 @media (min-width: 500px) and (max-width: 820px) {
     .carousel-caption {
