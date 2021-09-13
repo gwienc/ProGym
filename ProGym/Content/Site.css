@@ -271,79 +271,109 @@ body {
 
 
 
-/*STARCT CONTACT*/
+/*START CONTACT*/
 
 .contact {
     height: 35vw;
     background-image: url("Images/gym_head6.jpg");
 }
 
+/*END CONTACT*/
 
 
 
 
+@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 
-@media (min-width: 500px) and (max-width: 820px) {
-    .carousel-caption {
-        top: 72%;
-        transform: translateY(-42%);
-    }
 
-        .carousel-caption h1 {
-            font-size: 400%;
-        }
 
-        .carousel-caption p {
-            font-size: 100%;
-            font-weight: 600;
-            padding-bottom: .2rem;
-        }
+   
 
-        .carousel-caption .btn {
-            font-size: 80%;
-            padding: 8px 12px;
-        }
-}
-@media (min-width: 400px) and (max-width: 550px) {
-    .carousel-caption {
-        top: 72%;
-        transform: translateY(-42%);
-    }
-
-        .carousel-caption h1 {
-            font-size: 400%;
-        }
-
-        .carousel-caption p {
-            font-size: 100%;
-            font-weight: 600;
-            padding-bottom: .2rem;
-        }
-
-        .carousel-caption .btn {
-            font-size: 50%;
-            padding: 8px 12px;
-        }
+#team {
+    height:30vw;
 }
 
-@media (min-width: 200px) and (max-width: 400px) {
-    .carousel-caption {
-        top: 72%;
-        transform: translateY(-42%);
-    }
-
-        .carousel-caption h1 {
-            font-size: 400%;
-        }
-
-        .carousel-caption p {
-            font-size: 100%;
-            font-weight: 600;
-            padding-bottom: .2rem;
-        }
-
-        .carousel-caption .btn {
-            font-size: 40%;
-            padding: 8px 12px;
-        }
+#team .card {
+    border: none;
+    background: #ffffff;
 }
+
+.image-flip:hover .backside,
+.image-flip.hover .backside {
+    -webkit-transform: rotateY(0deg);
+    -moz-transform: rotateY(0deg);
+    -o-transform: rotateY(0deg);
+    -ms-transform: rotateY(0deg);
+    transform: rotateY(0deg);
+    border-radius: .25rem;
+}
+
+.image-flip:hover .frontside,
+.image-flip.hover .frontside {
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
+
+.mainflip {
+    -webkit-transition: 1s;
+    -webkit-transform-style: preserve-3d;
+    -ms-transition: 1s;
+    -moz-transition: 1s;
+    
+    -moz-transform-style: preserve-3d;
+    -ms-transform-style: preserve-3d;
+    transition: 1s;
+    
+    position: relative;
+}
+
+.frontside {
+    position: relative;
+    -webkit-transform: rotateY(0deg);
+    -ms-transform: rotateY(0deg);
+    
+    
+}
+
+.backside {
+    position: absolute;
+    top: 0;
+    left: 0;
+    -webkit-transform: rotateY(-180deg);
+    -moz-transform: rotateY(-180deg);
+    -o-transform: rotateY(-180deg);
+    -ms-transform: rotateY(-180deg);
+    transform: rotateY(-180deg);
+   
+    
+    
+}
+
+.frontside,
+.backside {
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transition: 1s;
+    -webkit-transform-style: preserve-3d;
+    -moz-transition: 1s;
+    -moz-transform-style: preserve-3d;
+    -o-transition: 1s;
+    -o-transform-style: preserve-3d;
+    -ms-transition: 1s;
+    -ms-transform-style: preserve-3d;
+    
+    transform-style: preserve-3d;
+}
+
+    
+
+       
+
+
+
+        
+
