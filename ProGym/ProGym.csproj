@@ -1760,6 +1760,7 @@
     <Content Include="Content\Images\gym_head3.jpg" />
     <Content Include="Content\Images\gym_head4.jpg" />
     <Content Include="Content\Images\gym_head5.jpg" />
+    <Content Include="Content\Images\gym_head6.jpg" />
     <Content Include="Content\Images\gym_logo.jpg" />
     <Content Include="Content\Images\gym_logo2.jpg" />
     <Content Include="Content\Images\Services\fight.png" />
@@ -1924,6 +1925,9 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Onas.cshtml" />
     <Content Include="Views\Home\Cennik.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Kontakt.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

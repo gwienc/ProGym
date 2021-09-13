@@ -255,6 +255,11 @@ body {
     
 }
 
+
+/*END PRICES*/
+
+
+
 /* START ABOUT US*/
 
 .about-us {
@@ -265,6 +270,13 @@ body {
 /* END ABOUT US*/
 
 
+
+/*STARCT CONTACT*/
+
+.contact {
+    height: 35vw;
+    background-image: url("Images/gym_head6.jpg");
+}
 
 
 
