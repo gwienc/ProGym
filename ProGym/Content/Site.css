@@ -20,12 +20,12 @@ html, body {
 }
 
 #wrap {
-    min-height: 50%;
+    min-height: 100%;
 }
 
 #main {
     overflow: auto;
-    padding-bottom: 350px; /* this needs to be bigger than footer height*/
+    padding-bottom: 400px;  /*this needs to be bigger than footer height*/
 }
 
 
@@ -293,10 +293,10 @@ body {
     height:30vw;
 }
 
-#team .card {
+/*#team .card {
     border: none;
     background: #ffffff;
-}
+}*/
 
 .image-flip:hover .backside,
 .image-flip.hover .backside {
