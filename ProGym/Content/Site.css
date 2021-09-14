@@ -20,12 +20,12 @@ html, body {
 }
 
 #wrap {
-    min-height: 100%;
+    min-height: 50%;
 }
 
 #main {
     overflow: auto;
-    padding-bottom: 150px; /* this needs to be bigger than footer height*/
+    padding-bottom: 350px; /* this needs to be bigger than footer height*/
 }
 
 
@@ -81,9 +81,9 @@ ul.navbar-nav li a:hover, ul.nav li a:active {
 }
 .full-footer {
     position: relative;
-    margin-top: -150px; /* negative value of footer height */
+    margin-top: -180px; /* negative value of footer height */
     clear: both;
-    padding-top: 20px;
+    /*padding-top: 20px;*/
     color: rgb(0, 0, 0);
 }
 
@@ -297,7 +297,7 @@ body {
    
 
 #team {
-    height:50vw;
+    height:30vw;
 }
 
 #team .card {
@@ -345,8 +345,8 @@ body {
 }
 
 .backside {
-    position: absolute;
-    top: 0;
+    position: relative;
+    top: -220px;
     left: 0;
     -webkit-transform: rotateY(-180deg);
     -moz-transform: rotateY(-180deg);
@@ -377,7 +377,7 @@ body {
 }
 
 
-@media (min-width: 1200px) and (max-width: 2000px) {
+/*@media (min-width: 1200px) and (max-width: 4000px) {
 
     #team {
         height: 40vw;
@@ -428,7 +428,7 @@ body {
         min-height: 452px;
     }
 }
-
+*/
 
 
 
