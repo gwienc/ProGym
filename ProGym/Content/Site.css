@@ -278,11 +278,34 @@ body {
 
 
 
-/*START CONTACT*/
+/*START CONTACT PAGE */
 
 .contact {
     height: 35vw;
     background-image: url("Images/gym_head6.jpg");
+}
+
+.bar {
+    font-weight: 800;
+    border-radius: 17px;
+    color: rgb(86, 91, 95);
+}
+
+.contact .bar {
+    color: rgb(86, 91, 95);
+}
+
+.shadow {
+    font-size: 20px;
+}
+
+.card .kontakt h5 {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.card .kontakt p {
+    font-weight: 600;
 }
 
 /*END CONTACT*/
