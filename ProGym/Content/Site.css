@@ -66,6 +66,10 @@ ul.navbar-nav li a:hover, ul.nav li a:active {
     color:whitesmoke !important;
 }
 
+.nav-item .dropdown-menu a:hover, .dropdown-menu a:active {
+    color: black !important;
+}
+
 /* END HEADER */
 
 
