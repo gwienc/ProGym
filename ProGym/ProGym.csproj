@@ -1763,6 +1763,7 @@
     <Content Include="Content\Images\gym_head6.jpg" />
     <Content Include="Content\Images\gym_logo.jpg" />
     <Content Include="Content\Images\gym_logo2.jpg" />
+    <Content Include="Content\Images\Offers\offer1.jpg" />
     <Content Include="Content\Images\Services\fight.png" />
     <Content Include="Content\Images\Services\personaTrainer.png" />
     <Content Include="Content\Images\Services\profileBlack80px.png" />

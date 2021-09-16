@@ -305,15 +305,29 @@ body {
 
 
 
+/*START INDIVIDUALEXERCICES PAGE */
+
+.individual h3 {
+    font-size: 200%;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.individual p {
+    font-size: 0.9rem;
+}
+
+/*END INDIVIDUALEXERCICES PAGE */
+
+
 
 @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 
 
 
-   
+
 
 #team {
-    height:30vw;
+    height: 30vw;
 }
 
 /*#team .card {
