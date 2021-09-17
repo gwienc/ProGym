@@ -374,6 +374,23 @@ body {
 
 
 
+/*START GROUPEXERCICES PAGE */
+
+.first-group {
+    background-color:gainsboro;
+}
+.second-group {
+    background-color:white;
+}
+.group-exercises {
+    height:35vw;
+    background-image: url("Images/Offers/offer3.jpg")
+}
+
+
+/*END GROUPEXERCICES PAGE */
+
+
 
 #team {
     height: 30vw;
