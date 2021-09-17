@@ -350,6 +350,11 @@ body {
     font-size: 0.9rem;
 }
 
+.exercises {
+    height: 35vw;
+    background-image: url("Images/Offers/offer3.jpg")
+}
+
 /*END INDIVIDUALEXERCICES PAGE */
 
 
@@ -365,6 +370,10 @@ body {
 
 .personaltrain p {
     font-size: 1rem;
+}
+.exercises {
+    height: 35vw;
+    background-image: url("Images/Offers/offer3.jpg")
 }
 
 /*END PERSONALEXERCICES PAGE */
@@ -382,7 +391,7 @@ body {
 .second-group {
     background-color:white;
 }
-.group-exercises {
+.exercises {
     height:35vw;
     background-image: url("Images/Offers/offer3.jpg")
 }
