@@ -338,6 +338,9 @@ body {
 
 /*START INDIVIDUALEXERCICES PAGE */
 
+.individual {
+    text-align:justify;
+}
 .individual h3 {
     font-size: 200%;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
@@ -350,6 +353,21 @@ body {
 /*END INDIVIDUALEXERCICES PAGE */
 
 
+/*START PERSONALEXERCICES PAGE */
+
+.personaltrain {
+    text-align:justify;
+}
+.personaltrain h3 {
+    font-size: 200%;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.personaltrain p {
+    font-size: 1rem;
+}
+
+/*END PERSONALEXERCICES PAGE */
 
 @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 
