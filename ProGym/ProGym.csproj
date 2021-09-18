@@ -1766,6 +1766,17 @@
     <Content Include="Content\Images\Offers\offer1.jpg" />
     <Content Include="Content\Images\Offers\offer2.jpg" />
     <Content Include="Content\Images\Offers\offer3.jpg" />
+    <Content Include="Content\Images\Offers\offer4_.jpg" />
+    <Content Include="Content\Images\Offers\offer4__.jpg" />
+    <Content Include="Content\Images\relax\jacuzzi.jpg" />
+    <Content Include="Content\Images\relax\jacuzzi_.jpg" />
+    <Content Include="Content\Images\relax\massage.jpg" />
+    <Content Include="Content\Images\relax\massage2_.jpg" />
+    <Content Include="Content\Images\relax\massage_.jpg" />
+    <Content Include="Content\Images\relax\sauna.jpg" />
+    <Content Include="Content\Images\relax\sauna_.jpg" />
+    <Content Include="Content\Images\relax\solarium.jpg" />
+    <Content Include="Content\Images\relax\solarium_.jpg" />
     <Content Include="Content\Images\Services\fight.png" />
     <Content Include="Content\Images\Services\personaTrainer.png" />
     <Content Include="Content\Images\Services\profileBlack80px.png" />
@@ -1934,6 +1945,7 @@
     <Content Include="Views\Home\TreningIndywidualny.cshtml" />
     <Content Include="Views\Home\TreningPersonalny.cshtml" />
     <Content Include="Views\Home\ZajeciaGrupowe.cshtml" />
+    <Content Include="Views\Home\Relaks.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

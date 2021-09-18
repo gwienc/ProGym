@@ -417,6 +417,20 @@ body {
 
 
 
+/*START RELAX PAGE */
+
+.relax {
+    height: 35vw;
+    background-image: url("Images/Offers/offer4__.jpg")
+}
+
+.relax-sub h1 {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+
+/*END RELAX PAGE */
+
 #team {
     height: 30vw;
 }
