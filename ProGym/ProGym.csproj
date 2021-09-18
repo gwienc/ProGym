@@ -1937,15 +1937,15 @@
     <Content Include="Scripts\bootstrap.bundle.min.js.map" />
     <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\Onas.cshtml" />
-    <Content Include="Views\Home\Cennik.cshtml" />
+    <Content Include="Views\Home\AboutUs.cshtml" />
+    <Content Include="Views\Home\Prices.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Kontakt.cshtml" />
-    <Content Include="Views\Home\TreningIndywidualny.cshtml" />
-    <Content Include="Views\Home\TreningPersonalny.cshtml" />
-    <Content Include="Views\Home\ZajeciaGrupowe.cshtml" />
-    <Content Include="Views\Home\Relaks.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\IndividualTraining.cshtml" />
+    <Content Include="Views\Home\TrainingPersonalTrainer.cshtml" />
+    <Content Include="Views\Home\GroupExercises.cshtml" />
+    <Content Include="Views\Home\Relaxation.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
