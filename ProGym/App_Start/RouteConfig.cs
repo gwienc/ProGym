@@ -13,6 +13,14 @@ namespace ProGym
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+
+            routes.MapRoute(
+                name: "StaticPages",
+                url: "ProGym/{viewname}",
+                defaults: new { controller = "Home", action = "StaticContent" }
+                );
+
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
