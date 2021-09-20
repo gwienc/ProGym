@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_GymLayout.cshtml";
+}
+
+
+
+<section>
+    <div class="container pt-5">
+        <div class="col-md-4 mx-auto pb-5 pt-5">
+            <div class="card shadow-lg">
+                <div class="card-body">
+                    @using (Html.BeginForm("Login", "Account"))
+                    {
+                        <div class="row text-center pb-5 pt-3">
+                            <h3>Zaloguj się</h3>
+                        </div>
+
+                        <div class="row pb-2 ps-1 pe-1">
+                            @Html.Label("Email", new { @class = "form-label" })
+                            @Html.TextBox("Email", "Email", new { @class = "form-control" })
+                        </div>
+                        <div class="row pt-2 ps-1 pe-1">
+                            @Html.Label("Hasło", new { @class = "form-label" })
+                            @Html.Password("Hasło", "Hasło", new { @class = "form-control" })
+                        </div>
+                        <div class="row pt-4 ps-1 pe-1 pb-4">
+                            <input type="submit" value="Zaloguj" class="btn btn-success" />
+                        </div>
+                        <div class="row text-center pt-2">
+                            <p>Nie masz konta?</p>
+                        </div>
+                        <div class="row ps-1 pe-1">
+                            @Html.ActionLink("Zarejestruj się", "Register", "Account", new { @class = "btn btn-secondary" })
+                        </div>
+                        @*<div class="row ps-1 pe-1 pt-5">
+                            <input class="btn btn-secondary" value="Zarejestruj się" type="button"
+                                    onclick="location.href='@Url.Action("Register", "Account")'">
+                        </div>*@
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
