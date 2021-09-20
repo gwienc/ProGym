@@ -4,5 +4,64 @@
     Layout = "~/Views/Shared/_GymLayout.cshtml";
 }
 
-<h2>Register</h2>
+<section>
+    <div class="container">
+        <div class="col-md-6 mx-auto pb-5 pt-5">
+            <div class="card shadow-lg">
+                <div class="card-body">
+                    <div class="row text-center pb-5 pt-3">
+                        <h3>Zarejestruj się</h3>
+                    </div>
+
+                    @using (Html.BeginForm("Register", "Account"))
+                    {
+                        <div class="row pb-2">
+                            <div class="col-md-6">
+                                @Html.Label("Imię", new { @class = "form-label" })
+                                @Html.TextBox("Imię", "", new { @class = "form-control" })
+                            </div>
+                            <div class="col-md-6">
+                                @Html.Label("Nazwisko", new { @class = "form-label" })
+                                @Html.TextBox("Nazwisko", "", new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="row pb-2">
+                            <div class="col-md-6">
+                                @Html.Label("Ulica i nr domu/mieszkania", new { @class = "form-label" })
+                                @Html.TextBox("Ulica i nr domu/mieszkania", "", new { @class = "form-control" })
+                            </div>
+                            <div class="col-md-6">
+                                @Html.Label("Miasto i kod pocztowy", new { @class = "form-label" })
+                                @Html.TextBox("Miasto i kod pocztowy", "", new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="row pb-2">
+                            <div class="col-md-6">
+                                @Html.Label("Nr telefonu", new { @class = "form-label" })
+                                @Html.TextBox("Nr telefonu", "", new { @class = "form-control" })
+                            </div>
+                            <div class="col-md-6">
+                                @Html.Label("Email", new { @class = "form-label" })
+                                @Html.TextBox("Email", "", new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="row pb-2">
+                            <div class="col-md-6">
+                                @Html.Label("Hasło", new { @class = "form-label" })
+                                @Html.Password("Hasło", "", new { @class = "form-control" })
+                            </div>
+                            <div class="col-md-6">
+                                @Html.Label("Potwierdź hasło", new { @class = "form-label" })
+                                @Html.Password("Potwierdź hasło", "", new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="row pt-4 ps-5 pe-5">
+                            <input type="submit" value="Zarejestruj się" class="btn btn-success" />
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
