@@ -438,6 +438,25 @@ body {
 
 /*END RELAX PAGE */
 
+
+/*START SHOP PAGE */
+
+.shop {
+    height: 35vw;
+    background-image: url("Images/Offers/gym-supplements.jpg");
+}
+
+
+.shop-sub h1 {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+/*END SHOP PAGE */
+
+
+
+
+
 #team {
     height: 30vw;
 }

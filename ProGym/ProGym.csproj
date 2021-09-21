@@ -1763,11 +1763,13 @@
     <Content Include="Content\Images\gym_head6.jpg" />
     <Content Include="Content\Images\gym_logo.jpg" />
     <Content Include="Content\Images\gym_logo2.jpg" />
+    <Content Include="Content\Images\Offers\gym-supplements.jpg" />
     <Content Include="Content\Images\Offers\offer1.jpg" />
     <Content Include="Content\Images\Offers\offer2.jpg" />
     <Content Include="Content\Images\Offers\offer3.jpg" />
     <Content Include="Content\Images\Offers\offer4_.jpg" />
     <Content Include="Content\Images\Offers\offer4__.jpg" />
+    <Content Include="Content\Images\Products\whey_protein.jpg" />
     <Content Include="Content\Images\relax\jacuzzi.jpg" />
     <Content Include="Content\Images\relax\jacuzzi_.jpg" />
     <Content Include="Content\Images\relax\massage.jpg" />
@@ -1852,6 +1854,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\StoreController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1949,6 +1952,7 @@
     <Content Include="Views\Home\Relaxation.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Store\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
