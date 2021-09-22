@@ -39,7 +39,7 @@
                             <div class="col-md-4 pt-5">
                                 <img src="@Url.Content("~/Content/Images/Products/whey_protein.jpg")" class="img-fluid rounded-start" alt="...">
                             </div>
-                            <div class="col-md-8">
+                            <div class="col-md-8 pt-5">
                                 <div class="card-body">
                                     <h3 class="card-title">Whey Protein Complex 100%</h3><br />
                                     <p class="card-text">
@@ -60,7 +60,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row g-0 p-5">
+                        @*<div class="row g-0 p-5">
                             <p>
                                 Whey Protein Complex 100% idealnie sprawdzi się jako alternatywa dla śniadania lub innego posiłku.
                                 Jeżeli rano zmuszasz się do zjedzenia czegokolwiek to ucieszy Cię wiadomość, że możesz wypić coś pożywnego.
@@ -76,7 +76,53 @@
                                 karboksymetylocelulozy; substancje słodzące – acesulfam K, sukraloza, cyklaminiany (Z), emulgator – lecytyny (z soi), sól,
                                 barwniki: karoteny, koszenila, ryboflawiny, E150c, E 150d, E 133, błękit pantenowy V, indygokarmin, chlorofile i chlorofiliny, kurkumina, antocyjany, ekstrakt z papryki, betanina, węgiel roślinny,
                             </p>
-
+                        </div>*@
+                        <div class="row g-0 p-5">
+                            <div class="d-grid gap-2 col-4 p-3 mx-auto">
+                                <a class="btn btn-dark" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Opis</a>
+                            </div>
+                            <div class="d-grid gap-2 col-4 p-3 mx-auto">
+                                <button class="btn btn-dark" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Skład</button>
+                            </div>
+                            <div class="d-grid gap-2 col-4 p-3 mx-auto">
+                                <button class="btn btn-dark" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample3" aria-expanded="false" aria-controls="multiCollapseExample3">Parametry</button>
+                            </div>
+                        </div>
+                        <div class="row g-0 p-5 text-center">
+                            @*<p>
+                                <a class="btn btn-primary" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Opis</a>
+                                <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Skład</button>
+                                <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample3" aria-expanded="false" aria-controls="multiCollapseExample3">Parametry</button>
+                            </p>*@
+                            <div class="row">
+                                <div class="col-12 text-start">
+                                    <div class="collapse multi-collapse" id="multiCollapseExample1">
+                                        <div class="card card-body">
+                                            Whey Protein Complex 100% idealnie sprawdzi się jako alternatywa dla śniadania lub innego posiłku.
+                                            Jeżeli rano zmuszasz się do zjedzenia czegokolwiek to ucieszy Cię wiadomość, że możesz wypić coś pożywnego.
+                                            W jednej porcji znajdziesz aż 26 gramów białka, niewiele węglowodanów i jeszcze mniej cukrów!
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 text-start">
+                                    <div class="collapse multi-collapse" id="multiCollapseExample2">
+                                        <div class="card card-body">
+                                            Składniki: 95% preparaty białkowe (ultrafiltrowany koncentrat białek serwatkowych z WPC (z mleka), izolat białek serwatkowych WPI-CFM,
+                                            karboksymetylocelulozy; substancje słodzące – acesulfam K, sukraloza, cyklaminiany (Z), emulgator – lecytyny (z soi), sól,
+                                            barwniki: karoteny, koszenila, ryboflawiny, E150c, E 150d, E 133, błękit pantenowy V, indygokarmin, chlorofile i chlorofiliny, kurkumina, antocyjany, ekstrakt z papryki, betanina, węgiel roślinny,
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 text-start">
+                                    <div class="collapse multi-collapse" id="multiCollapseExample3">
+                                        <div class="card card-body">
+                                            Porcja: 35g
+                                            Porcji w opakowaniu: 64
+                                            Opakowanie: 2270g
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
