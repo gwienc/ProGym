@@ -13,5 +13,10 @@ namespace ProGym.Controllers
         {
             return View();
         }
+
+        public ActionResult Details()
+        {
+            return View();
+        }
     }
 }

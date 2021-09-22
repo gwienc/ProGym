@@ -1783,6 +1783,7 @@
     <Content Include="Content\Images\Services\personaTrainer.png" />
     <Content Include="Content\Images\Services\profileBlack80px.png" />
     <Content Include="Content\Images\Services\sauna.png" />
+    <Content Include="Content\Images\Services\shopCart.png" />
     <Content Include="Content\Images\Services\team.png" />
     <Content Include="Content\Images\Services\training.png" />
     <Content Include="Content\Site.css" />
@@ -1953,6 +1954,7 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Store\Index.cshtml" />
+    <Content Include="Views\Store\Details.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
