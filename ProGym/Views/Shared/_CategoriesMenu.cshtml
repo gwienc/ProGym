@@ -1,0 +1,27 @@
+﻿@model IEnumerable<string>
+
+
+
+
+
+@foreach (var category in Model)
+{
+    if (category == "Wszystkie")
+    {
+        <a href="#" class="list-group-item list-group-item-action active">@category</a>
+    }
+    else
+    {
+        <a href="#" class="list-group-item list-group-item-action">@category</a>}
+    }
+
+
+@*<a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+        Wszystkie
+    </a>
+    <a href="#" class="list-group-item list-group-item-action">Pierwsza kategoria</a>
+    <a href="#" class="list-group-item list-group-item-action">Druga kategoria</a>
+    <a href="#" class="list-group-item list-group-item-action">Trzecia kategoria</a>
+    <a href="#" class="list-group-item list-group-item-action">Czwarta kategoria</a>
+    <a href="#" class="list-group-item list-group-item-action">Piąta kategoria</a>
+    <a href="#" class="list-group-item list-group-item-action">Szósta kategoria</a>*@

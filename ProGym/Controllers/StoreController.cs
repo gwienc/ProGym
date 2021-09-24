@@ -18,5 +18,20 @@ namespace ProGym.Controllers
         {
             return View();
         }
+
+        public ActionResult CategoriesMenu()
+        {
+            List<string> categories = new List<string>
+            {
+                "Wszystkie",
+                "Pierwsza Kategoria",
+                "Druga kategoria",
+                "Trzecia Kategoria",
+                "Czwarta kategoria",
+                "Piąta kategoria",
+                "Szósta kategoria"
+            };
+            return PartialView("_CategoriesMenu",categories);
+        }
     }
 }

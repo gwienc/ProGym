@@ -1955,6 +1955,7 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Store\Index.cshtml" />
     <Content Include="Views\Store\Details.cshtml" />
+    <Content Include="Views\Shared\_CategoriesMenu.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
