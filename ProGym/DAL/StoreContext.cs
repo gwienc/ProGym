@@ -7,12 +7,17 @@ using System.Web;
 
 namespace ProGym.DAL
 {
-    public class StoreContext :DbContext
+    public class StoreContext : DbContext
     {
 
         public StoreContext() :base("StoreContext")
         {
 
+        }
+
+        static StoreContext()
+        {
+            Database.SetInitializer<StoreContext>(new StoreInitializer());
         }
 
         public DbSet<Product> Products { get; set; }

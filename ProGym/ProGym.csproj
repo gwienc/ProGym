@@ -1776,7 +1776,24 @@
     <Content Include="Content\Images\Offers\offer3.jpg" />
     <Content Include="Content\Images\Offers\offer4_.jpg" />
     <Content Include="Content\Images\Offers\offer4__.jpg" />
+    <Content Include="Content\Images\Products\Animal-Immune-Pak-327.jpg" />
+    <Content Include="Content\Images\Products\BCAA-2-1-1-Pure-240caps.jpg" />
+    <Content Include="Content\Images\Products\BCAA6000.jpg" />
+    <Content Include="Content\Images\Products\HGP-300g.jpg" />
+    <Content Include="Content\Images\Products\Instant-Whey-Protein-2000g.jpg" />
+    <Content Include="Content\Images\Products\IRON_HORSE_BCAA-2-1-1-120caps.jpg" />
+    <Content Include="Content\Images\Products\Iso-Probiotics-900g.jpg" />
+    <Content Include="Content\Images\Products\Myofusion-Advanced-EU-500g.jpg" />
+    <Content Include="Content\Images\Products\Protein-Caffe-Isolate-31g.jpg" />
+    <Content Include="Content\Images\Products\Proven-Whey-1814g.jpg" />
+    <Content Include="Content\Images\Products\Vita-Min-Multiple-Sport-60caps.jpg" />
+    <Content Include="Content\Images\Products\Vitamin-D3-2000IU-PureFlow-90caps.jpg" />
+    <Content Include="Content\Images\Products\Vitamin-Forte-120tabs.jpg" />
+    <Content Include="Content\Images\Products\Whey-Gold-Standard-2270g.jpg" />
+    <Content Include="Content\Images\Products\Whey-Protein-Isolate-1800g.jpg" />
     <Content Include="Content\Images\Products\whey_protein.jpg" />
+    <Content Include="Content\Images\Products\WPC-EDGE-Instant-2270g.jpg" />
+    <Content Include="Content\Images\Products\X-PEL-80caps.jpg" />
     <Content Include="Content\Images\relax\jacuzzi.jpg" />
     <Content Include="Content\Images\relax\jacuzzi_.jpg" />
     <Content Include="Content\Images\relax\massage.jpg" />
@@ -1864,9 +1881,15 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\StoreController.cs" />
     <Compile Include="DAL\StoreContext.cs" />
+    <Compile Include="DAL\StoreInitializer.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202109251346237_InitialCreate.cs" />
+    <Compile Include="Migrations\202109251346237_InitialCreate.designer.cs">
+      <DependentUpon>202109251346237_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderItem.cs" />
@@ -1977,6 +2000,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202109251346237_InitialCreate.resx">
+      <DependentUpon>202109251346237_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

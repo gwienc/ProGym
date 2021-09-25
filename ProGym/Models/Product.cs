@@ -10,7 +10,7 @@ namespace ProGym.Models
         public int ProductID { get; set; }
         public int CategoryID { get; set; }
         public string Name { get; set; }
-        public int ProducerName { get; set; }
+        public string ProducerName { get; set; }
         public decimal Price { get; set; }
         public string Ingredients { get; set; }
         public string Description { get; set; }
