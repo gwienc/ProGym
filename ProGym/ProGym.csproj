@@ -1885,6 +1885,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\AppConfig.cs" />
+    <Compile Include="Infrastructure\UrlHelpers.cs" />
     <Compile Include="Migrations\202109251346237_InitialCreate.cs" />
     <Compile Include="Migrations\202109251346237_InitialCreate.designer.cs">
       <DependentUpon>202109251346237_InitialCreate.cs</DependentUpon>
