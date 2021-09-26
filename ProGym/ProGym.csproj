@@ -1993,6 +1993,7 @@
     <Content Include="Views\Store\Index.cshtml" />
     <Content Include="Views\Store\Details.cshtml" />
     <Content Include="Views\Shared\_CategoriesMenu.cshtml" />
+    <Content Include="Views\Shared\_ProductList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

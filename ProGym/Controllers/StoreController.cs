@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProGym.DAL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,29 +9,34 @@ namespace ProGym.Controllers
 {
     public class StoreController : Controller
     {
-        // GET: Store
-        public ActionResult Index()
+        StoreContext db = new StoreContext();
+        
+        public ActionResult Index(string categoryname = "Wszystkie")
         {
-            return View();
+            if (categoryname == "Wszystkie")
+            {
+                var products = db.Products.ToList();
+                return View (products);
+            }
+            else
+            {
+                var category = db.Categories.Include("Products").Where(c => c.CategoryName.ToUpper() == categoryname.ToUpper()).Single();
+                var products = category.Products.ToList();
+                return View(products);
+            }
+         
         }
 
+  
         public ActionResult Details()
         {
             return View();
         }
 
+        [ChildActionOnly]
         public ActionResult CategoriesMenu()
         {
-            List<string> categories = new List<string>
-            {
-                "Wszystkie",
-                "Pierwsza Kategoria",
-                "Druga kategoria",
-                "Trzecia Kategoria",
-                "Czwarta kategoria",
-                "Piąta kategoria",
-                "Szósta kategoria"
-            };
+            var categories = db.Categories.ToList();
             return PartialView("_CategoriesMenu",categories);
         }
     }

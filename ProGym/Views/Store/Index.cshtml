@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<ProGym.Models.Product>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_GymLayout.cshtml";
@@ -36,135 +36,137 @@
                 <h3>Kategoria</h3>
                 <hr />
                 <div class="list-group pt-2">
-                    @Html.Action("CategoriesMenu","Store")
-                                    
-                    
-                    @*<a href="#" class="list-group-item list-group-item-action active" aria-current="true">
-                        Wszystkie
-                    </a>
-                    <a href="#" class="list-group-item list-group-item-action">Pierwsza kategoria</a>
-                    <a href="#" class="list-group-item list-group-item-action">Druga kategoria</a>
-                    <a href="#" class="list-group-item list-group-item-action">Trzecia kategoria</a>
-                    <a href="#" class="list-group-item list-group-item-action">Czwarta kategoria</a>
-                    <a href="#" class="list-group-item list-group-item-action">Piąta kategoria</a>
-                    <a href="#" class="list-group-item list-group-item-action">Szósta kategoria</a>*@
+                    @Html.Action("CategoriesMenu", "Store")
                 </div>
             </div>
+
             <div class="col-lg-10 pt-5 ps-5 pe-5">
-                <div class="row justify-content-center pb-4">
-                    <div class="col-xl-3 col-md-6">
-                        <div class="card">
-                            <img src="@Url.Content("~/Content/Images/Products/whey_protein.jpg")" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <p class="card-title">Whey Protein Complex 100%</p>
-                                <a href="#" class="btn btn-sm btn-primary">Kup teraz</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-md-6">
-                        <div class="card">
-                            <img src="@Url.Content("~/Content/Images/Products/whey_protein.jpg")" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <p class="card-title">Whey Protein Complex 100%</p>
-                                <a href="#" class="btn btn-sm btn-primary">Kup teraz</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-md-6">
-                        <div class="card">
-                            <img src="@Url.Content("~/Content/Images/Products/whey_protein.jpg")" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <p class="card-title">Whey Protein Complex 100%</p>
-                                <a href="#" class="btn btn-sm btn-primary">Kup teraz</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-md-6">
-                        <div class="card">
-                            <img src="@Url.Content("~/Content/Images/Products/whey_protein.jpg")" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <p class="card-title">Whey Protein Complex 100%</p>
-                                <a href="#" class="btn btn-sm btn-primary">Kup teraz</a>
-                            </div>
-                        </div>
-                    </div>
+                <div class="row pb-4">
+                    
+                        @Html.Partial("_ProductList")
+                   
                 </div>
-                <div class="row justify-content-center pb-4">
-                    <div class="col-xl-3 col-md-6">
-                        <div class="card">
-                            <img src="@Url.Content("~/Content/Images/Products/whey_protein.jpg")" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <p class="card-title">Whey Protein Complex 100%</p>
-                                <a href="#" class="btn btn-sm btn-primary">Kup teraz</a>
+
+
+
+
+
+                @*<div class="col-lg-10 pt-5 ps-5 pe-5">
+                        <div class="row justify-content-center pb-4">
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card">
+                                    <img src="@Url.Content("~/Content/Images/Products/whey_protein.jpg")" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <p class="card-title">Whey Protein Complex 100%</p>
+                                        <a href="#" class="btn btn-sm btn-primary">Kup teraz</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card">
+                                    <img src="@Url.Content("~/Content/Images/Products/whey_protein.jpg")" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <p class="card-title">Whey Protein Complex 100%</p>
+                                        <a href="#" class="btn btn-sm btn-primary">Kup teraz</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card">
+                                    <img src="@Url.Content("~/Content/Images/Products/whey_protein.jpg")" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <p class="card-title">Whey Protein Complex 100%</p>
+                                        <a href="#" class="btn btn-sm btn-primary">Kup teraz</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card">
+                                    <img src="@Url.Content("~/Content/Images/Products/whey_protein.jpg")" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <p class="card-title">Whey Protein Complex 100%</p>
+                                        <a href="#" class="btn btn-sm btn-primary">Kup teraz</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-xl-3 col-md-6">
-                        <div class="card">
-                            <img src="@Url.Content("~/Content/Images/Products/whey_protein.jpg")" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <p class="card-title">Whey Protein Complex 100%</p>
-                                <a href="#" class="btn btn-sm btn-primary">Kup teraz</a>
+                        <div class="row justify-content-center pb-4">
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card">
+                                    <img src="@Url.Content("~/Content/Images/Products/whey_protein.jpg")" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <p class="card-title">Whey Protein Complex 100%</p>
+                                        <a href="#" class="btn btn-sm btn-primary">Kup teraz</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card">
+                                    <img src="@Url.Content("~/Content/Images/Products/whey_protein.jpg")" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <p class="card-title">Whey Protein Complex 100%</p>
+                                        <a href="#" class="btn btn-sm btn-primary">Kup teraz</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card">
+                                    <img src="@Url.Content("~/Content/Images/Products/whey_protein.jpg")" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <p class="card-title">Whey Protein Complex 100%</p>
+                                        <a href="#" class="btn btn-sm btn-primary">Kup teraz</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card">
+                                    <img src="@Url.Content("~/Content/Images/Products/whey_protein.jpg")" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <p class="card-title">Whey Protein Complex 100%</p>
+                                        <a href="#" class="btn btn-sm btn-primary">Kup teraz</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-xl-3 col-md-6">
-                        <div class="card">
-                            <img src="@Url.Content("~/Content/Images/Products/whey_protein.jpg")" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <p class="card-title">Whey Protein Complex 100%</p>
-                                <a href="#" class="btn btn-sm btn-primary">Kup teraz</a>
+                        <div class="row justify-content-center pb-4">
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card">
+                                    <img src="@Url.Content("~/Content/Images/Products/whey_protein.jpg")" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <p class="card-title">Whey Protein Complex 100%</p>
+                                        <a href="#" class="btn btn-sm btn-primary">Kup teraz</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card">
+                                    <img src="@Url.Content("~/Content/Images/Products/whey_protein.jpg")" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <p class="card-title">Whey Protein Complex 100%</p>
+                                        <a href="#" class="btn btn-sm btn-primary">Kup teraz</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card">
+                                    <img src="@Url.Content("~/Content/Images/Products/whey_protein.jpg")" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <p class="card-title">Whey Protein Complex 100%</p>
+                                        <a href="#" class="btn btn-sm btn-primary">Kup teraz</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card">
+                                    <img src="@Url.Content("~/Content/Images/Products/whey_protein.jpg")" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <p class="card-title">Whey Protein Complex 100%</p>
+                                        <a href="#" class="btn btn-sm btn-primary">Kup teraz</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-xl-3 col-md-6">
-                        <div class="card">
-                            <img src="@Url.Content("~/Content/Images/Products/whey_protein.jpg")" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <p class="card-title">Whey Protein Complex 100%</p>
-                                <a href="#" class="btn btn-sm btn-primary">Kup teraz</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row justify-content-center pb-4">
-                    <div class="col-xl-3 col-md-6">
-                        <div class="card">
-                            <img src="@Url.Content("~/Content/Images/Products/whey_protein.jpg")" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <p class="card-title">Whey Protein Complex 100%</p>
-                                <a href="#" class="btn btn-sm btn-primary">Kup teraz</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-md-6">
-                        <div class="card">
-                            <img src="@Url.Content("~/Content/Images/Products/whey_protein.jpg")" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <p class="card-title">Whey Protein Complex 100%</p>
-                                <a href="#" class="btn btn-sm btn-primary">Kup teraz</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-md-6">
-                        <div class="card">
-                            <img src="@Url.Content("~/Content/Images/Products/whey_protein.jpg")" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <p class="card-title">Whey Protein Complex 100%</p>
-                                <a href="#" class="btn btn-sm btn-primary">Kup teraz</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-md-6">
-                        <div class="card">
-                            <img src="@Url.Content("~/Content/Images/Products/whey_protein.jpg")" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <p class="card-title">Whey Protein Complex 100%</p>
-                                <a href="#" class="btn btn-sm btn-primary">Kup teraz</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    </div>*@
             </div>
         </div>
     </div>

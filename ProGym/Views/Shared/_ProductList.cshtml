@@ -1,0 +1,60 @@
+﻿@model IEnumerable<ProGym.Models.Product>
+@using ProGym.Infrastructure
+@{
+    ViewBag.Title = "ProductList";
+
+}
+
+
+    @foreach (var product in Model)
+    {
+
+        <div class="col-xl-3 col-md-6">
+
+
+            <div class="card">
+                <img src="@Url.ProductPhotoPath(product.PhotoFileName)" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-title">@product.Name</p>
+                    <a href="@Url.Action("AddToCart", "Cart", new { id = product.ProductID })" class="btn btn-sm btn-primary">Kup teraz</a>
+                </div>
+            </div>
+
+
+            @*<div class="card">
+                    <img src="@Url.Content("~/Content/Images/Products/whey_protein.jpg")" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-title">Whey Protein Complex 100%</p>
+                        <a href="#" class="btn btn-sm btn-primary">Kup teraz</a>
+                    </div>
+                </div>*@
+
+        </div>
+
+
+    }
+   
+
+
+
+
+
+
+
+
+
+
+
+
+@*@foreach (var product in Model)
+    {
+
+        <div class="card">
+            <img src="@Url.ProductPhotoPath(product.PhotoFileName)" class="card-img-top" alt="...">
+            <div class="card-body">
+                <p class="card-title">@product.Name</p>
+                <a href="@Url.Action("AddToCart","Cart",new { id = product.ProductID })" class="btn btn-sm btn-primary">Kup teraz</a>
+            </div>
+        </div>
+
+    }*@
