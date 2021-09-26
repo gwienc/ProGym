@@ -13,11 +13,25 @@ namespace ProGym
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+           
+            routes.MapRoute(
+                name: "ProductDetalis",
+                url: "{controller}/product-{id}.html",
+                defaults: new { controller = "Store", action = "Details" }
+                );
+
 
             routes.MapRoute(
                 name: "StaticPages",
                 url: "ProGym/{viewname}",
                 defaults: new { controller = "Home", action = "StaticContent" }
+                );
+
+
+            routes.MapRoute(
+                name: "ProductList",
+                url: "{controller}/Kategoria/{categoryname}",
+                defaults: new { controller = "Store", action = "List" }
                 );
 
 
