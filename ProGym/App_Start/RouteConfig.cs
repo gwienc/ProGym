@@ -16,7 +16,7 @@ namespace ProGym
            
             routes.MapRoute(
                 name: "ProductDetalis",
-                url: "{controller}/product-{id}.html",
+                url: "{controller}/product-{id}",
                 defaults: new { controller = "Store", action = "Details" }
                 );
 

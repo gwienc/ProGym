@@ -8,13 +8,14 @@
 
 @foreach (var product in Model)
 {
-    <div class="col-xl-3 col-md-6 p-3">
-        <div class="card h-100">
-            <img src="@Url.ProductPhotoPath(product.PhotoFileName)" class="card-img-top" alt="...">
-            <div class="card-body">
-                <p class="card-title">@product.Name</p>
-                <a href="@Url.Action("AddToCart", "Cart", new { id = product.ProductID })" class="btn btn-sm btn-primary">Kup teraz</a>
-            </div>
-        </div>
+    <div class="col-xl-3 col-md-6 p-3">  
+            <div class="card h-100">
+                <img src="@Url.ProductPhotoPath(product.PhotoFileName)" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-title">@product.Name</p>
+                    <a href="@Url.Action("AddToCart", "Cart", new { id = product.ProductID })" class="btn btn-sm btn-primary">Dodaj do koszyka</a>
+                    <a href="@Url.Action("Details", "Store", new { id = product.ProductID })" class="stretched-link"></a>
+                </div>
+            </div>        
     </div>
 }

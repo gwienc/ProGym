@@ -28,9 +28,10 @@ namespace ProGym.Controllers
         }
 
   
-        public ActionResult Details()
+        public ActionResult Details(int id)
         {
-            return View();
+            var product = db.Products.Find(id);
+            return View(product);
         }
 
         [ChildActionOnly]
