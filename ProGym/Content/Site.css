@@ -454,6 +454,9 @@ body {
 /*END SHOP PAGE */
 
 
+.list-group a:hover, .list-group a:active {
+    background-color: yellowgreen !important;
+}
 
 
 
