@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<mvcSiteMap xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xmlns="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-4.0"
+            xsi:schemaLocation="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-4.0 MvcSiteMapSchema.xsd">
+
+  <mvcSiteMapNode title="Strona Główna" controller="Home" action="Index">
+    <mvcSiteMapNode title="Category" controller="Store" action="Index" dynamicNodeProvider = "ProGym.Infrastructure.ProductListDynamicNodeProvider, ProGym">
+      <mvcSiteMapNode title="Product" controller="Store" action="Details" dynamicNodeProvider = "ProGym.Infrastructure.ProductDetailsDynaminNodeProvider, ProGym"/>
+      </mvcSiteMapNode>
+    </mvcSiteMapNode>
+
+</mvcSiteMap>
+  

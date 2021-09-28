@@ -31,7 +31,7 @@ namespace ProGym
             routes.MapRoute(
                 name: "ProductList",
                 url: "{controller}/Kategoria/{categoryname}",
-                defaults: new { controller = "Store", action = "List" }
+                defaults: new { controller = "Store", action = "Index" }
                 );
 
 
