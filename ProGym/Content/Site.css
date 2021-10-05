@@ -454,6 +454,25 @@ body {
 /*END SHOP PAGE */
 
 
+
+/*START BREADCRUMB*/
+.breadcrumb p{
+    
+    color:#8ee901 !important;
+    font-size:25px !important;
+    text-decoration:none;
+}
+
+.breadcrumb a{
+    text-decoration: none !important;
+    color:dimgrey !important;
+}
+
+
+/*END BREADCRUMB*/
+
+
+
 .list-group a:hover, .list-group a:active {
     background-color: yellowgreen !important;
 }

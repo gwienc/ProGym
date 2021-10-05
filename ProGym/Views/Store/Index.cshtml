@@ -24,18 +24,25 @@
                 <p>
                     Wysokiej jakości suplementy diety to doskonały sposób na zapewnienie sobie dobrej kondycji, odporności i samopoczucia.<br />
                     Będąc członkiem naszego klubu skorzystaj z bogatej oferty naszego sklepu, gdzie znajdziesz różnego rodzaju odżywki oraz suplementy, które wspomogą twój organizm zarówno podczas treningu jak i po.
-                </p>
-                <p>                  
-                    @Html.MvcSiteMap().SiteMapPath()
-                </p>
-                
-            </div>
+                </p>                
+            </div>           
         </div>
     </div>
 </section>
 
 <section>
-    <div class="container-fluid pt-5">
+    <div class="container-fluid breadcrumb pt-5">
+        <div class="breadcrumb">
+            <div class="row breadcrumb text-start ps-5">
+                <p>
+                    @Html.MvcSiteMap().SiteMapPath()
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container-fluid">
         <div class="row">
             <div class="col-xl-2 pt-5 ps-5 pe-5">
                 <h3>Kategoria</h3>

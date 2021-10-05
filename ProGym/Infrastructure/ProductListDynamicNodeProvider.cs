@@ -22,6 +22,11 @@ namespace ProGym.Infrastructure
                 n.RouteValues.Add("categoryname", category.CategoryName);
                 returnValue.Add(n);
             }
+            DynamicNode c = new DynamicNode();
+            c.Title = "WSZYSTKIE";
+            c.Key = "Category_" + 7;
+            c.RouteValues.Add("categoryname", "Wszystkie");
+            returnValue.Add(c);
 
             return returnValue;
         }
