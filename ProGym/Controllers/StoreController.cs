@@ -35,6 +35,7 @@ namespace ProGym.Controllers
         }
 
         [ChildActionOnly]
+        [OutputCache(Duration =86400)]
         public ActionResult CategoriesMenu()
         {
             var categories = db.Categories.ToList();
