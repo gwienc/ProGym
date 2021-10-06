@@ -14,6 +14,7 @@ namespace ProGym.Controllers
             return View();
         }
 
+        [OutputCache(Duration =86400)]
         public ActionResult StaticContent(string viewname)
         {
             return View(viewname);
