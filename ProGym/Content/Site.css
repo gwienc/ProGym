@@ -298,6 +298,7 @@ body {
     height: 35vw;
     background-image: url("Images/gym_head5__.jpg");
 }
+
 .about h1 {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
@@ -400,19 +401,19 @@ body {
     background-color: gainsboro;
 }
 
-.first-group h4, .first-group h3, .first-group h2 {
-    font-size: 150%;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-}
+    .first-group h4, .first-group h3, .first-group h2 {
+        font-size: 150%;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    }
 
 .second-group {
     background-color: white;
 }
 
-.second-group h4, .second-group h3, .second-group h2 {
-    font-size: 150%;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-}
+    .second-group h4, .second-group h3, .second-group h2 {
+        font-size: 150%;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    }
 
 .exercises {
     height: 35vw;
@@ -456,20 +457,45 @@ body {
 
 
 /*START BREADCRUMB*/
-.breadcrumb p{
-    
-    color:#8ee901 !important;
-    font-size:25px !important;
-    text-decoration:none;
+.breadcrumb p {
+    color: #8ee901 !important;
+    font-size: 25px !important;
+    text-decoration: none;
 }
 
-.breadcrumb a{
+.breadcrumb a {
     text-decoration: none !important;
-    color:dimgrey !important;
+    color: dimgrey !important;
 }
 
 
 /*END BREADCRUMB*/
+
+
+
+#search-form {
+    float: right;
+    padding: 2px 5px 2px 2px;
+    border: 1px solid #e0e0e0;
+}
+
+    #search-form input[type=search] {
+        border: none;
+        height: 25px;
+        width: 224px;
+    }
+
+    #search-form input[type=submit] {
+        width: 20px;
+        border: none;
+        height: 20px;
+        padding: 5px;
+        background-size: 100% 100%;
+        background: transparent url(Images/searchlogo.png) no-repeat;
+    }
+
+
+
 
 
 

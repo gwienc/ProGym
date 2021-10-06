@@ -10,18 +10,23 @@ namespace ProGym.Controllers
     public class StoreController : Controller
     {
         StoreContext db = new StoreContext();
-        
-        public ActionResult Index(string categoryname = "Wszystkie")
+
+        public ActionResult Index(string categoryname = "Wszystkie", string searchQuery = null)
         {
-            if (categoryname == "Wszystkie")
+            if (categoryname == "Wszystkie" && searchQuery == null)
             {
                 var products = db.Products.ToList();
-                return View (products);
+                return View(products);
             }
             else
             {
                 var category = db.Categories.Include("Products").Where(c => c.CategoryName.ToUpper() == categoryname.ToUpper()).Single();
-                var products = category.Products.ToList();
+                var products = category.Products.Where(p => (searchQuery == null || p.Name.ToLower().Contains(searchQuery.ToLower()) || p.ProducerName.ToLower().Contains(searchQuery.ToLower())) && !p.IsHidden);
+
+                if(Request.IsAjaxRequest())
+                {
+                    return PartialView("_ProductList", products);
+                }
                 return View(products);
             }
          
@@ -40,6 +45,14 @@ namespace ProGym.Controllers
         {
             var categories = db.Categories.ToList();
             return PartialView("_CategoriesMenu",categories);
+        }
+
+
+        public ActionResult ProductsSuggestions(string term)
+        {
+            var products = this.db.Products.Where(p => !p.IsHidden && p.Name.ToLower().Contains(term.ToLower())).Take(5).Select(p => new { label = p.Name });
+
+            return Json(products, JsonRequestBehavior.AllowGet);
         }
     }
 }

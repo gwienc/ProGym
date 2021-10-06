@@ -1825,6 +1825,7 @@
     <Content Include="Content\Images\relax\sauna_.jpg" />
     <Content Include="Content\Images\relax\solarium.jpg" />
     <Content Include="Content\Images\relax\solarium_.jpg" />
+    <Content Include="Content\Images\searchlogo.png" />
     <Content Include="Content\Images\Services\fight.png" />
     <Content Include="Content\Images\Services\personaTrainer.png" />
     <Content Include="Content\Images\Services\profileBlack80px.png" />
