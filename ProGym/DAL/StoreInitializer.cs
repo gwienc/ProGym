@@ -92,7 +92,7 @@ namespace ProGym.DAL
                 "Zostaną one nabite przez co będą wyglądać znacznie bardziej imponująco! Co bardzo ważne, ochronisz się przed szkodliwym zjawiskiem stresu oksydacyjnego.",
                 Ingredients = "100% mikronizowany monohydrat kreatyny (PURE)",
                 Parameters = "Wartości odżywcze	W porcji: Mikronizowany Monohydrat Kreatyny	4,54g, Tauryna 0,25g, Witamina B6 0,21g,Witamina B12 0,375 µg",
-                DateAdded = new DateTime(2021,9,25), PhotoFileName ="IRON_HORSE_BCAA-2-1-1-120caps.jpg", CategoryID =2
+                DateAdded = new DateTime(2021,9,25), PhotoFileName ="Creatine-Monohydrate-Qualitin-300g.jpg", CategoryID =2
             },
             new Product() {ProductID = 6,
                 Name = "HIRO.LAB Whey Protein Isolate - 1800g",
@@ -141,7 +141,7 @@ namespace ProGym.DAL
                 "maltodekstryna, olej słonecznikowy w proszku (olej słonecznikowy o wysokiej zawartości olejów, modyfikowany Skrobia, substancja przeciwzbrylająca (krzemionka)), aromat, barwnik (czerwień buraczana), zagęszczacz (karbometyloceluloza), " +
                 "emulgator (lecytyna sojowa), sól, substancja słodząca (sukraloza), trójglicerydy o średniej długości łańcucha, białko mleka, fosforan dipotasowy, fosforan trójwapniowy).",
                 Parameters = "Wartość energetyczna w 100g: 1597kJ/377kcal, Tłuszcz 1,6g, w tym kwasy tłuszczowe nasycone 1,5g, Węglowodany 3,6g, w tym cukry 2,6g, Białko 92g, Sól <0,3g, Izolat białka serwatki (z mleka) 98g",
-                DateAdded = new DateTime(2021,9,25), PhotoFileName ="IRON_HORSE_BCAA-2-1-1-120caps.jpg", CategoryID =3
+                DateAdded = new DateTime(2021,9,25), PhotoFileName ="Myofusion-Advanced-EU-500g.jpg", CategoryID =3
             },
             new Product() {ProductID = 10,
                 Name = "IRONFLEX WPC EDGE Instant - 2270g",
@@ -274,7 +274,7 @@ namespace ProGym.DAL
                 "Wykonano w zakładzie GMP przetwarzającym mleko, soję, jajka, orzeszki ziemne, orzechy, ryby, skorupiaki i pszenicę.",
                 Parameters = "Wartość energetyczna	25kcal, Kalorie z tłuszczu  35kcal, Tłuszcze 3g, Tłuszcze nasycone 1g, Tłuszcz wielonienasycony 1g, Tłuszcz jednonienasycony 0,5g, " +
                 "Cholesterol 25mg, Węglowodany 1g, Białka <1g, Koncentrat oleju rybnego 2400mg, Kwas eikozapentaenowy Omega-3 (EPA) 960mg",
-                DateAdded = new DateTime(2021,9,25), PhotoFileName ="Animal-Immune-Pak-327.jpg", CategoryID =6
+                DateAdded = new DateTime(2021,9,25), PhotoFileName ="High-Strength-Enteric-Coated-Omega-3-60softgels.jpg", CategoryID =6
             }
 
             };
