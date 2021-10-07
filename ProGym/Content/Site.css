@@ -452,6 +452,28 @@ body {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
+
+#search-form {
+    float: right;
+    padding: 2px 5px 2px 2px;
+    border: 1px solid #e0e0e0;
+}
+
+    #search-form input[type=search] {
+        border: none;
+        height: 25px;
+        width: 264px;
+    }
+
+    #search-form input[type=submit] {
+        width: 20px;
+        border: none;
+        height: 20px;
+        padding: 5px;
+        background-size: 100% 100%;
+        background: transparent url(Images/searchlogo.png) no-repeat;
+    }
+
 /*END SHOP PAGE */
 
 
@@ -470,32 +492,6 @@ body {
 
 
 /*END BREADCRUMB*/
-
-
-
-#search-form {
-    float: right;
-    padding: 2px 5px 2px 2px;
-    border: 1px solid #e0e0e0;
-}
-
-    #search-form input[type=search] {
-        border: none;
-        height: 25px;
-        width: 224px;
-    }
-
-    #search-form input[type=submit] {
-        width: 20px;
-        border: none;
-        height: 20px;
-        padding: 5px;
-        background-size: 100% 100%;
-        background: transparent url(Images/searchlogo.png) no-repeat;
-    }
-
-
-
 
 
 
