@@ -1918,6 +1918,7 @@
     <Compile Include="Infrastructure\ProductDetailsDynaminNodeProvider.cs" />
     <Compile Include="Infrastructure\ProductListDynamicNodeProvider.cs" />
     <Compile Include="Infrastructure\SessionManager.cs" />
+    <Compile Include="Infrastructure\ShoppingCartManager.cs" />
     <Compile Include="Infrastructure\StaticPagesDynamicNodeProvider.cs" />
     <Compile Include="Infrastructure\UrlHelpers.cs" />
     <Compile Include="Migrations\202109251346237_InitialCreate.cs" />
@@ -1925,6 +1926,7 @@
       <DependentUpon>202109251346237_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\CartItem.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderItem.cs" />
