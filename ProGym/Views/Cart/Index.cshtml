@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_GymLayout.cshtml";
+}
+
+<section>
+    <div class="container-fluid parallax shop">
+        <div class="parallax shop">
+            <div class="row">
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section>
+    <div class="container-fluid breadcrumb pt-5">
+        <div class="breadcrumb">
+            <div class="row breadcrumb text-start ps-5">
+                <p>
+                    @Html.MvcSiteMap().SiteMapPath()
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-2 pt-5 ps-5 pe-5">
+                <h3>Kategoria</h3>
+                <hr />
+                <div class="list-group pt-2">
+                    @Html.Action("CategoriesMenu", "Store")
+                </div>
+            </div>
+            <div class="col-lg-10 pt-5 ps-5 pe-5">
+                
+            </div>
+        </div>
+    </div>
+</section>
