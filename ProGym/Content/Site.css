@@ -494,6 +494,13 @@ body {
 /*END BREADCRUMB*/
 
 
+/*START CART*/
+
+.cart {
+    font-size:larger;
+}
+
+/*END CART*/
 
 .list-group a:hover, .list-group a:active {
     background-color: yellowgreen !important;

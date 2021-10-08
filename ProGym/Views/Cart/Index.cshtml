@@ -1,4 +1,4 @@
-﻿
+﻿@using ProGym.Infrastructure
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_GymLayout.cshtml";
@@ -38,7 +38,38 @@
                 </div>
             </div>
             <div class="col-lg-10 pt-5 ps-5 pe-5">
-                
+                <div class="table-responsive">
+                    <table class="table cart">
+                        <thead>
+                            <tr>
+                                <th scope="col">Pozycja</th>
+                                <th scope="col">Nazwa</th>
+                                <th scope="col">Ilość</th>
+                                <th scope="col">Cena</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td><img src="@Url.Content("~/Content/Images/Products/BCAA6000.jpg")" style="width:30%" /> GASPARI NUTRITION BCAA 6000</td>
+                                <td>2</td>
+                                <td>129.99zł</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td><img src="@Url.Content("~/Content/Images/Products/IRON_HORSE_BCAA-2-1-1-120caps.jpg")" style="width:30%" /> IRON_HORSE_BCAA-2-1-1-120caps</td>
+                                <td>1</td>
+                                <td>89.99zł</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td><img src="@Url.Content("~/Content/Images/Products/Vitamin-D3-2000IU-PureFlow-90caps.jpg")" style="width:30%" /> Vitamin-D3-2000IU-PureFlow-90caps</td>
+                                <td>4</td>
+                                <td>29.99zł</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
