@@ -1914,8 +1914,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\AppConfig.cs" />
+    <Compile Include="Infrastructure\ISessionManager.cs" />
     <Compile Include="Infrastructure\ProductDetailsDynaminNodeProvider.cs" />
     <Compile Include="Infrastructure\ProductListDynamicNodeProvider.cs" />
+    <Compile Include="Infrastructure\SessionManager.cs" />
     <Compile Include="Infrastructure\StaticPagesDynamicNodeProvider.cs" />
     <Compile Include="Infrastructure\UrlHelpers.cs" />
     <Compile Include="Migrations\202109251346237_InitialCreate.cs" />
