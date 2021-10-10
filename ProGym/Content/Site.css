@@ -500,6 +500,17 @@ body {
     font-size:larger;
 }
 
+.cart thead tr th {
+    font-weight:600 !important;
+}
+
+.cart tbody tr th, td {
+    font-weight:600 !important;
+}
+
+.cart img{
+    width:30%;
+}
 /*END CART*/
 
 .list-group a:hover, .list-group a:active {

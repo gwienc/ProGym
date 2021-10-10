@@ -51,24 +51,38 @@
                         <tbody>
                             <tr>
                                 <th scope="row">1</th>
-                                <td><img src="@Url.Content("~/Content/Images/Products/BCAA6000.jpg")" style="width:30%" /> GASPARI NUTRITION BCAA 6000</td>
+                                <td><img src="@Url.Content("~/Content/Images/Products/BCAA6000.jpg")" @*style="width:30%*@" /> GASPARI NUTRITION BCAA 6000</td>
                                 <td>2</td>
                                 <td>129.99zł</td>
                             </tr>
                             <tr>
-                                <th scope="row">1</th>
-                                <td><img src="@Url.Content("~/Content/Images/Products/IRON_HORSE_BCAA-2-1-1-120caps.jpg")" style="width:30%" /> IRON_HORSE_BCAA-2-1-1-120caps</td>
+                                <th scope="row">2</th>
+                                <td><img src="@Url.Content("~/Content/Images/Products/IRON_HORSE_BCAA-2-1-1-120caps.jpg")" @*style="width:30%*@" /> IRON_HORSE_BCAA-2-1-1-120caps</td>
                                 <td>1</td>
                                 <td>89.99zł</td>
                             </tr>
                             <tr>
-                                <th scope="row">1</th>
-                                <td><img src="@Url.Content("~/Content/Images/Products/Vitamin-D3-2000IU-PureFlow-90caps.jpg")" style="width:30%" /> Vitamin-D3-2000IU-PureFlow-90caps</td>
+                                <th scope="row">3</th>
+                                <td><img src="@Url.Content("~/Content/Images/Products/Vitamin-D3-2000IU-PureFlow-90caps.jpg")" @*style="width:30%*@" /> Vitamin-D3-2000IU-PureFlow-90caps</td>
                                 <td>4</td>
                                 <td>29.99zł</td>
                             </tr>
                         </tbody>
                     </table>
+                </div>
+                <div class="row pt-2 pb-5 pe-2">
+                    <div class="col-12 text-end">
+                        <h3>Razem do zapłaty : <span class="badge bg-danger"> 370zł </span></h3>
+                        @*<button type="button" class="btn btn-lg btn-primary">Razem do zapłaty: <span class="badge bg bg-secondary">370 zł</span></button>*@
+                    </div>
+                </div>
+                <div class="row pt-5">
+                    <div class="col-6 text-start">
+                        <a href="@Url.Action("xxx","xxx")" class="btn btn-lg btn-secondary">Kontynuuj zakupy</a>
+                    </div>
+                    <div class="col-6 text-end">
+                        <a href="@Url.Action("xxx","xxx")" class="btn btn-lg btn-success">Zapłać</a>
+                    </div>
                 </div>
             </div>
         </div>
