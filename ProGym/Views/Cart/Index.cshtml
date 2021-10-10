@@ -1,4 +1,5 @@
-﻿@using ProGym.Infrastructure
+﻿@model ProGym.ViewModels.CartViewModel
+@using ProGym.Infrastructure
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_GymLayout.cshtml";
@@ -49,30 +50,44 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td><img src="@Url.Content("~/Content/Images/Products/BCAA6000.jpg")" @*style="width:30%*@" /> GASPARI NUTRITION BCAA 6000</td>
-                                <td>2</td>
-                                <td>129.99zł</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td><img src="@Url.Content("~/Content/Images/Products/IRON_HORSE_BCAA-2-1-1-120caps.jpg")" @*style="width:30%*@" /> IRON_HORSE_BCAA-2-1-1-120caps</td>
-                                <td>1</td>
-                                <td>89.99zł</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td><img src="@Url.Content("~/Content/Images/Products/Vitamin-D3-2000IU-PureFlow-90caps.jpg")" @*style="width:30%*@" /> Vitamin-D3-2000IU-PureFlow-90caps</td>
-                                <td>4</td>
-                                <td>29.99zł</td>
-                            </tr>
+                            @foreach (var product in Model.CartItems)
+                            {
+                                int position = 0; 
+                                <tr id="cart-row-@product.Product.ProductID">
+                                    <td scope="row">@position++</td>
+                                    <td>
+                                        <a href="@Url.Action("Details","Store",new {id = product.Product.ProductID})">
+                                            <img src="@Url.Content(Url.ProductPhotoPath(product.Product.PhotoFileName))" /> @product.Product.Name
+                                        </a>
+                                    </td>
+                                    <td><span id="cart-item-count-@product.Product.ProductID">@product.Quantity</span></td>
+                                    <td>@String.Format("{0:0.##}",product.TotalPrice) zł</td>
+                                    <td><a href=""class="btn btn-sm btn-danger" data-id="@product.Product.ProductID">Usuń</a></td>
+                                </tr>
+                            }
+
+                            @*<tr>
+                                    <th scope="row">2</th>
+                                    <td><img src="@Url.Content("~/Content/Images/Products/IRON_HORSE_BCAA-2-1-1-120caps.jpg")" /> IRON_HORSE_BCAA-2-1-1-120caps</td>
+                                    <td>1</td>
+                                    <td>89.99zł</td>
+                                    <td><a href="@Url.Action("xxx","xxx")" class="btn btn-sm btn-danger">Usuń</a></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td><img src="@Url.Content("~/Content/Images/Products/Vitamin-D3-2000IU-PureFlow-90caps.jpg")"/> Vitamin-D3-2000IU-PureFlow-90caps</td>
+                                    <td>4</td>
+                                    <td>29.99zł</td>
+                                    <td><a href="@Url.Action("xxx","xxx")" class="btn btn-sm btn-danger">Usuń</a></td>
+                                </tr>*@
+                            <tr id="cart-empty-message" @if (Model.CartItems != null && Model.CartItems.Count>0) { <text>class = "hidden"</text>}>
+                                <td>Twój koszyk jest pusty</td>
                         </tbody>
                     </table>
                 </div>
                 <div class="row pt-2 pb-5 pe-2">
                     <div class="col-12 text-end">
-                        <h3>Razem do zapłaty : <span class="badge bg-danger"> 370zł </span></h3>
+                        <h3>Razem do zapłaty : <span id="total-price-value" class="badge bg-info"> @String.Format("{0:0.##}",Model.TotalPrice)</span> zł</h3>
                         @*<button type="button" class="btn btn-lg btn-primary">Razem do zapłaty: <span class="badge bg bg-secondary">370 zł</span></button>*@
                     </div>
                 </div>
@@ -81,7 +96,10 @@
                         <a href="@Url.Action("xxx","xxx")" class="btn btn-lg btn-secondary">Kontynuuj zakupy</a>
                     </div>
                     <div class="col-6 text-end">
-                        <a href="@Url.Action("xxx","xxx")" class="btn btn-lg btn-success">Zapłać</a>
+                        @if(Model.TotalPrice>0)
+                        {
+                        <a href="@Url.Action("Checkout","Cart")" id="cart-button-checkout" class="btn btn-lg btn-success">Zapłać</a>
+                        }                       
                     </div>
                 </div>
             </div>
