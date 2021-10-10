@@ -44,27 +44,31 @@
                         <thead>
                             <tr>
                                 <th scope="col">Pozycja</th>
+                                <th scope="col"></th>
                                 <th scope="col">Nazwa</th>
                                 <th scope="col">Ilość</th>
                                 <th scope="col">Cena</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (var product in Model.CartItems)
-                            {
-                                int position = 0; 
+                            @{
+                                    int position = 1;
+                                    foreach (var product in Model.CartItems)
+                                    {
                                 <tr id="cart-row-@product.Product.ProductID">
-                                    <td scope="row">@position++</td>
+                                    <td scope="row">@(position++) </td>
                                     <td>
-                                        <a href="@Url.Action("Details","Store",new {id = product.Product.ProductID})">
-                                            <img src="@Url.Content(Url.ProductPhotoPath(product.Product.PhotoFileName))" /> @product.Product.Name
+                                        <a href="@Url.Action("Details", "Store", new { id = product.Product.ProductID })">
+                                            <img src="@Url.Content(Url.ProductPhotoPath(product.Product.PhotoFileName))" /> 
                                         </a>
                                     </td>
+                                    <td><a href="@Url.Action("Details","Store",new { id = product.Product.ProductID })" class="name"> @product.Product.Name</a></td>
                                     <td><span id="cart-item-count-@product.Product.ProductID">@product.Quantity</span></td>
-                                    <td>@String.Format("{0:0.##}",product.TotalPrice) zł</td>
-                                    <td><a href=""class="btn btn-sm btn-danger" data-id="@product.Product.ProductID">Usuń</a></td>
+                                    <td> @String.Format("{0:0.##}", product.TotalPrice) zł</td>
+                                    <td><a href="" class="btn btn-sm btn-danger" data-id="@product.Product.ProductID">Usuń</a></td>
                                 </tr>
-                            }
+                                    }
+                                    }
 
                             @*<tr>
                                     <th scope="row">2</th>
@@ -79,15 +83,21 @@
                                     <td>4</td>
                                     <td>29.99zł</td>
                                     <td><a href="@Url.Action("xxx","xxx")" class="btn btn-sm btn-danger">Usuń</a></td>
-                                </tr>*@
-                            <tr id="cart-empty-message" @if (Model.CartItems != null && Model.CartItems.Count>0) { <text>class = "hidden"</text>}>
-                                <td>Twój koszyk jest pusty</td>
+                                </tr>*@                           
                         </tbody>
                     </table>
                 </div>
+                <div class="row pt-2 pb-3">
+                    <div class="col-12" id="cart-empty-message">
+                        @if (Model.CartItems == null || Model.CartItems.Count==0)
+                        {
+                        <p>Twój koszyk jest pusty. Może warto coś do niego dodać?</p>
+                        }
+                    </div>
+                </div>
                 <div class="row pt-2 pb-5 pe-2">
                     <div class="col-12 text-end">
-                        <h3>Razem do zapłaty : <span id="total-price-value" class="badge bg-info"> @String.Format("{0:0.##}",Model.TotalPrice)</span> zł</h3>
+                        <h3>Razem do zapłaty : <span id="total-price-value" class="badge bg-info"> @String.Format("{0:0.##}", Model.TotalPrice)</span> zł</h3>
                         @*<button type="button" class="btn btn-lg btn-primary">Razem do zapłaty: <span class="badge bg bg-secondary">370 zł</span></button>*@
                     </div>
                 </div>
@@ -96,10 +106,10 @@
                         <a href="@Url.Action("xxx","xxx")" class="btn btn-lg btn-secondary">Kontynuuj zakupy</a>
                     </div>
                     <div class="col-6 text-end">
-                        @if(Model.TotalPrice>0)
+                        @if (Model.TotalPrice > 0)
                         {
-                        <a href="@Url.Action("Checkout","Cart")" id="cart-button-checkout" class="btn btn-lg btn-success">Zapłać</a>
-                        }                       
+                            <a href="@Url.Action("Checkout","Cart")" id="cart-button-checkout" class="btn btn-lg btn-success">Zapłać</a>
+                        }
                     </div>
                 </div>
             </div>

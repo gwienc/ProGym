@@ -505,7 +505,12 @@ body {
 }
 
 .cart tbody tr th, td {
-    font-weight:600 !important;
+    font-weight:600 !important;  
+}
+.cart .name  {
+    text-decoration:none;
+    color:black;
+    
 }
 
 .cart img{
