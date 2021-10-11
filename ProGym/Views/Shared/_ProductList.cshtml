@@ -11,10 +11,10 @@
         {
             <div class="col-xl-3 col-md-6 p-3">
                 <div class="card h-100">
-                    <img src="@Url.ProductPhotoPath(product.PhotoFileName)" class="card-img-top" alt="...">
+                    <a href="@Url.Action("Details", "Store", new { id = product.ProductID })"><img src="@Url.ProductPhotoPath(product.PhotoFileName)" class="card-img-top" alt="..."></a>
                     <div class="card-body">
-                        <p class="card-title h-75">@product.Name</p>
-                        <a href="@Url.Action("Details", "Store", new { id = product.ProductID })" class="btn btn-sm btn-primary stretched-link">Dodaj do koszyka</a>
+                        <a id="product-name" href="@Url.Action("Details", "Store", new { id = product.ProductID })"><p class="card-title h-75">@product.Name</p></a>
+                        <a href="@Url.Action("AddToCart", "Cart", new { id = product.ProductID })" class="btn btn-sm btn-primary">Dodaj do koszyka</a>
                         <br /><br /><br />
                     </div>
                 </div>

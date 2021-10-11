@@ -452,6 +452,10 @@ body {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
+#product-name {
+    text-decoration: none;
+    color: black;
+}
 
 #search-form {
     float: right;

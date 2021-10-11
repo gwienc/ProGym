@@ -34,19 +34,7 @@
                 <h3>Kategoria</h3>
                 <hr />
                 <div class="list-group pt-2">
-                    @Html.Action("CategoriesMenu","Store")
-                    
-    
-    
-                    @*<a href="#" class="list-group-item list-group-item-action active" aria-current="true">
-                        Wszystkie
-                    </a>
-                    <a href="#" class="list-group-item list-group-item-action">Pierwsza kategoria</a>
-                    <a href="#" class="list-group-item list-group-item-action">Druga kategoria</a>
-                    <a href="#" class="list-group-item list-group-item-action">Trzecia kategoria</a>
-                    <a href="#" class="list-group-item list-group-item-action">Czwarta kategoria</a>
-                    <a href="#" class="list-group-item list-group-item-action">Piąta kategoria</a>
-                    <a href="#" class="list-group-item list-group-item-action">Szósta kategoria</a>*@
+                    @Html.Action("CategoriesMenu", "Store")
                 </div>
             </div>
             <div class="col-lg-10 ps-5">
@@ -66,7 +54,7 @@
                                     <p class="card-text"><small class="text-muted">Wysyłka w ciągu 24h</small></p>
                                     <div class="row text-end">
                                         <div class="col-12 p-3">
-                                            <h2>@String.Format("{0:0.##}",Model.Price) zł</h2>
+                                            <h2>@String.Format("{0:0.##}", Model.Price) zł</h2>
                                         </div>
                                         <div class="col-12 p-3">
                                             <a href="@Url.Action("AddToCart","Cart", new { id = Model.ProductID })" class="btn btn-primary btn-lg"><i class="fas fa-shopping-cart"></i> Dodaj do koszyka </a>
@@ -75,23 +63,6 @@
                                 </div>
                             </div>
                         </div>
-                        @*<div class="row g-0 p-5">
-                            <p>
-                                Whey Protein Complex 100% idealnie sprawdzi się jako alternatywa dla śniadania lub innego posiłku.
-                                Jeżeli rano zmuszasz się do zjedzenia czegokolwiek to ucieszy Cię wiadomość, że możesz wypić coś pożywnego.
-                                W jednej porcji znajdziesz aż 26 gramów białka, niewiele węglowodanów i jeszcze mniej cukrów!
-                            </p>
-
-                            Porcja: 35g
-                            Porcji w opakowaniu: 64
-                            Opakowanie: 2270g
-                            </p>
-                            <p>
-                                Składniki: 95% preparaty białkowe (ultrafiltrowany koncentrat białek serwatkowych z WPC (z mleka), izolat białek serwatkowych WPI-CFM,
-                                karboksymetylocelulozy; substancje słodzące – acesulfam K, sukraloza, cyklaminiany (Z), emulgator – lecytyny (z soi), sól,
-                                barwniki: karoteny, koszenila, ryboflawiny, E150c, E 150d, E 133, błękit pantenowy V, indygokarmin, chlorofile i chlorofiliny, kurkumina, antocyjany, ekstrakt z papryki, betanina, węgiel roślinny,
-                            </p>
-                        </div>*@
                         <div class="row g-0 p-5">
                             <div class="d-grid gap-2 col-4 p-3 mx-auto">
                                 <a class="btn btn-dark" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Opis</a>
@@ -104,11 +75,6 @@
                             </div>
                         </div>
                         <div class="row p-5 justify-content-center">
-                            @*<p>
-                                <a class="btn btn-primary" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Opis</a>
-                                <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Skład</button>
-                                <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample3" aria-expanded="false" aria-controls="multiCollapseExample3">Parametry</button>
-                            </p>*@
                             <div class="row justify-content-center">
                                 <div class="col-12 text-start">
                                     <div class="collapse multi-collapse" id="multiCollapseExample1">

@@ -69,21 +69,6 @@
                                     </tr>
                                 }
                             }
-
-                            @*<tr>
-                                    <th scope="row">2</th>
-                                    <td><img src="@Url.Content("~/Content/Images/Products/IRON_HORSE_BCAA-2-1-1-120caps.jpg")" /> IRON_HORSE_BCAA-2-1-1-120caps</td>
-                                    <td>1</td>
-                                    <td>89.99zł</td>
-                                    <td><a href="@Url.Action("xxx","xxx")" class="btn btn-sm btn-danger">Usuń</a></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td><img src="@Url.Content("~/Content/Images/Products/Vitamin-D3-2000IU-PureFlow-90caps.jpg")"/> Vitamin-D3-2000IU-PureFlow-90caps</td>
-                                    <td>4</td>
-                                    <td>29.99zł</td>
-                                    <td><a href="@Url.Action("xxx","xxx")" class="btn btn-sm btn-danger">Usuń</a></td>
-                                </tr>*@
                         </tbody>
                     </table>
                 </div>
@@ -97,13 +82,12 @@
                 </div>
                 <div class="row pt-2 pb-5 pe-2">
                     <div class="col-12 text-end">
-                        <h3>Razem do zapłaty : <span id="total-price-value" class="badge bg-info"> @String.Format("{0:0.##}", Model.TotalPrice)</span> zł</h3>
-                        @*<button type="button" class="btn btn-lg btn-primary">Razem do zapłaty: <span class="badge bg bg-secondary">370 zł</span></button>*@
+                        <h3>Razem do zapłaty : <span id="total-price-value" class="badge bg-primary"> @String.Format("{0:0.## zł}", Model.TotalPrice)</span></h3>
                     </div>
                 </div>
                 <div class="row pt-5">
                     <div class="col-6 text-start">
-                        <a href="@Url.Action("xxx","xxx")" class="btn btn-lg btn-secondary">Kontynuuj zakupy</a>
+                        <a href="@Url.Action("Index","Store")" class="btn btn-lg btn-secondary">Kontynuuj zakupy</a>
                     </div>
                     <div class="col-6 text-end">
                         @if (Model.TotalPrice > 0)
