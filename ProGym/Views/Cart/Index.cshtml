@@ -52,23 +52,23 @@
                         </thead>
                         <tbody>
                             @{
-                                    int position = 1;
-                                    foreach (var product in Model.CartItems)
-                                    {
-                                <tr id="cart-row-@product.Product.ProductID">
-                                    <td scope="row">@(position++) </td>
-                                    <td>
-                                        <a href="@Url.Action("Details", "Store", new { id = product.Product.ProductID })">
-                                            <img src="@Url.Content(Url.ProductPhotoPath(product.Product.PhotoFileName))" /> 
-                                        </a>
-                                    </td>
-                                    <td><a href="@Url.Action("Details","Store",new { id = product.Product.ProductID })" class="name"> @product.Product.Name</a></td>
-                                    <td><span id="cart-item-count-@product.Product.ProductID">@product.Quantity</span></td>
-                                    <td> @String.Format("{0:0.##}", product.TotalPrice) zł</td>
-                                    <td><a href="" class="btn btn-sm btn-danger" data-id="@product.Product.ProductID">Usuń</a></td>
-                                </tr>
-                                    }
-                                    }
+                                int position = 1;
+                                foreach (var product in Model.CartItems)
+                                {
+                                    <tr id="cart-row-@product.Product.ProductID">
+                                        <td scope="row">@(position++) </td>
+                                        <td>
+                                            <a href="@Url.Action("Details", "Store", new { id = product.Product.ProductID })">
+                                                <img src="@Url.Content(Url.ProductPhotoPath(product.Product.PhotoFileName))" />
+                                            </a>
+                                        </td>
+                                        <td><a href="@Url.Action("Details","Store",new { id = product.Product.ProductID })" class="name"> @product.Product.Name</a></td>
+                                        <td><span id="cart-item-count-@product.Product.ProductID">@product.Quantity</span></td>
+                                        <td> @String.Format("{0:0.##}", product.TotalPrice) zł</td>
+                                        <td><a href="" class="removeProduct btn btn-sm btn-danger" data-id="@product.Product.ProductID">Usuń</a></td>
+                                    </tr>
+                                }
+                            }
 
                             @*<tr>
                                     <th scope="row">2</th>
@@ -83,15 +83,15 @@
                                     <td>4</td>
                                     <td>29.99zł</td>
                                     <td><a href="@Url.Action("xxx","xxx")" class="btn btn-sm btn-danger">Usuń</a></td>
-                                </tr>*@                           
+                                </tr>*@
                         </tbody>
                     </table>
                 </div>
                 <div class="row pt-2 pb-3">
                     <div class="col-12" id="cart-empty-message">
-                        @if (Model.CartItems == null || Model.CartItems.Count==0)
+                        @if (Model.CartItems == null || Model.CartItems.Count == 0)
                         {
-                        <p>Twój koszyk jest pusty. Może warto coś do niego dodać?</p>
+                            <p>Twój koszyk jest pusty. Może warto coś do niego dodać?</p>
                         }
                     </div>
                 </div>
@@ -116,3 +116,48 @@
         </div>
     </div>
 </section>
+@section ScriptsBottom{
+
+    @System.Web.Optimization.Scripts.Render("~/bundles/jquery")
+
+    <script type="text/javascript">
+        $(function () {
+            $(".removeProduct").click(function () {
+
+                var recordToDelete = $(this).attr("data-id");
+
+                if (recordToDelete != '') {
+
+                    // Send post request with AJAX
+                    $.post("/Cart/RemoveFromCart", { "productID": recordToDelete },
+                        function (response) {
+                            // Success
+                            if (response.RemovedItemCount == 0) {
+
+                                $('#cart-row-' + response.RemoveItemId).fadeOut('slow', function () {
+                                    if (response.CartItemsCount == 0) {
+                                        $("#cart-empty-message").removeClass("hidden");
+                                    }
+                                });
+                            } else {
+                                $('#cart-item-count-' + response.RemoveItemId).text(response.RemovedItemCount);
+                            }
+
+                            if (response.CartItemsCount == 0) {
+                                $('#cart-button-checkout').addClass('hidden');
+                                $('#total-price').addClass('invisible');
+                            }
+
+                            $('#total-price-value').text(response.CartTotal);
+                            $('#cart-header-items-count').text(response.CartItemsCount);
+
+                        });
+
+                    return false;
+                }
+            });
+
+        });
+    </script>
+
+}

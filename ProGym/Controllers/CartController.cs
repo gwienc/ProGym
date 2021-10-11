@@ -41,5 +41,27 @@ namespace ProGym.Controllers
 
             return RedirectToAction("Index");
         }
+
+        public int GetCartItemsCount()
+        {
+            return shoppingCartManager.GetCartItemsCount();
+        }
+
+        public ActionResult RemoveFromCart(int productID)
+        {
+            int itemCount = shoppingCartManager.RemoveFromCart(productID);
+            int cartItemsCount = shoppingCartManager.GetCartItemsCount();
+            decimal cartTotal = shoppingCartManager.GetCartTotalPrice();
+
+            var result = new CartRemoveViewModel
+            {
+                RemoveItemId = productID,
+                RemovedItemCount = itemCount,
+                CartTotal = cartTotal,
+                CartItemsCount = cartItemsCount
+            };
+
+            return Json(result);
+        }
     }
 }

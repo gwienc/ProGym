@@ -26,7 +26,7 @@
                     </div>
                     <div class="row p-0 pt-2 m-0 text-end">
                         <div class="col-12 text-end">
-                            <a href="@Url.Action("Index","Cart")" class="btn btn-secondary"><i class="fas fa-shopping-cart"></i> Koszyk </a>
+                            <a href="@Url.Action("Index","Cart")" class="btn btn-secondary"><i class="fas fa-shopping-cart"></i> Koszyk (<span id="cart-header-items-count"> @Html.Action("GetCartItemsCount", "Cart")</span>)</a>
                         </div>
                     </div>
                 </div>
