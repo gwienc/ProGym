@@ -55,12 +55,19 @@
                             @Html.ActionLink("Zarejestruj się", "Register", "Account", new { @class = "btn btn-secondary" })
                         </div>
                         @*<div class="row ps-1 pe-1 pt-5">
-                <input class="btn btn-secondary" value="Zarejestruj się" type="button"
-                        onclick="location.href='@Url.Action("Register", "Account")'">
-            </div>*@
+                                <input class="btn btn-secondary" value="Zarejestruj się" type="button"
+                                        onclick="location.href='@Url.Action("Register", "Account")'">
+                            </div>*@
                     }
                 </div>
             </div>
         </div>
     </div>
 </section>
+
+@section ScriptsBottom{
+
+    <script src="~/Scripts/jquery-3.6.0.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+}
