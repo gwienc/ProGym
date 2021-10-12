@@ -56,7 +56,7 @@
                                 foreach (var product in Model.CartItems)
                                 {
                                     <tr id="cart-row-@product.Product.ProductID">
-                                        <td scope="row">@(position++) </td>
+                                        <td id="position" scope="row">@(position++) </td>
                                         <td>
                                             <a href="@Url.Action("Details", "Store", new { id = product.Product.ProductID })">
                                                 <img src="@Url.Content(Url.ProductPhotoPath(product.Product.PhotoFileName))" />
@@ -64,7 +64,7 @@
                                         </td>
                                         <td><a href="@Url.Action("Details","Store",new { id = product.Product.ProductID })" class="name"> @product.Product.Name</a></td>
                                         <td><span id="cart-item-count-@product.Product.ProductID">@product.Quantity</span></td>
-                                        <td> @String.Format("{0:0.##}", product.TotalPrice) zł</td>
+                                        <td> @String.Format("{0:0.## zł}", product.TotalPrice)</td>
                                         <td><a href="" class="removeProduct btn btn-sm btn-danger" data-id="@product.Product.ProductID">Usuń</a></td>
                                     </tr>
                                 }
@@ -82,7 +82,7 @@
                 </div>
                 <div class="row pt-2 pb-5 pe-2">
                     <div class="col-12 text-end">
-                        <h3>Razem do zapłaty : <span id="total-price-value" class="badge bg-primary"> @String.Format("{0:0.## zł}", Model.TotalPrice)</span></h3>
+                        <h3>Razem do zapłaty : <span style="font-weight:600;" id="total-price-value"> @String.Format("{0:0.##}", Model.TotalPrice)</span> zł</h3>
                     </div>
                 </div>
                 <div class="row pt-5">
