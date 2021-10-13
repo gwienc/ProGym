@@ -522,10 +522,25 @@ body {
 }
 /*END CART*/
 
+
+
+
+/*START LOGIN*/
+
+.card-body form {
+    font-weight: 600;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+/*END LOGIN*/
+
+
+
+
+
 .list-group a:hover, .list-group a:active {
     background-color: yellowgreen !important;
 }
-
 
 
 #team {

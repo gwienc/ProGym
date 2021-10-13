@@ -1,4 +1,5 @@
-﻿
+﻿@model ProGym.ViewModels.RegisterViewModel
+@using ProGym.Infrastructure
 @{
     ViewBag.Title = "Register";
     Layout = "~/Views/Shared/_GymLayout.cshtml";
@@ -9,50 +10,116 @@
         <div class="col-md-6 mx-auto pb-5 pt-5">
             <div class="card shadow-lg">
                 <div class="card-body">
-                    <div class="row text-center pb-5 pt-3">
-                        <h2>Zarejestruj się</h2>
-                    </div>
-
                     @using (Html.BeginForm("Register", "Account"))
                     {
+
+                        @Html.AntiForgeryToken()
+                        <div id="login-error">
+                            @Html.ValidationMessage("loginerror", "")
+                        </div>
+
+                        <div class="row text-center pb-5 pt-3">
+                            <h2>Zarejestruj się</h2>
+                        </div>
+
                         <div class="row pb-2">
                             <div class="col-md-6">
-                                @Html.Label("Imię", new { @class = "form-label" })
-                                @Html.TextBox("Imię", "", new { @class = "form-control" })
+                                <div class="row ps-1">
+                                    @Html.LabelFor(o => o.FirstName)
+                                </div>
+                                <div class="row ps-3 pe-3">
+                                    @Html.TextBoxFor(o => o.FirstName)
+                                </div>
+                                <div class="row ps-1 pb-3">
+                                    @Html.ValidationMessageFor(o => o.FirstName)
+                                </div>
                             </div>
                             <div class="col-md-6">
-                                @Html.Label("Nazwisko", new { @class = "form-label" })
-                                @Html.TextBox("Nazwisko", "", new { @class = "form-control" })
+                                <div class="row ps-1">
+                                    @Html.LabelFor(o => o.LastName)
+                                </div>
+                                <div class="row ps-3 pe-3">
+                                    @Html.TextBoxFor(o => o.LastName)
+                                </div>
+                                <div class="row ps-1 pb-3">
+                                    @Html.ValidationMessageFor(o => o.LastName)
+                                </div>
                             </div>
                         </div>
                         <div class="row pb-2">
                             <div class="col-md-6">
-                                @Html.Label("Ulica i nr domu/mieszkania", new { @class = "form-label" })
-                                @Html.TextBox("Ulica i nr domu/mieszkania", "", new { @class = "form-control" })
+                                <div class="row ps-1">
+                                    @Html.LabelFor(o => o.StreetAndNo)
+                                </div>
+                                <div class="row ps-3 pe-3">
+                                    @Html.TextBoxFor(o => o.StreetAndNo)
+                                </div>
+                                <div class="row ps-1 pb-3">
+                                    @Html.ValidationMessageFor(o => o.StreetAndNo)
+                                </div>
                             </div>
                             <div class="col-md-6">
-                                @Html.Label("Miasto i kod pocztowy", new { @class = "form-label" })
-                                @Html.TextBox("Miasto i kod pocztowy", "", new { @class = "form-control" })
+                                <div class="row ps-1">
+                                    @Html.LabelFor(o => o.CityAndPostCode)
+                                </div>
+                                <div class="row ps-3 pe-3">
+                                    @Html.TextBoxFor(o => o.CityAndPostCode)
+                                </div>
+                                <div class="row ps-1 pb-3">
+                                    @Html.ValidationMessageFor(o => o.CityAndPostCode)
+                                </div>
                             </div>
                         </div>
                         <div class="row pb-2">
                             <div class="col-md-6">
-                                @Html.Label("Nr telefonu", new { @class = "form-label" })
-                                @Html.TextBox("Nr telefonu", "", new { @class = "form-control" })
+                                <div class="row ps-1">
+                                    @Html.LabelFor(o => o.PhoneNumber)
+                                </div>
+                                <div class="row ps-3 pe-3">
+                                    @Html.TextBoxFor(o => o.PhoneNumber)
+                                </div>
+                                <div class="row ps-1 pb-3">
+                                    @Html.ValidationMessageFor(o => o.PhoneNumber)
+                                </div>
                             </div>
                             <div class="col-md-6">
-                                @Html.Label("Email", new { @class = "form-label" })
-                                @Html.TextBox("Email", "", new { @class = "form-control" })
+                                <div class="row ps-1">
+                                    @Html.LabelFor(o => o.Email)
+                                </div>
+                                <div class="row ps-3 pe-3">
+                                    @Html.TextBoxFor(o => o.Email)
+                                </div>
+                                <div class="row ps-1 pb-3">
+                                    @Html.ValidationMessageFor(o => o.Email)
+                                </div>
                             </div>
                         </div>
                         <div class="row pb-2">
                             <div class="col-md-6">
-                                @Html.Label("Hasło", new { @class = "form-label" })
-                                @Html.Password("Hasło", "", new { @class = "form-control" })
+                                <div class="row ps-1">
+                                    @Html.LabelFor(o => o.Password)
+                                </div>
+                                <div class="row ps-3 pe-3">
+                                    @Html.PasswordFor(o => o.Password)
+                                </div>
+                                <div class="row ps-1 pb-3">
+                                    @Html.ValidationMessageFor(o => o.Password)
+                                </div>
                             </div>
                             <div class="col-md-6">
-                                @Html.Label("Potwierdź hasło", new { @class = "form-label" })
-                                @Html.Password("Potwierdź hasło", "", new { @class = "form-control" })
+                                <div class="row ps-1">
+                                    @Html.LabelFor(o => o.ConfirmPassword)
+                                </div>
+                                <div class="row ps-3 pe-3">
+                                    @Html.PasswordFor(o => o.ConfirmPassword)
+                                </div>
+                                <div class="row ps-1">
+                                    <div class="row ps-1 pb-3">
+                                        @Html.ValidationMessageFor(o => o.ConfirmPassword)
+                                    </div>
+                                </div>
+                                @*@Html.Label("Potwierdź hasło", new { @class = "form-label" })
+                                    @Html.Password("Potwierdź hasło", "", new { @class = "form-control" })*@
                             </div>
                         </div>
                         <div class="row pt-4 pb-4 ps-5 pe-5">
@@ -65,3 +132,9 @@
     </div>
 </section>
 
+@section ScriptsBottom{
+
+    <script src="~/Scripts/jquery-3.6.0.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+}
