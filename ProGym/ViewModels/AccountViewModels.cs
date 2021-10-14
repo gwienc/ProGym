@@ -13,6 +13,9 @@ namespace ProGym.ViewModels
         public string Email { get; set; }
 
         [Required (ErrorMessage ="Proszę podać hasło")]
+        [StringLength(30, ErrorMessage = "{0} musi zawierać minimum {2} znaków", MinimumLength = 6)]
+        [DataType(DataType.Password)]
+        [Display(Name = "Hasło:")]
         public string Password { get; set; }
 
         [Display(Name = "Zapamiętaj mnie")]
@@ -48,7 +51,7 @@ namespace ProGym.ViewModels
         public string Email { get; set; }
 
         [Required(ErrorMessage ="Proszę podać hasło")]
-        [StringLength(30,ErrorMessage ="Hasło {0} musi zawierać minimum {2} znaków",MinimumLength = 6)]
+        [StringLength(30,ErrorMessage ="{0} musi zawierać minimum {2} znaków",MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Hasło:")]
         public string Password { get; set; }
