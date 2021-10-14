@@ -536,6 +536,18 @@ body {
 
 
 
+/* VALIDATION */
+
+.field-validation-error {
+    color:red;
+    font-weight:bold;
+    font-size:80%;
+}
+
+.input-validation-error {
+    background: #f8f3f4;
+    border: 1px solid red;
+}
 
 
 .list-group a:hover, .list-group a:active {
