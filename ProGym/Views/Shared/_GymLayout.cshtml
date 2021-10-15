@@ -20,9 +20,10 @@
         <section class="sticky-top">
             <div class="container-fluid top-header">
                 <div class="row p-0 text-end">
-                    <div class="col-12">
-                        <a href="@Url.Action("Login","Account")"><i class="fas fa-user-check pt-2 pe-1"></i>Zaloguj</a>
-                        <a href="@Url.Action("Register","Account")"><i class="fas fa-user-plus pt-2 ps-3 pe-1"></i> Zarejestruj się </a>
+                    <div class="col-12 pt-2">
+                        @Html.Partial("_LoginAndRegisterPartial")
+                        @*<a href="@Url.Action("Login","Account")"><i class="fas fa-user-check pt-2 pe-1"></i>Zaloguj</a>
+                        <a href="@Url.Action("Register","Account")"><i class="fas fa-user-plus pt-2 ps-3 pe-1"></i> Zarejestruj się </a>*@
                     </div>
                     <div class="row p-0 pt-2 m-0 text-end">
                         <div class="col-12 text-end">
