@@ -8,6 +8,8 @@ using System.Web.Mvc;
 using Microsoft.Owin.Security;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
+using ProGym.Models;
+using System.Threading.Tasks;
 
 namespace ProGym.Controllers
 {
@@ -73,16 +75,44 @@ namespace ProGym.Controllers
         }
 
         [HttpPost]
-        public ActionResult Register(RegisterViewModel model)
+        public async Task<ActionResult> Register(RegisterViewModel model)
         {
-            if(!ModelState.IsValid)
+            if(ModelState.IsValid)
             {
-                return View(model);
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, UserData = new UserData() };
+                var result = await UserManager.CreateAsync(user, model.Password);
+                if (result.Succeeded)
+                {
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
+                    // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
+                    // Send an email with this link
+                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+
+                    return RedirectToAction("Index", "Home");
+                }
+                AddErrors(result);
             }
-            else
+
+            return View(model);
+        }
+
+        private void AddErrors(IdentityResult result)
+        {
+            foreach (var error in result.Errors)
             {
-                return RedirectToAction("Index", "Home");
+                ModelState.AddModelError("", error);
             }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult LogOff()
+        {
+            AuthenticationManager.SignOut();
+            return RedirectToAction("Index", "Home");
         }
     }
 }
