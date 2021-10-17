@@ -9,12 +9,12 @@
         <div class="col-md-6 mx-auto pb-5 pt-5">
             <div class="card shadow-lg">
                 <div class="card-body">
-                    @using (Html.BeginForm("ChangeProfil", "Manage"))
+                    @using (Html.BeginForm("ChangeProfile", "Manage"))
                     {
 
                         @Html.AntiForgeryToken()
                         <div id="login-error">
-                            @Html.ValidationMessage("loginerror", "")
+                            @Html.ValidationMessage("password-error", "")
                         </div>
 
                         <div class="row text-center pb-5 pt-3">
@@ -97,25 +97,25 @@
                         </div>
                     }
                 </div>
-                </div>
             </div>
-            <div class="col-md-6 mx-auto pb-5 pt-5">
-                <div class="card shadow-lg">
-                    <div class="card-body">
-                        @using (Html.BeginForm("ChangePassword", "Manage", FormMethod.Post))
-                        {
+        </div>
+        <div class="col-md-6 mx-auto pb-5 pt-5">
+            <div class="card shadow-lg">
+                <div class="card-body">
+                    @using (Html.BeginForm("ChangePassword", "Manage", FormMethod.Post))
+                    {
 
-                            @Html.AntiForgeryToken()
-                            <div id="login-error">
-                                @Html.ValidationMessage("password-error", "")
-                            </div>
+                        @Html.AntiForgeryToken()
+                        <div id="login-error">
+                            @Html.ValidationMessage("password-error", "")
+                        </div>
 
-                            <div class="row text-center pb-5 pt-3">
-                                <h2>Zmień hasło</h2>
-                            </div>
-                            @*if (Model.Message.HasValue)
+                        <div class="row text-center pb-5 pt-3">
+                            <h2>Zmień hasło</h2>
+                        </div>
+                        if (Model.Message.HasValue)
                         {
-                            <div class="manage-message">
+                            <div class="manage-message text-center pb-3">
                                 @switch (Model.Message)
                                 {
                                     case ProGym.Controllers.ManageController.ManageMessageId.ChangePasswordSuccess:
@@ -126,50 +126,50 @@
                                         break;
                                 }
                             </div>
-                        }*@
-                            <div class="row pb-2">
-                                <div class="col-md-12">
-                                    <div class="row ps-1">
-                                        @Html.LabelFor(o => o.ChangePasswordViewModel.OldPassword)
-                                    </div>
-                                    <div class="row ps-3 pe-3">
-                                        @Html.TextBoxFor(o => o.ChangePasswordViewModel.OldPassword)
-                                    </div>
-                                    <div class="row ps-1 pb-3">
-                                        @Html.ValidationMessageFor(o => o.ChangePasswordViewModel.OldPassword)
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="row ps-1">
-                                        @Html.LabelFor(o => o.ChangePasswordViewModel.NewPassword)
-                                    </div>
-                                    <div class="row ps-3 pe-3">
-                                        @Html.TextBoxFor(o => o.ChangePasswordViewModel.NewPassword)
-                                    </div>
-                                    <div class="row ps-1 pb-3">
-                                        @Html.ValidationMessageFor(o => o.ChangePasswordViewModel.NewPassword)
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="row ps-1">
-                                        @Html.LabelFor(o => o.ChangePasswordViewModel.ConfirmPassword)
-                                    </div>
-                                    <div class="row ps-3 pe-3">
-                                        @Html.TextBoxFor(o => o.ChangePasswordViewModel.ConfirmPassword)
-                                    </div>
-                                    <div class="row ps-1 pb-3">
-                                        @Html.ValidationMessageFor(o => o.ChangePasswordViewModel.ConfirmPassword)
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row pt-4 pb-4 ps-5 pe-5">
-                                <input type="submit" value="Zmień hasło" class="btn btn-success" />
-                            </div>
                         }
-                    </div>
+                        <div class="row pb-2">
+                            <div class="col-md-12">
+                                <div class="row ps-1">
+                                    @Html.LabelFor(o => o.ChangePasswordViewModel.OldPassword)
+                                </div>
+                                <div class="row ps-3 pe-3">
+                                    @Html.PasswordFor(o => o.ChangePasswordViewModel.OldPassword)
+                                </div>
+                                <div class="row ps-1 pb-3">
+                                    @Html.ValidationMessageFor(o => o.ChangePasswordViewModel.OldPassword)
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="row ps-1">
+                                    @Html.LabelFor(o => o.ChangePasswordViewModel.NewPassword)
+                                </div>
+                                <div class="row ps-3 pe-3">
+                                    @Html.PasswordFor(o => o.ChangePasswordViewModel.NewPassword)
+                                </div>
+                                <div class="row ps-1 pb-3">
+                                    @Html.ValidationMessageFor(o => o.ChangePasswordViewModel.NewPassword)
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="row ps-1">
+                                    @Html.LabelFor(o => o.ChangePasswordViewModel.ConfirmPassword)
+                                </div>
+                                <div class="row ps-3 pe-3">
+                                    @Html.PasswordFor(o => o.ChangePasswordViewModel.ConfirmPassword)
+                                </div>
+                                <div class="row ps-1 pb-3">
+                                    @Html.ValidationMessageFor(o => o.ChangePasswordViewModel.ConfirmPassword)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row pt-4 pb-4 ps-5 pe-5">
+                            <input type="submit" value="Zmień hasło" class="btn btn-success" />
+                        </div>
+                    }
                 </div>
             </div>
         </div>
+    </div>
 </section>
 
 @section ScriptsBottom

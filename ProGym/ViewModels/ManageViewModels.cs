@@ -11,8 +11,7 @@ namespace ProGym.Models
     {
         public bool HasPassword { get; set; }
         public ChangePasswordViewModel ChangePasswordViewModel { get; set; }
-        public ProGym.Controllers.ManageController.ManageMessageId? Message { get; set; }
-        public bool ShowRemoveButton { get; set; }
+        public ProGym.Controllers.ManageController.ManageMessageId? Message { get; set; }      
 
         public UserData UserData { get; set; }
     }

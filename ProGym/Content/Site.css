@@ -536,7 +536,7 @@ body {
 
 
 
-/* VALIDATION */
+/* START VALIDATION */
 
 .field-validation-error {
     color:red;
@@ -549,6 +549,14 @@ body {
     border: 1px solid red;
 }
 
+/* END VALIDATION */
+
+
+/* MANAGE */
+
+.manage-message{
+    color:#8ee901;
+}
 
 .list-group a:hover, .list-group a:active {
     background-color: yellowgreen !important;
