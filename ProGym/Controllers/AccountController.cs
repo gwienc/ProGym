@@ -111,7 +111,7 @@ namespace ProGym.Controllers
         {
             if(ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, UserData = new UserData() };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, UserData = new UserData { FirstName = model.FirstName, LastName = model.LastName, Address = model.StreetAndNo, CodeAndCity = model.CityAndPostCode, Email = model.Email, PhoneNumber = model.PhoneNumber } };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

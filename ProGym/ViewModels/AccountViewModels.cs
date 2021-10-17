@@ -43,7 +43,7 @@ namespace ProGym.ViewModels
         [Required(ErrorMessage = "Proszę podać numer telefonu")]
         [RegularExpression(@"(\+\d{2})*[\d\s-]+", ErrorMessage = "Błędny format numeru telefonu.")]
         [Display(Name = "Numer telefonu:")]
-        public int PhoneNumber { get; set; }
+        public string PhoneNumber { get; set; }
 
         [Required(ErrorMessage ="Proszę podać e-mail")]
         [EmailAddress]
