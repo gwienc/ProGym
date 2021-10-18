@@ -112,6 +112,35 @@ namespace ProGym.Controllers
                return RedirectToAction("Login", "Account", new { returnUrl = Url.Action("Checkout", "Cart") });
             }
 
-        }  
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Checkout(Order orderdetails)
+        {
+            if(ModelState.IsValid)
+            {
+                var userId = User.Identity.GetUserId();
+
+                var newOrder = shoppingCartManager.CreateOrder(orderdetails, userId);
+
+                
+                var user = await UserManager.FindByIdAsync(userId);
+                TryUpdateModel(user.UserData);
+                await UserManager.UpdateAsync(user);
+
+                shoppingCartManager.EmptyCart();
+
+                return RedirectToAction("OrderConfirmation");
+            }
+            else
+            {
+                return View(orderdetails);
+            }
+        }
+
+        public ActionResult OrderConfirmation()
+        {
+            return View();
+        }
     }
 }

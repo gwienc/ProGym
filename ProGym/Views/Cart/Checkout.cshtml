@@ -1,0 +1,115 @@
+﻿@model ProGym.Models.Order
+@{
+    ViewBag.Title = "Checkout";
+    Layout = "~/Views/Shared/_GymLayout.cshtml";
+}
+
+<section>
+    <div class="container pt-5">
+        <div class="col-md-6 mx-auto pb-5 pt-5">
+            <div class="card shadow-lg">
+                <div class="card-body">
+                    @using (Html.BeginForm("Checkout", "Cart"))
+                    {
+                        <div class="row text-center pb-5 pt-3">
+                            <h2>Uzupełnij dane zamówienia</h2>
+                        </div>
+                        <div class="row pb-2">
+                            <div class="col-md-6">
+                                <div class="row ps-1">
+                                    @Html.LabelFor(o => o.FirstName)
+                                </div>
+                                <div class="row ps-3 pe-3">
+                                    @Html.TextBoxFor(o => o.FirstName)
+                                </div>
+                                <div class="row ps-1 pb-3">
+                                    @Html.ValidationMessageFor(o => o.FirstName)
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="row ps-1">
+                                    @Html.LabelFor(o => o.LastName)
+                                </div>
+                                <div class="row ps-3 pe-3">
+                                    @Html.TextBoxFor(o => o.LastName)
+                                </div>
+                                <div class="row ps-1 pb-3">
+                                    @Html.ValidationMessageFor(o => o.LastName)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row pb-2">
+                            <div class="col-md-6">
+                                <div class="row ps-1">
+                                    @Html.LabelFor(o => o.Address)
+                                </div>
+                                <div class="row ps-3 pe-3">
+                                    @Html.TextBoxFor(o => o.Address)
+                                </div>
+                                <div class="row ps-1 pb-3">
+                                    @Html.ValidationMessageFor(o => o.Address)
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="row ps-1">
+                                    @Html.LabelFor(o => o.CodeAndCity)
+                                </div>
+                                <div class="row ps-3 pe-3">
+                                    @Html.TextBoxFor(o => o.CodeAndCity)
+                                </div>
+                                <div class="row ps-1 pb-3">
+                                    @Html.ValidationMessageFor(o => o.CodeAndCity)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row pb-2">
+                            <div class="col-md-6">
+                                <div class="row ps-1">
+                                    @Html.LabelFor(o => o.PhoneNumber)
+                                </div>
+                                <div class="row ps-3 pe-3">
+                                    @Html.TextBoxFor(o => o.PhoneNumber)
+                                </div>
+                                <div class="row ps-1 pb-3">
+                                    @Html.ValidationMessageFor(o => o.PhoneNumber)
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="row ps-1">
+                                    @Html.LabelFor(o => o.Email)
+                                </div>
+                                <div class="row ps-3 pe-3">
+                                    @Html.TextBoxFor(o => o.Email)
+                                </div>
+                                <div class="row ps-1 pb-3">
+                                    @Html.ValidationMessageFor(o => o.Email)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row pb-2">
+                            <div class="col-md-12">
+                                <div class="row ps-1">
+                                    @Html.LabelFor(o => o.Comment)
+                                </div>
+                                <div class="row ps-3 pe-3">
+                                    <textarea cols="40" rows="3" name="comment">@Model.Comment</textarea>
+                                </div>
+                            </div>
+                        </div>
+                        @Html.ValidationSummary()
+
+                        <div class="row pt-4 pb-4 ps-5 pe-5">
+                            <div class="col-md-6 text-start">
+                                <a href="@Url.Action("Index","Cart")" class="btn btn-secondary">Wróć</a>
+                            </div>
+                            <div class="col-md-6 text-end">
+                                <input type="submit" value="Potwierdź" class="btn btn-success" />
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

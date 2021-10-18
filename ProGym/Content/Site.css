@@ -520,6 +520,11 @@ body {
 .cart img{
     width:30%;
 }
+
+.order-confirmation h2 {
+    font-size: 200%;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
 /*END CART*/
 
 
@@ -552,11 +557,18 @@ body {
 /* END VALIDATION */
 
 
-/* MANAGE */
+
+
+/* START MANAGE */
 
 .manage-message{
     color:#8ee901;
 }
+
+/* END MANAGE */
+
+
+
 
 .list-group a:hover, .list-group a:active {
     background-color: yellowgreen !important;
