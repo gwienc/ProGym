@@ -52,7 +52,10 @@ namespace ProGym.Models
 
     public enum OrderState
     {
+        [Display(Name = "W przygotowaniu")]
         InProgress,
+
+        [Display(Name = "Do odbioru")]
         Completed
     }
 }

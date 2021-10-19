@@ -565,6 +565,37 @@ body {
     color:#8ee901;
 }
 
+.orders {
+    font-size: medium;
+}
+
+.orders  {
+    background-color:#f8f3f4;
+}
+    .orders thead tr th {
+        font-weight: 600 !important;
+    }
+
+    .orders tbody tr th, td {
+        font-weight: 600 !important;
+    }
+
+    .orders .name {
+        text-decoration: none;
+        color: black;
+    }
+
+    .orders img {
+        width: 20%;
+    }
+
+#orderCompleted {
+    background-color:limegreen;
+    color:white !important;
+}
+#orderCompleted a{
+    color: white !important;
+}
 /* END MANAGE */
 
 
