@@ -2093,6 +2093,7 @@
     <Content Include="Views\Manage\Index.cshtml" />
     <Content Include="Views\Cart\Checkout.cshtml" />
     <Content Include="Views\Cart\OrderConfirmation.cshtml" />
+    <Content Include="Views\Shared\_ManageLayout.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

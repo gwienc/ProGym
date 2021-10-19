@@ -1,0 +1,142 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>_ManageLayout</title>
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/FontAwesome/fontawesome-free-5.15.1-web/css/all.css")" rel="stylesheet" />
+    @System.Web.Optimization.Styles.Render("~/content/themes/base/css")
+    <script src="~/Scripts/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    <header>
+        <section class="sticky-top">
+            <div class="container-fluid top-header">
+                <div class="row p-0 text-end">
+                    <div class="col-12 pt-2">
+                        @Html.Partial("_LoginAndRegisterPartial")
+                    </div>
+                    <div class="row p-0 pt-2 m-0 text-end">
+                        <div class="col-12 text-end">
+                            <a href="@Url.Action("Index","Cart")" class="btn btn-secondary"><i class="fas fa-shopping-cart"></i> Koszyk (<span id="cart-header-items-count">@Html.Action("GetCartItemsCount", "Cart")</span>)</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom-header sticky-top ">
+                <div class="container-fluid pasek">
+                    <nav class="navbar navbar-expand-md navbar-dark pt-0 pb-2">
+                        <a class="navbar-brand p" href="@Url.Action("Index","Home")">
+                            <img class="img-fluid" src="@Url.Content("~/Content/Images/gym_logo2.jpg")" alt="">
+                        </a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent"><span class="navbar-toggler-icon"></span></button>
+                        <div class="collapse navbar-collapse" id="navbarToggleExternalContent">
+                            <ul class="navbar-nav">
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="@Url.Action("Index","Home")">Strona Główna <span class="sr-only">(current)</span></a>
+                                </li>                               
+                                <li class="nav-item">
+                                    <a class="nav-link" href="@Url.Action("Index","Manage")">Twoje dane</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="">Twoje Treningi</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="">Twoje zamówienia</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="">Kalkulatory</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </section>
+    </header>
+
+    <div id="wrap">
+        <div id="main">
+            <div>
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+
+
+    <footer>
+        <div class="full-footer">
+            <div class="container top-footer">
+                <div class="row pb-3">
+                    <div id="subsc" class="col text-center">
+                        <h1>
+                            Honorujemy Karty:
+                        </h1>
+                        <hr>
+                    </div>
+                </div>
+                <div class="row p-md-1">
+                    <div class="col-md-3 col-6  pt-md-3 pb-md-4 pl-md-4 pr-md-4">
+                        <img class="img-fluid feature-img p-2" src="@Url.Content("~/Content/Images/Benefits Cards/FitProfit2.png")" alt="Card image cap" />
+                    </div>
+                    <div class="col-md-3 col-6 pt-md-3 pb-md-4 pl-md-4 pr-md-4">
+                        <img class="img-fluid feature-img p-2" src="@Url.Content("~/Content/Images/Benefits Cards/multisportClassic2.png")" alt="Card image cap" />
+                    </div>
+                    <div class="col-md-3 col-6 pt-md-3 pb-md-4 pl-md-4 pr-md-4">
+                        <img class="img-fluid feature-img p-2" src="@Url.Content("~/Content/Images/Benefits Cards/multisportPlus2.png")" alt="Card image cap" />
+                    </div>
+                    <div class="col-md-3 col-6 pt-md-3 pb-md-4 pl-md-4 pr-md-4">
+                        <img class="img-fluid feature-img p-2" src="@Url.Content("~/Content/Images/Benefits Cards/OK-SYSTEM2.png")" alt="Card image cap" />
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid middle-footer p-md-3 p-1">
+                <div class="row">
+                    <div class="col-md-2 ps-4 pe-5">
+                        <img class="img-fluid" src="@Url.Content("~/Content/Images/gym_logo.jpg")" width="200px" alt="">
+                    </div>
+                    <div class="col-md-3 ps-4 pe-4">
+                        <h4>
+                            <b>GYM PRO</b>
+                        </h4>
+                        <p>
+                            ul.Słoneczna 73 <br>
+                            35-082 <br>
+                            Rzeszów
+                        </p>
+                    </div>
+                    <div class="col-md-3 ps-4 pe-4">
+                        <h3><b> Oferta </b></h3>
+                        <a href="@Url.Action("Index","Store")">Sklep</a><br>
+                        <a href="@Url.Action("StaticContent","Home",new { viewname = "IndividualTraining" })">Zajęcia indywidualne</a><br>
+                        <a href="@Url.Action("StaticContent","Home",new { viewname = "TrainingPersonalTrainer" })">Zajęcia z trenerem personalnym</a><br>
+                        <a href="@Url.Action("StaticContent","Home",new { viewname = "GroupExercises" })">Zajęcia grupowe</a><br>
+                        <a href="@Url.Action("StaticContent","Home",new { viewname = "Relaxation" })">Strefa relaksu</a>
+                    </div>
+                    <div class="col-md-4 pt-2 pb-2 ps-4 pe-4">
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d164116.5192597883!2d21.84837229017227!3d50.00534563135541!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473cfae3cc14d449%3A0xd2240d31b33eb2ed!2zUnplc3rDs3c!5e0!3m2!1spl!2spl!4v1631042990488!5m2!1spl!2spl" frameborder="0"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid bottom-footer pt-2">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <h5>Copyrights ® 2021 - All rights reserved</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    @RenderSection("ScriptsBottom", required: false)
+</body>
+</html>
