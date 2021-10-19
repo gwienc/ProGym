@@ -2,9 +2,11 @@
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using ProGym.App_Start;
+using ProGym.DAL;
 using ProGym.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -14,6 +16,8 @@ namespace ProGym.Controllers
 {
     public class ManageController : Controller
     {
+
+        StoreContext db = new StoreContext();
         
         public enum ManageMessageId
         {
@@ -126,6 +130,26 @@ namespace ProGym.Controllers
 
             var message = ManageMessageId.ChangePasswordSuccess;
             return RedirectToAction("Index", new { Message = message });
+        }
+
+
+        public ActionResult OrdersList(Order orders)
+        {
+            bool isAdmin = User.IsInRole("Admin");
+            ViewBag.UserIsAdmin = isAdmin;
+            IEnumerable<Order> userOrders;
+
+            if (isAdmin)
+            {
+                userOrders = db.Orders.Include("OrderItems").OrderByDescending(o => o.DateCreated).ToArray();
+            }
+            else
+            {
+                var userId = User.Identity.GetUserId();
+                userOrders = db.Orders.Where(o => o.UserId == userId).Include("OrderItems").OrderByDescending(o => o.DateCreated).ToArray();
+            }
+           
+            return View(userOrders);
         }
 
 
