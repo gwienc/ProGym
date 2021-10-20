@@ -46,13 +46,13 @@
                                             @order.DateCreated.ToString("dd-MM-yyyy")
                                         </td>
                                     </tr>
-                                    <tr>                                      
+                                    <tr>
                                         <td colspan="6">
                                             <strong>Dane wysyłkowe:</strong><br />
                                             @order.FirstName @order.LastName<br />
                                             @order.Address<br />
                                             @order.CodeAndCity<br />
-                                        </td>                                       
+                                        </td>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -72,15 +72,15 @@
                                         }
                                     }
 
-                                <tr>
-                                    <td>
-                                        <strong>Uwagi: </strong><br />
-                                        @order.Comment
-                                    </td>
-                                    <td colspan="4" class="text-end">
-                                        <strong>Łączny koszt:</strong> @order.TotalPrice zł
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td>
+                                            <strong>Uwagi: </strong><br />
+                                            @order.Comment
+                                        </td>
+                                        <td colspan="4" class="text-end">
+                                            <strong>Łączny koszt:</strong> @order.TotalPrice zł
+                                        </td>
+                                    </tr>
                                 </tbody>
 
                             </table>
@@ -105,6 +105,25 @@
 
 
 
+<script src="~/Scripts/jquery-3.6.0.js"></script>
+<script>
+    $(".orderstateddl").on('change', function (e) {
+        //e.preventDefault();
 
+        var f = $(this.form);
+        var table = f.closest("table");
+
+        var action = f.attr("action");
+        var serializedForm = f.serialize();
+        $.post(action, serializedForm).done(function (data) {
+            if (data == '@ProGym.Models.OrderState.InProgress.ToString()') {
+                table.addClass("orderCompleted")
+            }
+            else {
+                table.removeClass("orderCompleted");
+            }
+          });
+    });
+</script>
 
 

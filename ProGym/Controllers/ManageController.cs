@@ -153,6 +153,16 @@ namespace ProGym.Controllers
         }
 
 
+        public OrderState ChangeOrderState(Order order)
+        {
+            Order orderToModify = db.Orders.Find(order.OrderID);
+            orderToModify.OrderState = order.OrderState;
+            db.SaveChanges();
+
+            return order.OrderState;
+        }
+
+
         private bool HasPassword()
         {
             var user = UserManager.FindById(User.Identity.GetUserId());
