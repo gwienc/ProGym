@@ -569,11 +569,15 @@ body {
     font-size: medium;
 }
 
+.orderlist h1 {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
 .orders  {
     background-color:#f8f3f4;
 }
     .orders thead tr th {
-        font-weight: 600 !important;
+        font-weight: 800 !important;
     }
 
     .orders tbody tr th, td {
@@ -589,9 +593,13 @@ body {
         width: 20%;
     }
 
+#product-img {
+    width:60%;
+}
+
 #orderCompleted {
-    background-color:limegreen;
-    color:white !important;
+    background-color: forestgreen;
+    color: white !important;
 }
 #orderCompleted a{
     color: white !important;

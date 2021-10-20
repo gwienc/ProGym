@@ -6,7 +6,7 @@
 }
 
 <section>
-    <div class="container pt-5">
+    <div class="container orderlist pt-5">
         <div class="row text-center pt-5 pb-5">
             <h1>Twoje zamówienia</h1>
         </div>
@@ -41,21 +41,18 @@
                                                 @Html.DisplayFor(o => order.OrderState)
                                             }
                                         </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
+                                        <td colspan="4" class="text-end">
                                             <strong>Data: </strong>
                                             @order.DateCreated.ToString("dd-MM-yyyy")
                                         </td>
-                                        <td>
+                                    </tr>
+                                    <tr>                                      
+                                        <td colspan="6">
                                             <strong>Dane wysyłkowe:</strong><br />
                                             @order.FirstName @order.LastName<br />
                                             @order.Address<br />
                                             @order.CodeAndCity<br />
-                                        </td>
-                                        <td>
-                                            <strong>Łączny koszt:</strong> @order.TotalPrice zł
-                                        </td>
+                                        </td>                                       
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -63,7 +60,7 @@
                                         foreach (var product in order.OrderItems)
                                         {
                                             <tr id="cart-row-@product.Product.ProductID">
-                                                <td>
+                                                <td id="product-img">
                                                     <a href="@Url.Action("Details", "Store", new { id = product.Product.ProductID })">
                                                         <img src="@Url.Content(Url.ProductPhotoPath(product.Product.PhotoFileName))" />
                                                     </a>
@@ -75,12 +72,15 @@
                                         }
                                     }
 
-                                    <tr>
-                                        <td>
-                                            <strong>Uwagi: </strong><br />
-                                            @order.Comment
-                                        </td>
-                                    </tr>
+                                <tr>
+                                    <td>
+                                        <strong>Uwagi: </strong><br />
+                                        @order.Comment
+                                    </td>
+                                    <td colspan="4" class="text-end">
+                                        <strong>Łączny koszt:</strong> @order.TotalPrice zł
+                                    </td>
+                                </tr>
                                 </tbody>
 
                             </table>
