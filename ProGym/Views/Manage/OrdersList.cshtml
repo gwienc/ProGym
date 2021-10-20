@@ -21,8 +21,8 @@
                 foreach (var order in Model)
                 {
                     <div class="row pb-5 pt-5">
-                        <div class="table-responsive orders" @if (order.OrderState == ProGym.Models.OrderState.InProgress) { <text> id="orderCompleted" </text> }>
-                            <table class="table orders" @if (order.OrderState == ProGym.Models.OrderState.InProgress) { <text> id="orderCompleted" </text> }>
+                        <div class="table-responsive orders" @if (order.OrderState == ProGym.Models.OrderState.Completed) { <text> id="orderCompleted" </text> }>
+                            <table class="table orders"@if (order.OrderState == ProGym.Models.OrderState.Completed) { <text> id="orderCompleted" </text> }> 
                                 <thead>
                                     <tr>
                                         <td>
@@ -116,7 +116,7 @@
         var action = f.attr("action");
         var serializedForm = f.serialize();
         $.post(action, serializedForm).done(function (data) {
-            if (data == '@ProGym.Models.OrderState.InProgress.ToString()') {
+            if (data == '@ProGym.Models.OrderState.Completed.ToString()') {
                 table.addClass("orderCompleted")
             }
             else {

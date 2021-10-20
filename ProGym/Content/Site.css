@@ -573,8 +573,13 @@ body {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
-.orders  {
-    background-color:#f8f3f4;
+.orders {
+    background-color: #f8f3f4;
+    -moz-transition-duration: 3s;
+    -o-transition-duration: 3s;
+    -webkit-transition-duration: 3s;
+    transition-duration: 3s;
+
 }
     .orders thead tr th {
         font-weight: 800 !important;
@@ -599,6 +604,10 @@ body {
 
 #orderCompleted {
     background-color: forestgreen;
+    -moz-transition-duration: 3s;
+    -o-transition-duration: 3s;
+    -webkit-transition-duration: 3s;
+    transition-duration: 3s;
     color: white !important;
 }
 #orderCompleted a{
