@@ -602,7 +602,7 @@ body {
     width:60%;
 }
 
-#orderCompleted {
+#orderReceived {
     background-color: forestgreen;
     -moz-transition-duration: 3s;
     -o-transition-duration: 3s;
@@ -610,9 +610,22 @@ body {
     transition-duration: 3s;
     color: white !important;
 }
-#orderCompleted a{
+    #orderReceived a {
+        color: white !important;
+    }
+
+#orderCompleted {
+    background-color:#b0b007;
+    -moz-transition-duration: 3s;
+    -o-transition-duration: 3s;
+    -webkit-transition-duration: 3s;
+    transition-duration: 3s;
     color: white !important;
 }
+
+    #orderCompleted a {
+        color: white !important;
+    }
 /* END MANAGE */
 
 

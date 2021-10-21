@@ -1968,6 +1968,10 @@
     <Compile Include="Migrations\202110181811195_UserOrderRelation.designer.cs">
       <DependentUpon>202110181811195_UserOrderRelation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202110210826309_AddOrderEnumPosition.cs" />
+    <Compile Include="Migrations\202110210826309_AddOrderEnumPosition.designer.cs">
+      <DependentUpon>202110210826309_AddOrderEnumPosition.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CartItem.cs" />
     <Compile Include="Models\Category.cs" />
@@ -2118,6 +2122,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202110181811195_UserOrderRelation.resx">
       <DependentUpon>202110181811195_UserOrderRelation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110210826309_AddOrderEnumPosition.resx">
+      <DependentUpon>202110210826309_AddOrderEnumPosition.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

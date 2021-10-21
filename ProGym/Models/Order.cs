@@ -56,6 +56,9 @@ namespace ProGym.Models
         InProgress,
 
         [Display(Name = "Do odbioru")]
-        Completed
+        Completed,
+
+        [Display(Name = "Odebrane")]
+        Received
     }
 }

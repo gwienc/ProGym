@@ -21,8 +21,20 @@
                 foreach (var order in Model)
                 {
                     <div class="row pb-5 pt-5">
-                        <div class="table-responsive orders" @if (order.OrderState == ProGym.Models.OrderState.Completed) { <text> id="orderCompleted" </text> }>
-                            <table class="table orders"@if (order.OrderState == ProGym.Models.OrderState.Completed) { <text> id="orderCompleted" </text> }> 
+                        <div class="table-responsive orders"
+                             
+                             @if (order.OrderState == ProGym.Models.OrderState.Completed) 
+                             { <text> id="orderCompleted" </text>  } 
+                             else if (order.OrderState == ProGym.Models.OrderState.Received) 
+                             { <text> id="orderReceived" </text>  }>
+                          
+                            <table class="table orders"
+                                   
+                                   @if (order.OrderState == ProGym.Models.OrderState.Completed) 
+                                   { <text> id="orderCompleted" </text>  } 
+                                   else if (order.OrderState == ProGym.Models.OrderState.Received) 
+                                   { <text> id="orderReceived" </text>  } >
+                                
                                 <thead>
                                     <tr>
                                         <td>
@@ -119,8 +131,12 @@
             if (data == '@ProGym.Models.OrderState.Completed.ToString()') {
                 table.addClass("orderCompleted")
             }
+            else if (data == '@ProGym.Models.OrderState.Received.ToString()') {
+                table.addClass("orderReceived")
+            }
             else {
                 table.removeClass("orderCompleted");
+                table.removeClass("orderReceived");
             }
           });
     });
