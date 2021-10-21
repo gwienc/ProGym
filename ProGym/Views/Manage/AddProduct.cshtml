@@ -1,0 +1,140 @@
+﻿@model ProGym.ViewModels.AddOrEditProductViewModel
+@{
+    ViewBag.Title = "AddProduct";
+    Layout = "~/Views/Shared/_ManageLayout.cshtml";
+}
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="card shadow-lg">
+                    <div class="card-body">
+                        @using (Html.BeginForm("AddProduct", "Manage", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+
+                            @Html.AntiForgeryToken()
+
+                            <div id="error-summary">
+                                @Html.ValidationSummary()
+                            </div>
+
+                            <div class="row text-center pb-5 pt-3">
+                                <h2>Edycja produktu</h2>
+                            </div>
+
+                            <div class="row pb-2">
+                                <div class="col-md-6">
+                                    <div class="row ps-1">
+                                        @Html.LabelFor(o => o.Product.Name)
+                                    </div>
+                                    <div class="row ps-3 pe-3">
+                                        @Html.TextBoxFor(o => o.Product.Name)
+                                    </div>
+                                    <div class="row ps-1 pb-3">
+                                        @Html.ValidationMessageFor(o => o.Product.Name)
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="row ps-1">
+                                        @Html.LabelFor(o => o.Product.ProducerName)
+                                    </div>
+                                    <div class="row ps-3 pe-3">
+                                        @Html.TextBoxFor(o => o.Product.ProducerName)
+                                    </div>
+                                    <div class="row ps-1 pb-3">
+                                        @Html.ValidationMessageFor(o => o.Product.ProducerName)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row pb-2">
+                                <div class="col-md-6">
+                                    <div class="row ps-1">
+                                        @Html.LabelFor(o => o.Product.Price)
+                                    </div>
+                                    <div class="row ps-3 pe-3">
+                                        @Html.TextBoxFor(o => o.Product.Price)
+                                    </div>
+                                    <div class="row ps-1 pb-3">
+                                        @Html.ValidationMessageFor(o => o.Product.Price)
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="row ps-1">
+                                        @Html.LabelFor(o => o.Product.Ingredients)
+                                    </div>
+                                    <div class="row ps-3 pe-3">
+                                        <textarea cols="40" rows="3" name="comment">@Model.Product.Ingredients</textarea>
+                                    </div>
+                                    <div class="row ps-1 pb-3">
+                                        @Html.ValidationMessageFor(o => o.Product.Ingredients)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row pb-2">
+                                <div class="col-md-6">
+                                    <div class="row ps-1">
+                                        @Html.LabelFor(o => o.Product.Description)
+                                    </div>
+                                    <div class="row ps-3 pe-3">
+                                        <textarea cols="40" rows="3" name="comment">@Model.Product.Description</textarea>
+                                    </div>
+                                    <div class="row ps-1 pb-3">
+                                        @Html.ValidationMessageFor(o => o.Product.Description)
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="row ps-1">
+                                        @Html.LabelFor(o => o.Product.ShortDescription)
+                                    </div>
+                                    <div class="row ps-3 pe-3">
+                                        <textarea cols="40" rows="3" name="comment">@Model.Product.ShortDescription</textarea>
+                                    </div>
+                                    <div class="row ps-1 pb-3">
+                                        @Html.ValidationMessageFor(o => o.Product.ShortDescription)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row pb-2">
+                                <div class="col-md-6">
+                                    <div class="row ps-1">
+                                        @Html.LabelFor(o => o.Product.Parameters)
+                                    </div>
+                                    <div class="row ps-3 pe-3">
+                                        @Html.TextBoxFor(o => o.Product.Parameters)
+                                    </div>
+                                    <div class="row ps-1 pb-3">
+                                        @Html.ValidationMessageFor(o => o.Product.Parameters)
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="row ps-1">
+                                        @Html.LabelFor(o => o.Categories)
+                                    </div>
+                                    <div class="row ps-3 pe-3">
+                                        @Html.DropDownListFor(o => o.Product.CategoryID, new SelectList(Model.Categories, "CategoryID", "Name", Model.Categories.First().CategoryID))
+                                    </div>
+                                    <div class="row ps-1 pb-3">
+                                        @Html.ValidationMessageFor(o => o.Categories)
+                                    </div>
+                                </div>
+                            </div>
+                            if (ViewBag.EditMode == null || !ViewBag.EditMode)
+                            {
+                                <div class="col-md-6">
+                                    <div class="row ps-1">
+                                        <input type="file" name="file" />
+                                    </div>                                   
+                                </div>
+                            }
+                            <div class="row pt-4 pb-4 ps-5 pe-5">
+                                <input type="submit" value="Zapisz" class="btn btn-success" />
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
