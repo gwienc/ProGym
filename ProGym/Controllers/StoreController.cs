@@ -15,7 +15,7 @@ namespace ProGym.Controllers
         {
             if ((categoryname == null || categoryname == "Wszystkie") && searchQuery == null)
             {
-                var products = db.Products.ToList();
+                var products = db.Products.Where(p => !p.IsHidden).ToList();
                 return View(products);
             }
 

@@ -1972,6 +1972,10 @@
     <Compile Include="Migrations\202110210826309_AddOrderEnumPosition.designer.cs">
       <DependentUpon>202110210826309_AddOrderEnumPosition.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202110211525099_AddNewProduct.cs" />
+    <Compile Include="Migrations\202110211525099_AddNewProduct.designer.cs">
+      <DependentUpon>202110211525099_AddNewProduct.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CartItem.cs" />
     <Compile Include="Models\Category.cs" />
@@ -2102,6 +2106,7 @@
     <Content Include="Views\Manage\OrdersList.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\Enum.cshtml" />
     <Content Include="Views\Manage\AddProduct.cshtml" />
+    <Content Include="Views\Manage\GetAllProducts.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -2127,6 +2132,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202110210826309_AddOrderEnumPosition.resx">
       <DependentUpon>202110210826309_AddOrderEnumPosition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110211525099_AddNewProduct.resx">
+      <DependentUpon>202110211525099_AddNewProduct.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

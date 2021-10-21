@@ -1,0 +1,16 @@
+﻿@model IEnumerable<ProGym.Models.Product>
+@{
+    ViewBag.Title = "GetAllProducts";
+    Layout = "~/Views/Shared/_ManageLayout.cshtml";
+}
+
+<section>
+    <div class="container pt-5">
+        <div class="row pt-5">
+            <div class="col-12">
+                @Html.Partial("_ProductList")
+            </div>
+        </div>
+    </div>
+</section>
+

@@ -28,7 +28,7 @@
                             @Html.HiddenFor(o => o.Product.ProductID)
                             @Html.HiddenFor(o => o.Product.DateAdded)
                             @Html.HiddenFor(o => o.Product.PhotoFileName)
-                            
+
                             <div class="row text-center pb-5 pt-3">
                                 <h2>Produkt</h2>
                             </div>
@@ -63,18 +63,18 @@
                                         @Html.LabelFor(o => o.Product.Parameters)
                                     </div>
                                     <div class="row ps-3 pe-3">
-                                        @Html.TextAreaFor(o => o.Product.Parameters,5,20, htmlAttributes: new {style="width: 100%; max-width: 100%;" })
+                                        @Html.TextAreaFor(o => o.Product.Parameters, 5, 20, htmlAttributes: new { style = "width: 100%; max-width: 100%;" })
                                     </div>
                                     <div class="row ps-1 pb-3">
                                         @Html.ValidationMessageFor(o => o.Product.Parameters)
-                                    </div>                                 
+                                    </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="row ps-1">
                                         @Html.LabelFor(o => o.Product.Ingredients)
                                     </div>
                                     <div class="row ps-3 pe-3">
-                                        @Html.TextAreaFor(o => o.Product.Ingredients,5,20, htmlAttributes: new {style="width: 100%; max-width: 100%;" })
+                                        @Html.TextAreaFor(o => o.Product.Ingredients, 5, 20, htmlAttributes: new { style = "width: 100%; max-width: 100%;" })
                                     </div>
                                     <div class="row ps-1 pb-3">
                                         @Html.ValidationMessageFor(o => o.Product.Ingredients)
@@ -87,7 +87,7 @@
                                         @Html.LabelFor(o => o.Product.Description)
                                     </div>
                                     <div class="row ps-3 pe-3">
-                                        @Html.TextAreaFor(o => o.Product.Description,5,20, htmlAttributes: new {style="width: 100%; max-width: 100%;" })
+                                        @Html.TextAreaFor(o => o.Product.Description, 5, 20, htmlAttributes: new { style = "width: 100%; max-width: 100%;" })
                                     </div>
                                     <div class="row ps-1 pb-3">
                                         @Html.ValidationMessageFor(o => o.Product.Description)
@@ -98,7 +98,7 @@
                                         @Html.LabelFor(o => o.Product.ShortDescription)
                                     </div>
                                     <div class="row ps-3 pe-3">
-                                        @Html.TextAreaFor(o => o.Product.ShortDescription,5,20, htmlAttributes: new {style="width: 100%; max-width: 100%;" })
+                                        @Html.TextAreaFor(o => o.Product.ShortDescription, 5, 20, htmlAttributes: new { style = "width: 100%; max-width: 100%;" })
                                     </div>
                                     <div class="row ps-1 pb-3">
                                         @Html.ValidationMessageFor(o => o.Product.ShortDescription)
@@ -134,14 +134,43 @@
                                 <div class="col-md-6 pt-5">
                                     <div class="row ps-1">
                                         <input type="file" name="file" />
-                                    </div>                                   
+                                    </div>
                                 </div>
                             }
                             <div class="row pt-4 pb-4 ps-5 pe-5 text-center">
                                 <div class="col-12 pt-4">
                                     <input type="submit" value="Zapisz" class="btn btn-lg btn-success" />
-                                </div>                             
+                                </div>
                             </div>
+                        }
+
+                        @if (ViewBag.EditMode)
+                        {
+                            if (Model.Product.IsHidden)
+                            {
+                                using (Html.BeginForm("UnhideProduct", "Manage", new { productId = Model.Product.ProductID }))
+                                {
+                                    @Html.HiddenFor(o => o.Product.ProductID)
+                                    <div class="row pt-4 pb-4 ps-5 pe-5 text-center">
+                                        <div class="col-12 pt-4">
+                                            <input type="submit" value="Przywróć" class="btn btn-lg btn-success" />
+                                        </div>
+                                    </div>
+                                }
+
+                            }
+                            else
+                            {
+                                using (Html.BeginForm("HideProduct", "Manage", new { productId = Model.Product.ProductID }))
+                                {
+                                    @Html.HiddenFor(o => o.Product.ProductID)
+                                    <div class="row pt-4 pb-4 ps-5 pe-5 text-center">
+                                        <div class="col-12 pt-4">
+                                            <input type="submit" value="Usuń" class="btn btn-lg btn-success" />
+                                        </div>
+                                    </div>
+                                }
+                            }
                         }
                     </div>
                 </div>

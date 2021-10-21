@@ -246,6 +246,32 @@ namespace ProGym.Controllers
                 }
             }
         }
+        public ActionResult GetAllProducts()
+        {
+            var allProducts = db.Products.ToList();
+            return View(allProducts);
+        }
+
+        [HttpPost]
+        public ActionResult HideProduct(int? productId)
+        {
+            var product = db.Products.Find(productId);
+            product.IsHidden = true;
+            db.SaveChanges();
+
+            return RedirectToAction("AddProduct", new { confirmSuccess = true });
+        }
+
+        [HttpPost]
+        public ActionResult UnhideProduct(int productId)
+        {
+            var product = db.Products.Find(productId);
+            product.IsHidden = false;
+            db.SaveChanges();
+
+            return RedirectToAction("AddProduct", new { confirmSuccess = true });
+        }
+
 
         private bool HasPassword()
         {
