@@ -40,14 +40,24 @@
             <div class="col-lg-10 ps-5">
                 <div class="row pt-5 justify-content-center">
                     <div class="card mb-3 shadow-lg" style="max-width: 840px;">
+                        <div class="row text-end">
+                            <div class="col-12 p-3">
+                                @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                                {
+
+                                    <a href="@Url.Action("AddProduct", "Manage", new { productId = Model.ProductID })" class="btn btn-success"> Edytuj </a>
+
+                                }
+                            </div>
+                        </div>
                         <div class="row g-0">
                             <div class="col-md-4 pt-5">
-                                <img src="@Url.ProductPhotoPath(Model.PhotoFileName)" class="img-fluid rounded-start" alt="...">
+                                <img src="@Url.ProductPhotoPath(Model.PhotoFileName)" class="img-fluid rounded-start" alt="...">                           
                             </div>
                             <div class="col-md-8 pt-5">
                                 <div class="card-body">
                                     <h3 class="card-title">@Model.Name</h3><br />
-                                    <h3 class="card-title">@Model.ProducerName</h3><br />
+                                    <h3 class="card-title">@Model.ProducerName</h3> <br />
                                     <p class="card-text">
                                         @Model.ShortDescription<br />
                                     </p>
@@ -96,19 +106,10 @@
                                             @Model.Parameters
                                         </div>
                                     </div>
-                                </div>
+                                </div>                                
                             </div>
                         </div>
-                        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
-                        {
-                            <div class="row p-5 justify-content-center">
-                                <div class="row justify-content-center">
-                                    <div class="col-4 p-3">
-                                        <a href="@Url.Action("AddProduct", "Manage", new { productId = Model.ProductID })" class="btn btn-primary"> Edytuj </a>
-                                    </div>
-                                </div>
-                            </div>
-                        }
+
                     </div>
                 </div>
             </div>
