@@ -99,6 +99,16 @@
                                 </div>
                             </div>
                         </div>
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                        {
+                            <div class="row p-5 justify-content-center">
+                                <div class="row justify-content-center">
+                                    <div class="col-4 p-3">
+                                        <a href="@Url.Action("AddProduct", "Manage", new { productId = Model.ProductID })" class="btn btn-primary"> Edytuj </a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
                     </div>
                 </div>
             </div>

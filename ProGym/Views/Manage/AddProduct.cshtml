@@ -8,6 +8,12 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
+                @if(Model.ConfirmSuccess.HasValue && Model.ConfirmSuccess.Value)
+                {
+                    <div class="row">
+                        <h2>Pomyślnie wprowadzono zmiany!</h2>
+                    </div>
+                }
                 <div class="card shadow-lg">
                     <div class="card-body">
                         @using (Html.BeginForm("AddProduct", "Manage", FormMethod.Post, new { enctype = "multipart/form-data" }))
@@ -19,6 +25,10 @@
                                 @Html.ValidationSummary()
                             </div>
 
+                            @Html.HiddenFor(o => o.Product.ProductID)
+                            @Html.HiddenFor(o => o.Product.DateAdded)
+                            @Html.HiddenFor(o => o.Product.PhotoFileName)
+                            
                             <div class="row text-center pb-5 pt-3">
                                 <h2>Edycja produktu</h2>
                             </div>
@@ -112,7 +122,7 @@
                                         @Html.LabelFor(o => o.Categories)
                                     </div>
                                     <div class="row ps-3 pe-3">
-                                        @Html.DropDownListFor(o => o.Product.CategoryID, new SelectList(Model.Categories, "CategoryID", "Name", Model.Categories.First().CategoryID))
+                                        @Html.DropDownListFor(o => o.Product.CategoryID, new SelectList(Model.Categories, "CategoryID", "CategoryName", Model.Categories.First().CategoryID))
                                     </div>
                                     <div class="row ps-1 pb-3">
                                         @Html.ValidationMessageFor(o => o.Categories)
@@ -121,14 +131,16 @@
                             </div>
                             if (ViewBag.EditMode == null || !ViewBag.EditMode)
                             {
-                                <div class="col-md-6">
+                                <div class="col-md-6 pt-5">
                                     <div class="row ps-1">
                                         <input type="file" name="file" />
                                     </div>                                   
                                 </div>
                             }
-                            <div class="row pt-4 pb-4 ps-5 pe-5">
-                                <input type="submit" value="Zapisz" class="btn btn-success" />
+                            <div class="row pt-4 pb-4 ps-5 pe-5 text-center">
+                                <div class="col-12 pt-4">
+                                    <input type="submit" value="Zapisz" class="btn btn-lg btn-success" />
+                                </div>                             
                             </div>
                         }
                     </div>

@@ -10,5 +10,6 @@ namespace ProGym.ViewModels
     {
         public Product Product { get; set; }
         public IEnumerable<Category> Categories { get; set; }
+        public bool? ConfirmSuccess { get; set; }
     }
 }

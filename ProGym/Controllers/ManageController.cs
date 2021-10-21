@@ -3,11 +3,13 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using ProGym.App_Start;
 using ProGym.DAL;
+using ProGym.Infrastructure;
 using ProGym.Models;
 using ProGym.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -164,7 +166,7 @@ namespace ProGym.Controllers
         }
 
 
-        public ActionResult AddProduct(int? productId)
+        public ActionResult AddProduct(int? productId, bool? confirmSuccess)
         {
             Product product;
 
@@ -183,8 +185,66 @@ namespace ProGym.Controllers
             result.Categories = db.Categories.ToList();
 
             result.Product = product;
+            result.ConfirmSuccess = confirmSuccess;
 
             return View(result);
+        }
+
+        [HttpPost]
+        public ActionResult AddProduct(AddOrEditProductViewModel model, HttpPostedFileBase file)
+        {
+
+            if (model.Product.ProductID > 0)
+            {
+                db.Entry(model.Product).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("AddProduct", new { confirmSuccess = true });
+            }
+            else
+            {
+
+
+                if (file != null && file.ContentLength > 0)
+                {
+
+                    if (ModelState.IsValid)
+                    {
+                        var fileExt = Path.GetExtension(file.FileName);
+                        var fileName = Guid.NewGuid() + fileExt;
+
+                        var path = Path.Combine(Server.MapPath(AppConfig.PhotosFolder), fileName);
+                        file.SaveAs(path);
+
+
+                        model.Product.PhotoFileName = fileName;
+                        model.Product.DateAdded = DateTime.Now;
+
+                        db.Entry(model.Product).State = EntityState.Added;
+                        db.SaveChanges();
+
+
+                        return RedirectToAction("AddProduct", new { confirmSuccess = true });
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "Nie wskazano pliku");
+                        var categories = db.Categories.ToArray();
+                        model.Categories = categories;
+
+
+                        return View(model);
+                    }
+
+                }
+                else
+                {
+                    var categories = db.Categories.ToArray();
+                    model.Categories = categories;
+
+
+                    return View(model);
+                }
+            }
         }
 
         private bool HasPassword()
