@@ -4,6 +4,7 @@ using Microsoft.Owin.Security;
 using ProGym.App_Start;
 using ProGym.DAL;
 using ProGym.Models;
+using ProGym.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -162,6 +163,29 @@ namespace ProGym.Controllers
             return order.OrderState;
         }
 
+
+        public ActionResult AddProduct(int? productId)
+        {
+            Product product;
+
+            if(productId.HasValue)
+            {
+                ViewBag.EditMode = true;
+                product = db.Products.Find(productId);
+            }
+            else
+            {
+                ViewBag.EditMode = false;
+                product = new Product();
+            }
+
+            var result = new AddOrEditProductViewModel();
+            result.Categories = db.Categories.ToList();
+
+            result.Product = product;
+
+            return View(result);
+        }
 
         private bool HasPassword()
         {
