@@ -8,7 +8,7 @@
 <section>
     <div class="container orderlist pt-5">
         <div class="row text-center pt-5 pb-5">
-            <h1>Twoje zamówienia</h1>
+            <h1>Zamówienia</h1>
         </div>
     </div>
 </section>
@@ -52,6 +52,10 @@
                                             {
                                                 @Html.DisplayFor(o => order.OrderState)
                                             }
+                                        </td>
+                                        <td class="text-end">
+                                            <strong>Nr zamówienia: </strong>
+                                            @order.OrderID
                                         </td>
                                         <td colspan="4" class="text-end">
                                             <strong>Data: </strong>

@@ -533,8 +533,9 @@ body {
 /*START LOGIN*/
 
 .card-body form {
-    font-weight: 600;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 6
+    00;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 /*END LOGIN*/
@@ -569,7 +570,7 @@ body {
     font-size: medium;
 }
 
-.orderlist h1 {
+.orderlist h1, .add-product h2 {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
@@ -615,7 +616,7 @@ body {
     }
 
 #orderCompleted {
-    background-color:#b0b007;
+    background-color:orangered;
     -moz-transition-duration: 3s;
     -o-transition-duration: 3s;
     -webkit-transition-duration: 3s;
@@ -623,9 +624,10 @@ body {
     color: white !important;
 }
 
-    #orderCompleted a {
-        color: white !important;
-    }
+#orderCompleted a {
+    color: white !important;
+}
+
 /* END MANAGE */
 
 

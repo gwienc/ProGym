@@ -5,12 +5,12 @@
 }
 
 <section>
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
+    <div class="container pt-5">
+        <div class="row justify-content-center pt-5">
+            <div class="col-8">
                 @if(Model.ConfirmSuccess.HasValue && Model.ConfirmSuccess.Value)
                 {
-                    <div class="row">
+                    <div class="row pb-5 text-center add-product">
                         <h2>Pomyślnie wprowadzono zmiany!</h2>
                     </div>
                 }
@@ -30,7 +30,7 @@
                             @Html.HiddenFor(o => o.Product.PhotoFileName)
                             
                             <div class="row text-center pb-5 pt-3">
-                                <h2>Edycja produktu</h2>
+                                <h2>Produkt</h2>
                             </div>
 
                             <div class="row pb-2">
@@ -60,21 +60,21 @@
                             <div class="row pb-2">
                                 <div class="col-md-6">
                                     <div class="row ps-1">
-                                        @Html.LabelFor(o => o.Product.Price)
+                                        @Html.LabelFor(o => o.Product.Parameters)
                                     </div>
                                     <div class="row ps-3 pe-3">
-                                        @Html.TextBoxFor(o => o.Product.Price)
+                                        @Html.TextAreaFor(o => o.Product.Parameters,5,20, htmlAttributes: new {style="width: 100%; max-width: 100%;" })
                                     </div>
                                     <div class="row ps-1 pb-3">
-                                        @Html.ValidationMessageFor(o => o.Product.Price)
-                                    </div>
+                                        @Html.ValidationMessageFor(o => o.Product.Parameters)
+                                    </div>                                 
                                 </div>
                                 <div class="col-md-6">
                                     <div class="row ps-1">
                                         @Html.LabelFor(o => o.Product.Ingredients)
                                     </div>
                                     <div class="row ps-3 pe-3">
-                                        <textarea cols="40" rows="3" name="comment">@Model.Product.Ingredients</textarea>
+                                        @Html.TextAreaFor(o => o.Product.Ingredients,5,20, htmlAttributes: new {style="width: 100%; max-width: 100%;" })
                                     </div>
                                     <div class="row ps-1 pb-3">
                                         @Html.ValidationMessageFor(o => o.Product.Ingredients)
@@ -87,7 +87,7 @@
                                         @Html.LabelFor(o => o.Product.Description)
                                     </div>
                                     <div class="row ps-3 pe-3">
-                                        <textarea cols="40" rows="3" name="comment">@Model.Product.Description</textarea>
+                                        @Html.TextAreaFor(o => o.Product.Description,5,20, htmlAttributes: new {style="width: 100%; max-width: 100%;" })
                                     </div>
                                     <div class="row ps-1 pb-3">
                                         @Html.ValidationMessageFor(o => o.Product.Description)
@@ -98,7 +98,7 @@
                                         @Html.LabelFor(o => o.Product.ShortDescription)
                                     </div>
                                     <div class="row ps-3 pe-3">
-                                        <textarea cols="40" rows="3" name="comment">@Model.Product.ShortDescription</textarea>
+                                        @Html.TextAreaFor(o => o.Product.ShortDescription,5,20, htmlAttributes: new {style="width: 100%; max-width: 100%;" })
                                     </div>
                                     <div class="row ps-1 pb-3">
                                         @Html.ValidationMessageFor(o => o.Product.ShortDescription)
@@ -108,13 +108,13 @@
                             <div class="row pb-2">
                                 <div class="col-md-6">
                                     <div class="row ps-1">
-                                        @Html.LabelFor(o => o.Product.Parameters)
+                                        @Html.LabelFor(o => o.Product.Price)
                                     </div>
                                     <div class="row ps-3 pe-3">
-                                        @Html.TextBoxFor(o => o.Product.Parameters)
+                                        @Html.TextBoxFor(o => o.Product.Price)
                                     </div>
                                     <div class="row ps-1 pb-3">
-                                        @Html.ValidationMessageFor(o => o.Product.Parameters)
+                                        @Html.ValidationMessageFor(o => o.Product.Price)
                                     </div>
                                 </div>
                                 <div class="col-md-6">
