@@ -603,6 +603,14 @@ body {
     width:60%;
 }
 
+.all-products img{
+    width:30%;
+}
+.all-products thead tr th{
+    font-size:large;
+    font-weight:600;
+}
+
 #orderReceived {
     background-color: forestgreen;
     -moz-transition-duration: 3s;

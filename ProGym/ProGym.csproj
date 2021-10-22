@@ -2107,6 +2107,7 @@
     <Content Include="Views\Shared\DisplayTemplates\Enum.cshtml" />
     <Content Include="Views\Manage\AddProduct.cshtml" />
     <Content Include="Views\Manage\GetAllProducts.cshtml" />
+    <Content Include="Views\Shared\_AllProductList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
