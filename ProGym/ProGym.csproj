@@ -1909,6 +1909,7 @@
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="Global.asax" />
+    <Content Include="Prototype Email\Mail1.html" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -1952,6 +1953,7 @@
     </Compile>
     <Compile Include="Infrastructure\AppConfig.cs" />
     <Compile Include="Infrastructure\ISessionManager.cs" />
+    <Compile Include="Infrastructure\PostalExtensions.cs" />
     <Compile Include="Infrastructure\ProductDetailsDynaminNodeProvider.cs" />
     <Compile Include="Infrastructure\ProductListDynamicNodeProvider.cs" />
     <Compile Include="Infrastructure\SessionManager.cs" />
@@ -1996,6 +1998,7 @@
     <Compile Include="ViewModels\AddOrEditProductViewModel.cs" />
     <Compile Include="ViewModels\CartRemoveViewModel.cs" />
     <Compile Include="ViewModels\CartViewModel.cs" />
+    <Compile Include="ViewModels\EmailModels.cs" />
     <Compile Include="ViewModels\ManageViewModels.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -2116,6 +2119,9 @@
     <Content Include="Views\Shared\_AllProductList.cshtml" />
     <Content Include="Views\Emails\_ViewStart.cshtml" />
     <Content Include="Views\Emails\Web.config" />
+    <Content Include="Views\Emails\OrderConfirmation.cshtml" />
+    <Content Include="Views\Emails\OrderConfirmation.Html.cshtml" />
+    <Content Include="Views\Emails\OrderConfirmation.Text.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

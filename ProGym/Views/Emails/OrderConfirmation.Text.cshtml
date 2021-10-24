@@ -1,0 +1,16 @@
+﻿@model ProGym.ViewModels.OrderConfirmationEmail
+Content-Type: text/plain; charset=utf-8
+
+Dziękujemy!
+
+Złożyłeś zamówienie nr @Model.OrderNumber w sklepie ProGym. Postaramy się, aby zamówione produkty zostały dla Ciebie przygotowane do odbioru najszybciej jak to możliwe.
+
+Łączny koszt zamówienia to  @Model.Cost zł, który należy opłacić przy odbiorze w naszej siłowni.
+
+
+Tutaj znajdziesz szczegóły Twojego zamówienia: @Url.Action("OrdersList", "Manage", null, "https")
+
+Dziękujemy i zapraszamy ponownie!
+ProGym
+
+</html>
