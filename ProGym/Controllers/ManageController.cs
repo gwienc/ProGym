@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using Hangfire;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using ProGym.App_Start;
@@ -161,6 +162,17 @@ namespace ProGym.Controllers
             Order orderToModify = db.Orders.Find(order.OrderID);
             orderToModify.OrderState = order.OrderState;
             db.SaveChanges();
+            
+            if(orderToModify.OrderState == OrderState.Completed)
+            {
+                string url = Url.Action("SendPreparedOrderEmail", "Manage", new { orderid = orderToModify.OrderID, lastname = orderToModify.LastName }, Request.Url.Scheme);
+                BackgroundJob.Enqueue(() => HelpersHangfire.CallUrl(url));
+            }
+            else if (orderToModify.OrderState == OrderState.Received)
+            {
+                string url = Url.Action("SendReceivedOrderEmail", "Manage", new { orderid = orderToModify.OrderID, lastname = orderToModify.LastName }, Request.Url.Scheme);
+                BackgroundJob.Enqueue(() => HelpersHangfire.CallUrl(url));
+            }
 
             return order.OrderState;
         }
@@ -280,7 +292,41 @@ namespace ProGym.Controllers
 
             OrderConfirmationEmail email = new OrderConfirmationEmail();
             email.To = order.Email;
+            email.Name = order.FirstName;
             email.Cost = order.TotalPrice;
+            email.OrderNumber = order.OrderID;
+            email.OrderItems = order.OrderItems;
+            email.CoverPath = AppConfig.PhotosFolder;
+            email.Send();
+
+            return new HttpStatusCodeResult(System.Net.HttpStatusCode.OK);
+        }
+
+        public ActionResult SendPreparedOrderEmail(int orderid, string lastname)
+        {
+            var order = db.Orders.Include("OrderItems").Include("OrderItems.Product").SingleOrDefault(o => o.OrderID == orderid && o.LastName == lastname);
+            if (order == null) return new HttpStatusCodeResult(System.Net.HttpStatusCode.NotFound);
+
+            OrderPreparedEmail email = new OrderPreparedEmail();
+            email.To = order.Email;
+            email.Name = order.FirstName;
+            email.Cost = order.TotalPrice;
+            email.OrderNumber = order.OrderID;
+            email.OrderItems = order.OrderItems;
+            email.CoverPath = AppConfig.PhotosFolder;
+            email.Send();
+
+            return new HttpStatusCodeResult(System.Net.HttpStatusCode.OK);
+        }
+
+        public ActionResult SendReceivedOrderEmail(int orderid, string lastname)
+        {
+            var order = db.Orders.Include("OrderItems").Include("OrderItems.Product").SingleOrDefault(o => o.OrderID == orderid && o.LastName == lastname);
+            if (order == null) return new HttpStatusCodeResult(System.Net.HttpStatusCode.NotFound);
+
+            OrderReceivedEmail email = new OrderReceivedEmail();
+            email.To = order.Email;
+            email.Name = order.FirstName;
             email.OrderNumber = order.OrderID;
             email.OrderItems = order.OrderItems;
             email.CoverPath = AppConfig.PhotosFolder;

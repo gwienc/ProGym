@@ -1,0 +1,13 @@
+﻿@model ProGym.ViewModels.OrderPreparedEmail
+Content-Type: text/plain; charset=utf-8
+
+Witaj @Model.Name!
+Twoje zamówienie nr @Model.OrderNumber w sklepie ProGym zostało przygotowane i czeka na odbór.
+Zamówienie możesz odebrać w dowolnej chwili w godzinach pracy naszej siłowni.
+Łączny koszt zamówienia wynosi @Model.Cost zł.
+
+
+Tutaj znajdziesz szczegóły Twojego zamówienia: @Url.Action("OrdersList", "Manage", null, "https")
+
+Dziękujemy i zapraszamy ponownie!
+ProGym

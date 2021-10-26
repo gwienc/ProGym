@@ -2132,6 +2132,12 @@
     <Content Include="Views\Emails\OrderConfirmation.cshtml" />
     <Content Include="Views\Emails\OrderConfirmation.Html.cshtml" />
     <Content Include="Views\Emails\OrderConfirmation.Text.cshtml" />
+    <Content Include="Views\Emails\OrderPrepared.cshtml" />
+    <Content Include="Views\Emails\OrderPrepared.Html.cshtml" />
+    <Content Include="Views\Emails\OrderPrepared.Text.cshtml" />
+    <Content Include="Views\Emails\OrderReceived.cshtml" />
+    <Content Include="Views\Emails\OrderReceived.Html.cshtml" />
+    <Content Include="Views\Emails\OrderReceived.Text.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

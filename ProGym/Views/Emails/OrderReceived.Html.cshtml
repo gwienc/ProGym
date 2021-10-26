@@ -1,4 +1,4 @@
-﻿@model ProGym.ViewModels.OrderConfirmationEmail
+﻿@model ProGym.ViewModels.OrderReceivedEmail
 Content-Type: text/html; charset=utf-8
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -512,16 +512,15 @@ Content-Type: text/html; charset=utf-8
 
                                                                                     <td class="mcnTextContent" valign="top" style="padding: 9px 18px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #606060;font-family: Helvetica;font-size: 15px;line-height: 150%;text-align: left;">
 
-                                                                                        <h1 style="margin: 0;padding: 0;display: block;font-family: Helvetica;font-size: 40px;font-style: normal;font-weight: bold;line-height: 125%;letter-spacing: -1px;text-align: left;color: #606060 !important;">Witaj @Model.Name!</h1>
+                                                                                        <h1 style="margin: 0;padding: 0;display: block;font-family: Helvetica;font-size: 40px;font-style: normal;font-weight: bold;line-height: 125%;letter-spacing: -1px;text-align: left;color: #606060 !important;">Witaj @Model.Name!</h1><br />
 
-                                                                                        <h3 style="margin: 0;padding: 0;display: block;font-family: Helvetica;font-size: 18px;font-style: normal;font-weight: bold;line-height: 125%;letter-spacing: -.5px;text-align: left;color: #606060 !important;">Złożyłeś zamówienie o nr @Model.OrderNumber w sklepie ProGym.</h3>
+                                                                                        <h3 style="margin: 0;padding: 0;display: block;font-family: Helvetica;font-size: 18px;font-style: normal;font-weight: bold;line-height: 125%;letter-spacing: -.5px;text-align: left;color: #606060 !important;">Dziękujemy za zakupy w naszym sklepie.<br /> Mamy nadzieję, że zamówienie nr  @Model.OrderNumber w pełni spełni Twoje oczekiwania i w najbliższym czasie ponownie skorzystasz z naszej oferty.</h3>
 
                                                                                         <p style="margin: 1em 0;padding: 0;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #606060;font-family: Helvetica;font-size: 15px;line-height: 150%;text-align: left;">
-                                                                                            Postaramy się, aby zamówione produkty zostały dla Ciebie przygotowane do odbioru najszybciej jak to możliwe.<br />Łączny koszt zamówienia to <strong>@Model.Cost zł</strong>, który należy opłacić przy odbiorze w naszej siłowni.<br />
-                                                                                            <br />
+
                                                                                             Dziękujemy i zapraszamy ponownie!<br />
                                                                                             ProGym<br /><br />
-                                                                                            <br />
+
                                                                                             Chcesz zobaczyć szczegóły swojego zamówienia? <a class="mc-template-link" href="@Url.Action("OrdersList", "Manage", null, "https")" style="word-wrap: break-word;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #6DC6DD;font-weight: normal;text-decoration: underline;">Tutaj znajdziesz je wszystkie</a><br />
                                                                                             Poniżej znajdziesz zdjęcia zamówionych produktów.<br />
                                                                                         </p>
@@ -658,7 +657,7 @@ Content-Type: text/html; charset=utf-8
                                                                                         <em>Copyright © 2021, Wszystkie prawa zastrzeżone.</em><br>
                                                                                         ProGym Sp. z o.o., ul.Słoneczna 73, 35-082 Rzeszów<br>
                                                                                         NIP: 113-213-56-32, KRS: 123456789<br>
-                                                                                        <br>                                                                                
+                                                                                        <br>
                                                                                     </td>
                                                                                 </tr>
                                                                             </tbody>
@@ -685,4 +684,5 @@ Content-Type: text/html; charset=utf-8
     </center>
 </body>
 </html>
+
 
