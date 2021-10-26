@@ -21,6 +21,7 @@ namespace ProGym.Controllers
         private ISessionManager sessionManager { get; set; }
         private StoreContext db = new StoreContext();
         private ApplicationUserManager _userManager;
+        private IMailService mailService;
 
         public ApplicationUserManager UserManager
         {
@@ -37,8 +38,9 @@ namespace ProGym.Controllers
         
         
         
-        public CartController()
+        public CartController(IMailService mailService)
         {
+            this.mailService = mailService;
             this.sessionManager = new SessionManager();
             this.shoppingCartManager = new ShoppingCartManager(this.sessionManager, this.db);
         }
@@ -136,7 +138,7 @@ namespace ProGym.Controllers
                 
                 string url = Url.Action("SendConfirmationEmail", "Manage", new { orderid = newOrder.OrderID, lastname = newOrder.LastName }, Request.Url.Scheme);
 
-                BackgroundJob.Enqueue(() => HelpersHangfire.CallUrl(url));
+                this.mailService.SendOrderConfirmationEmail(order);
                
 
                 return RedirectToAction("OrderConfirmation");

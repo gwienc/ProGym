@@ -29,6 +29,8 @@ namespace ProGym.Controllers
             Error
         }
 
+        private IMailService mailService;
+
         private ApplicationUserManager _userManager;
         public ApplicationUserManager UserManager
         {
@@ -50,6 +52,11 @@ namespace ProGym.Controllers
             }
         }
 
+
+        public ManageController(IMailService mailService)
+        {
+            this.mailService = mailService;
+        }
 
         public async Task<ActionResult> Index(ManageMessageId? message)
         {
@@ -166,12 +173,12 @@ namespace ProGym.Controllers
             if(orderToModify.OrderState == OrderState.Completed)
             {
                 string url = Url.Action("SendPreparedOrderEmail", "Manage", new { orderid = orderToModify.OrderID, lastname = orderToModify.LastName }, Request.Url.Scheme);
-                BackgroundJob.Enqueue(() => HelpersHangfire.CallUrl(url));
+                this.mailService.SendOrderPreparedEmail(orderToModify);
             }
             else if (orderToModify.OrderState == OrderState.Received)
             {
                 string url = Url.Action("SendReceivedOrderEmail", "Manage", new { orderid = orderToModify.OrderID, lastname = orderToModify.LastName }, Request.Url.Scheme);
-                BackgroundJob.Enqueue(() => HelpersHangfire.CallUrl(url));
+                this.mailService.SendOrderReceivedEmail(orderToModify);
             }
 
             return order.OrderState;
