@@ -11,6 +11,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity.Owin;
 using ProGym.App_Start;
 using ProGym.Models;
+using Hangfire;
 
 namespace ProGym.Controllers
 {
@@ -132,13 +133,11 @@ namespace ProGym.Controllers
 
                 var order = db.Orders.Include("OrderItems").Include("OrderItems.Product").SingleOrDefault(o => o.OrderID == newOrder.OrderID);
 
-                OrderConfirmationEmail email = new OrderConfirmationEmail();
-                email.To = order.Email;
-                email.Cost = order.TotalPrice;
-                email.OrderNumber = order.OrderID;                
-                email.OrderItems = order.OrderItems;
-                email.CoverPath = AppConfig.PhotosFolder;
-                email.Send();
+                
+                string url = Url.Action("SendConfirmationEmail", "Manage", new { orderid = newOrder.OrderID, lastname = newOrder.LastName }, Request.Url.Scheme);
+
+                BackgroundJob.Enqueue(() => HelpersHangfire.CallUrl(url));
+               
 
                 return RedirectToAction("OrderConfirmation");
             }

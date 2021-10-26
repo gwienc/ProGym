@@ -1,4 +1,7 @@
-﻿using Owin;
+﻿using Hangfire;
+using Hangfire.Dashboard;
+using Hangfire.SqlServer;
+using Owin;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,9 +27,18 @@ namespace ProGym
             //    config.UseServer();
             //});
 
-            //JobStorage.Current = new SqlServerStorage("StoreContext");
-            //app.UseHangfireDashboard();
-            //app.UseHangfireServer();
+            var options = new DashboardOptions
+            {
+                Authorization = new[]
+                {
+                    new AuthorizationFilter {Roles = "Admin" }
+
+                }
+            };
+
+            JobStorage.Current = new SqlServerStorage("StoreContext");
+            app.UseHangfireDashboard("/hangfire", options);
+            app.UseHangfireServer();
         }
     }
 }

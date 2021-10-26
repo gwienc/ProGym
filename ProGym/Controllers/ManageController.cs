@@ -272,6 +272,23 @@ namespace ProGym.Controllers
             return RedirectToAction("AddProduct", new { confirmSuccess = true });
         }
 
+        public ActionResult SendConfirmationEmail(int orderid, string lastname)
+        {
+            var order = db.Orders.Include("OrderItems").Include("OrderItems.Product").SingleOrDefault(o => o.OrderID == orderid && o.LastName == lastname);
+            
+            if (order == null) return new HttpStatusCodeResult(System.Net.HttpStatusCode.NotFound);
+
+            OrderConfirmationEmail email = new OrderConfirmationEmail();
+            email.To = order.Email;
+            email.Cost = order.TotalPrice;
+            email.OrderNumber = order.OrderID;
+            email.OrderItems = order.OrderItems;
+            email.CoverPath = AppConfig.PhotosFolder;
+            email.Send();
+
+            return new HttpStatusCodeResult(System.Net.HttpStatusCode.OK);
+        }
+
 
         private bool HasPassword()
         {
