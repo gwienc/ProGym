@@ -64,6 +64,7 @@ namespace ProGym.App_Start
         private static void RegisterServices(IKernel kernel)
         {
             kernel.Bind<IMailService>().To<HangFirePostalMailService>();
+            kernel.Bind<ISessionManager>().To<SessionManager>();
         }        
     }
 }

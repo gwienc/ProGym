@@ -18,7 +18,7 @@ namespace ProGym.Controllers
     public class CartController : Controller
     {
         private ShoppingCartManager shoppingCartManager;
-        private ISessionManager sessionManager { get; set; }
+        private ISessionManager sessionManager;
         private StoreContext db = new StoreContext();
         private ApplicationUserManager _userManager;
         private IMailService mailService;
@@ -38,10 +38,10 @@ namespace ProGym.Controllers
         
         
         
-        public CartController(IMailService mailService)
+        public CartController(IMailService mailService, ISessionManager sessionManager)
         {
             this.mailService = mailService;
-            this.sessionManager = new SessionManager();
+            this.sessionManager = sessionManager;
             this.shoppingCartManager = new ShoppingCartManager(this.sessionManager, this.db);
         }
         // GET: Cart
@@ -134,9 +134,7 @@ namespace ProGym.Controllers
                 shoppingCartManager.EmptyCart();
 
                 var order = db.Orders.Include("OrderItems").Include("OrderItems.Product").SingleOrDefault(o => o.OrderID == newOrder.OrderID);
-
                 
-                string url = Url.Action("SendConfirmationEmail", "Manage", new { orderid = newOrder.OrderID, lastname = newOrder.LastName }, Request.Url.Scheme);
 
                 this.mailService.SendOrderConfirmationEmail(order);
                
