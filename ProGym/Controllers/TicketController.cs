@@ -47,12 +47,14 @@ namespace ProGym.Controllers
         
         public async Task<ActionResult> BuyTicket(int ticketId, TypeTicket typeTicket, PeriodOfValidity periodOfValidity)
         {
-            TypeOfTicket typeOfTicket = new TypeOfTicket()
-            {
-                TypeOfTicketId = ticketId,
-                TypeTicket = typeTicket,
-                PeriodOfValidity = periodOfValidity
-            };
+            TypeOfTicket typeOfTicket = db.TypeOfTickets.Where(t => t.TypeOfTicketId == ticketId && t.TypeTicket == typeTicket && t.PeriodOfValidity == periodOfValidity).Single();
+
+            //TypeOfTicket typeOfTicket = new TypeOfTicket()
+            //{
+            //    TypeOfTicketId = ticketId,
+            //    TypeTicket = typeTicket,
+            //    PeriodOfValidity = periodOfValidity
+            //};
             var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
 
             if (Request.IsAuthenticated)

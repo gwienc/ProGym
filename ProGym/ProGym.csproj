@@ -2015,6 +2015,10 @@
     <Compile Include="Migrations\202111011158439_AddTicketsAndTypeOfTickets.designer.cs">
       <DependentUpon>202111011158439_AddTicketsAndTypeOfTickets.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202111011421592_CorrectTicket.cs" />
+    <Compile Include="Migrations\202111011421592_CorrectTicket.designer.cs">
+      <DependentUpon>202111011421592_CorrectTicket.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CartItem.cs" />
     <Compile Include="Models\Category.cs" />
@@ -2195,6 +2199,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202111011158439_AddTicketsAndTypeOfTickets.resx">
       <DependentUpon>202111011158439_AddTicketsAndTypeOfTickets.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111011421592_CorrectTicket.resx">
+      <DependentUpon>202111011421592_CorrectTicket.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
