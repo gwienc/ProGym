@@ -30,5 +30,7 @@ namespace ProGym.DAL
         public DbSet<Category> Categories { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderItem> OrderItems { get; set; }
+        public DbSet<TypeOfTicket> TypeOfTickets { get; set; }
+        public DbSet<Ticket> Tickets { get; set; }
     }
 }
