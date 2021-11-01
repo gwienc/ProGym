@@ -12,6 +12,7 @@ namespace ProGym.Models
     public class ApplicationUser : IdentityUser
     {
         public virtual ICollection<Order> Orders { get; set; }
+        public virtual ICollection<Ticket> Tickets { get; set; }
 
         public UserData UserData { get; set; }
 

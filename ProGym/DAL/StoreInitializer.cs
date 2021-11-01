@@ -30,6 +30,22 @@ namespace ProGym.DAL
             context.SaveChanges();
 
 
+            var ticketTypes = new List<TypeOfTicket>
+            {
+                new TypeOfTicket(){TypeOfTicketId = 1, TypeTicket = TypeTicket.Student, PeriodOfValidity = PeriodOfValidity.OneMonth},
+                new TypeOfTicket(){TypeOfTicketId = 2, TypeTicket = TypeTicket.Student, PeriodOfValidity = PeriodOfValidity.ThreeMonth},
+                new TypeOfTicket(){TypeOfTicketId = 3, TypeTicket = TypeTicket.Student, PeriodOfValidity = PeriodOfValidity.SixMonth},
+                new TypeOfTicket(){TypeOfTicketId = 4, TypeTicket = TypeTicket.Open, PeriodOfValidity = PeriodOfValidity.OneMonth},
+                new TypeOfTicket(){TypeOfTicketId = 5, TypeTicket = TypeTicket.Open, PeriodOfValidity = PeriodOfValidity.ThreeMonth},
+                new TypeOfTicket(){TypeOfTicketId = 6, TypeTicket = TypeTicket.Open, PeriodOfValidity = PeriodOfValidity.SixMonth},
+                new TypeOfTicket(){TypeOfTicketId = 7, TypeTicket = TypeTicket.OpenMax, PeriodOfValidity = PeriodOfValidity.OneMonth},
+                new TypeOfTicket(){TypeOfTicketId = 8, TypeTicket = TypeTicket.OpenMax, PeriodOfValidity = PeriodOfValidity.ThreeMonth},
+                new TypeOfTicket(){TypeOfTicketId = 9, TypeTicket = TypeTicket.OpenMax, PeriodOfValidity = PeriodOfValidity.SixMonth}
+            };
+
+            ticketTypes.ForEach(c => context.TypeOfTickets.AddOrUpdate(c));
+            context.SaveChanges();
+
             var products = new List<Product>
             {
             new Product() {ProductID = 1,
