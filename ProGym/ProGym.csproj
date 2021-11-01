@@ -1968,6 +1968,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\StoreController.cs" />
+    <Compile Include="Controllers\TicketController.cs" />
     <Compile Include="DAL\StoreContext.cs" />
     <Compile Include="DAL\StoreInitializer.cs" />
     <Compile Include="Global.asax.cs">
@@ -2160,6 +2161,8 @@
     <Content Include="Views\Emails\OrderReceived.cshtml" />
     <Content Include="Views\Emails\OrderReceived.Html.cshtml" />
     <Content Include="Views\Emails\OrderReceived.Text.cshtml" />
+    <Content Include="Views\Ticket\ChooseTicket.cshtml" />
+    <Content Include="Views\Ticket\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

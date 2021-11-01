@@ -1,0 +1,54 @@
+﻿@model IEnumerable<ProGym.Models.TypeOfTicket>
+@{
+    ViewBag.Title = "BuyTicket";
+    Layout = "~/Views/Shared/_GymLayout.cshtml";
+}
+
+
+<section>
+    <div class="container-fluid justify-content-center shop-sub pt-5 pb-2">
+        <div class="row pt-5">
+            <div class="col-12 pt-5 text-center">
+                <h1>Wybierz okres ważności karnetu</h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="row pt-5">       
+            @foreach (var ticketType in Model)
+            {
+                <div class="col-md-4 text-center pt-3">
+                    <div class="box pt-5">
+                        @switch (ticketType.TypeTicket)
+                        {
+                            case ProGym.Models.TypeTicket.Student:
+                                <div class="our-tickets-student settings pt-3">
+                                    <h2>@Html.DisplayFor(t => ticketType.TypeTicket)</h2><br />
+                                    <p>@Html.LabelFor(t => ticketType.PeriodOfValidity) : @Html.DisplayFor(t => ticketType.PeriodOfValidity)</p>
+                                </div>
+                                break;
+                            case ProGym.Models.TypeTicket.Open:
+                                <div class="our-tickets-open settings pt-3">
+                                    <h2>@Html.DisplayFor(t => ticketType.TypeTicket)</h2><br />
+                                    <p>@Html.LabelFor(t => ticketType.PeriodOfValidity) : @Html.DisplayFor(t => ticketType.PeriodOfValidity)</p>
+                                </div>
+                                break;
+                            case ProGym.Models.TypeTicket.OpenMax:
+                                <div class="our-tickets-openmax settings pt-3">
+                                    <h2>@Html.DisplayFor(t => ticketType.TypeTicket)</h2><br />
+                                    <p>@Html.LabelFor(t => ticketType.PeriodOfValidity) : @Html.DisplayFor(t => ticketType.PeriodOfValidity)</p>
+                                </div>
+                                break;
+                            default:
+                                break;
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+

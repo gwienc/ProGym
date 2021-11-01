@@ -1,0 +1,147 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_GymLayout.cshtml";
+}
+
+<section>
+    <div class="container-fluid parallax prices">
+        <div class="parallax prices">
+            <div class="row">
+
+            </div>
+        </div>
+    </div>
+</section>
+
+@Html.Partial("_BreadCrumb")
+
+<section>
+    <div class="container-fluid justify-content-center shop-sub pb-2">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1>Wybierz rodzaj karnetu</h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <section id="team" class="pt-5 pb-5">
+        <div class="container pt-5">
+            <div class="row pt-5">
+                <!-- Team member -->
+                <div class="col-xs-12 col-sm-12 col-md-4 pt-5">
+                    <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                        <div class="mainflip">
+                            <div class="frontside">
+                                <div class="card student card-1 text-white bg-dark mb-3 rounded-3">
+                                    <div class="card-header text-center">Karnet STUDENT</div>
+                                    <div class="card-body text-center">
+                                        <h1 class="card-title text-center">69 PLN</h1>
+                                        <hr /><br /><br />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="backside">
+                                <div class="card student card-1 text-white bg-dark mb-3 rounded-3">
+                                    <div class="card-header text-center">Karnet STUDENT</div>
+                                    <div class="card-body text-center">
+
+                                        <p class="card-text">Dostęp do wszystkich stref ćwiczeniowych klubu</p>
+                                        <hr />
+                                        <p class="card-text">Dostęp do sauny</p>
+                                        <hr />
+                                        <p class="card-text">Dostęp do zajęć grupowych</p>
+                                        <hr />
+                                        <p class="card-text">Pomoc trenera personalnego</p>
+                                        <hr />
+                                        <p class="card-text">*Wymagana legitymacja studencka</p>
+                                        <hr />
+                                        <a href="@Url.Action("ChooseTicket","Ticket",new { type = "student" })" class="text-center btn btn-light btn-lg btn-block">Kup teraz</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ./Team member -->
+                <!-- Team member -->
+                <div class="col-xs-12 col-sm-12 col-md-4 pt-5">
+                    <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                        <div class="mainflip">
+                            <div class="frontside">
+                                <div class="card open card-1 text-white bg-dark mb-3 rounded-3">
+                                    <div class="card-header text-center">Karnet OPEN</div>
+                                    <div class="card-body text-center">
+                                        <h1 class="card-title text-center">99 PLN</h1>
+                                        <hr /><br /><br />
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="backside">
+                                <div class="card open card-1 text-white bg-dark mb-3 rounded-3">
+                                    <div class="card-header text-center">Karnet OPEN</div>
+                                    <div class="card-body text-center">
+
+                                        <p class="card-text">Dostęp do wszystkich stref ćwiczeniowych klubu</p>
+                                        <hr />
+                                        <p class="card-text">Dostęp do sauny i solarium</p>
+                                        <hr />
+                                        <p class="card-text">Dostęp do zajęć grupowych</p>
+                                        <hr />
+                                        <p class="card-text">Pomoc trenera personalnego</p>
+                                        <hr />
+                                        <a href="@Url.Action("ChooseTicket","Ticket",new { type = "open" })" class="text-center btn btn-light btn-lg btn-block">Kup teraz</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ./Team member -->
+                <!-- Team member -->
+                <div class="col-xs-12 col-sm-12 col-md-4 pt-5">
+                    <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                        <div class="mainflip">
+                            <div class="frontside">
+                                <div class="card open-max card-1 text-white bg-dark mb-3 rounded-3">
+                                    <div class="card-header text-center">Karnet OPEN MAX</div>
+                                    <div class="card-body text-center">
+                                        <h1 class="card-title text-center">119 PLN</h1>
+                                        <hr /><br /><br />
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="backside">
+                                <div class="card open-max card-1 text-white bg-dark mb-3 rounded-3">
+                                    <div class="card-header text-center pt-3 pb-3">Karnet OPEN MAX</div>
+                                    <div class="card-body text-center">
+                                        <p class="card-text">Dostęp do wszystkich stref ćwiczeniowych klubu</p>
+                                        <hr />
+                                        <p class="card-text">Dostęp do całej strefy relaksu</p>
+                                        <hr />
+                                        <p class="card-text">Dostęp do zajęć grupowych</p>
+                                        <hr />
+                                        <p class="card-text">Pomoc trenera personalnego</p>
+                                        <hr />
+                                        <p class="card-text">Dostęp do zajęć ze sztuk walki</p>
+                                        <hr />
+                                        <a href="@Url.Action("ChooseTicket","Ticket",new { type = "openmax" })" class="text-center btn btn-light btn-lg btn-block">Kup teraz</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ./Team member -->
+
+
+            </div>
+        </div>
+    </section>
+    <!-- Team -->
+</section>
+
+

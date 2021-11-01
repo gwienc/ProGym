@@ -10,6 +10,7 @@ namespace ProGym.Models
     {
         public int TypeOfTicketId { get; set; }
         public TypeTicket TypeTicket { get; set; }
+        [Display(Name = "Okres aktywności")]
         public PeriodOfValidity PeriodOfValidity { get; set; }
 
     }
