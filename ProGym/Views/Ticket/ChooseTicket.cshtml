@@ -17,7 +17,7 @@
 
 <section>
     <div class="container">
-        <div class="row pt-5">       
+        <div class="row pt-5">
             @foreach (var ticketType in Model)
             {
                 <div class="col-md-4 text-center pt-3">
@@ -28,18 +28,24 @@
                                 <div class="our-tickets-student settings pt-3">
                                     <h2>@Html.DisplayFor(t => ticketType.TypeTicket)</h2><br />
                                     <p>@Html.LabelFor(t => ticketType.PeriodOfValidity) : @Html.DisplayFor(t => ticketType.PeriodOfValidity)</p>
+                                    @Html.HiddenFor(t => ticketType.TypeOfTicketId)
+                                    <a href="@Url.Action("BuyTicket", "Ticket", new {ticketId = ticketType.TypeOfTicketId, typeTicket = ticketType.TypeTicket, periodOfValidity = ticketType.PeriodOfValidity })" class="text-center btn btn-light btn-lg btn-block">Kup teraz</a>
                                 </div>
                                 break;
                             case ProGym.Models.TypeTicket.Open:
                                 <div class="our-tickets-open settings pt-3">
                                     <h2>@Html.DisplayFor(t => ticketType.TypeTicket)</h2><br />
                                     <p>@Html.LabelFor(t => ticketType.PeriodOfValidity) : @Html.DisplayFor(t => ticketType.PeriodOfValidity)</p>
+                                    @Html.HiddenFor(t => ticketType.TypeOfTicketId)
+                                    <a href="@Url.Action("BuyTicket", "Ticket", new {ticketId = ticketType.TypeOfTicketId, typeTicket = ticketType.TypeTicket, periodOfValidity = ticketType.PeriodOfValidity })" class="text-center btn btn-light btn-lg btn-block">Kup teraz</a>
                                 </div>
                                 break;
                             case ProGym.Models.TypeTicket.OpenMax:
                                 <div class="our-tickets-openmax settings pt-3">
                                     <h2>@Html.DisplayFor(t => ticketType.TypeTicket)</h2><br />
                                     <p>@Html.LabelFor(t => ticketType.PeriodOfValidity) : @Html.DisplayFor(t => ticketType.PeriodOfValidity)</p>
+                                    @Html.HiddenFor(t => ticketType.TypeOfTicketId)
+                                    <a href="@Url.Action("BuyTicket", "Ticket", new {ticketId = ticketType.TypeOfTicketId, typeTicket = ticketType.TypeTicket, periodOfValidity = ticketType.PeriodOfValidity })" class="text-center btn btn-light btn-lg btn-block">Kup teraz</a>
                                 </div>
                                 break;
                             default:

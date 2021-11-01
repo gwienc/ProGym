@@ -2163,6 +2163,7 @@
     <Content Include="Views\Emails\OrderReceived.Text.cshtml" />
     <Content Include="Views\Ticket\ChooseTicket.cshtml" />
     <Content Include="Views\Ticket\Index.cshtml" />
+    <Content Include="Views\Ticket\BuyTicket.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

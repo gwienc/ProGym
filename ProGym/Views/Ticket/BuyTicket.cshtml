@@ -1,0 +1,82 @@
+﻿@model ProGym.Models.Ticket
+@{
+    ViewBag.Title = "BuyTicket";
+    Layout = "~/Views/Shared/_ManageLayout.cshtml";
+}
+
+<section>
+    <div class="container-fluid justify-content-center shop-sub pt-5 pb-2">
+        <div class="row pt-5">
+            <div class="col-12 pt-5 text-center">
+                <h1>Potwierdź dane</h1>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container">
+        <div class="row pt-5">
+            <div class="col-md-4 text-center pt-3">
+                <div class="box pt-5">
+                    @switch (Model.TypeOfTicket.TypeTicket)
+                    {
+                        case ProGym.Models.TypeTicket.Student:
+                            <div class="our-tickets-student settings pt-3">
+
+                                @using (Html.BeginForm("BuyTicket", "Ticket"))
+                                {
+                                    <h2>@Html.DisplayFor(t => Model.TypeOfTicket.TypeTicket)</h2><br />
+                                    <p>@Html.LabelFor(t => Model.TypeOfTicket.PeriodOfValidity) : @Html.DisplayFor(t => Model.TypeOfTicket.PeriodOfValidity)</p>
+                                    <p>@Html.LabelFor(t => Model.DateOfPurchase) : @Html.DisplayFor(t => Model.DateOfPurchase)</p>
+                                    <p>@Html.LabelFor(t => Model.ExpirationDate) : @Html.DisplayFor(t => Model.ExpirationDate)</p>
+                                    @Html.HiddenFor(t => Model.IsActive)
+                                    @Html.HiddenFor(t => Model.UserId)
+                                    <input type="submit" value="Kupuję" class="btn btn-sm btn-success" />
+                                }
+                            </div>
+                            break;
+                        case ProGym.Models.TypeTicket.Open:
+                <div class="our-tickets-open settings pt-3">
+                    @using (Html.BeginForm("BuyTicket", "Ticket"))
+                    {
+                        <h2>@Html.DisplayFor(t => Model.TypeOfTicket.TypeTicket)</h2><br />
+                        <p>@Html.LabelFor(t => Model.TypeOfTicket.PeriodOfValidity) : @Html.DisplayFor(t => Model.TypeOfTicket.PeriodOfValidity)</p>
+                        <p>@Html.LabelFor(t => Model.DateOfPurchase) : @Html.DisplayFor(t => Model.DateOfPurchase)</p>
+                        <p>@Html.LabelFor(t => Model.ExpirationDate) : @Html.DisplayFor(t => Model.ExpirationDate)</p>
+                        @Html.HiddenFor(t => Model.DateOfPurchase)
+                        @Html.HiddenFor(t => Model.ExpirationDate)
+                        @Html.HiddenFor(t => Model.TypeOfTicket.TypeOfTicketId)
+                        @Html.HiddenFor(t => Model.TypeOfTicket.PeriodOfValidity)
+                        @Html.HiddenFor(t => Model.TypeOfTicket.TypeTicket)
+                        @Html.HiddenFor(t => Model.IsActive)
+                        @Html.HiddenFor(t => Model.UserId)
+                        <input type="submit" value="Kupuję" class="btn btn-sm btn-success" />
+                    }
+
+                </div>
+                            break;
+                        case ProGym.Models.TypeTicket.OpenMax:
+                            <div class="our-tickets-openmax settings pt-3">
+                                @using (Html.BeginForm("BuyTicket", "Ticket"))
+                                {
+                                    <h2>@Html.DisplayFor(t => Model.TypeOfTicket.TypeTicket)</h2><br />
+                                    <p>@Html.LabelFor(t => Model.TypeOfTicket.PeriodOfValidity) : @Html.DisplayFor(t => Model.TypeOfTicket.PeriodOfValidity)</p>
+                                    <p>@Html.LabelFor(t => Model.DateOfPurchase) : @Html.DisplayFor(t => Model.DateOfPurchase)</p>
+                                    <p>@Html.LabelFor(t => Model.ExpirationDate) : @Html.DisplayFor(t => Model.ExpirationDate)</p>
+                                    @Html.HiddenFor(t => Model.IsActive)
+                                    @Html.HiddenFor(t => Model.UserId)
+                                    <input type="submit" value="Kupuję" class="btn btn-sm btn-success" />
+                                }
+
+                            </div>
+                            break;
+                        default:
+                            break;
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
