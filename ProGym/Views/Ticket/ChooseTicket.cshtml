@@ -29,7 +29,9 @@
                                     <h2>@Html.DisplayFor(t => ticketType.TypeTicket)</h2><br />
                                     <p>@Html.LabelFor(t => ticketType.PeriodOfValidity) : @Html.DisplayFor(t => ticketType.PeriodOfValidity)</p>
                                     @Html.HiddenFor(t => ticketType.TypeOfTicketId)
-                                    <a href="@Url.Action("BuyTicket", "Ticket", new {ticketId = ticketType.TypeOfTicketId, typeTicket = ticketType.TypeTicket, periodOfValidity = ticketType.PeriodOfValidity })" class="text-center btn btn-light btn-lg btn-block">Kup teraz</a>
+                                    <div class="pb-3">
+                                        <a href="@Url.Action("BuyTicket", "Ticket", new {ticketId = ticketType.TypeOfTicketId, typeTicket = ticketType.TypeTicket, periodOfValidity = ticketType.PeriodOfValidity })" class="text-center btn btn-light btn-lg btn-block">Kup teraz</a>
+                                    </div>
                                 </div>
                                 break;
                             case ProGym.Models.TypeTicket.Open:
@@ -37,7 +39,9 @@
                                     <h2>@Html.DisplayFor(t => ticketType.TypeTicket)</h2><br />
                                     <p>@Html.LabelFor(t => ticketType.PeriodOfValidity) : @Html.DisplayFor(t => ticketType.PeriodOfValidity)</p>
                                     @Html.HiddenFor(t => ticketType.TypeOfTicketId)
-                                    <a href="@Url.Action("BuyTicket", "Ticket", new {ticketId = ticketType.TypeOfTicketId, typeTicket = ticketType.TypeTicket, periodOfValidity = ticketType.PeriodOfValidity })" class="text-center btn btn-light btn-lg btn-block">Kup teraz</a>
+                                    <div class="pb-3">
+                                        <a href="@Url.Action("BuyTicket", "Ticket", new {ticketId = ticketType.TypeOfTicketId, typeTicket = ticketType.TypeTicket, periodOfValidity = ticketType.PeriodOfValidity })" class="text-center btn btn-light btn-lg btn-block">Kup teraz</a>
+                                    </div>
                                 </div>
                                 break;
                             case ProGym.Models.TypeTicket.OpenMax:
@@ -45,7 +49,9 @@
                                     <h2>@Html.DisplayFor(t => ticketType.TypeTicket)</h2><br />
                                     <p>@Html.LabelFor(t => ticketType.PeriodOfValidity) : @Html.DisplayFor(t => ticketType.PeriodOfValidity)</p>
                                     @Html.HiddenFor(t => ticketType.TypeOfTicketId)
-                                    <a href="@Url.Action("BuyTicket", "Ticket", new {ticketId = ticketType.TypeOfTicketId, typeTicket = ticketType.TypeTicket, periodOfValidity = ticketType.PeriodOfValidity })" class="text-center btn btn-light btn-lg btn-block">Kup teraz</a>
+                                    <div class="pb-3">
+                                        <a href="@Url.Action("BuyTicket", "Ticket", new {ticketId = ticketType.TypeOfTicketId, typeTicket = ticketType.TypeTicket, periodOfValidity = ticketType.PeriodOfValidity })" class="text-center btn btn-light btn-lg btn-block">Kup teraz</a>
+                                    </div>
                                 </div>
                                 break;
                             default:
