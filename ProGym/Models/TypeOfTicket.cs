@@ -12,7 +12,6 @@ namespace ProGym.Models
         public TypeTicket TypeTicket { get; set; }
         [Display(Name = "Okres aktywności")]
         public PeriodOfValidity PeriodOfValidity { get; set; }
-        public virtual ICollection<Ticket> Ticket { get; set; }
 
     }
 

@@ -29,31 +29,32 @@
                                     <p>@Html.LabelFor(t => Model.TypeOfTicket.PeriodOfValidity) : @Html.DisplayFor(t => Model.TypeOfTicket.PeriodOfValidity)</p>
                                     <p>@Html.LabelFor(t => Model.DateOfPurchase) : @Html.DisplayFor(t => Model.DateOfPurchase)</p>
                                     <p>@Html.LabelFor(t => Model.ExpirationDate) : @Html.DisplayFor(t => Model.ExpirationDate)</p>
+                                    @Html.HiddenFor(t => Model.DateOfPurchase)
+                                    @Html.HiddenFor(t => Model.ExpirationDate)
                                     @Html.HiddenFor(t => Model.IsActive)
                                     @Html.HiddenFor(t => Model.UserId)
+                                    @Html.HiddenFor(t => Model.TypeOfTicketId)
                                     <input type="submit" value="Kupuję" class="btn btn-sm btn-success" />
                                 }
                             </div>
                             break;
                         case ProGym.Models.TypeTicket.Open:
-                <div class="our-tickets-open settings pt-3">
-                    @using (Html.BeginForm("BuyTicket", "Ticket"))
-                    {
-                        <h2>@Html.DisplayFor(t => Model.TypeOfTicket.TypeTicket)</h2><br />
-                        <p>@Html.LabelFor(t => Model.TypeOfTicket.PeriodOfValidity) : @Html.DisplayFor(t => Model.TypeOfTicket.PeriodOfValidity)</p>
-                        <p>@Html.LabelFor(t => Model.DateOfPurchase) : @Html.DisplayFor(t => Model.DateOfPurchase)</p>
-                        <p>@Html.LabelFor(t => Model.ExpirationDate) : @Html.DisplayFor(t => Model.ExpirationDate)</p>
-                        @Html.HiddenFor(t => Model.DateOfPurchase)
-                        @Html.HiddenFor(t => Model.ExpirationDate)
-                        @Html.HiddenFor(t => Model.TypeOfTicket.TypeOfTicketId)
-                        @Html.HiddenFor(t => Model.TypeOfTicket.PeriodOfValidity)
-                        @Html.HiddenFor(t => Model.TypeOfTicket.TypeTicket)
-                        @Html.HiddenFor(t => Model.IsActive)
-                        @Html.HiddenFor(t => Model.UserId)
-                        <input type="submit" value="Kupuję" class="btn btn-sm btn-success" />
-                    }
+                            <div class="our-tickets-open settings pt-3">
+                                @using (Html.BeginForm("BuyTicket", "Ticket"))
+                                {
+                                    <h2>@Html.DisplayFor(t => Model.TypeOfTicket.TypeTicket)</h2><br />
+                                    <p>@Html.LabelFor(t => Model.TypeOfTicket.PeriodOfValidity) : @Html.DisplayFor(t => Model.TypeOfTicket.PeriodOfValidity)</p>
+                                    <p>@Html.LabelFor(t => Model.DateOfPurchase) : @Html.DisplayFor(t => Model.DateOfPurchase)</p>
+                                    <p>@Html.LabelFor(t => Model.ExpirationDate) : @Html.DisplayFor(t => Model.ExpirationDate)</p>
+                                    @Html.HiddenFor(t => Model.DateOfPurchase)
+                                    @Html.HiddenFor(t => Model.ExpirationDate)
+                                    @Html.HiddenFor(t => Model.IsActive)
+                                    @Html.HiddenFor(t => Model.UserId)
+                                    @Html.HiddenFor(t => Model.TypeOfTicketId)
+                                    <input type="submit" value="Kupuję" class="btn btn-sm btn-success" />
+                                }
 
-                </div>
+                            </div>
                             break;
                         case ProGym.Models.TypeTicket.OpenMax:
                             <div class="our-tickets-openmax settings pt-3">
@@ -63,11 +64,13 @@
                                     <p>@Html.LabelFor(t => Model.TypeOfTicket.PeriodOfValidity) : @Html.DisplayFor(t => Model.TypeOfTicket.PeriodOfValidity)</p>
                                     <p>@Html.LabelFor(t => Model.DateOfPurchase) : @Html.DisplayFor(t => Model.DateOfPurchase)</p>
                                     <p>@Html.LabelFor(t => Model.ExpirationDate) : @Html.DisplayFor(t => Model.ExpirationDate)</p>
+                                    @Html.HiddenFor(t => Model.DateOfPurchase)
+                                    @Html.HiddenFor(t => Model.ExpirationDate)
                                     @Html.HiddenFor(t => Model.IsActive)
                                     @Html.HiddenFor(t => Model.UserId)
+                                    @Html.HiddenFor(t => Model.TypeOfTicketId)
                                     <input type="submit" value="Kupuję" class="btn btn-sm btn-success" />
                                 }
-
                             </div>
                             break;
                         default:

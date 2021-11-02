@@ -2019,6 +2019,14 @@
     <Compile Include="Migrations\202111011421592_CorrectTicket.designer.cs">
       <DependentUpon>202111011421592_CorrectTicket.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202111021102167_CorrectTypeOfTicket.cs" />
+    <Compile Include="Migrations\202111021102167_CorrectTypeOfTicket.designer.cs">
+      <DependentUpon>202111021102167_CorrectTypeOfTicket.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202111021119353_CorrectTypeOfTicket2.cs" />
+    <Compile Include="Migrations\202111021119353_CorrectTypeOfTicket2.designer.cs">
+      <DependentUpon>202111021119353_CorrectTypeOfTicket2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CartItem.cs" />
     <Compile Include="Models\Category.cs" />
@@ -2202,6 +2210,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202111011421592_CorrectTicket.resx">
       <DependentUpon>202111011421592_CorrectTicket.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111021102167_CorrectTypeOfTicket.resx">
+      <DependentUpon>202111021102167_CorrectTypeOfTicket.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111021119353_CorrectTypeOfTicket2.resx">
+      <DependentUpon>202111021119353_CorrectTypeOfTicket2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

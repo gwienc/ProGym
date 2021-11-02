@@ -48,13 +48,7 @@ namespace ProGym.Controllers
         public async Task<ActionResult> BuyTicket(int ticketId, TypeTicket typeTicket, PeriodOfValidity periodOfValidity)
         {
             TypeOfTicket typeOfTicket = db.TypeOfTickets.Where(t => t.TypeOfTicketId == ticketId && t.TypeTicket == typeTicket && t.PeriodOfValidity == periodOfValidity).Single();
-
-            //TypeOfTicket typeOfTicket = new TypeOfTicket()
-            //{
-            //    TypeOfTicketId = ticketId,
-            //    TypeTicket = typeTicket,
-            //    PeriodOfValidity = periodOfValidity
-            //};
+         
             var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
 
             if (Request.IsAuthenticated)
@@ -67,7 +61,8 @@ namespace ProGym.Controllers
                     case PeriodOfValidity.OneMonth:
                         newTicket = new Ticket()
                         {
-                            TypeOfTicket = typeOfTicket,                         
+                            TypeOfTicket = typeOfTicket,
+                            TypeOfTicketId = typeOfTicket.TypeOfTicketId,
                             DateOfPurchase = dateofPurchase,
                             ExpirationDate = dateofPurchase.AddMonths(1),
                             IsActive = true
@@ -78,6 +73,7 @@ namespace ProGym.Controllers
                         newTicket = new Ticket
                         {
                             TypeOfTicket = typeOfTicket,
+                            TypeOfTicketId = typeOfTicket.TypeOfTicketId,
                             DateOfPurchase = dateofPurchase,
                             ExpirationDate = dateofPurchase.AddMonths(3),
                             IsActive = true
@@ -87,6 +83,7 @@ namespace ProGym.Controllers
                         newTicket = new Ticket
                         {
                             TypeOfTicket = typeOfTicket,
+                            TypeOfTicketId = typeOfTicket.TypeOfTicketId,
                             DateOfPurchase = dateofPurchase,
                             ExpirationDate = dateofPurchase.AddMonths(6),
                             IsActive = true
@@ -134,7 +131,7 @@ namespace ProGym.Controllers
                 DateOfPurchase = ticket.DateOfPurchase,
                 ExpirationDate = ticket.ExpirationDate,
                 IsActive = ticket.IsActive,
-                TypeOfTicket = ticket.TypeOfTicket,
+                TypeOfTicketId = ticket.TypeOfTicketId
             };
             this.db.Tickets.Add(newTicket);
             db.SaveChanges();
