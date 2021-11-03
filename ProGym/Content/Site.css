@@ -612,8 +612,7 @@ body {
 /*START LOGIN*/
 
 .card-body form {
-    font-weight: 6
-    00;
+    font-weight: 600;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
@@ -640,6 +639,12 @@ body {
 
 
 /* START MANAGE */
+
+.card-body h2, profile h1, h2, p {
+    font-weight: 400;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
 
 .manage-message{
     color:#8ee901;

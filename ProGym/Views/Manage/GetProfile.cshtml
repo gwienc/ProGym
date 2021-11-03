@@ -1,0 +1,46 @@
+﻿@model ProGym.ViewModels.ProfileViewModel
+@{
+    ViewBag.Title = "GetProfile";
+    Layout = "~/Views/Shared/_ManageLayout.cshtml";
+}
+
+<section>
+    <div class="container ">
+        <div class="row pt-5">
+            <div class="col-md-6 pt-5 pe-3">
+                <div class="card profile h-100 text-dark bg-light mb-3">
+                    <div class="card-header"><h2>Twoje Dane</h2></div>
+                    <div class="card-body">
+                        <br />
+                        <h2 class="card-title">@Model.UserData.FirstName @Model.UserData.LastName</h2>
+                        <p class="card-text">ul. @Model.UserData.Address, @Model.UserData.CodeAndCity</p>
+                        <p class="card-text">@Model.UserData.Email</p>
+                        <p class="card-text">@Model.UserData.PhoneNumber</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 justify-content-center pt-5 ps-3">
+                <div class="card profile h-100 border-success mb-3">
+                    <div class="card-header"><h2>Twój Karnet</h2></div>
+                    <div class="card-body text-success">
+                        <br />
+                        <h2 class="card-title">@Model.Ticket.TypeOfTicket.TypeTicket</h2>
+                        <p class="card-text">Nr karnetu: @Model.Ticket.TypeOfTicket.TypeOfTicketId</p>
+                        @if (Model.Ticket.IsActive)
+                        {
+                            <p class="card-text">Aktywny: Tak</p>
+                        }
+                        else
+                        {
+                            <p class="card-text">Aktywny: Nie</p>
+                        }
+                        <p class="card-text">Okres aktywności: @Html.DisplayFor(t => t.Ticket.TypeOfTicket.PeriodOfValidity)
+                        <p class="card-text">Data zakupu: @Model.Ticket.DateOfPurchase</p>
+                        <p class="card-text">Data ważności: @Model.Ticket.ExpirationDate</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
