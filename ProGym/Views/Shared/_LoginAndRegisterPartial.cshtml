@@ -7,8 +7,17 @@
         {
             @Html.AntiForgeryToken()
 
-            @Html.ActionLink(User.Identity.GetUserName(), "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })<i class="pe-3"></i>
-            <a href="javascript:document.getElementById('logoutForm').submit()">Wyloguj</a>
+            if (User.IsInRole("Admin"))
+            {
+                @Html.ActionLink(User.Identity.GetUserName(), "OrdersList", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })<i class="pe-3"></i>
+                <a href="javascript:document.getElementById('logoutForm').submit()">Wyloguj</a>
+            }
+            else
+            {
+                @Html.ActionLink(User.Identity.GetUserName(), "GetProfile", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })<i class="pe-3"></i>
+                <a href="javascript:document.getElementById('logoutForm').submit()">Wyloguj</a>
+            }
+
         }
     }
     else
