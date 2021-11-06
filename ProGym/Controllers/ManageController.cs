@@ -296,6 +296,12 @@ namespace ProGym.Controllers
             return View(allProducts);
         }
 
+        public ActionResult UsersList()
+        {
+            var allUsers = db.Users.ToList();
+            return View(allUsers);
+        }
+
         [HttpPost]
         public ActionResult HideProduct(int? productId)
         {

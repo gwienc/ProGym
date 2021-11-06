@@ -1,0 +1,67 @@
+﻿@model IEnumerable<ProGym.Models.ApplicationUser>
+@using ProGym.Infrastructure
+@{
+    ViewBag.Title = "ProductList";
+}
+
+
+<div id="productlist-section pt-5">
+    <div class="row pb-4 pt-5">
+        <table class="table all-products pt-5">
+            <thead>
+                <tr>
+                    <th scope="col">ID Użytkownika</th>
+                    <th scope="col">Użytkownik</th>
+                    <th scope="col">Imię</th>
+                    <th scope="col">Nazwisko</th>
+                    <th scope="col">Email do wysyłki</th>
+                    <th scope="col">Nr tel</th>
+                    <th scope="col">Adres</th>
+                    <th scope="col">Adres cd</th>
+                    <th scope="col">Posiada karnet</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var user in Model)
+                {
+                <tr>
+                    <th scope="row">@user.Id</th>
+                    <td>@user.UserName</td>
+                    <td>@user.UserData.FirstName</td>
+                    <td>@user.UserData.LastName</td>
+                    <td>@user.UserData.Email</td>>
+                    <td>@user.UserData.PhoneNumber</td>
+                    <td width="10%">@user.UserData.Address</td>
+                    <td width="15%">@user.UserData.CodeAndCity</td>                   
+                    @if (user.Tickets.Count > 0)
+                    {
+                        <td width="10%">Posiada karnet </td>
+                    }
+                    else
+                    {
+                        <td width="10%">Nie posiada karnetu </td>
+                    }
+
+                    @*<td>
+                        <a href="@Url.Action("AddProduct", "Manage", new { productId = product.ProductID })" class="btn btn-sm btn-success"> Edytuj </a>
+                    </td>*@
+                </tr>
+
+                    @*<div class="col-xl-3 col-md-6 p-3">
+                            <div class="card h-100">
+                                <a href="@Url.Action("Details", "Store", new { id = product.ProductID })"><img src="@Url.ProductPhotoPath(product.PhotoFileName)" class="card-img-top" alt="..."></a>
+                                <div class="card-body">
+                                    <a id="product-name" href="@Url.Action("Details", "Store", new { id = product.ProductID })"><p class="card-title h-75">@product.Name</p></a>
+                                    <a href="@Url.Action("AddToCart", "Cart", new { id = product.ProductID })" class="btn btn-sm btn-primary">Dodaj do koszyka</a>
+                                    <br /><br /><br />
+                                </div>
+                            </div>
+                        </div>*@
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
