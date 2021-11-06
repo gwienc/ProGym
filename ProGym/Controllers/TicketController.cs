@@ -2,6 +2,7 @@
 using Microsoft.AspNet.Identity.Owin;
 using ProGym.App_Start;
 using ProGym.DAL;
+using ProGym.Infrastructure;
 using ProGym.Models;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,8 @@ namespace ProGym.Controllers
     {
         StoreContext db = new StoreContext();
 
+
+        private IMailService mailService;
         private ApplicationUserManager _userManager;
         public ApplicationUserManager UserManager
         {
@@ -27,6 +30,11 @@ namespace ProGym.Controllers
             {
                 _userManager = value;
             }
+        }
+
+        public TicketController(IMailService mailService)
+        {
+            this.mailService = mailService;
         }
 
         public ActionResult Index()
@@ -108,11 +116,13 @@ namespace ProGym.Controllers
             {
                 var userId = User.Identity.GetUserId();
 
-                CreateTicket(userId, ticket);
+                Ticket newTicket = CreateTicket(userId, ticket);
 
                 var user = await UserManager.FindByIdAsync(userId);
                 TryUpdateModel(user.Tickets);
                 await UserManager.UpdateAsync(user);
+
+                this.mailService.SendConfirmationTicketEmail(newTicket);
 
                 return RedirectToAction("OrderConfirmation", "Cart");
             }
@@ -123,7 +133,7 @@ namespace ProGym.Controllers
         }
 
 
-        public void CreateTicket(string userId, Ticket ticket)
+        public Ticket CreateTicket(string userId, Ticket ticket)
         {
             Ticket newTicket = new Ticket()
             {
@@ -135,7 +145,8 @@ namespace ProGym.Controllers
             };
             this.db.Tickets.Add(newTicket);
             db.SaveChanges();
-            
+
+            return newTicket;
         }
     }
 }

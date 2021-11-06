@@ -10,6 +10,15 @@ namespace ProGym.Infrastructure
 {
     public class HangFirePostalMailService : IMailService
     {
+        public void SendConfirmationTicketEmail(Ticket ticket)
+        {
+            var urlHelper = new UrlHelper(HttpContext.Current.Request.RequestContext);
+            string url = urlHelper.Action("SendConfirmationTicketEmail", "Manage", new { ticketId = ticket.TicketId, userId = ticket.UserId }, HttpContext.Current.Request.Url.Scheme);
+
+
+            BackgroundJob.Enqueue(() => HelpersHangfire.CallUrl(url));
+        }
+
         public void SendOrderConfirmationEmail(Order order)
         {
             var urlHelper = new UrlHelper(HttpContext.Current.Request.RequestContext);

@@ -11,5 +11,6 @@ namespace ProGym.Infrastructure
         void SendOrderConfirmationEmail(Order order);
         void SendOrderPreparedEmail(Order order);
         void SendOrderReceivedEmail(Order order);
+        void SendConfirmationTicketEmail(Ticket ticket);
     }
 }

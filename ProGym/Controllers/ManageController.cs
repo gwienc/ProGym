@@ -367,6 +367,23 @@ namespace ProGym.Controllers
             return new HttpStatusCodeResult(System.Net.HttpStatusCode.OK);
         }
 
+        public ActionResult SendConfirmationTicketEmail(int ticketId, string userId)
+        {
+            var ticket = db.Tickets.Include("TypeOfTicket").SingleOrDefault(t => t.TicketId == ticketId && t.UserId == userId);
+            if(ticket == null) return new HttpStatusCodeResult(System.Net.HttpStatusCode.NotFound);
+
+            TicketConfirmationEmail email = new TicketConfirmationEmail();
+            email.To = ticket.User.UserData.Email;
+            email.Name = ticket.User.UserData.FirstName;
+            email.TicketName = ticket.TypeOfTicket.TypeTicket.ToString();
+            email.TicketID = ticket.TicketId;
+            email.ExpirationDate = ticket.ExpirationDate;
+            email.PeriodOfValidity = ticket.TypeOfTicket.PeriodOfValidity;
+            email.Send();
+
+            return new HttpStatusCodeResult(System.Net.HttpStatusCode.OK);
+        }
+
 
         private bool HasPassword()
         {
