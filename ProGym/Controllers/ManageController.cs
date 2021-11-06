@@ -90,15 +90,27 @@ namespace ProGym.Controllers
         public async Task<ActionResult> GetProfile()
         {
             var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
-            var ticket = db.Tickets.Include("TypeOfTicket").Where(c => c.UserId == user.Id).Single();
+            Ticket ticket;
 
-            var model = new ProfileViewModel
+            if (user.Tickets != null && user.Tickets.Count != 0)
             {
-                UserData = user.UserData,
-                Ticket = ticket
-            };
+               ticket = db.Tickets.Include("TypeOfTicket").Where(c => c.UserId == user.Id).Single();
+                var model = new ProfileViewModel
+                {
+                    UserData = user.UserData,
+                    Ticket = ticket
+                };
+                return View(model);
+            }
+            else
+            {              
+                var model = new ProfileViewModel
+                {
+                    UserData = user.UserData
+                };
+                return View(model);
+            }
 
-            return View(model);
         }
 
         [HttpPost]
