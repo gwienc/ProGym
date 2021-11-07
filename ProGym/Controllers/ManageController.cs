@@ -304,6 +304,12 @@ namespace ProGym.Controllers
             return View(allUsers);
         }
 
+        public ActionResult TicketsList()
+        {
+            var allTickets = db.Tickets.ToList();
+            return View(allTickets);
+        }
+
         [HttpPost]
         public ActionResult HideProduct(int? productId)
         {

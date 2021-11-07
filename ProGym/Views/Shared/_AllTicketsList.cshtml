@@ -1,0 +1,56 @@
+﻿@model IEnumerable<ProGym.Models.Ticket>
+@using ProGym.Infrastructure
+@{
+    ViewBag.Title = "TicketsList";
+}
+
+    <section>
+        <div class="container orderlist">
+            <div class="row text-center pb-5">
+                <h1>Lista karnetów</h1>
+            </div>
+        </div>
+    </section>
+
+<div id="productlist-section pt-5">
+    <div class="row pb-4 pt-5">
+        <div class="table-responsive">
+            <table class="table table-striped all-products pt-5">
+                <thead>
+                    <tr>
+                        <th scope="col">ID Karnetu</th>
+                        <th scope="col">Typ karnetu</th>
+                        <th scope="col">Okres aktywności</th>
+                        <th scope="col">Aktywny</th>
+                        <th scope="col">Data zakupu</th>
+                        <th scope="col">Termin wygaśnięcia</th>
+                        <th scope="col">ID użytkownika</th>
+                        <th scope="col">Nazwa użytkownika</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var ticket in Model)
+                    {
+                        <tr>
+                            <td>@ticket.TicketId</td>
+                            <td>@ticket.TypeOfTicket.TypeTicket</td>
+                            <td>@Html.DisplayFor(t => ticket.TypeOfTicket.PeriodOfValidity)</td>
+                            @if (ticket.IsActive)
+                            {
+                                <td style="color:forestgreen">Aktywny</td>
+                            }
+                            else
+                            {
+                                <td style="color:red">Nieaktywny</td>
+                            }
+                            <td>@ticket.DateOfPurchase</td>
+                            <td>@ticket.ExpirationDate</td>
+                            <td>@ticket.UserId</td>
+                            <td>@ticket.User.UserName</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

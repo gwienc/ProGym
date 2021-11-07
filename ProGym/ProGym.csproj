@@ -2183,6 +2183,8 @@
     <Content Include="Views\Emails\TicketConfirmation.Text.cshtml" />
     <Content Include="Views\Manage\UsersList.cshtml" />
     <Content Include="Views\Shared\_AllUsersList.cshtml" />
+    <Content Include="Views\Manage\TicketsList.cshtml" />
+    <Content Include="Views\Shared\_AllTicketsList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

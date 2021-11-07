@@ -1,0 +1,17 @@
+﻿@model ICollection<ProGym.Models.Ticket>
+@{
+    ViewBag.Title = "TicketsList";
+    Layout = "~/Views/Shared/_ManageLayout.cshtml";
+}
+
+<section>
+    <div class="container pt-5">
+        <div class="row pt-5">
+            <div class="col-12 pt-5">
+                @Html.Partial("_AllTicketsList")
+            </div>
+        </div>
+    </div>
+</section>
+
+

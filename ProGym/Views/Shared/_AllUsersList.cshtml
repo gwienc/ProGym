@@ -1,58 +1,67 @@
 ﻿@model IEnumerable<ProGym.Models.ApplicationUser>
 @using ProGym.Infrastructure
 @{
-    ViewBag.Title = "ProductList";
+    ViewBag.Title = "UsersList";
 }
 
+<section>
+    <div class="container orderlist">
+        <div class="row text-center pb-5">
+            <h1>Lista użytkowników</h1>
+        </div>
+    </div>
+</section>
 
 <div id="productlist-section pt-5">
     <div class="row pb-4 pt-5">
-        <table class="table table-striped all-products pt-5">
-            <thead>
-                <tr>
-                    <th scope="col">ID Użytkownika</th>
-                    <th scope="col">Użytkownik</th>
-                    <th scope="col">Imię</th>
-                    <th scope="col">Nazwisko</th>
-                    <th scope="col">Email do wysyłki</th>
-                    <th scope="col">Nr tel</th>
-                    <th scope="col">Adres</th>
-                    <th scope="col">Adres cd</th>
-                    <th scope="col">Posiada karnet</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var user in Model)
-                {
+        <div class="table-responsive">
+            <table class="table table-striped all-products pt-5">
+                <thead>
                     <tr>
-                        @if (user.UserName == ViewBag.UserIsAdmin)
-                        {
-                            continue;
-                        }
-                        else
-                        {
-                            <td>@user.Id</td>
-                            <td>@user.UserName</td>
-                            <td>@user.UserData.FirstName</td>
-                            <td>@user.UserData.LastName</td>
-                            <td>@user.UserData.Email</td>
-                            <td>@user.UserData.PhoneNumber</td>
-                            <td width="10%">@user.UserData.Address</td>
-                            <td width="15%">@user.UserData.CodeAndCity</td>
-                            if (user.Tickets.Count > 0)
+                        <th scope="col">ID Użytkownika</th>
+                        <th scope="col">Użytkownik</th>
+                        <th scope="col">Imię</th>
+                        <th scope="col">Nazwisko</th>
+                        <th scope="col">Email do wysyłki</th>
+                        <th scope="col">Nr tel</th>
+                        <th scope="col">Adres</th>
+                        <th scope="col">Adres cd</th>
+                        <th scope="col">Posiada karnet</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var user in Model)
+                    {
+                        <tr>
+                            @if (user.UserName == ViewBag.UserIsAdmin)
                             {
-                                <td width="10%">Posiada karnet </td>
+                                continue;
                             }
                             else
                             {
-                                <td style="color:red" width="10%">Nie posiada karnetu </td>
+                                <td>@user.Id</td>
+                                <td>@user.UserName</td>
+                                <td>@user.UserData.FirstName</td>
+                                <td>@user.UserData.LastName</td>
+                                <td>@user.UserData.Email</td>
+                                <td>@user.UserData.PhoneNumber</td>
+                                <td width="10%">@user.UserData.Address</td>
+                                <td width="15%">@user.UserData.CodeAndCity</td>
+                                if (user.Tickets.Count > 0)
+                                {
+                                    <td style="color:forestgreen" width="10%">Posiada karnet </td>
+                                }
+                                else
+                                {
+                                    <td style="color:red" width="10%">Nie posiada karnetu </td>
+                                }
                             }
-                        }
 
-                    </tr>
-                }
-            </tbody>
-        </table>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 
