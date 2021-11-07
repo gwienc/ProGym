@@ -298,6 +298,8 @@ namespace ProGym.Controllers
 
         public ActionResult UsersList()
         {
+            string adminName = "admin@ProGym.pl";           
+            ViewBag.UserIsAdmin = adminName;
             var allUsers = db.Users.ToList();
             return View(allUsers);
         }

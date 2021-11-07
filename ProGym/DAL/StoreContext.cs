@@ -32,5 +32,10 @@ namespace ProGym.DAL
         public DbSet<OrderItem> OrderItems { get; set; }
         public DbSet<TypeOfTicket> TypeOfTickets { get; set; }
         public DbSet<Ticket> Tickets { get; set; }
+
+        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        //{
+        //    //modelBuilder.Entity<ApplicationUser>().HasRequired<Ticket>(t => t.Tickets).WithRequiredPrincipal(d => d.User);
+        //}
     }
 }
