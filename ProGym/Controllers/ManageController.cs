@@ -209,6 +209,14 @@ namespace ProGym.Controllers
             return order.OrderState;
         }
 
+        public ActionResult ChangeTicketState(int ticketID, bool status)
+        {
+            Ticket ticketToModify = db.Tickets.Where(t => t.TicketId == ticketID).Single();
+            ticketToModify.IsActive = !status;
+            db.SaveChanges();           
+            return RedirectToAction("TicketsList");
+
+        }
 
         public ActionResult AddProduct(int? productId, bool? confirmSuccess)
         {
@@ -305,7 +313,7 @@ namespace ProGym.Controllers
         }
 
         public ActionResult TicketsList()
-        {
+        {          
             var allTickets = db.Tickets.ToList();
             return View(allTickets);
         }

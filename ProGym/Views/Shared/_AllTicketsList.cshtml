@@ -37,11 +37,12 @@
                             <td>@Html.DisplayFor(t => ticket.TypeOfTicket.PeriodOfValidity)</td>
                             @if (ticket.IsActive)
                             {
-                                <td style="color:forestgreen">Aktywny</td>
+                                <td style="color:forestgreen">Aktywny <a href="@Url.Action("ChangeTicketState","Manage", new {ticketID = ticket.TicketId, status = ticket.IsActive})" class="mt-2 btn btn-sm btn-danger"> Dezaktywuj </a></td>
                             }
                             else
                             {
-                                <td style="color:red">Nieaktywny</td>
+                                <td style="color:red">Nieaktywny <a href="@Url.Action("ChangeTicketState","Manage", new {ticketID = ticket.TicketId, status = ticket.IsActive})" class="mt-2 btn btn-sm btn-success"> Aktywuj </a></td>
+
                             }
                             <td>@ticket.DateOfPurchase</td>
                             <td>@ticket.ExpirationDate</td>
