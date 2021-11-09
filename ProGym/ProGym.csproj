@@ -2185,6 +2185,9 @@
     <Content Include="Views\Shared\_AllUsersList.cshtml" />
     <Content Include="Views\Manage\TicketsList.cshtml" />
     <Content Include="Views\Shared\_AllTicketsList.cshtml" />
+    <Content Include="Views\Emails\TicketConfirmationEmailActive.cshtml" />
+    <Content Include="Views\Emails\TicketConfirmationEmailActive.Html.cshtml" />
+    <Content Include="Views\Emails\TicketConfirmationEmailActive.Text.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

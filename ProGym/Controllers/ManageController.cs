@@ -213,7 +213,11 @@ namespace ProGym.Controllers
         {
             Ticket ticketToModify = db.Tickets.Where(t => t.TicketId == ticketID).Single();
             ticketToModify.IsActive = !status;
-            db.SaveChanges();           
+            db.SaveChanges();
+            if (ticketToModify.IsActive == true)
+            {
+                this.mailService.SendConfirmationTicketEmailActive(ticketToModify);
+            }
             return RedirectToAction("TicketsList");
 
         }
@@ -395,6 +399,23 @@ namespace ProGym.Controllers
             if(ticket == null) return new HttpStatusCodeResult(System.Net.HttpStatusCode.NotFound);
 
             TicketConfirmationEmail email = new TicketConfirmationEmail();
+            email.To = ticket.User.UserData.Email;
+            email.Name = ticket.User.UserData.FirstName;
+            email.TicketName = ticket.TypeOfTicket.TypeTicket.ToString();
+            email.TicketID = ticket.TicketId;
+            email.ExpirationDate = ticket.ExpirationDate;
+            email.PeriodOfValidity = ticket.TypeOfTicket.PeriodOfValidity;
+            email.Send();
+
+            return new HttpStatusCodeResult(System.Net.HttpStatusCode.OK);
+        }
+
+        public ActionResult SendConfirmationTicketEmailACtive(int ticketId, string userId)
+        {
+            var ticket = db.Tickets.Include("TypeOfTicket").SingleOrDefault(t => t.TicketId == ticketId && t.UserId == userId);
+            if (ticket == null) return new HttpStatusCodeResult(System.Net.HttpStatusCode.NotFound);
+
+            TicketConfirmationEmailActive email = new TicketConfirmationEmailActive();
             email.To = ticket.User.UserData.Email;
             email.Name = ticket.User.UserData.FirstName;
             email.TicketName = ticket.TypeOfTicket.TypeTicket.ToString();

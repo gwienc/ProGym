@@ -1,0 +1,13 @@
+﻿@model ProGym.ViewModels.TicketConfirmationEmailActive
+Content-Type: text/plain; charset=utf-8
+
+Witaj @Model.Name!
+
+Twój karnet @Model.TicketName o nr @Model.TicketID został aktywowany!
+
+Okres ważności karnetu wynosi @Html.DisplayFor(t => t.PeriodOfValidity), oraz jest ważny do @Model.ExpirationDate.
+
+
+
+Dziękujemy i zapraszamy ponownie!
+ProGym

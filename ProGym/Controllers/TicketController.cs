@@ -140,7 +140,7 @@ namespace ProGym.Controllers
                 UserId = userId,
                 DateOfPurchase = ticket.DateOfPurchase,
                 ExpirationDate = ticket.ExpirationDate,
-                IsActive = ticket.IsActive,
+                IsActive = !ticket.IsActive,
                 TypeOfTicketId = ticket.TypeOfTicketId
             };
             this.db.Tickets.Add(newTicket);

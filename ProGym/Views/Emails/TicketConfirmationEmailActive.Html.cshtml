@@ -1,4 +1,4 @@
-﻿@model ProGym.ViewModels.TicketConfirmationEmail
+﻿@model ProGym.ViewModels.TicketConfirmationEmailActive
 Content-Type: text/html; charset=utf-8
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -514,12 +514,11 @@ Content-Type: text/html; charset=utf-8
 
                                                                                         <h1 style="margin: 0;padding: 0;display: block;font-family: Helvetica;font-size: 40px;font-style: normal;font-weight: bold;line-height: 125%;letter-spacing: -1px;text-align: left;color: #606060 !important;">Witaj @Model.Name!</h1><br /><br />
 
-                                                                                        <h3 style="margin: 0;padding: 0;display: block;font-family: Helvetica;font-size: 18px;font-style: normal;font-weight: bold;line-height: 125%;letter-spacing: -.5px;text-align: left;color: #606060 !important;">Dziękujemy za zakup karnetu @Model.TicketName o nr @Model.TicketID w sklepie ProGym.</h3>
+                                                                                        <h3 style="margin: 0;padding: 0;display: block;font-family: Helvetica;font-size: 18px;font-style: normal;font-weight: bold;line-height: 125%;letter-spacing: -.5px;text-align: left;color: #606060 !important;">Twój karnet @Model.TicketName o nr @Model.TicketID został aktywowany!</h3>
 
                                                                                         <p style="margin: 1em 0;padding: 0;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #606060;font-family: Helvetica;font-size: 15px;line-height: 150%;text-align: left;">
                                                                                             Okres ważności karnetu wynosi @Html.DisplayFor(t => t.PeriodOfValidity), oraz jest ważny do @Model.ExpirationDate.  <br />
-                                                                                            Karnet zostanie aktywowany po opłaceniu kosztu karnetu przy odbiorze w naszej siłowni.<br />
-                                                                                            Postaramy się, aby zamówione produkty zostały dla Ciebie przygotowane do odbioru najszybciej jak to możliwe.<br />
+
                                                                                             <br />
                                                                                             Dziękujemy i zapraszamy ponownie!<br />
                                                                                             ProGym<br /><br />

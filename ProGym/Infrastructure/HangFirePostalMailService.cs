@@ -19,6 +19,15 @@ namespace ProGym.Infrastructure
             BackgroundJob.Enqueue(() => HelpersHangfire.CallUrl(url));
         }
 
+        public void SendConfirmationTicketEmailActive(Ticket ticket)
+        {
+            var urlHelper = new UrlHelper(HttpContext.Current.Request.RequestContext);
+            string url = urlHelper.Action("SendConfirmationTicketEmailActive", "Manage", new { ticketId = ticket.TicketId, userId = ticket.UserId }, HttpContext.Current.Request.Url.Scheme);
+
+
+            BackgroundJob.Enqueue(() => HelpersHangfire.CallUrl(url));
+        }
+
         public void SendOrderConfirmationEmail(Order order)
         {
             var urlHelper = new UrlHelper(HttpContext.Current.Request.RequestContext);

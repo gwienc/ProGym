@@ -25,6 +25,19 @@ namespace ProGym.Infrastructure
             email.Send();
         }
 
+        public void SendConfirmationTicketEmailActive(Ticket ticket)
+        {
+            var TicketToModify = db.Tickets.Include("TypeOfTicket").SingleOrDefault((t => t.TicketId == ticket.TicketId && t.User.UserData.LastName == ticket.User.UserData.LastName));
+
+            TicketConfirmationEmail email = new TicketConfirmationEmail();
+            email.To = ticket.User.UserData.Email;
+            email.Name = ticket.User.UserData.FirstName;
+            email.TicketName = ticket.TypeOfTicket.TypeTicket.ToString();
+            email.ExpirationDate = ticket.ExpirationDate;
+            email.PeriodOfValidity = ticket.TypeOfTicket.PeriodOfValidity;
+            email.Send();
+        }
+
         public void SendOrderConfirmationEmail(Order order)
         {
             var orderToModify = db.Orders.Include("OrderItems").Include("OrderItems.Product").SingleOrDefault(o => o.OrderID == order.OrderID && o.LastName == order.LastName);
