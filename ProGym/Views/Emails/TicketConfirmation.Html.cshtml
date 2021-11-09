@@ -517,8 +517,8 @@ Content-Type: text/html; charset=utf-8
                                                                                         <h3 style="margin: 0;padding: 0;display: block;font-family: Helvetica;font-size: 18px;font-style: normal;font-weight: bold;line-height: 125%;letter-spacing: -.5px;text-align: left;color: #606060 !important;">Dziękujemy za zakup karnetu @Model.TicketName o nr @Model.TicketID w sklepie ProGym.</h3>
 
                                                                                         <p style="margin: 1em 0;padding: 0;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #606060;font-family: Helvetica;font-size: 15px;line-height: 150%;text-align: left;">
-                                                                                            Okres ważności karnetu wynosi @Html.DisplayFor(t => t.PeriodOfValidity), oraz jest ważny do @Model.ExpirationDate.  <br />
-                                                                                            Karnet zostanie aktywowany po opłaceniu kosztu karnetu przy odbiorze w naszej siłowni.<br />
+                                                                                            Karnet zostanie aktywowany po opłaceniu kosztu karnetu wynoszącego <strong>@Model.Price zł</strong> przy odbiorze w naszej siłowni.<br />
+                                                                                            Okres ważności karnetu wynosi @Html.DisplayFor(t => t.PeriodOfValidity), oraz jest ważny do @Model.ExpirationDate.  <br /><br />
                                                                                             Postaramy się, aby zamówione produkty zostały dla Ciebie przygotowane do odbioru najszybciej jak to możliwe.<br />
                                                                                             <br />
                                                                                             Dziękujemy i zapraszamy ponownie!<br />

@@ -28,6 +28,7 @@
                                 <div class="our-tickets-student settings pt-3">
                                     <h2>@Html.DisplayFor(t => ticketType.TypeTicket)</h2><br />
                                     <p>@Html.LabelFor(t => ticketType.PeriodOfValidity) : @Html.DisplayFor(t => ticketType.PeriodOfValidity)</p>
+                                    <p>Cena:  @Html.DisplayFor(t => ticketType.Price)zł</p>
                                     @Html.HiddenFor(t => ticketType.TypeOfTicketId)
                                     <div class="pb-3">
                                         <a href="@Url.Action("BuyTicket", "Ticket", new {ticketId = ticketType.TypeOfTicketId, typeTicket = ticketType.TypeTicket, periodOfValidity = ticketType.PeriodOfValidity })" class="text-center btn btn-light btn-lg btn-block">Kup teraz</a>
@@ -38,6 +39,7 @@
                                 <div class="our-tickets-open settings pt-3">
                                     <h2>@Html.DisplayFor(t => ticketType.TypeTicket)</h2><br />
                                     <p>@Html.LabelFor(t => ticketType.PeriodOfValidity) : @Html.DisplayFor(t => ticketType.PeriodOfValidity)</p>
+                                    <p>Cena:  @Html.DisplayFor(t => ticketType.Price)zł</p>
                                     @Html.HiddenFor(t => ticketType.TypeOfTicketId)
                                     <div class="pb-3">
                                         <a href="@Url.Action("BuyTicket", "Ticket", new {ticketId = ticketType.TypeOfTicketId, typeTicket = ticketType.TypeTicket, periodOfValidity = ticketType.PeriodOfValidity })" class="text-center btn btn-light btn-lg btn-block">Kup teraz</a>
@@ -48,6 +50,7 @@
                                 <div class="our-tickets-openmax settings pt-3">
                                     <h2>@Html.DisplayFor(t => ticketType.TypeTicket)</h2><br />
                                     <p>@Html.LabelFor(t => ticketType.PeriodOfValidity) : @Html.DisplayFor(t => ticketType.PeriodOfValidity)</p>
+                                    <p>Cena:  @Html.DisplayFor(t => ticketType.Price)zł</p>
                                     @Html.HiddenFor(t => ticketType.TypeOfTicketId)
                                     <div class="pb-3">
                                         <a href="@Url.Action("BuyTicket", "Ticket", new {ticketId = ticketType.TypeOfTicketId, typeTicket = ticketType.TypeTicket, periodOfValidity = ticketType.PeriodOfValidity })" class="text-center btn btn-light btn-lg btn-block">Kup teraz</a>

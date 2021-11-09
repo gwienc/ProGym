@@ -42,6 +42,7 @@ namespace ProGym.ViewModels
         public string To { get; set; }
         public int TicketID { get; set; }
         public string Name { get; set; }
+        public decimal Price { get; set; }
         public string TicketName { get; set; }
         public DateTime ExpirationDate { get; set; }
         public PeriodOfValidity PeriodOfValidity { get; set; }
@@ -51,6 +52,7 @@ namespace ProGym.ViewModels
         public string To { get; set; }
         public int TicketID { get; set; }
         public string Name { get; set; }
+        public decimal Price { get; set; }
         public string TicketName { get; set; }
         public DateTime ExpirationDate { get; set; }
         public PeriodOfValidity PeriodOfValidity { get; set; }

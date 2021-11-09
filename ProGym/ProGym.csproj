@@ -2027,6 +2027,10 @@
     <Compile Include="Migrations\202111021119353_CorrectTypeOfTicket2.designer.cs">
       <DependentUpon>202111021119353_CorrectTypeOfTicket2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202111091703510_addTicketPrice.cs" />
+    <Compile Include="Migrations\202111091703510_addTicketPrice.designer.cs">
+      <DependentUpon>202111091703510_addTicketPrice.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CartItem.cs" />
     <Compile Include="Models\Category.cs" />
@@ -2228,6 +2232,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202111021119353_CorrectTypeOfTicket2.resx">
       <DependentUpon>202111021119353_CorrectTypeOfTicket2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111091703510_addTicketPrice.resx">
+      <DependentUpon>202111091703510_addTicketPrice.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

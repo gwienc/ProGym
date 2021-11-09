@@ -32,15 +32,15 @@ namespace ProGym.DAL
 
             var ticketTypes = new List<TypeOfTicket>
             {
-                new TypeOfTicket(){TypeOfTicketId = 1, TypeTicket = TypeTicket.Student, PeriodOfValidity = PeriodOfValidity.OneMonth},
-                new TypeOfTicket(){TypeOfTicketId = 2, TypeTicket = TypeTicket.Student, PeriodOfValidity = PeriodOfValidity.ThreeMonth},
-                new TypeOfTicket(){TypeOfTicketId = 3, TypeTicket = TypeTicket.Student, PeriodOfValidity = PeriodOfValidity.SixMonth},
-                new TypeOfTicket(){TypeOfTicketId = 4, TypeTicket = TypeTicket.Open, PeriodOfValidity = PeriodOfValidity.OneMonth},
-                new TypeOfTicket(){TypeOfTicketId = 5, TypeTicket = TypeTicket.Open, PeriodOfValidity = PeriodOfValidity.ThreeMonth},
-                new TypeOfTicket(){TypeOfTicketId = 6, TypeTicket = TypeTicket.Open, PeriodOfValidity = PeriodOfValidity.SixMonth},
-                new TypeOfTicket(){TypeOfTicketId = 7, TypeTicket = TypeTicket.OpenMax, PeriodOfValidity = PeriodOfValidity.OneMonth},
-                new TypeOfTicket(){TypeOfTicketId = 8, TypeTicket = TypeTicket.OpenMax, PeriodOfValidity = PeriodOfValidity.ThreeMonth},
-                new TypeOfTicket(){TypeOfTicketId = 9, TypeTicket = TypeTicket.OpenMax, PeriodOfValidity = PeriodOfValidity.SixMonth}
+                new TypeOfTicket(){TypeOfTicketId = 1, TypeTicket = TypeTicket.Student, PeriodOfValidity = PeriodOfValidity.OneMonth, Price = 69},
+                new TypeOfTicket(){TypeOfTicketId = 2, TypeTicket = TypeTicket.Student, PeriodOfValidity = PeriodOfValidity.ThreeMonth, Price = 177},
+                new TypeOfTicket(){TypeOfTicketId = 3, TypeTicket = TypeTicket.Student, PeriodOfValidity = PeriodOfValidity.SixMonth, Price = 334},
+                new TypeOfTicket(){TypeOfTicketId = 4, TypeTicket = TypeTicket.Open, PeriodOfValidity = PeriodOfValidity.OneMonth, Price = 99},
+                new TypeOfTicket(){TypeOfTicketId = 5, TypeTicket = TypeTicket.Open, PeriodOfValidity = PeriodOfValidity.ThreeMonth, Price = 267},
+                new TypeOfTicket(){TypeOfTicketId = 6, TypeTicket = TypeTicket.Open, PeriodOfValidity = PeriodOfValidity.SixMonth, Price = 514},
+                new TypeOfTicket(){TypeOfTicketId = 7, TypeTicket = TypeTicket.OpenMax, PeriodOfValidity = PeriodOfValidity.OneMonth, Price = 119},
+                new TypeOfTicket(){TypeOfTicketId = 8, TypeTicket = TypeTicket.OpenMax, PeriodOfValidity = PeriodOfValidity.ThreeMonth, Price = 327},
+                new TypeOfTicket(){TypeOfTicketId = 9, TypeTicket = TypeTicket.OpenMax, PeriodOfValidity = PeriodOfValidity.SixMonth, Price = 614}
             };
 
             ticketTypes.ForEach(c => context.TypeOfTickets.AddOrUpdate(c));

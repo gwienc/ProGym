@@ -72,7 +72,7 @@ namespace ProGym.Controllers
                             TypeOfTicket = typeOfTicket,
                             TypeOfTicketId = typeOfTicket.TypeOfTicketId,
                             DateOfPurchase = dateofPurchase,
-                            ExpirationDate = dateofPurchase.AddMonths(1),
+                            ExpirationDate = dateofPurchase.AddMonths(1),                           
                             IsActive = true
 
                         };

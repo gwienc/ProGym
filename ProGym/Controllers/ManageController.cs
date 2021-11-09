@@ -401,6 +401,7 @@ namespace ProGym.Controllers
             TicketConfirmationEmail email = new TicketConfirmationEmail();
             email.To = ticket.User.UserData.Email;
             email.Name = ticket.User.UserData.FirstName;
+            email.Price = ticket.TypeOfTicket.Price;
             email.TicketName = ticket.TypeOfTicket.TypeTicket.ToString();
             email.TicketID = ticket.TicketId;
             email.ExpirationDate = ticket.ExpirationDate;
@@ -418,6 +419,7 @@ namespace ProGym.Controllers
             TicketConfirmationEmailActive email = new TicketConfirmationEmailActive();
             email.To = ticket.User.UserData.Email;
             email.Name = ticket.User.UserData.FirstName;
+            email.Price = ticket.TypeOfTicket.Price;
             email.TicketName = ticket.TypeOfTicket.TypeTicket.ToString();
             email.TicketID = ticket.TicketId;
             email.ExpirationDate = ticket.ExpirationDate;
