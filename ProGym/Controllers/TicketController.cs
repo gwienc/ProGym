@@ -103,8 +103,8 @@ namespace ProGym.Controllers
                 return View(newTicket);
             }
             else
-            {
-                return RedirectToAction("Login", "Account", new { returnUrl = Url.Action("Checkout", "Cart") });
+            {              
+                return RedirectToAction("Login", "Account", new { returnUrl = Url.Action("BuyTicket", "Ticket", new { ticketId = ticketId, typeTicket = typeTicket, periodOfValidity = periodOfValidity } ) });
             }
 
         }
