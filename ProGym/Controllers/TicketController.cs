@@ -42,8 +42,8 @@ namespace ProGym.Controllers
             return View();
         }
 
-       
-        
+
+
         public ActionResult ChooseTicket(string type)
         {
             IEnumerable<TypeOfTicket> tickets;
@@ -51,60 +51,71 @@ namespace ProGym.Controllers
             return View(tickets);
         }
 
-        
-        
+
+
         public async Task<ActionResult> BuyTicket(int ticketId, TypeTicket typeTicket, PeriodOfValidity periodOfValidity)
         {
             TypeOfTicket typeOfTicket = db.TypeOfTickets.Where(t => t.TypeOfTicketId == ticketId && t.TypeTicket == typeTicket && t.PeriodOfValidity == periodOfValidity).Single();
-         
+
             var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
 
+            DateTime dateofPurchase = DateTime.Now;
             if (Request.IsAuthenticated)
             {
-                var dateofPurchase = DateTime.Now;
-                Ticket newTicket = new Ticket();
+                var currentTicket = db.Tickets.Where(t => t.UserId == user.Id).FirstOrDefault();
 
-                switch (periodOfValidity)
-                {
-                    case PeriodOfValidity.OneMonth:
-                        newTicket = new Ticket()
-                        {
-                            TypeOfTicket = typeOfTicket,
-                            TypeOfTicketId = typeOfTicket.TypeOfTicketId,
-                            DateOfPurchase = dateofPurchase,
-                            ExpirationDate = dateofPurchase.AddMonths(1),                           
-                            IsActive = true
-
-                        };
-                        break;
-                    case PeriodOfValidity.ThreeMonth:
-                        newTicket = new Ticket
-                        {
-                            TypeOfTicket = typeOfTicket,
-                            TypeOfTicketId = typeOfTicket.TypeOfTicketId,
-                            DateOfPurchase = dateofPurchase,
-                            ExpirationDate = dateofPurchase.AddMonths(3),
-                            IsActive = true
-                        };
-                        break;
-                    case PeriodOfValidity.SixMonth:
-                        newTicket = new Ticket
-                        {
-                            TypeOfTicket = typeOfTicket,
-                            TypeOfTicketId = typeOfTicket.TypeOfTicketId,
-                            DateOfPurchase = dateofPurchase,
-                            ExpirationDate = dateofPurchase.AddMonths(6),
-                            IsActive = true
-                        };
-                        break;
-                    default:
-                        break;
+                if (currentTicket != null && currentTicket.IsActive)
+                {                 
+                        ViewBag.CurrentTicket = "Posiadasz aktualny karnet";
+                        return View();                   
                 }
-                return View(newTicket);
+                else
+                {
+                    Ticket newTicket = new Ticket();
+
+                    switch (periodOfValidity)
+                    {
+                        case PeriodOfValidity.OneMonth:
+                            newTicket = new Ticket()
+                            {
+                                TypeOfTicket = typeOfTicket,
+                                TypeOfTicketId = typeOfTicket.TypeOfTicketId,
+                                DateOfPurchase = dateofPurchase,
+                                ExpirationDate = dateofPurchase.AddMonths(1),
+                                IsActive = true
+
+                            };
+                            break;
+                        case PeriodOfValidity.ThreeMonth:
+                            newTicket = new Ticket
+                            {
+                                TypeOfTicket = typeOfTicket,
+                                TypeOfTicketId = typeOfTicket.TypeOfTicketId,
+                                DateOfPurchase = dateofPurchase,
+                                ExpirationDate = dateofPurchase.AddMonths(3),
+                                IsActive = true
+                            };
+                            break;
+                        case PeriodOfValidity.SixMonth:
+                            newTicket = new Ticket
+                            {
+                                TypeOfTicket = typeOfTicket,
+                                TypeOfTicketId = typeOfTicket.TypeOfTicketId,
+                                DateOfPurchase = dateofPurchase,
+                                ExpirationDate = dateofPurchase.AddMonths(6),
+                                IsActive = true
+                            };
+                            break;
+                        default:
+                            break;
+                    }
+                    return View(newTicket);
+                }
+
             }
             else
-            {              
-                return RedirectToAction("Login", "Account", new { returnUrl = Url.Action("BuyTicket", "Ticket", new { ticketId = ticketId, typeTicket = typeTicket, periodOfValidity = periodOfValidity } ) });
+            {
+                return RedirectToAction("Login", "Account", new { returnUrl = Url.Action("BuyTicket", "Ticket", new { ticketId = ticketId, typeTicket = typeTicket, periodOfValidity = periodOfValidity }) });
             }
 
         }
@@ -116,15 +127,30 @@ namespace ProGym.Controllers
             {
                 var userId = User.Identity.GetUserId();
 
-                Ticket newTicket = CreateTicket(userId, ticket);
+                var currentTicket = db.Tickets.Where(t => t.UserId == userId).FirstOrDefault();
 
-                var user = await UserManager.FindByIdAsync(userId);
-                TryUpdateModel(user.Tickets);
-                await UserManager.UpdateAsync(user);
+                if (currentTicket != null)
+                {
+                    Ticket updateTicket = UpdateTicket(userId, ticket);
+                    var user = await UserManager.FindByIdAsync(userId);
+                    TryUpdateModel(user.Tickets);
+                    this.mailService.SendConfirmationTicketEmail(updateTicket);
+                    return RedirectToAction("OrderConfirmation", "Cart");
+                }
+                else
+                {
+                    Ticket newTicket = CreateTicket(userId, ticket);
 
-                this.mailService.SendConfirmationTicketEmail(newTicket);
+                    var user = await UserManager.FindByIdAsync(userId);
+                    TryUpdateModel(user.Tickets);
+                    await UserManager.UpdateAsync(user);
 
-                return RedirectToAction("OrderConfirmation", "Cart");
+                    this.mailService.SendConfirmationTicketEmail(newTicket);
+
+                    return RedirectToAction("OrderConfirmation", "Cart");
+                }
+
+                
             }
             else
             {
@@ -147,6 +173,18 @@ namespace ProGym.Controllers
             db.SaveChanges();
 
             return newTicket;
+        }
+
+        public Ticket UpdateTicket(string userId, Ticket ticket)
+        {
+            var updateTicket = db.Tickets.Where(t => t.UserId == userId).FirstOrDefault();
+            updateTicket.DateOfPurchase = ticket.DateOfPurchase;
+            updateTicket.ExpirationDate = ticket.ExpirationDate;
+            updateTicket.IsActive = !ticket.IsActive;
+            updateTicket.TypeOfTicketId = ticket.TypeOfTicketId;
+            db.SaveChanges();
+
+            return updateTicket;            
         }
     }
 }

@@ -36,14 +36,14 @@
                         <div class="card-body text-success">
                             <br />
                             <h2 class="card-title">@Model.Ticket.TypeOfTicket.TypeTicket</h2>
-                            <p class="card-text">Nr karnetu: @Model.Ticket.TypeOfTicket.TypeOfTicketId</p>
+                            <p class="card-text">Nr karnetu: @Model.Ticket.TicketId</p>
                             @if (Model.Ticket.IsActive)
                             {
                                 <p class="card-text">Aktywny: Tak</p>
                             }
                             else
                             {
-                                <p class="card-text" style="color:red">Aktywny: Nie - karnet zostanie aktywowany po opłaceniu należności</p>
+                                <p class="card-text" style="color:red">Aktywny: Nie - jeśli kupiłeś karnet, zostanie on aktywowany po opłaceniu należności. W przeciwnym razie prosimy o zakup nowego karnetu</p>
                             }
                             <p class="card-text">Okres aktywności: @Html.DisplayFor(t => t.Ticket.TypeOfTicket.PeriodOfValidity)
                             <p class="card-text">Data zakupu: @Model.Ticket.DateOfPurchase</p>

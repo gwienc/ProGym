@@ -44,7 +44,7 @@ namespace ProGym
             app.UseHangfireDashboard("/hangfire", options);
             app.UseHangfireServer();
 
-            RecurringJob.AddOrUpdate(() => CheckActiveTickets(), "0 0 */3 ? * *");
+            RecurringJob.AddOrUpdate(() => CheckActiveTickets(), "0 0 */1 ? * *");
         }
 
         public void CheckActiveTickets()
