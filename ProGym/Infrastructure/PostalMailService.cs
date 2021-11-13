@@ -38,6 +38,19 @@ namespace ProGym.Infrastructure
             email.Send();
         }
 
+        public void TicketInactiveInformationEmail(Ticket ticket)
+        {
+            var ticketToModify = db.Tickets.Include("TypeOfTicket").SingleOrDefault(t => t.TicketId == ticket.TicketId && t.UserId == ticket.UserId);
+
+            TicketInactiveInformationEmail email = new TicketInactiveInformationEmail();
+            email.To = ticket.User.UserData.Email;
+            email.Name = ticket.User.UserData.FirstName;
+            email.TicketName = ticket.TypeOfTicket.TypeTicket.ToString();
+            email.TicketID = ticket.TicketId;
+            email.ExpirationDate = ticket.ExpirationDate;
+            email.Send();
+        }
+
         public void SendOrderConfirmationEmail(Order order)
         {
             var orderToModify = db.Orders.Include("OrderItems").Include("OrderItems.Product").SingleOrDefault(o => o.OrderID == order.OrderID && o.LastName == order.LastName);
@@ -77,5 +90,7 @@ namespace ProGym.Infrastructure
             email.CoverPath = AppConfig.PhotosFolder;
             email.Send();
         }
+
+        
     }
 }

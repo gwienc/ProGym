@@ -2,9 +2,11 @@
 using ProGym.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Routing;
 
 namespace ProGym.Infrastructure
 {
@@ -53,6 +55,30 @@ namespace ProGym.Infrastructure
 
 
             BackgroundJob.Enqueue(() => HelpersHangfire.CallUrl(url));
+        }
+
+        public void TicketInactiveInformationEmail(Ticket ticket)
+        {
+            var httpContext = HttpContext.Current;
+
+            if (httpContext == null)
+            {
+                var request = new HttpRequest("/", "http://ProGym.com", "");
+                var response = new HttpResponse(new StringWriter());
+                httpContext = new HttpContext(request, response);
+            }
+
+            var httpContextBase = new HttpContextWrapper(httpContext);
+            var routeData = new RouteData();
+            var requestContext = new RequestContext(httpContextBase, routeData);
+
+            var urlHelper = new UrlHelper(requestContext);
+
+            //var urlHelper = new UrlHelper(HttpContext.Current.Request.RequestContext);
+            //string url = urlHelper.Action("TicketInactiveInformationEmail", "Manage", new { ticketId = ticket.TicketId, userId = ticket.UserId }, HttpContext.Current.Request.Url.Scheme);
+            string url = urlHelper.Action("TicketInactiveInformationEmail", "Manage", new { ticketId = ticket.TicketId, userId = ticket.UserId });
+
+            BackgroundJob.Enqueue(() => HelpersHangfire.CallUrl2(url));
         }
     }
 }

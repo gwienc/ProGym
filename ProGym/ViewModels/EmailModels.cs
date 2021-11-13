@@ -57,4 +57,13 @@ namespace ProGym.ViewModels
         public DateTime ExpirationDate { get; set; }
         public PeriodOfValidity PeriodOfValidity { get; set; }
     }
+
+    public class TicketInactiveInformationEmail : Email
+    {
+        public string To { get; set; }
+        public int TicketID { get; set; }
+        public string Name { get; set; }
+        public string TicketName { get; set; }
+        public DateTime ExpirationDate { get; set; }
+    }
 }

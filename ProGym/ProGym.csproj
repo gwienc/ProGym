@@ -2192,6 +2192,9 @@
     <Content Include="Views\Emails\TicketConfirmationEmailActive.cshtml" />
     <Content Include="Views\Emails\TicketConfirmationEmailActive.Html.cshtml" />
     <Content Include="Views\Emails\TicketConfirmationEmailActive.Text.cshtml" />
+    <Content Include="Views\Emails\TicketInactiveInformation.cshtml" />
+    <Content Include="Views\Emails\TicketInactiveInformation.Html.cshtml" />
+    <Content Include="Views\Emails\TicketInactiveInformation.Text.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

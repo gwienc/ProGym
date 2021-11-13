@@ -13,5 +13,6 @@ namespace ProGym.Infrastructure
         void SendOrderReceivedEmail(Order order);
         void SendConfirmationTicketEmail(Ticket ticket);
         void SendConfirmationTicketEmailActive(Ticket ticket);
+        void TicketInactiveInformationEmail(Ticket ticket);
     }
 }

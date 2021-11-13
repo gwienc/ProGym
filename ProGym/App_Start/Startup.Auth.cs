@@ -5,16 +5,19 @@ using Microsoft.Owin.Security.Cookies;
 using Owin;
 using ProGym.App_Start;
 using ProGym.DAL;
+using ProGym.Infrastructure;
 using ProGym.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Web;
 
 namespace ProGym
 {
     public partial class Startup
     {
+
         // For more information on configuring authentication, please visit http://go.microsoft.com/fwlink/?LinkId=301864
         public void ConfigureAuth(IAppBuilder app)
         {
@@ -75,5 +78,6 @@ namespace ProGym
             //    clientId: "423286183817-v47kefqspm9fme0uhrqq90k5lvrd82ib.apps.googleusercontent.com",
             //    clientSecret: "UD5BxMUz_KrNV-lvFZHnnwCp");
         }
+        
     }
 }
