@@ -730,6 +730,14 @@ body {
 
 
 
+/* START CALCULATORS */
+.calculator  {
+    font-weight: 600;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 1.2rem;
+}
+/* END CALCULATORS */
+
 .list-group a:hover, .list-group a:active {
     background-color: yellowgreen !important;
 }

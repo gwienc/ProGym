@@ -1,0 +1,55 @@
+﻿@model ProGym.ViewModels.BMIViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_ManageLayout.cshtml";
+    AjaxOptions opt = new AjaxOptions()
+    {
+        Url = Url.Action("CalculateBMI", "Calculators"),
+        HttpMethod = "Post",
+        UpdateTargetId = "result"
+    };
+}
+
+<section>
+    <div class="container-fluid first-group text-center pt-5">
+        <div class="calculator row justify-content-center">
+            <h1>Oblicz swoje BMI</h1>
+            <div class="col-6 pt-5 text-center">
+                @using (Ajax.BeginForm(opt))
+                {
+                    <div class="mb-3 row p-2 text-end">
+                        <div class="col-sm-4">
+                            @Html.LabelFor(x => x.Weight, "Twoja masa (kg):")
+                        </div>
+                        <div class="col-sm-3">
+                            @Html.TextBoxFor(x => x.Weight)
+                        </div>
+                    </div>
+                    <div class="mb-3 row p-2 text-end">
+                        <div class="col-sm-4">
+                            @Html.LabelFor(x => x.Height, "Twój wzrost (cm):")
+                        </div>
+                        <div class="col-sm-3">
+                            @Html.TextBoxFor(x => x.Height)
+                        </div>
+                    </div>
+
+                    <input type="submit" value="Oblicz" class="btn btn-success ps-4 pe-4" />
+                }
+                <div class="mb-3 row pt-3 p-2 text-end">
+                    <div class="col-sm-4">
+                        @Html.LabelFor(x => x.Height, "Twoje BMI: ")
+                    </div>
+                    <div id="result" class="col-sm-8 text-start">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@section ScriptsBottom{
+    <script src="~/Scripts/jquery-3.6.0.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+}
