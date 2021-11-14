@@ -61,7 +61,6 @@
                                             <input type="submit" value="Kupuję" class="btn btn-lg btn-success" />
                                         </div>
                                     }
-
                                 </div>
                                 break;
                             case ProGym.Models.TypeTicket.OpenMax:
@@ -80,7 +79,6 @@
                                         <div class="pb-3">
                                             <input type="submit" value="Kupuję" class="btn btn-lg btn-success" />
                                         </div>
-
                                     }
                                 </div>
                                 break;
@@ -88,8 +86,6 @@
                                 break;
                         }
                     </div>
-
-
                 </div>
             </div>
         </div>
@@ -99,10 +95,12 @@ else
 {
     <section>
         <div class="container-fluid justify-content-center shop-sub pt-5 pb-2">
-            <div class="row pt-5">
-                <div class="col-12 pt-5 text-center"style="color:red">
-                    <h1>@ViewBag.CurrentTicket</h1><br />
-                    <h4><a style="text-decoration:none; color:black" href="@Url.Action("Index","Home")">>> Powrót do strony głównej</a></h4>
+            <div class="row justify-content-center pt-5">
+                <div class="col-6 pt-5 text-center" style="color:red">
+                    <div class="card">
+                        <h1 class="pt-3">@ViewBag.CurrentTicket</h1><br />
+                        <h5><a style="text-decoration:none; color:black" href="@Url.Action("Index","Home")" class="btn btn-outline-secondary btn-sm">Powrót do strony głównej</a></h5>
+                    </div>
                 </div>
             </div>
         </div>
