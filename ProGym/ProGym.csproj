@@ -2200,7 +2200,6 @@
     <Content Include="Views\Emails\TicketInactiveInformation.Html.cshtml" />
     <Content Include="Views\Emails\TicketInactiveInformation.Text.cshtml" />
     <Content Include="Views\Calculators\Index.cshtml" />
-    <Content Include="Views\Calculators\_CalculateBMI.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

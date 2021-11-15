@@ -15,7 +15,7 @@ namespace ProGym.Controllers
             return View();
         }
 
-        public PartialViewResult CalculateBMI(BMIViewModel model)
+        public JsonResult CalculateBMI(BMIViewModel model)
         {
             model.Height = model.Height * 0.01;
             model.Result = model.Weight / (model.Height*model.Height);
@@ -54,7 +54,7 @@ namespace ProGym.Controllers
                 model.Range = "Otyłość III stopnia chorobliwa";
             }
 
-            return PartialView("_CalculateBMI", model);
+            return Json(model);
 
         }
     }

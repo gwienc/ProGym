@@ -6,7 +6,7 @@
     {
         Url = Url.Action("CalculateBMI", "Calculators"),
         HttpMethod = "Post",
-        UpdateTargetId = "result"
+        OnSuccess = "DisplayResult"
     };
 }
 
@@ -52,4 +52,15 @@
     <script src="~/Scripts/jquery-3.6.0.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+
+    <script>
+        function DisplayResult(data)
+        {
+            var container = $('#result');
+            $(container).html('');
+            str = data.Result + ' - ' + data.Range;
+            $(container).append(str);
+
+        }
+    </script>
 }
