@@ -15,47 +15,53 @@ namespace ProGym.Controllers
             return View();
         }
 
-        public JsonResult CalculateBMI(BMIViewModel model)
+        public JsonResult CalculateBMI(CalculatorsViewModel model)
         {
             model.Height = model.Height * 0.01;
-            model.Result = model.Weight / (model.Height*model.Height);
+            model.ResultBMI = model.Weight / (model.Height*model.Height);
 
-            if (model.Result < 16)
+            if (model.ResultBMI < 16)
             {
                 model.Range = "Wyglodzenie";
                 
             }
-            else if (model.Result > 16 && model.Result < 16.99)
+            else if (model.ResultBMI > 16 && model.ResultBMI < 16.99)
             {
                 model.Range = "Wychudzenie";
             }
-            else if (model.Result > 17 && model.Result < 18.49)
+            else if (model.ResultBMI > 17 && model.ResultBMI < 18.49)
             {
                 model.Range = "Niedowaga";
             }
-            else if (model.Result > 18.5 && model.Result < 24.99)
+            else if (model.ResultBMI > 18.5 && model.ResultBMI < 24.99)
             {
                 model.Range = "Prawidłowa masa ciała";
             }
-            else if (model.Result > 25 && model.Result < 29.99)
+            else if (model.ResultBMI > 25 && model.ResultBMI < 29.99)
             {
                 model.Range = "Nadwaga";
             }
-            else if (model.Result > 30 && model.Result < 34.99)
+            else if (model.ResultBMI > 30 && model.ResultBMI < 34.99)
             {
                 model.Range = "Otyłość I stopnia";
             }
-            else if (model.Result > 35 && model.Result < 39.99)
+            else if (model.ResultBMI > 35 && model.ResultBMI < 39.99)
             {
                 model.Range = "Otyłość II stopnia";
             }
-            else if (model.Result >= 40)
+            else if (model.ResultBMI >= 40)
             {
                 model.Range = "Otyłość III stopnia chorobliwa";
             }
 
             return Json(model);
 
+        }
+
+        public JsonResult CalculateOneRepMax(CalculatorsViewModel model)
+        {
+            model.ResultRepMax = model.Weight * model.NumberOfRepetitions * model.ConstantValue + model.Weight;
+            return Json(model);
         }
     }
 }

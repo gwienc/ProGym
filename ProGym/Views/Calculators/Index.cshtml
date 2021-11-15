@@ -1,13 +1,20 @@
-﻿@model ProGym.ViewModels.BMIViewModel
+﻿@model ProGym.ViewModels.CalculatorsViewModel
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_ManageLayout.cshtml";
-    AjaxOptions opt = new AjaxOptions()
+    AjaxOptions bmi = new AjaxOptions()
     {
         Url = Url.Action("CalculateBMI", "Calculators"),
         HttpMethod = "Post",
-        OnSuccess = "DisplayResult"
+        OnSuccess = "DisplayBMI"
     };
+    AjaxOptions oneRepMax = new AjaxOptions()
+    {
+        Url = Url.Action("CalculateOneRepMax", "Calculators"),
+        HttpMethod = "Post",
+        OnSuccess = "DisplayOneRepMax"
+    };
+
 }
 
 <section>
@@ -15,7 +22,7 @@
         <div class="calculator row justify-content-center">
             <h1>Oblicz swoje BMI</h1>
             <div class="col-6 pt-5 text-center">
-                @using (Ajax.BeginForm(opt))
+                @using (Ajax.BeginForm(bmi))
                 {
                     <div class="mb-3 row p-2 text-end">
                         <div class="col-sm-4">
@@ -38,10 +45,48 @@
                 }
                 <div class="mb-3 row pt-3 p-2 text-end">
                     <div class="col-sm-4">
-                        @Html.LabelFor(x => x.Height, "Twoje BMI: ")
+                        @Html.LabelFor(x => x.ResultBMI, "Twoje BMI: ")
                     </div>
-                    <div id="result" class="col-sm-8 text-start">
-                        
+                    <div id="resultBMI" class="col-sm-8 text-start">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container-fluid second-group text-center pt-5">
+        <div class="calculator row justify-content-center">
+            <h1>Oblicz 1RM</h1>
+            <div class="col-6 pt-5 text-center">
+                @using (Ajax.BeginForm(oneRepMax))
+                {
+                    <div class="mb-3 row p-2 text-end">
+                        <div class="col-sm-4">
+                            @Html.LabelFor(x => x.Weight, "Ciężar (kg):")
+                        </div>
+                        <div class="col-sm-3">
+                            @Html.TextBoxFor(x => x.Weight)
+                        </div>
+                    </div>
+                    <div class="mb-3 row p-2 text-end">
+                        <div class="col-sm-4">
+                            @Html.LabelFor(x => x.NumberOfRepetitions, "Liczba powtórzeń:")
+                        </div>
+                        <div class="col-sm-3">
+                            @Html.TextBoxFor(x => x.NumberOfRepetitions)
+                        </div>
+                    </div>
+
+                    <input type="submit" value="Oblicz" class="btn btn-success ps-4 pe-4" />
+                }
+                <div class="mb-3 row pt-3 p-2 text-end">
+                    <div class="col-sm-4">
+                        @Html.LabelFor(x => x.ResultRepMax, "1RM: ")
+                    </div>
+                    <div id="resultOneRepMax" class="col-sm-8 text-start">
+
                     </div>
                 </div>
             </div>
@@ -54,12 +99,21 @@
     <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
 
     <script>
-        function DisplayResult(data)
-        {
-            var container = $('#result');
+        function DisplayBMI(data) {
+            var container = $('#resultBMI');
             $(container).html('');
-            str = data.Result + ' - ' + data.Range;
-            $(container).append(str);
+            resultBMI = data.ResultBMI + ' - ' + data.Range;
+            $(container).append(resultBMI);
+
+        }
+    </script>
+
+    <script>
+        function DisplayOneRepMax(data) {
+            var container = $('#resultOneRepMax');
+            $(container).html('');
+            resultOneRepMax = data.ResultRepMax;
+            $(container).append(resultOneRepMax);
 
         }
     </script>
