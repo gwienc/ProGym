@@ -24,12 +24,12 @@
             <div class="col-6 pt-5 text-center">
                 @using (Ajax.BeginForm(bmi))
                 {
-                    <div class="mb-3 row p-2 text-end">
+                    <div class=" mb-3 row p-2 text-end">
                         <div class="col-sm-4">
                             @Html.LabelFor(x => x.Weight, "Twoja masa (kg):")
                         </div>
                         <div class="col-sm-3">
-                            @Html.TextBoxFor(x => x.Weight)
+                            @Html.TextBoxFor(x => x.Weight, new { @class = "form-control" })
                         </div>
                     </div>
                     <div class="mb-3 row p-2 text-end">
@@ -37,7 +37,7 @@
                             @Html.LabelFor(x => x.Height, "Twój wzrost (cm):")
                         </div>
                         <div class="col-sm-3">
-                            @Html.TextBoxFor(x => x.Height)
+                            @Html.TextBoxFor(x => x.Height, new { @class = "form-control" })
                         </div>
                     </div>
 
@@ -48,7 +48,6 @@
                         @Html.LabelFor(x => x.ResultBMI, "Twoje BMI: ")
                     </div>
                     <div id="resultBMI" class="col-sm-8 text-start">
-
                     </div>
                 </div>
             </div>
@@ -67,7 +66,7 @@
                             @Html.LabelFor(x => x.Weight, "Ciężar (kg):")
                         </div>
                         <div class="col-sm-3">
-                            @Html.TextBoxFor(x => x.Weight)
+                            @Html.TextBoxFor(x => x.Weight, new { @class = "form-control" })
                         </div>
                     </div>
                     <div class="mb-3 row p-2 text-end">
@@ -75,10 +74,9 @@
                             @Html.LabelFor(x => x.NumberOfRepetitions, "Liczba powtórzeń:")
                         </div>
                         <div class="col-sm-3">
-                            @Html.TextBoxFor(x => x.NumberOfRepetitions)
+                            @Html.TextBoxFor(x => x.NumberOfRepetitions, new { @class = "form-control" })
                         </div>
                     </div>
-
                     <input type="submit" value="Oblicz" class="btn btn-success ps-4 pe-4" />
                 }
                 <div class="mb-3 row pt-3 p-2 text-end">
@@ -87,6 +85,68 @@
                     </div>
                     <div id="resultOneRepMax" class="col-sm-8 text-start">
 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container-fluid first-group text-center pt-5">
+        <div class="calculator row justify-content-center">
+            <h1>Oblicz swoje BMR</h1>
+            <div class="col-6 pt-5 text-center">
+                @using (Ajax.BeginForm(oneRepMax))
+                {
+                    <div class="row input-group text-start pb-5">
+                        <div class="col-lg-4">
+                            <div class="row">
+                                @Html.LabelFor(x => x.Gender, "Płeć:")
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <div id="inlineRadio1">@Html.RadioButtonFor(x => x.Gender, "M", new { @class = "form-check-input" })</div>
+                                <label class="form-check-label" for="inlineRadio1">Mężczyzna</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <div id="inlineRadio2">@Html.RadioButtonFor(x => x.Gender, "K", new { @class = "form-check-input" })</div>
+                                <label class="form-check-label" for="inlineRadio2">Kobieta</label>
+                            </div>
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="row">
+                                @Html.LabelFor(x => x.Weight, "Aktywność fizyczna:")
+                            </div>
+                            <div class="row ps-3 pe-3">
+                                @Html.DropDownListFor(x => x.ActivityID, new SelectList(ViewBag.Activities, "ID", "Description"), "Wybierz rodzaj aktywności", new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row input-group text-start pb-4">
+                        <div class="col-md-4">
+                            @Html.LabelFor(x => x.Weight, "Waga (kg):")
+                            @Html.TextBoxFor(x => x.Weight, new { @class = "form-control" })
+                        </div>
+                        <div class="col-md-4">
+                            @Html.LabelFor(x => x.Height, "Wzrost (cm):")
+                            @Html.TextBoxFor(x => x.Height, new { @class = "form-control" })
+                        </div>
+                        <div class="col-md-4">
+                            @Html.LabelFor(x => x.Age, "Wiek:")
+                            @Html.TextBoxFor(x => x.Age, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="row pt-2 justify-content-center">
+                        <div class="col-6 ">
+                            <input type="submit" value="Oblicz" class="btn btn-success ps-4 pe-4" />
+                        </div>
+
+                    </div>
+                }
+                <div class=" row pt-3 pb-5 text-end">
+                    <div class="col-sm-4">
+                        @Html.LabelFor(x => x.ResultRepMax, "BMR: ")
+                    </div>
+                    <div id="resultOneRepMax" class="col-sm-8 text-start">
                     </div>
                 </div>
             </div>

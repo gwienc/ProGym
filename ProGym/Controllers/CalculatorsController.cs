@@ -11,7 +11,10 @@ namespace ProGym.Controllers
     {
         // GET: Calculators
         public ActionResult Index()
-        {          
+        {
+            CalculatorsViewModel model = new CalculatorsViewModel();
+            ViewBag.Activities = model.Activities;
+            
             return View();
         }
 

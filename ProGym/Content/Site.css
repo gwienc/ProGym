@@ -736,6 +736,11 @@ body {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 1.2rem;
 }
+.calculator form select {
+    font-weight: 600;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 1.2rem;
+}
 /* END CALCULATORS */
 
 .list-group a:hover, .list-group a:active {
