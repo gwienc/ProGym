@@ -23,24 +23,65 @@ namespace ProGym.ViewModels
         public double ResultRepMax { get; set; }
         public char Gender { get; set; }
         public int Age { get; set; }
-        public int ActivityID { get; set; }
+        public double ActivityID { get; set; }
+        public int TypeID { get; set; }
+        public int PurposeID { get; set; }
+        public double BMR { get; set; }
+        public double TotalCaloricRequirement { get; set; }
         public List<Activity> Activities
         {
             get
             {
                 return new List<Activity>()
                 {
-                    new Activity() {ID = 1, Description = "Znikoma aktywność fizyczna (brak ćwiczeń oraz siedzący tryb życia"},
-                    new Activity() {ID = 2, Description = "Niska aktywność fizyczna (siedzący tryb życia oraz częste spacery lub 1-2 treningi w tygodniu"},
-                    new Activity() {ID = 3, Description = "Średnia aktywność fizyczna (praca fizyczna lub siedzący tryb życia i 2-4 treningi w tygodniu"},
-                    new Activity() {ID = 4, Description = "Wysoka aktywność fizyczna (ciężka praca fizyczna lub kilka ciężkich treningów w tygodniu"},
+                    new Activity() {ID = 1, Description = "Leżący lub siedzący tryb życia, brak aktywności fizycznej"},
+                    new Activity() {ID = 1.2, Description = "Praca siedząca, aktywność fizyczna na niskim poziomie"},
+                    new Activity() {ID = 1.4, Description = "Praca nie fizyczna, trening 2 razy w tygodniu"},
+                    new Activity() {ID = 1.6, Description = "Lekka praca fizyczna, trening 3-4 razy w tygodniu"},
+                    new Activity() {ID = 1.8, Description = "Praca fizyczna, trening 5 razy w tygodniu"},
+                    new Activity() {ID = 2, Description = "Ciężka praca fizyczna, codzienny trening"}
                 };
 
+            }
+        }
+        public List<Type> Types
+        {
+            get
+            {
+                return new List<Type>()
+                {
+                    new Type() {ID =1, Description ="Ektomorfik"},
+                    new Type() {ID =2, Description ="Endomorfik"},
+                    new Type() {ID =3, Description ="Mezomorfik"}
+                };
+            }
+        }
+
+        public List<Purpose> Purposes
+        {
+            get
+            {
+                return new List<Purpose>()
+                {
+                    new Purpose(){ID = 1, Description ="Chcę przytyć"},
+                    new Purpose(){ID = 2, Description ="Chcę utrzymać wagę"},
+                    new Purpose(){ID = 3, Description = "Chcę schudnąć"}
+                };
             }
         }
     }
 
     public class Activity
+    {
+        public double ID { get; set; }
+        public string Description { get; set; }
+    }
+    public class Type
+    {
+        public int ID { get; set; }
+        public string Description { get; set; }
+    }
+    public class Purpose
     {
         public int ID { get; set; }
         public string Description { get; set; }

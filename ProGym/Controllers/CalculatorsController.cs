@@ -14,6 +14,8 @@ namespace ProGym.Controllers
         {
             CalculatorsViewModel model = new CalculatorsViewModel();
             ViewBag.Activities = model.Activities;
+            ViewBag.Purposes = model.Purposes;
+            ViewBag.Types = model.Types;
             
             return View();
         }
@@ -65,6 +67,65 @@ namespace ProGym.Controllers
         {
             model.ResultRepMax = model.Weight * model.NumberOfRepetitions * model.ConstantValue + model.Weight;
             return Json(model);
+        }
+
+        public JsonResult CalculateBMR(CalculatorsViewModel model)
+        {
+            switch (model.Gender.ToString())
+            {
+                case "M":
+                    model.BMR = 66.5 + (13.7 * model.Weight) + (5 * model.Height) - (6.8 * model.Age);
+                    //model.BMR = (9.99 * model.Weight) + (6.25 * model.Height) - (4.92 * model.Age) + 5;
+                    break;
+                case "K":
+                    model.BMR = (9.99 * model.Weight) + (6.25 * model.Height) - (4.92 * model.Age) - 161;
+                    break;
+                default:
+                    break;
+            }
+
+            var sameWeight = model.BMR * model.ActivityID;
+
+
+            switch (model.PurposeID)
+            {
+                case 1:
+                    if (model.TypeID == 1)
+                    {
+                        model.TotalCaloricRequirement = sameWeight + (0.2 * sameWeight);
+                    }
+                    else if(model.TypeID == 2)
+                    {
+                        model.TotalCaloricRequirement = sameWeight + (0.1 * sameWeight);
+                    }
+                    else if(model.TypeID == 3)
+                    {
+                        model.TotalCaloricRequirement = sameWeight + (0.15 * sameWeight);
+                    }
+                    break;
+                case 2:
+                    model.TotalCaloricRequirement = sameWeight;
+                    break;
+                case 3:
+                    if (model.TypeID == 1)
+                    {
+                        model.TotalCaloricRequirement = sameWeight - (0.1 * sameWeight);
+                    }
+                    else if (model.TypeID == 2)
+                    {
+                        model.TotalCaloricRequirement = sameWeight - (0.2 * sameWeight);
+                    }
+                    else if (model.TypeID == 3)
+                    {
+                        model.TotalCaloricRequirement = sameWeight - (0.15 * sameWeight);
+                    }
+                    break;
+                default:
+                    break;
+            }
+
+            return Json(model);
+
         }
     }
 }
