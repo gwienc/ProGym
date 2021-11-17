@@ -26,7 +26,7 @@ namespace ProGym.ViewModels
         public double ActivityID { get; set; }
         public int TypeID { get; set; }
         public int PurposeID { get; set; }
-        public double BMR { get; set; }
+        public double ResultBMR { get; set; }
         public double TotalCaloricRequirement { get; set; }
         public List<Activity> Activities
         {

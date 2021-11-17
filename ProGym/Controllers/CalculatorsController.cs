@@ -74,17 +74,17 @@ namespace ProGym.Controllers
             switch (model.Gender.ToString())
             {
                 case "M":
-                    model.BMR = 66.5 + (13.7 * model.Weight) + (5 * model.Height) - (6.8 * model.Age);
-                    //model.BMR = (9.99 * model.Weight) + (6.25 * model.Height) - (4.92 * model.Age) + 5;
+                    //model.ResultBMR = 66.5 + (13.7 * model.Weight) + (5 * model.Height) - (6.8 * model.Age);
+                    model.ResultBMR = (9.99 * model.Weight) + (6.25 * model.Height) - (4.92 * model.Age) + 5;
                     break;
                 case "K":
-                    model.BMR = (9.99 * model.Weight) + (6.25 * model.Height) - (4.92 * model.Age) - 161;
+                    model.ResultBMR = (9.99 * model.Weight) + (6.25 * model.Height) - (4.92 * model.Age) - 161;
                     break;
                 default:
                     break;
             }
 
-            var sameWeight = model.BMR * model.ActivityID;
+            var sameWeight = model.ResultBMR * model.ActivityID;
 
 
             switch (model.PurposeID)

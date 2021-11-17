@@ -30,30 +30,30 @@
             <div class="col-6 pt-5 text-center">
                 @using (Ajax.BeginForm(bmi))
                 {
-                    <div class=" mb-3 row p-2 text-end">
-                        <div class="col-sm-4">
+                    <div class="row p-2">
+                        <div class="col-md-6 text-md-end">
                             @Html.LabelFor(x => x.Weight, "Twoja masa (kg):")
                         </div>
-                        <div class="col-sm-3">
+                        <div class="col-md-4">
                             @Html.TextBoxFor(x => x.Weight, new { @class = "form-control" })
                         </div>
                     </div>
-                    <div class="mb-3 row p-2 text-end">
-                        <div class="col-sm-4">
+                    <div class="row p-2 pb-5">
+                        <div class="col-md-6 text-md-end">
                             @Html.LabelFor(x => x.Height, "Twój wzrost (cm):")
                         </div>
-                        <div class="col-sm-3">
+                        <div class="col-md-4">
                             @Html.TextBoxFor(x => x.Height, new { @class = "form-control" })
                         </div>
                     </div>
 
                     <input type="submit" value="Oblicz" class="btn btn-success ps-4 pe-4" />
                 }
-                <div class="mb-3 row pt-3 p-2 text-end">
-                    <div class="col-sm-4">
+                <div class="mb-3 row pt-5 p-2 text-center">
+                    <div class="col-12" style="display:inline-block">
                         @Html.LabelFor(x => x.ResultBMI, "Twoje BMI: ")
-                    </div>
-                    <div id="resultBMI" class="col-sm-8 text-start">
+                        <div id="resultBMI" style="display:inline-block">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -67,30 +67,31 @@
             <div class="col-6 pt-5 text-center">
                 @using (Ajax.BeginForm(oneRepMax))
                 {
-                    <div class="mb-3 row p-2 text-end">
-                        <div class="col-sm-4">
+                    <div class="row p-2">
+                        <div class="col-md-6 text-md-end">
                             @Html.LabelFor(x => x.Weight, "Ciężar (kg):")
                         </div>
-                        <div class="col-sm-3">
+                        <div class="col-md-4">
                             @Html.TextBoxFor(x => x.Weight, new { @class = "form-control" })
                         </div>
                     </div>
-                    <div class="mb-3 row p-2 text-end">
-                        <div class="col-sm-4">
+                    <div class="row p-2 pb-5">
+                        <div class="col-md-6 text-md-end">
                             @Html.LabelFor(x => x.NumberOfRepetitions, "Liczba powtórzeń:")
                         </div>
-                        <div class="col-sm-3">
+                        <div class="col-md-4">
                             @Html.TextBoxFor(x => x.NumberOfRepetitions, new { @class = "form-control" })
                         </div>
                     </div>
+
                     <input type="submit" value="Oblicz" class="btn btn-success ps-4 pe-4" />
                 }
-                <div class="mb-3 row pt-3 p-2 text-end">
-                    <div class="col-sm-4">
+                <div class="mb-3 row pt-5 p-2 text-center">
+                    <div class="col-12" style="display:inline-block">
                         @Html.LabelFor(x => x.ResultRepMax, "1RM: ")
-                    </div>
-                    <div id="resultOneRepMax" class="col-sm-8 text-start">
+                        <div id="resultOneRepMax" style="display:inline-block">
 
+                        </div>
                     </div>
                 </div>
             </div>
@@ -163,21 +164,22 @@
                         <div class="col-6 ">
                             <input type="submit" value="Oblicz" class="btn btn-success ps-4 pe-4" />
                         </div>
-
                     </div>
                 }
-                <div class=" row pt-3 pt-5 pb-2 text-end">
-                    <div class="col-6">
-                        @Html.LabelFor(x => x.BMR, "BMR: ")
-                    </div>
-                    <div id="resultBMR" class="col-sm-8 text-start">
+                <div class=" row pt-3 pt-5 pb-2 text-center">
+                    <div class="col-12" style="display:inline-block">
+                        @Html.LabelFor(x => x.ResultBMR, "BMR: ")
+                        <div id="resultBMR" style="display:inline-block">
+
+                        </div>
                     </div>
                 </div>
-                <div class=" row pt-3 pb-5 text-end">
-                    <div class="col-6">
+                <div class=" row pt-3 pb-5 text-center">
+                    <div class="col-12" style="display:inline-block">
                         @Html.LabelFor(x => x.TotalCaloricRequirement, "Całkowite zapotrzebowanie kaloryczne: ")
-                    </div>
-                    <div id="resultBMR" class="col-sm-8 text-start">
+                        <div id="totalCaloricRequirement" style="display:inline-block">
+
+                        </div>
                     </div>
                 </div>
             </div>
@@ -195,7 +197,6 @@
             $(container).html('');
             resultBMI = data.ResultBMI + ' - ' + data.Range;
             $(container).append(resultBMI);
-
         }
     </script>
 
@@ -205,7 +206,23 @@
             $(container).html('');
             resultOneRepMax = data.ResultRepMax;
             $(container).append(resultOneRepMax);
-
         }
     </script>
+
+    <script>
+        function DisplayBMR(data) {
+            var container = $('#resultBMR');
+            var container2 = $('#totalCaloricRequirement');
+
+            $(container).html('');
+            $(container2).html('');
+
+            resultBMR = data.ResultBMR + ' kcal';
+            totalCaloricRequirement = data.TotalCaloricRequirement + ' kcal';
+
+            $(container).append(resultBMR);
+            $(container2).append(totalCaloricRequirement);
+        }
+    </script>
+
 }
