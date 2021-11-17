@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -15,16 +16,25 @@ namespace ProGym.ViewModels
                 return _constantValue;
             }
         }
+        [Required(ErrorMessage = "Proszę podać wagę")]
         public double Weight { get; set; }
+        
+        [Required(ErrorMessage = "Proszę podać wzrost")]
         public double Height { get; set; }
         public double ResultBMI { get; set; }
         public string Range { get; set; }
+        [Required(ErrorMessage = "Proszę podać ilość powtórzeń")]
         public int NumberOfRepetitions { get; set; }
         public double ResultRepMax { get; set; }
+        [Required(ErrorMessage = "Proszę wybrać płeć")]
         public char Gender { get; set; }
+        [Required(ErrorMessage = "Proszę podać wiek")]
         public int Age { get; set; }
+        [Required(ErrorMessage = "Proszę wybrać rodzaj aktywności")]
         public double ActivityID { get; set; }
+        [Required(ErrorMessage = "Proszę wybrać somatotyp")]
         public int TypeID { get; set; }
+        [Required(ErrorMessage = "Proszę wybrać cel")]
         public int PurposeID { get; set; }
         public double ResultBMR { get; set; }
         public double TotalCaloricRequirement { get; set; }
@@ -36,7 +46,7 @@ namespace ProGym.ViewModels
                 {
                     new Activity() {ID = 1, Description = "Leżący lub siedzący tryb życia, brak aktywności fizycznej"},
                     new Activity() {ID = 1.2, Description = "Praca siedząca, aktywność fizyczna na niskim poziomie"},
-                    new Activity() {ID = 1.4, Description = "Praca nie fizyczna, trening 2 razy w tygodniu"},
+                    new Activity() {ID = 1.4, Description = "Praca niefizyczna, trening 2 razy w tygodniu"},
                     new Activity() {ID = 1.6, Description = "Lekka praca fizyczna, trening 3-4 razy w tygodniu"},
                     new Activity() {ID = 1.8, Description = "Praca fizyczna, trening 5 razy w tygodniu"},
                     new Activity() {ID = 2, Description = "Ciężka praca fizyczna, codzienny trening"}
@@ -63,9 +73,9 @@ namespace ProGym.ViewModels
             {
                 return new List<Purpose>()
                 {
-                    new Purpose(){ID = 1, Description ="Chcę przytyć"},
-                    new Purpose(){ID = 2, Description ="Chcę utrzymać wagę"},
-                    new Purpose(){ID = 3, Description = "Chcę schudnąć"}
+                    new Purpose(){ID = 1, Description ="Chcę nabrać masy"},
+                    new Purpose(){ID = 2, Description ="Chcę utrzymać masę"},
+                    new Purpose(){ID = 3, Description = "Chcę zredukować masę"}
                 };
             }
         }

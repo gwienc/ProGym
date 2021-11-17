@@ -123,7 +123,8 @@ namespace ProGym.Controllers
                 default:
                     break;
             }
-
+            model.TotalCaloricRequirement = Math.Round(model.TotalCaloricRequirement, 3);
+            model.ResultBMR = Math.Round(model.ResultBMR, 3);
             return Json(model);
 
         }

@@ -30,12 +30,15 @@
             <div class="col-6 pt-5 text-center">
                 @using (Ajax.BeginForm(bmi))
                 {
+                    @Html.AntiForgeryToken()
+
                     <div class="row p-2">
                         <div class="col-md-6 text-md-end">
                             @Html.LabelFor(x => x.Weight, "Twoja masa (kg):")
                         </div>
                         <div class="col-md-4">
                             @Html.TextBoxFor(x => x.Weight, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(o => o.Weight)
                         </div>
                     </div>
                     <div class="row p-2 pb-5">
@@ -44,6 +47,7 @@
                         </div>
                         <div class="col-md-4">
                             @Html.TextBoxFor(x => x.Height, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(o => o.Height)
                         </div>
                     </div>
 
@@ -57,6 +61,16 @@
                     </div>
                 </div>
             </div>
+            <div class="row pt-5 pb-2 justify-content-center">
+                <div class="col-8">
+                    <p>
+                        BMI jest wskaźnikiem odnoszącym się do relacji pomiędzy masą ciała a wzrostem (body mass index).
+                        Pozwala m.in. na wyłonienie ze społeczeństwa jednostek o wyższym ryzyku występowania nadwagi i otyłości, a co za tym idzie wyższym ryzyku zachorowania na choroby cywilizacyjne, takie jak cukrzyca typu 2, miażdżyca, czy nadciśnienie.
+                        Nie zawsze jednak wyniki wyliczeń BMI są adekwatne do sytuacji rzeczywistej i czasami mogą dawać nieco mylne pole do wnioskowania.
+                        Utrudnione może być jego wykorzystanie m.in. w przypadku dzieci i młodzieży, a także sportowców (głównie uprawiających dyscypliny siłowe). Ciekawy jest fakt, że korzysta się z niego już od około 180 lat.
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -67,12 +81,14 @@
             <div class="col-6 pt-5 text-center">
                 @using (Ajax.BeginForm(oneRepMax))
                 {
+                    @Html.AntiForgeryToken()
                     <div class="row p-2">
                         <div class="col-md-6 text-md-end">
                             @Html.LabelFor(x => x.Weight, "Ciężar (kg):")
                         </div>
                         <div class="col-md-4">
                             @Html.TextBoxFor(x => x.Weight, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(o => o.Weight)
                         </div>
                     </div>
                     <div class="row p-2 pb-5">
@@ -81,6 +97,7 @@
                         </div>
                         <div class="col-md-4">
                             @Html.TextBoxFor(x => x.NumberOfRepetitions, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(o => o.NumberOfRepetitions)
                         </div>
                     </div>
 
@@ -95,6 +112,16 @@
                     </div>
                 </div>
             </div>
+            <div class="row pt-5 pb-2 justify-content-center">
+                <div class="col-8">
+                    <p>
+                        Kalkulator 1 RM (ang. one rep max - jedno powtórzenie maksymalne) służy do obliczenia przybliżonej wartości rekordu w kilogramach w danym ćwiczeniu na podstawie rekordu powtórzeniowego. 
+                        Przykładowo - w sytuacji, gdy udało Ci się wykonać ćwiczenie z ciężarem 100 kg na 3 ruchy to po wpisaniu tych danych w kalkulator okaże się, że Twój rekord w tym ćwiczeniu oscyluje w okolicach 110 kg.
+                        Kalkulator korzysta ze wzoru, który dodaje 10% do wyniku za każde 3 dodatkowe powtórzenia (co ładnie pokazuje przykład z powyższego akapitu). Takie podejście posiada oczywiście ograniczenia.
+                        Wydolność neuromuskularna, proporcja włókien, czy nawet dyspozycja dnia - wszystkie te rzeczy wpływają na zdolności siłowe. Pamiętaj więc, że wynik jest pewnym przybliżeniem.
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -105,6 +132,7 @@
             <div class="col-6 pt-5 text-center">
                 @using (Ajax.BeginForm(BMR))
                 {
+                    @Html.AntiForgeryToken()
                     <div class="row input-group text-start pb-5">
                         <div class="col-lg-4">
                             <div class="row">
@@ -116,7 +144,8 @@
                             </div>
                             <div class="form-check form-check-inline">
                                 <div id="inlineRadio2">@Html.RadioButtonFor(x => x.Gender, "K", new { @class = "form-check-input" })</div>
-                                <label class="form-check-label" for="inlineRadio2">Kobieta</label>
+                                <label class="form-check-label" for="inlineRadio2">Kobieta</label><br />
+                                @Html.ValidationMessageFor(o => o.Gender)
                             </div>
                         </div>
                         <div class="col-lg-8">
@@ -125,6 +154,7 @@
                             </div>
                             <div class="row ps-3 pe-3">
                                 @Html.DropDownListFor(x => x.ActivityID, new SelectList(ViewBag.Activities, "ID", "Description"), "Wybierz rodzaj aktywności", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(o => o.ActivityID)
                             </div>
                         </div>
                     </div>
@@ -135,6 +165,7 @@
                             </div>
                             <div class="row ps-3 pe-3">
                                 @Html.DropDownListFor(x => x.TypeID, new SelectList(ViewBag.Types, "ID", "Description"), "Wybierz swój somatotyp", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(o => o.TypeID)
                             </div>
                         </div>
                         <div class="col-lg-6">
@@ -143,6 +174,7 @@
                             </div>
                             <div class="row ps-3 pe-3">
                                 @Html.DropDownListFor(x => x.PurposeID, new SelectList(ViewBag.Purposes, "ID", "Description"), "Wybierz swój cel", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(o => o.PurposeID)
                             </div>
                         </div>
                     </div>
@@ -150,14 +182,17 @@
                         <div class="col-lg-4">
                             @Html.LabelFor(x => x.Weight, "Waga (kg):")
                             @Html.TextBoxFor(x => x.Weight, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(o => o.Weight)
                         </div>
                         <div class="col-lg-4">
                             @Html.LabelFor(x => x.Height, "Wzrost (cm):")
                             @Html.TextBoxFor(x => x.Height, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(o => o.Height)
                         </div>
                         <div class="col-lg-4">
                             @Html.LabelFor(x => x.Age, "Wiek:")
                             @Html.TextBoxFor(x => x.Age, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(o => o.Age)
                         </div>
                     </div>
                     <div class="row pt-2 justify-content-center">
@@ -183,12 +218,25 @@
                     </div>
                 </div>
             </div>
+            <div class="row pt-5 pb-2 justify-content-center">
+                <div class="col-8">
+                    <p>
+                        Znajmość BMR (PPM) - podstawowej przemiany materii oraz TMR (CPM) - całkowitej przemiany materii jest konieczne, by odpowiednio kształtować swoją sylwetkę, 
+                        niezależnie czy chcemy schudnąć, przybrać na masie czy utrzymać wagę, zapotrzebowanie kaloryczne i jego obliczenie są podstawowymi czynnikami, które nam pomogą w osiągnięciu celu. 
+                        Wartość BMR określa liczbę kalorii, którą organizm przeznacza w ciągu doby na podstawowe funkcje życiowe, podczas odchudzania nie powinniśmy spożywać mniej kalorii niż wynosi nasze BMR, 
+                        może to przynieść wiele niepożądanych skutków, takich jak: znaczne osłabienie, zwiększenie kortyzolu, ból czy zawroty głowy, długotrwałe spożywanie zbyt małej liczby kalorii może doprowadzić do poważnych chorób.
+                        Drugą stroną medalu jest spożywanie zbyt dużej liczby kalorii, źle obliczony wskaźnik CPM i przesadzenie ze spożywanym jedzeniem może powodować nadmierne otłuszczenie, w tym organów wewnętrznych, dlatego tak ważne jest obliczenie dokładnego zapotrzebowania kalorycznego.
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
 </section>
 @section ScriptsBottom{
     <script src="~/Scripts/jquery-3.6.0.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
     <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
 
     <script>

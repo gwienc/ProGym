@@ -741,6 +741,13 @@ body {
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 1.2rem;
 }
+    .calculator p {
+        font-weight: 100;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-size: 1rem;
+        text-align:justify;
+    }
+
 /* END CALCULATORS */
 
 .list-group a:hover, .list-group a:active {
