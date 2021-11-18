@@ -1,7 +1,16 @@
 ﻿@model ProGym.ViewModels.CalculatorsViewModel
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_ManageLayout.cshtml";
+    if (User.Identity.IsAuthenticated)
+    {
+        Layout = "~/Views/Shared/_ManageLayout.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_GymLayout.cshtml";
+    }
+
+
     AjaxOptions bmi = new AjaxOptions()
     {
         Url = Url.Action("CalculateBMI", "Calculators"),
@@ -20,11 +29,25 @@
         HttpMethod = "Post",
         OnSuccess = "DisplayBMR"
     };
+    AjaxOptions PeffectWeight = new AjaxOptions()
+    {
+        Url = Url.Action("CalculatePerfectWeight", "Calculators"),
+        HttpMethod = "Post",
+        OnSuccess = "DisplayPerfectWeight"
+    };
+    AjaxOptions CalculateBodyFatIndex = new AjaxOptions()
+    {
+        Url = Url.Action("CalculateBodyFatIndex", "Calculators"),
+        HttpMethod = "Post",
+        OnSuccess = "CalculateBodyFatIndex"
+    };
 
 }
 
+@Html.Partial("_BreadCrumb")
+
 <section>
-    <div class="container-fluid first-group text-center pt-5">
+    <div class="container-fluid second-group text-center">
         <div class="calculator row justify-content-center">
             <h1>Oblicz swoje BMI</h1>
             <div class="col-6 pt-5 text-center">
@@ -75,7 +98,7 @@
     </div>
 </section>
 <section>
-    <div class="container-fluid second-group text-center pt-5">
+    <div class="container-fluid first-group text-center pt-5">
         <div class="calculator row justify-content-center">
             <h1>Oblicz 1RM</h1>
             <div class="col-6 pt-5 text-center">
@@ -115,7 +138,7 @@
             <div class="row pt-5 pb-2 justify-content-center">
                 <div class="col-8">
                     <p>
-                        Kalkulator 1 RM (ang. one rep max - jedno powtórzenie maksymalne) służy do obliczenia przybliżonej wartości rekordu w kilogramach w danym ćwiczeniu na podstawie rekordu powtórzeniowego. 
+                        Kalkulator 1 RM (ang. one rep max - jedno powtórzenie maksymalne) służy do obliczenia przybliżonej wartości rekordu w kilogramach w danym ćwiczeniu na podstawie rekordu powtórzeniowego.
                         Przykładowo - w sytuacji, gdy udało Ci się wykonać ćwiczenie z ciężarem 100 kg na 3 ruchy to po wpisaniu tych danych w kalkulator okaże się, że Twój rekord w tym ćwiczeniu oscyluje w okolicach 110 kg.
                         Kalkulator korzysta ze wzoru, który dodaje 10% do wyniku za każde 3 dodatkowe powtórzenia (co ładnie pokazuje przykład z powyższego akapitu). Takie podejście posiada oczywiście ograniczenia.
                         Wydolność neuromuskularna, proporcja włókien, czy nawet dyspozycja dnia - wszystkie te rzeczy wpływają na zdolności siłowe. Pamiętaj więc, że wynik jest pewnym przybliżeniem.
@@ -126,7 +149,7 @@
     </div>
 </section>
 <section>
-    <div class="container-fluid first-group text-center pt-5">
+    <div class="container-fluid second-group text-center pt-5">
         <div class="calculator row justify-content-center">
             <h1>Oblicz swoje BMR</h1>
             <div class="col-6 pt-5 text-center">
@@ -221,11 +244,157 @@
             <div class="row pt-5 pb-2 justify-content-center">
                 <div class="col-8">
                     <p>
-                        Znajmość BMR (PPM) - podstawowej przemiany materii oraz TMR (CPM) - całkowitej przemiany materii jest konieczne, by odpowiednio kształtować swoją sylwetkę, 
-                        niezależnie czy chcemy schudnąć, przybrać na masie czy utrzymać wagę, zapotrzebowanie kaloryczne i jego obliczenie są podstawowymi czynnikami, które nam pomogą w osiągnięciu celu. 
-                        Wartość BMR określa liczbę kalorii, którą organizm przeznacza w ciągu doby na podstawowe funkcje życiowe, podczas odchudzania nie powinniśmy spożywać mniej kalorii niż wynosi nasze BMR, 
+                        Znajmość BMR (PPM) - podstawowej przemiany materii oraz TMR (CPM) - całkowitej przemiany materii jest konieczne, by odpowiednio kształtować swoją sylwetkę,
+                        niezależnie czy chcemy schudnąć, przybrać na masie czy utrzymać wagę, zapotrzebowanie kaloryczne i jego obliczenie są podstawowymi czynnikami, które nam pomogą w osiągnięciu celu.
+                        Wartość BMR określa liczbę kalorii, którą organizm przeznacza w ciągu doby na podstawowe funkcje życiowe, podczas odchudzania nie powinniśmy spożywać mniej kalorii niż wynosi nasze BMR,
                         może to przynieść wiele niepożądanych skutków, takich jak: znaczne osłabienie, zwiększenie kortyzolu, ból czy zawroty głowy, długotrwałe spożywanie zbyt małej liczby kalorii może doprowadzić do poważnych chorób.
                         Drugą stroną medalu jest spożywanie zbyt dużej liczby kalorii, źle obliczony wskaźnik CPM i przesadzenie ze spożywanym jedzeniem może powodować nadmierne otłuszczenie, w tym organów wewnętrznych, dlatego tak ważne jest obliczenie dokładnego zapotrzebowania kalorycznego.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container-fluid first-group text-center pt-5">
+        <div class="calculator row justify-content-center">
+            <h1>Oblicz swoją idealną wagę</h1>
+            <div class="col-6 pt-5 text-center">
+                @using (Ajax.BeginForm(PeffectWeight))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="row input-group justify-content-center text-start pb-5">
+                        <div class="col-lg-4">
+                            <div class="row">
+                                @Html.LabelFor(x => x.Gender, "Płeć:")
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <div id="inlineRadio1">@Html.RadioButtonFor(x => x.Gender, "M", new { @class = "form-check-input" })</div>
+                                <label class="form-check-label" for="inlineRadio1">Mężczyzna</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <div id="inlineRadio2">@Html.RadioButtonFor(x => x.Gender, "K", new { @class = "form-check-input" })</div>
+                                <label class="form-check-label" for="inlineRadio2">Kobieta</label>
+
+                            </div>
+                            <br />
+                            @Html.ValidationMessageFor(o => o.Gender)
+                        </div>
+                        <div class="col-lg-4 pt-xxl-0 pt-lg-0 pt-sm-4">
+                            <div class="row">
+                                @Html.Label("Twój wzrost:")
+                            </div>
+                            <div class="row ps-3 pe-3">
+                                @Html.TextBoxFor(x => x.Height, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(o => o.Height)
+                            </div>
+                        </div>
+                    </div>
+                    <input type="submit" value="Oblicz" class="btn btn-success ps-4 pe-4" />
+                }
+                <div class="mb-3 row pt-5 p-2 text-center">
+                    <div class="col-12" style="display:inline-block">
+                        @Html.LabelFor(x => x.PerfectWeightBroc, "Idealna waga wg Broca: ")
+                        <div id="perfectWeightBroc" style="display:inline-block">
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3 row pt-2 p-2 text-center">
+                    <div class="col-12" style="display:inline-block">
+                        @Html.LabelFor(x => x.PerfectWeightLorentz, "Idealna waga wg Lorentza: ")
+                        <div id="perfectWeightLorentz" style="display:inline-block">
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3 row pt-2 p-2 text-center">
+                    <div class="col-12" style="display:inline-block">
+                        @Html.LabelFor(x => x.PerfectWeightPotton, "Idealna waga wg Pottona: ")
+                        <div id="perfectWeightPotton" style="display:inline-block">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row pt-5 pb-2 justify-content-center">
+                <div class="col-8">
+                    <p>
+                        Przyjmuje się, że wzór Broca jest miarodajny dla osób o wzroście nie mniejszym niż 160 cm i nie większym niż 190 cm.
+                        W praktyce będzie on znacznie lepiej działał w przypadku niskich osób niż tych wysokich.
+                    </p>
+                    <p>
+                        Wzór Lorentza to jeden z najczęściej stosowanych wzorów na idealną masę ciała. Nie sprawdza się najlepiej przy niskim wzroście (ok. 150 cm).
+                    </p>
+                    <p>
+                        Wzór Pottona opiera się na zakresach BMI, a otrzymany wynik stanowi idealny środek normy BMI.
+                        Dla większości osób ta waga może być zbyt wysoka i nie pokrywać się z indywidualnymi oczekiwaniami dotyczącymi idealnej sylwetki.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container-fluid second-group text-center pt-5">
+        <div class="calculator row justify-content-center">
+            <h1>Oblicz swój wskaźnik tkanki tłuszczowej</h1>
+            <div class="col-6 pt-5 text-center">
+                @using (Ajax.BeginForm(CalculateBodyFatIndex))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="row input-group justify-content-center text-start pb-5">
+                        <div class="col-xl-4">
+                            <div class="row">
+                                @Html.LabelFor(x => x.Gender, "Płeć:")
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <div id="inlineRadio1">@Html.RadioButtonFor(x => x.Gender, "M", new { @class = "form-check-input" })</div>
+                                <label class="form-check-label" for="inlineRadio1">Mężczyzna</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <div id="inlineRadio2">@Html.RadioButtonFor(x => x.Gender, "K", new { @class = "form-check-input" })</div>
+                                <label class="form-check-label" for="inlineRadio2">Kobieta</label>
+
+                            </div>
+                            <br />
+                            @Html.ValidationMessageFor(o => o.Gender)
+                        </div>
+                        <div class="col-xl-4 pt-xxl-0 pt-lg-0 pt-sm-4">
+                            <div class="row">
+                                @Html.Label("Masa (kg):")
+                            </div>
+                            <div class="row ps-3 pe-3">
+                                @Html.TextBoxFor(x => x.Weight, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(o => o.Weight)
+                            </div>
+                        </div>
+                        <div class="col-xl-4 pt-xxl-0 pt-lg-0 pt-sm-4">
+                            <div class="row">
+                                @Html.Label("Obwód pasa (cm):")
+                            </div>
+                            <div class="row ps-3 pe-3">
+                                @Html.TextBoxFor(x => x.Waist, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(o => o.Waist)
+                            </div>
+                        </div>
+                    </div>
+                    <input type="submit" value="Oblicz" class="btn btn-success ps-4 pe-4" />
+                }
+                <div class="mb-3 row pt-5 p-2 text-center">
+                    <div class="col-12" style="display:inline-block">
+                        @Html.LabelFor(x => x.BodyFatIndex, "Wskaźnik tkanki tłuszczowej: ")
+                        <div id="bodyFatIndex" style="display:inline-block">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row pt-5 pb-2 justify-content-center">
+                <div class="col-8">
+                    <p>
+                        Jak działa kalkulator tkanki tłuszczowej? To wskaźnik określający procentowy udział tkanki tłuszczowej w ciele, który ma za zadanie ukazać, ile procent w całej masie ciała stanowi tłuszcz.
+                        Jest to istotny element, który nadaje się do tego, aby miarodajnie kontrolować postępy odchudzania, jak i to, czy nadwyżka kaloryczna podczas budowania masy nie jest zbyt wysoka.
+                        Wskaźnik procentowej zawartości tłuszczu jest powszechnie wykorzystywanym narzędziem przez dietetyków, jak i trenerów personalnych. Z powodzeniem możesz go także użyć samodzielnie.
+                        Uzyskany wynik to procentowa zawartość tkanki tłuszczowej w organizmie (BF %), który należy uznawać za rzetelny.
+                        Dokładność wyliczonego rezultatu jest dość precyzyjna, a błąd może może wynosić do kilku punktów procentowych (z reguły +/- ~3 %).
+                        Pamiętaj, że aby kalkulator tkanki tłuszczowej mógł pokazać precyzyjny wynik, musisz podać jak najdokładniejsze wymiary.
                     </p>
                 </div>
             </div>
@@ -270,6 +439,34 @@
 
             $(container).append(resultBMR);
             $(container2).append(totalCaloricRequirement);
+        }
+    </script>
+
+    <script>
+        function DisplayPerfectWeight(data) {
+            var container = $('#perfectWeightBroc');
+            var container2 = $('#perfectWeightLorentz');
+            var container3 = $('#perfectWeightPotton');
+
+            $(container).html('');
+            $(container2).html('');
+            $(container3).html('');
+
+            perfectWeightBroc = data.PerfectWeightBroc + 'kg';
+            perfectWeightLorentz = data.PerfectWeightLorentz + 'kg';
+            perfectWeightPotton = data.PerfectWeightPotton + 'kg';
+
+            $(container).append(perfectWeightBroc);
+            $(container2).append(perfectWeightLorentz);
+            $(container3).append(perfectWeightPotton);
+        }
+    </script>
+    <script>
+        function CalculateBodyFatIndex(data) {
+            var container = $('#bodyFatIndex');
+            $(container).html('');
+            bodyFatIndex = data.BodyFatIndex + '%' + ' ' + '+/- ~3 %';
+            $(container).append(bodyFatIndex);
         }
     </script>
 

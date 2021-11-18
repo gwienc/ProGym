@@ -3,16 +3,16 @@
             xmlns="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-4.0"
             xsi:schemaLocation="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-4.0 MvcSiteMapSchema.xsd">
 
-  <mvcSiteMapNode title="Strona Główna" controller="Home" action="Index">
-    <mvcSiteMapNode title="Pages" controller="Home" action="StaticContent" dynamicNodeProvider="ProGym.Infrastructure.StaticPagesDynamicNodeProvider, ProGym">      
-    </mvcSiteMapNode>
-    <mvcSiteMapNode title="Koszyk" controller="Cart" action="Index"></mvcSiteMapNode>
-    <mvcSiteMapNode title="Sklep" controller="Store" action="Index">
-    <mvcSiteMapNode title="Category" controller="Store" action="Index" dynamicNodeProvider = "ProGym.Infrastructure.ProductListDynamicNodeProvider, ProGym">
-      <mvcSiteMapNode title="Product" controller="Store" action="Details" dynamicNodeProvider = "ProGym.Infrastructure.ProductDetailsDynaminNodeProvider, ProGym"/>
-      </mvcSiteMapNode>
-    </mvcSiteMapNode>
-    </mvcSiteMapNode>
+	<mvcSiteMapNode title="Strona Główna" controller="Home" action="Index">
+		<mvcSiteMapNode title="Pages" controller="Home" action="StaticContent" dynamicNodeProvider="ProGym.Infrastructure.StaticPagesDynamicNodeProvider, ProGym">
+		</mvcSiteMapNode>
+		<mvcSiteMapNode title="Koszyk" controller="Cart" action="Index"></mvcSiteMapNode>
+		<mvcSiteMapNode title="Kalkulatory" controller="Calculators" action="Index"></mvcSiteMapNode>
+		<mvcSiteMapNode title="Sklep" controller="Store" action="Index">
+			<mvcSiteMapNode title="Category" controller="Store" action="Index" dynamicNodeProvider = "ProGym.Infrastructure.ProductListDynamicNodeProvider, ProGym">
+				<mvcSiteMapNode title="Product" controller="Store" action="Details" dynamicNodeProvider = "ProGym.Infrastructure.ProductDetailsDynaminNodeProvider, ProGym"/>
+			</mvcSiteMapNode>
+		</mvcSiteMapNode>
+	</mvcSiteMapNode>
 
 </mvcSiteMap>
-  

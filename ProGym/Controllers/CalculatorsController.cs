@@ -16,19 +16,19 @@ namespace ProGym.Controllers
             ViewBag.Activities = model.Activities;
             ViewBag.Purposes = model.Purposes;
             ViewBag.Types = model.Types;
-            
+
             return View();
         }
 
         public JsonResult CalculateBMI(CalculatorsViewModel model)
         {
             model.Height = model.Height * 0.01;
-            model.ResultBMI = model.Weight / (model.Height*model.Height);
+            model.ResultBMI = model.Weight / (model.Height * model.Height);
 
             if (model.ResultBMI < 16)
             {
                 model.Range = "Wyglodzenie";
-                
+
             }
             else if (model.ResultBMI > 16 && model.ResultBMI < 16.99)
             {
@@ -94,11 +94,11 @@ namespace ProGym.Controllers
                     {
                         model.TotalCaloricRequirement = sameWeight + (0.2 * sameWeight);
                     }
-                    else if(model.TypeID == 2)
+                    else if (model.TypeID == 2)
                     {
                         model.TotalCaloricRequirement = sameWeight + (0.1 * sameWeight);
                     }
-                    else if(model.TypeID == 3)
+                    else if (model.TypeID == 3)
                     {
                         model.TotalCaloricRequirement = sameWeight + (0.15 * sameWeight);
                     }
@@ -127,6 +127,54 @@ namespace ProGym.Controllers
             model.ResultBMR = Math.Round(model.ResultBMR, 3);
             return Json(model);
 
+        }
+
+        public JsonResult CalculatePerfectWeight(CalculatorsViewModel model)
+        {
+            switch (model.Gender)
+            {
+                case 'M':
+                    model.PerfectWeightLorentz = model.Height - 100 - ((model.Height - 150) / 4);
+                    model.PerfectWeightBroc = (model.Height - 100) * 0.9;
+                    model.PerfectWeightPotton = model.Height - 100 - (model.Height - 100) / 20;
+                    break;
+                case 'K':
+                    model.PerfectWeightLorentz = model.Height - 100 - ((model.Height - 150) / 2);
+                    model.PerfectWeightBroc = (model.Height - 100) * 0.85;
+                    model.PerfectWeightPotton = model.Height - 100 - (model.Height - 100) / 10;
+                    break;
+                default:
+                    break;
+            }
+
+            return Json(model);
+        }
+
+        public JsonResult CalculateBodyFatIndex(CalculatorsViewModel model)
+        {
+            var a = 4.15 * model.Waist;
+            var b = a / 2.54;
+            var c = 0.082 * model.Weight * 2.2;
+            double d;
+            double e;
+            switch (model.Gender)
+            {
+                case 'M':
+                    d = b - c - 98.42;
+                    e = model.Weight * 2.2;
+                    model.BodyFatIndex = d / e * 100;
+                    model.BodyFatIndex = Math.Round(model.BodyFatIndex, 2);
+                    break;
+                case 'K':
+                    d = b - c - 76.76;
+                    e = model.Weight * 2.2;
+                    model.BodyFatIndex = d / e * 100;
+                    model.BodyFatIndex = Math.Round(model.BodyFatIndex, 2);
+                    break;
+                default:
+                    break;
+            }
+            return Json(model);
         }
     }
 }

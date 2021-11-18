@@ -37,7 +37,13 @@ namespace ProGym.ViewModels
         [Required(ErrorMessage = "Proszę wybrać cel")]
         public int PurposeID { get; set; }
         public double ResultBMR { get; set; }
+        public double PerfectWeightBroc { get; set; }
+        public double PerfectWeightLorentz { get; set; }
+        public double PerfectWeightPotton { get; set; }
         public double TotalCaloricRequirement { get; set; }
+        public double BodyFatIndex { get; set; }
+        [Required(ErrorMessage = "Proszę podać obwód pasa")]
+        public double  Waist { get; set; }
         public List<Activity> Activities
         {
             get
