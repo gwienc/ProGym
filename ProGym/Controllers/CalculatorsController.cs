@@ -84,9 +84,32 @@ namespace ProGym.Controllers
                     break;
             }
 
-            var sameWeight = model.ResultBMR * model.ActivityID;
+            double sameWeight = 0;
 
-
+            switch (model.ActivityID)
+            {
+                case 1:
+                    sameWeight = model.ResultBMR * 1;
+                    break;
+                case 2:
+                    sameWeight = model.ResultBMR * 1.2;
+                    break;
+                case 3:
+                    sameWeight = model.ResultBMR * 1.4;
+                    break;
+                case 4:
+                    sameWeight = model.ResultBMR * 1.6;
+                    break;
+                case 5:
+                    sameWeight = model.ResultBMR * 1.8;
+                    break;
+                case 6:
+                    sameWeight = model.ResultBMR * 2;
+                    break;
+                default:
+                    break;
+            }
+           
             switch (model.PurposeID)
             {
                 case 1:
