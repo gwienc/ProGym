@@ -1835,6 +1835,7 @@
     <Content Include="Content\FontAwesome\fontawesome-free-5.15.1-web\webfonts\fa-brands-400.svg" />
     <Content Include="Content\FontAwesome\fontawesome-free-5.15.1-web\webfonts\fa-regular-400.svg" />
     <Content Include="Content\FontAwesome\fontawesome-free-5.15.1-web\webfonts\fa-solid-900.svg" />
+    <Content Include="Content\Images\AddWorkout.png" />
     <Content Include="Content\Images\Benefits Cards\FitProfit2.png" />
     <Content Include="Content\Images\Benefits Cards\multisportClassic2.png" />
     <Content Include="Content\Images\Benefits Cards\multisportPlus2.png" />

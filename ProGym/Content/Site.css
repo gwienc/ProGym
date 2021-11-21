@@ -750,6 +750,17 @@ body {
 
 /* END CALCULATORS */
 
+
+
+/* START WORKOUTS */
+
+.workouts h1 {
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+.card-body h3 {
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+/* END WORKOUTS */
 .list-group a:hover, .list-group a:active {
     background-color: yellowgreen !important;
 }
