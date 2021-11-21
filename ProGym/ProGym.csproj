@@ -2036,9 +2036,14 @@
     <Compile Include="Migrations\202111091703510_addTicketPrice.designer.cs">
       <DependentUpon>202111091703510_addTicketPrice.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202111211259161_addWorkoutsAndExercises.cs" />
+    <Compile Include="Migrations\202111211259161_addWorkoutsAndExercises.designer.cs">
+      <DependentUpon>202111211259161_addWorkoutsAndExercises.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CartItem.cs" />
     <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\Exercise.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderItem.cs" />
@@ -2046,6 +2051,7 @@
     <Compile Include="Models\Ticket.cs" />
     <Compile Include="Models\TypeOfTicket.cs" />
     <Compile Include="Models\UserData.cs" />
+    <Compile Include="Models\Workout.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\AccountViewModels.cs" />
@@ -2246,6 +2252,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202111091703510_addTicketPrice.resx">
       <DependentUpon>202111091703510_addTicketPrice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111211259161_addWorkoutsAndExercises.resx">
+      <DependentUpon>202111211259161_addWorkoutsAndExercises.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

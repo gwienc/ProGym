@@ -32,6 +32,8 @@ namespace ProGym.DAL
         public DbSet<OrderItem> OrderItems { get; set; }
         public DbSet<TypeOfTicket> TypeOfTickets { get; set; }
         public DbSet<Ticket> Tickets { get; set; }
+        public DbSet<Workout> Workouts { get; set; }
+        public DbSet<Exercise> Exercises { get; set; }
 
         //protected override void OnModelCreating(DbModelBuilder modelBuilder)
         //{

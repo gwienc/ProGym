@@ -13,6 +13,7 @@ namespace ProGym.Models
     {
         public virtual ICollection<Order> Orders { get; set; }
         public virtual ICollection<Ticket> Tickets { get; set; }
+        public virtual ICollection<Workout> Workouts { get; set; }
 
         public UserData UserData { get; set; }
 
