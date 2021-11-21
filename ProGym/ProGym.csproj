@@ -1972,6 +1972,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\StoreController.cs" />
     <Compile Include="Controllers\TicketController.cs" />
+    <Compile Include="Controllers\WorkoutController.cs" />
     <Compile Include="DAL\StoreContext.cs" />
     <Compile Include="DAL\StoreInitializer.cs" />
     <Compile Include="Global.asax.cs">
@@ -2200,6 +2201,7 @@
     <Content Include="Views\Emails\TicketInactiveInformation.Html.cshtml" />
     <Content Include="Views\Emails\TicketInactiveInformation.Text.cshtml" />
     <Content Include="Views\Calculators\Index.cshtml" />
+    <Content Include="Views\Workout\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

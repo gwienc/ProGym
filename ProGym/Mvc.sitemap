@@ -8,6 +8,7 @@
 		</mvcSiteMapNode>
 		<mvcSiteMapNode title="Koszyk" controller="Cart" action="Index"></mvcSiteMapNode>
 		<mvcSiteMapNode title="Kalkulatory" controller="Calculators" action="Index"></mvcSiteMapNode>
+    <mvcSiteMapNode title="Twoje Treningi" controller="Workout" action="Index"></mvcSiteMapNode>
 		<mvcSiteMapNode title="Sklep" controller="Store" action="Index">
 			<mvcSiteMapNode title="Category" controller="Store" action="Index" dynamicNodeProvider = "ProGym.Infrastructure.ProductListDynamicNodeProvider, ProGym">
 				<mvcSiteMapNode title="Product" controller="Store" action="Details" dynamicNodeProvider = "ProGym.Infrastructure.ProductDetailsDynaminNodeProvider, ProGym"/>
