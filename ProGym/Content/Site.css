@@ -765,6 +765,13 @@ body {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
+.table-exercises th {
+    font-weight:600;
+}
+
+.modal-header h5 {
+    font-weight:700;
+}
 /* END WORKOUTS */
 .list-group a:hover, .list-group a:active {
     background-color: yellowgreen !important;

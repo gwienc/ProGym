@@ -51,7 +51,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="modal fade" id="trainingInfoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
                                     <div class="modal-content">
@@ -60,11 +59,11 @@
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <table class="table table-striped table-responsive">
+                                            <table class="table table-responsive table-exercises">
                                                 <thead>
                                                     <tr>
-                                                        <th scope="col">Seria</th>
                                                         <th scope="col">Nazwa</th>
+                                                        <th scope="col">Seria</th>
                                                         <th scope="col">Ciężar</th>
                                                         <th scope="col">Ilość powtórzeń</th>
                                                     </tr>
@@ -79,26 +78,30 @@
                                                         if (exercise.Name != name)
                                                         {
                                                             position = 1;
+                                                            <tr class="table-secondary">
+                                                                <th scope="row" width="40%">@exercise.Name</th>
+                                                                <td width="10%"></td>
+                                                                <td width="20%"></td>
+                                                                <td width="30%"></td>
+                                                            </tr>
                                                             <tr>
-                                                                <th scope="row" width="15%">@(position++)</th>
-                                                                <td width="40%">@exercise.Name</td>
-                                                                <td width="30%">@exercise.Weight</td>
-                                                                <td>@exercise.RepetitionsNumber</td>
+                                                                <th scope="row" width="40%"></th>
+                                                                <td width="10%">@(position++)</td>
+                                                                <td width="20%">@exercise.Weight kg</td>
+                                                                <td width="30%">@exercise.RepetitionsNumber</td>
                                                             </tr>
                                                             name = exercise.Name;
                                                         }
                                                         else
                                                         {
                                                             <tr>
-                                                                <th scope="row" width="10%">@(position++)</th>
-                                                                <td width="40%">@exercise.Name</td>
-                                                                <td width="30%">@exercise.Weight</td>
-                                                                <td>@exercise.RepetitionsNumber</td>
+                                                                <th scope="row" width="40%"></th>
+                                                                <td width="10%">@(position++)</td>
+                                                                <td width="20%">@exercise.Weight kg</td>
+                                                                <td width="30%">@exercise.RepetitionsNumber</td>
                                                             </tr>
                                                         }
-
                                                     }
-
                                                 </tbody>
                                             </table>
                                         </div>
@@ -109,62 +112,6 @@
                                 </div>
                             </div>
                         }
-
-
-                        @*<div class="col-xl-3 col-md-6 p-3">
-                                <div class="card border-success h-100">
-                                    <div class="card-body">
-                                        <a id="product-name" href=""><p class="card-title">Trening A</p></a>
-                                        <p class="card-text">21.11.2021</p>
-                                        <a href="#" class="btn btn-success">Szczegóły</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6 p-3">
-                                <div class="card border-success h-100">
-                                    <div class="card-body">
-                                        <a id="product-name" href=""><p class="card-title">Trening B</p></a>
-                                        <p class="card-text">15.11.2021</p>
-                                        <a href="#" class="btn btn-success">Szczegóły</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6 p-3">
-                                <div class="card border-success h-100">
-                                    <div class="card-body">
-                                        <a id="product-name" href=""><p class="card-title">Trening A</p></a>
-                                        <p class="card-text">21.11.2021</p>
-                                        <a href="#" class="btn btn-success">Szczegóły</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6 p-3">
-                                <div class="card border-success h-100">
-                                    <div class="card-body">
-                                        <a id="product-name" href=""><p class="card-title">Trening B</p></a>
-                                        <p class="card-text">15.11.2021</p>
-                                        <a href="#" class="btn btn-success">Szczegóły</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6 p-3">
-                                <div class="card border-success h-100">
-                                    <div class="card-body">
-                                        <a id="product-name" href=""><p class="card-title">Trening A</p></a>
-                                        <p class="card-text">21.11.2021</p>
-                                        <a href="#" class="btn btn-success">Szczegóły</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6 p-3">
-                                <div class="card border-success h-100">
-                                    <div class="card-body">
-                                        <a id="product-name" href=""><p class="card-title">Trening B</p></a>
-                                        <p class="card-text">15.11.2021</p>
-                                        <a href="#" class="btn btn-success">Szczegóły</a>
-                                    </div>
-                                </div>
-                            </div>*@
                     </div>
                 </div>
             </div>
