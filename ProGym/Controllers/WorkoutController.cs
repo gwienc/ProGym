@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ProGym.DAL;
+using ProGym.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +10,12 @@ namespace ProGym.Controllers
 {
     public class WorkoutController : Controller
     {
-        // GET: Workout
+        StoreContext db = new StoreContext();
         public ActionResult Index()
         {
-            return View();
+
+            IEnumerable<Workout> workouts = db.Workouts.Include("Exercises").ToList();
+            return View(workouts);
         }
     }
 }

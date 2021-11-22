@@ -757,9 +757,14 @@ body {
 .workouts h1 {
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
-.card-body h3 {
+.card-body h3, h4 {
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
+
+.card-body h5 {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
 /* END WORKOUTS */
 .list-group a:hover, .list-group a:active {
     background-color: yellowgreen !important;
