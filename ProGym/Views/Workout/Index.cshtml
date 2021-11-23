@@ -11,6 +11,7 @@
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card mb-3" style="max-width: 540px;">
+                    <a href="" class="stretched-link" data-bs-toggle="modal" data-bs-target="#newWorkoutModal"></a>
                     <div class="row">
                         <div class="col-lg-5 pt-5 ps-4">
                             <div class="card-body add-workout text-center ps-4 pt-4">
@@ -51,8 +52,9 @@
                                     </div>
                                 </div>
                             </div>
+                            // modal with workout details
                             <div class="modal fade" id="trainingInfoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+                                <div class="modal-dialog modal-lg modal-dialog modal-dialog-scrollable modal-dialog-centered">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="exampleModalLabel">Lista ćwiczeń</h5>
@@ -106,8 +108,80 @@
                                             </table>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Zamknij</button>
                                         </div>
+                                    </div>
+                                </div>
+                            </div>
+                            //modal with new workout form
+                            <div class="modal fade" id="newWorkoutModal">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">                                          
+                                            <h4>Dodaj nowy trening</h4>
+                                        </div>
+                                        <form id="NewWorkoutForm">
+                                            <div class="modal-body">
+                                                <h5 style="color:#ff6347">Szczegóły treningu</h5>
+                                                <hr />
+                                                <div class="row">
+                                                    <input type="hidden" id="WorkoutID" />
+                                                    <div class="col-12">
+                                                        <label class="control-label pb-2">
+                                                            Nazwa treningu
+                                                        </label>
+                                                        <div class="col-lg-7 col-md-10">
+                                                            <input type="text" id="workoutName" name="workoutName" placeholder="" class="form-control" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <h5 style="margin-top:10px;color:#ff6347">Szczegóły ćwiczenia</h5>
+                                                <hr />
+                                                <div class="form-horizontal">
+                                                    @*<input type="hidden" id="OrderId" />*@
+                                                    <div class="row">
+                                                        <input type="hidden" id="ExerciseID" />
+                                                        <div class="col-lg-7 col-md-10">
+                                                            <label class="control-label pb-2">
+                                                                Nazwa ćwiczenia
+                                                            </label>
+                                                            <input type="text" id="exerciseName" name="exerciseName" placeholder="" class="form-control" />
+                                                        </div>
+                                                        <div class="col-lg-3 col-md-4">
+                                                            <label class="control-label pb-2">
+                                                                Liczba powtórzeń
+                                                            </label>
+                                                            <input type="text" id="numberOfRepetitions" name="numberOfRepetitions" placeholder="" class="form-control" />
+                                                        </div>
+                                                        <div class="col-lg-2 col-md-4">
+                                                            <label class="control-label pb-2">
+                                                                Ciężar (kg)
+                                                            </label>
+                                                            <input type="text" id="weight" name="weight" placeholder="" class="form-control" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="row pt-3 pb-3">
+                                                        <div class="col-md-4 col-lg-offset-4">
+                                                            <a id="addToList" class="btn btn-sm btn-primary">Dodaj do listy</a>
+                                                        </div>
+                                                    </div>
+                                                    <table id="detailsTable" class="table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th style="width:40%">Nazwa ćwiczenia</th>
+                                                                <th style="width:15%">Liczba powtórzeń</th>
+                                                                <th style="width:15%">Ciężar</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody></tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Zamknij</button>
+                                                <button id="saveWorkout" type="submit" class="btn btn-success">Zapisz trening</button>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -118,4 +192,95 @@
         </div>
     </div>
 </section>
+
+@section ScriptsBottom{
+    <script src="~/Scripts/jquery-3.6.0.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+
+    <script>
+        //Show Modal.
+        function addNewOWorkout() {
+            $("#newWorkoutModal").modal();
+        }
+        //Add Multiple Order.
+        $("#addToList").click(function (e) {
+            e.preventDefault();
+
+            if ($.trim($("#exerciseName").val()) == "" || $.trim($("#numberOfRepetitions").val()) == "" || $.trim($("#weight").val()) == "") return;
+
+            var exerciseName = $("#exerciseName").val(),
+                numberOfRepetitions = $("#numberOfRepetitions").val(),
+                weight = $("#weight").val(),
+                detailsTableBody = $("#detailsTable tbody");
+
+            var exerciseItem = '<tr><td>' + exerciseName + '</td><td>' + numberOfRepetitions + '</td><td>' + weight + '</td></tr>';
+            detailsTableBody.append(exerciseItem);
+            clearItem();
+        });
+        //After Add A New Order In The List, Clear Clean The Form For Add More Order.
+        function clearItem() {
+            $("#exerciseName").val('');
+            $("#numberOfRepetitions").val('');
+            $("#weight").val('');
+        }
+        // After Add A New Order In The List, If You Want, You Can Remove It.
+        $(document).on('click', 'a.deleteItem', function (e) {
+            e.preventDefault();
+            var $self = $(this);
+            if ($(this).attr('data-itemId') == "0") {
+                $(this).parents('tr').css("background-color", "#ff6347").fadeOut(800, function () {
+                    $(this).remove();
+                });
+            }
+        });
+        //After Click Save Button Pass All Data View To Controller For Save Database
+        function saveWorkout(data) {
+            return $.ajax({
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                type: 'POST',
+                url: "/Workout/SaveWorkout",
+                data: data,
+                success: function (result) {
+                    alert(result);
+                    location.reload();
+                },
+                error: function () {
+                    alert("Błąd!")
+                }
+            });
+        }
+        //Collect Multiple Order List For Pass To Controller
+        $("#saveWorkout").click(function (e) {
+            e.preventDefault();
+
+            var workoutArr = [];
+            workoutArr.length = 0;
+
+            $.each($("#detailsTable tbody tr"), function () {
+                workoutArr.push({
+                    exerciseName: $(this).find('td:eq(0)').html(),
+                    numberOfRepetitions: $(this).find('td:eq(1)').html(),
+                    weight: $(this).find('td:eq(2)').html()
+                });
+            });
+
+
+            var data = JSON.stringify({
+                workoutName: $("#workoutName").val(),
+                workoutID: $("#WorkoutID").val(),
+                exercises: workoutArr
+            });
+
+            $.when(saveWorkout(data)).then(function (response) {
+                console.log(response);
+            }).fail(function (err) {
+                console.log(err);
+            });
+        });
+    </script>
+}
 

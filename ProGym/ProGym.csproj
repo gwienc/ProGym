@@ -2040,6 +2040,10 @@
     <Compile Include="Migrations\202111211259161_addWorkoutsAndExercises.designer.cs">
       <DependentUpon>202111211259161_addWorkoutsAndExercises.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202111231212286_addWorkoutIdAndUserId.cs" />
+    <Compile Include="Migrations\202111231212286_addWorkoutIdAndUserId.designer.cs">
+      <DependentUpon>202111231212286_addWorkoutIdAndUserId.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CartItem.cs" />
     <Compile Include="Models\Category.cs" />
@@ -2255,6 +2259,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202111211259161_addWorkoutsAndExercises.resx">
       <DependentUpon>202111211259161_addWorkoutsAndExercises.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111231212286_addWorkoutIdAndUserId.resx">
+      <DependentUpon>202111231212286_addWorkoutIdAndUserId.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

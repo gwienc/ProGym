@@ -11,6 +11,7 @@ namespace ProGym.Models
         public string Name { get; set; }
         public int RepetitionsNumber { get; set; }
         public double Weight { get; set; }
+        public string WorkoutId { get; set; }
         public virtual Workout Workout { get; set; }
     }
 }
