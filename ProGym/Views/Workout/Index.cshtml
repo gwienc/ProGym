@@ -262,8 +262,8 @@
 
             $.each($("#detailsTable tbody tr"), function () {
                 workoutArr.push({
-                    exerciseName: $(this).find('td:eq(0)').html(),
-                    numberOfRepetitions: $(this).find('td:eq(1)').html(),
+                    Name: $(this).find('td:eq(0)').html(),
+                    RepetitionsNumber: $(this).find('td:eq(1)').html(),
                     weight: $(this).find('td:eq(2)').html()
                 });
             });
@@ -271,7 +271,6 @@
 
             var data = JSON.stringify({
                 workoutName: $("#workoutName").val(),
-                workoutID: $("#WorkoutID").val(),
                 exercises: workoutArr
             });
 

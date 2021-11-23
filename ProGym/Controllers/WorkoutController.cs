@@ -19,7 +19,7 @@ namespace ProGym.Controllers
             return View(workouts);
         }
 
-        public ActionResult SaveWorkout(string workoutName, string workoutID, Exercise[] exercises)
+        public ActionResult SaveWorkout(string workoutName, Exercise[] exercises)
         {
             string result = "Błąd!";
 
@@ -34,7 +34,9 @@ namespace ProGym.Controllers
                     UserId = userId
                 };
                 db.Workouts.Add(newWorkout);
+                db.SaveChanges();
 
+                var workoutId = db.Workouts.OrderByDescending(w => w.WorkoutID).Select(r => r.WorkoutID).FirstOrDefault();
                 foreach (var exercise in exercises)
                 {
                     Exercise newExercise = new Exercise()
@@ -42,10 +44,11 @@ namespace ProGym.Controllers
                         Name = exercise.Name,
                         RepetitionsNumber = exercise.RepetitionsNumber,
                         Weight = exercise.Weight,
-                        WorkoutId = workoutID
+                        WorkoutID = workoutId.ToString()
 
                     };
                     db.Exercises.Add(newExercise);
+                    
                 }
                 db.SaveChanges();
                 result = "Sukces!";
