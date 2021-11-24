@@ -44,7 +44,7 @@ namespace ProGym.Controllers
                         Name = exercise.Name,
                         RepetitionsNumber = exercise.RepetitionsNumber,
                         Weight = exercise.Weight,
-                        WorkoutID = workoutId.ToString()
+                        WorkoutID = workoutId
 
                     };
                     db.Exercises.Add(newExercise);
