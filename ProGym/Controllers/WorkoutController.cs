@@ -55,6 +55,12 @@ namespace ProGym.Controllers
             }
             return Json(result, JsonRequestBehavior.AllowGet);
         }
+
+        public PartialViewResult GetDetailsWorkout(int id)
+        {
+            IEnumerable<Exercise> exercises = db.Exercises.Where(e => e.WorkoutID == id);
+            return PartialView("_GetDetailsWorkout",exercises);
+        }
     }
 
 }

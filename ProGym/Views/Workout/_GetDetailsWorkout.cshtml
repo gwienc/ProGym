@@ -1,0 +1,61 @@
+﻿@model IEnumerable<ProGym.Models.Exercise>
+<div class="modal fade" id="trainingInfoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog modal-dialog-scrollable modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Lista ćwiczeń</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-responsive table-exercises">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nazwa</th>
+                            <th scope="col">Seria</th>
+                            <th scope="col">Ciężar</th>
+                            <th scope="col">Ilość powtórzeń</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            int position = 1;
+                            string name = "";
+                        }
+                        @foreach (var exercise in Model)
+                        {
+                            if (exercise.Name != name)
+                            {
+                                position = 1;
+                                <tr class="table-secondary">
+                                    <th scope="row" width="50%">@exercise.Name</th>
+                                    <td width="10%"></td>
+                                    <td width="20%"></td>
+                                    <td width="20%"></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" width="50%"></th>
+                                    <td width="10%">@(position++)</td>
+                                    <td width="20%">@exercise.Weight kg</td>
+                                    <td width="20%">@exercise.RepetitionsNumber</td>
+                                </tr>
+                                name = exercise.Name;
+                            }
+                            else
+                            {
+                                <tr>
+                                    <th scope="row" width="50%"></th>
+                                    <td width="10%">@(position++)</td>
+                                    <td width="20%">@exercise.Weight kg</td>
+                                    <td width="20%">@exercise.RepetitionsNumber</td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Zamknij</button>
+            </div>
+        </div>
+    </div>
+</div>

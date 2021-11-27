@@ -22,7 +22,7 @@
                             <img src="@Url.Content("~/Content/Images/AddWorkout.png")" class="img-fluid rounded-start" alt="...">
                         </div>
                     </div>
-                </div>             
+                </div>
                 @*modal with new workout form*@
                 <div class="modal fade" id="newWorkoutModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-lg">
@@ -119,73 +119,23 @@
                                     <div class="card-body">
                                         <h5 class="card-title">@workout.Name</h5>
                                         <p class="card-text">@workout.CreateDate</p>
-                                        <a href="" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#trainingInfoModal">Szczegóły</a>
+                                        <p>
+                                            @Ajax.ActionLink("Szczegóły", "GetDetailsWorkout", new { id = workout.WorkoutID }, new AjaxOptions
+                                                {
+                                                    UpdateTargetId = "workoutDetails",
+                                                    InsertionMode = InsertionMode.Replace,
+                                                    OnSuccess = "Done()"
+                                                },
+                                                new { @class = "btn btn-success" })
+                                        </p>
                                         <br /><br /><br />
                                     </div>
                                 </div>
                             </div>
-                            // modal with workout details
-                            <div class="modal fade" id="trainingInfoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-lg modal-dialog modal-dialog-scrollable modal-dialog-centered">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Lista ćwiczeń</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <table class="table table-responsive table-exercises">
-                                                <thead>
-                                                    <tr>
-                                                        <th scope="col">Nazwa</th>
-                                                        <th scope="col">Seria</th>
-                                                        <th scope="col">Ciężar</th>
-                                                        <th scope="col">Ilość powtórzeń</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    @{
-                                                        int position = 1;
-                                                        string name = "";
-                                                    }
-                                                    @foreach (var exercise in workout.Exercises)
-                                                    {
-                                                        if (exercise.Name != name)
-                                                        {
-                                                            position = 1;
-                                                            <tr class="table-secondary">
-                                                                <th scope="row" width="40%">@exercise.Name</th>
-                                                                <td width="10%"></td>
-                                                                <td width="20%"></td>
-                                                                <td width="30%"></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th scope="row" width="40%"></th>
-                                                                <td width="10%">@(position++)</td>
-                                                                <td width="20%">@exercise.Weight kg</td>
-                                                                <td width="30%">@exercise.RepetitionsNumber</td>
-                                                            </tr>
-                                                            name = exercise.Name;
-                                                        }
-                                                        else
-                                                        {
-                                                            <tr>
-                                                                <th scope="row" width="40%"></th>
-                                                                <td width="10%">@(position++)</td>
-                                                                <td width="20%">@exercise.Weight kg</td>
-                                                                <td width="30%">@exercise.RepetitionsNumber</td>
-                                                            </tr>
-                                                        }
-                                                    }
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Zamknij</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>                          
                         }
+                        <div id="workoutDetails">
+
+                        </div>
                     </div>
                 </div>
             </div>
@@ -205,8 +155,13 @@
         function addNewOWorkout() {
 
             $("#newWorkoutModal").modal();
-    
+
         }
+
+        function Done() {
+            $('#trainingInfoModal').modal('show');
+        }
+
 
         var list = [];
 
@@ -220,7 +175,7 @@
                 numberOfRepetitions = $("#numberOfRepetitions").val(),
                 weight = $("#weight").val();
 
-                detailsTableBody = $("#detailsTable tbody");
+            detailsTableBody = $("#detailsTable tbody");
 
             var exerciseItem = '<tr><td>' + exerciseName + '</td><td>' + numberOfRepetitions + '</td><td>' + weight + '</td></tr>';
             detailsTableBody.append(exerciseItem);
@@ -269,22 +224,21 @@
             var workoutArr = [];
             workoutArr.length = 0;
 
-            debugger;
             $.each($(list), function (i, l) {
-                var parsed= $.parseHTML(l)
+                var parsed = $.parseHTML(l)
                 workoutArr.push({
                     Name: $(parsed).find('td:eq(0)').html(),
-                    RepetitionsNumber:$(parsed).find('td:eq(1)').html(),
+                    RepetitionsNumber: $(parsed).find('td:eq(1)').html(),
                     weight: $(parsed).find('td:eq(2)').html()
                 });
-            });           
+            });
 
             var data = JSON.stringify({
                 workoutName: $("#workoutName").val(),
                 exercises: workoutArr
             });
 
-            
+
 
             $.when(saveWorkout(data)).then(function (response) {
                 console.log(response);
