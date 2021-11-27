@@ -22,6 +22,78 @@
                             <img src="@Url.Content("~/Content/Images/AddWorkout.png")" class="img-fluid rounded-start" alt="...">
                         </div>
                     </div>
+                </div>             
+                @*modal with new workout form*@
+                <div class="modal fade" id="newWorkoutModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4>Dodaj nowy trening</h4>
+                            </div>
+                            <form id="NewWorkoutForm">
+                                <div class="modal-body">
+                                    <h5 style="color:#ff6347">Szczegóły treningu</h5>
+                                    <hr />
+                                    <div class="row">
+                                        <input type="hidden" id="WorkoutID" />
+                                        <div class="col-12">
+                                            <label class="control-label pb-2">
+                                                Nazwa treningu
+                                            </label>
+                                            <div class="col-lg-7 col-md-10">
+                                                <input type="text" id="workoutName" name="workoutName" placeholder="" class="form-control" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <h5 style="margin-top:10px;color:#ff6347">Szczegóły ćwiczenia</h5>
+                                    <hr />
+                                    <div class="form-horizontal">
+                                        @*<input type="hidden" id="OrderId" />*@
+                                        <div class="row">
+                                            <input type="hidden" id="ExerciseID" />
+                                            <div class="col-lg-7 col-md-10">
+                                                <label class="control-label pb-2">
+                                                    Nazwa ćwiczenia
+                                                </label>
+                                                <input type="text" id="exerciseName" name="exerciseName" placeholder="" class="form-control" />
+                                            </div>
+                                            <div class="col-lg-3 col-md-4">
+                                                <label class="control-label pb-2">
+                                                    Liczba powtórzeń
+                                                </label>
+                                                <input type="text" id="numberOfRepetitions" name="numberOfRepetitions" placeholder="" class="form-control" />
+                                            </div>
+                                            <div class="col-lg-2 col-md-4">
+                                                <label class="control-label pb-2">
+                                                    Ciężar (kg)
+                                                </label>
+                                                <input type="text" id="weight" name="weight" placeholder="" class="form-control" />
+                                            </div>
+                                        </div>
+                                        <div class="row pt-3 pb-3">
+                                            <div class="col-md-4 col-lg-offset-4">
+                                                <a id="addToList" class="btn btn-sm btn-primary">Dodaj do listy</a>
+                                            </div>
+                                        </div>
+                                        <table id="detailsTable" class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th style="width:40%">Nazwa ćwiczenia</th>
+                                                    <th style="width:15%">Liczba powtórzeń</th>
+                                                    <th style="width:15%">Ciężar</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody></tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Zamknij</button>
+                                    <button id="saveWorkout" type="submit" class="btn btn-success">Zapisz trening</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -112,79 +184,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            //modal with new workout form
-                            <div class="modal fade" id="newWorkoutModal">
-                                <div class="modal-dialog modal-lg">
-                                    <div class="modal-content">
-                                        <div class="modal-header">                                          
-                                            <h4>Dodaj nowy trening</h4>
-                                        </div>
-                                        <form id="NewWorkoutForm">
-                                            <div class="modal-body">
-                                                <h5 style="color:#ff6347">Szczegóły treningu</h5>
-                                                <hr />
-                                                <div class="row">
-                                                    <input type="hidden" id="WorkoutID" />
-                                                    <div class="col-12">
-                                                        <label class="control-label pb-2">
-                                                            Nazwa treningu
-                                                        </label>
-                                                        <div class="col-lg-7 col-md-10">
-                                                            <input type="text" id="workoutName" name="workoutName" placeholder="" class="form-control" />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <h5 style="margin-top:10px;color:#ff6347">Szczegóły ćwiczenia</h5>
-                                                <hr />
-                                                <div class="form-horizontal">
-                                                    @*<input type="hidden" id="OrderId" />*@
-                                                    <div class="row">
-                                                        <input type="hidden" id="ExerciseID" />
-                                                        <div class="col-lg-7 col-md-10">
-                                                            <label class="control-label pb-2">
-                                                                Nazwa ćwiczenia
-                                                            </label>
-                                                            <input type="text" id="exerciseName" name="exerciseName" placeholder="" class="form-control" />
-                                                        </div>
-                                                        <div class="col-lg-3 col-md-4">
-                                                            <label class="control-label pb-2">
-                                                                Liczba powtórzeń
-                                                            </label>
-                                                            <input type="text" id="numberOfRepetitions" name="numberOfRepetitions" placeholder="" class="form-control" />
-                                                        </div>
-                                                        <div class="col-lg-2 col-md-4">
-                                                            <label class="control-label pb-2">
-                                                                Ciężar (kg)
-                                                            </label>
-                                                            <input type="text" id="weight" name="weight" placeholder="" class="form-control" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="row pt-3 pb-3">
-                                                        <div class="col-md-4 col-lg-offset-4">
-                                                            <a id="addToList" class="btn btn-sm btn-primary">Dodaj do listy</a>
-                                                        </div>
-                                                    </div>
-                                                    <table id="detailsTable" class="table">
-                                                        <thead>
-                                                            <tr>
-                                                                <th style="width:40%">Nazwa ćwiczenia</th>
-                                                                <th style="width:15%">Liczba powtórzeń</th>
-                                                                <th style="width:15%">Ciężar</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody></tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Zamknij</button>
-                                                <button id="saveWorkout" type="submit" class="btn btn-success">Zapisz trening</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
+                            </div>                          
                         }
                     </div>
                 </div>
@@ -203,8 +203,13 @@
     <script>
         //Show Modal.
         function addNewOWorkout() {
+
             $("#newWorkoutModal").modal();
+    
         }
+
+        var list = [];
+
         //Add Multiple Order.
         $("#addToList").click(function (e) {
             e.preventDefault();
@@ -213,11 +218,15 @@
 
             var exerciseName = $("#exerciseName").val(),
                 numberOfRepetitions = $("#numberOfRepetitions").val(),
-                weight = $("#weight").val(),
+                weight = $("#weight").val();
+
                 detailsTableBody = $("#detailsTable tbody");
 
             var exerciseItem = '<tr><td>' + exerciseName + '</td><td>' + numberOfRepetitions + '</td><td>' + weight + '</td></tr>';
             detailsTableBody.append(exerciseItem);
+
+            list.push(exerciseItem);
+            delete detailsTableBody;
             clearItem();
         });
         //After Add A New Order In The List, Clear Clean The Form For Add More Order.
@@ -260,19 +269,22 @@
             var workoutArr = [];
             workoutArr.length = 0;
 
-            $.each($("#detailsTable tbody tr"), function () {
+            debugger;
+            $.each($(list), function (i, l) {
+                var parsed= $.parseHTML(l)
                 workoutArr.push({
-                    Name: $(this).find('td:eq(0)').html(),
-                    RepetitionsNumber: $(this).find('td:eq(1)').html(),
-                    weight: $(this).find('td:eq(2)').html()
+                    Name: $(parsed).find('td:eq(0)').html(),
+                    RepetitionsNumber:$(parsed).find('td:eq(1)').html(),
+                    weight: $(parsed).find('td:eq(2)').html()
                 });
-            });
-
+            });           
 
             var data = JSON.stringify({
                 workoutName: $("#workoutName").val(),
                 exercises: workoutArr
             });
+
+            
 
             $.when(saveWorkout(data)).then(function (response) {
                 console.log(response);
