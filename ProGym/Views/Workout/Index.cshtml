@@ -37,11 +37,11 @@
                                     <div class="row">
                                         <input type="hidden" id="WorkoutID" />
                                         <div class="col-12">
-                                            <label class="control-label pb-2">
+                                            <label for="workoutName" class="control-label pb-2">
                                                 Nazwa treningu
                                             </label>
                                             <div class="col-lg-7 col-md-10">
-                                                <input type="text" id="workoutName" name="workoutName" placeholder="" class="form-control" />
+                                                <input type="text" id="workoutName" name="workoutName" placeholder="" class="form-control"/>
                                             </div>
                                         </div>
                                     </div>
@@ -52,19 +52,19 @@
                                         <div class="row">
                                             <input type="hidden" id="ExerciseID" />
                                             <div class="col-lg-7 col-md-10">
-                                                <label class="control-label pb-2">
+                                                <label for="exerciseName" class="control-label pb-2">
                                                     Nazwa ćwiczenia
                                                 </label>
                                                 <input type="text" id="exerciseName" name="exerciseName" placeholder="" class="form-control" />
                                             </div>
                                             <div class="col-lg-3 col-md-4">
-                                                <label class="control-label pb-2">
+                                                <label for="numberOfRepetitions" class="control-label pb-2">
                                                     Liczba powtórzeń
                                                 </label>
                                                 <input type="text" id="numberOfRepetitions" name="numberOfRepetitions" placeholder="" class="form-control" />
                                             </div>
                                             <div class="col-lg-2 col-md-4">
-                                                <label class="control-label pb-2">
+                                                <label for="weight" class="control-label pb-2">
                                                     Ciężar (kg)
                                                 </label>
                                                 <input type="text" id="weight" name="weight" placeholder="" class="form-control" />
@@ -89,7 +89,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Zamknij</button>
-                                    <button id="saveWorkout" type="submit" class="btn btn-success">Zapisz trening</button>
+                                    <button type="submit" id="saveWorkout" class="btn btn-success">Zapisz trening</button>
                                 </div>
                             </form>
                         </div>
@@ -151,6 +151,7 @@
     <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
 
     <script>
+
         //Show Modal.
         function addNewOWorkout() {
 
@@ -184,12 +185,14 @@
             delete detailsTableBody;
             clearItem();
         });
+
         //After Add A New Order In The List, Clear Clean The Form For Add More Order.
         function clearItem() {
             $("#exerciseName").val('');
             $("#numberOfRepetitions").val('');
             $("#weight").val('');
         }
+
         // After Add A New Order In The List, If You Want, You Can Remove It.
         $(document).on('click', 'a.deleteItem', function (e) {
             e.preventDefault();
@@ -200,6 +203,7 @@
                 });
             }
         });
+
         //After Click Save Button Pass All Data View To Controller For Save Database
         function saveWorkout(data) {
             return $.ajax({
@@ -217,6 +221,7 @@
                 }
             });
         }
+
         //Collect Multiple Order List For Pass To Controller
         $("#saveWorkout").click(function (e) {
             e.preventDefault();
@@ -244,6 +249,45 @@
                 console.log(response);
             }).fail(function (err) {
                 console.log(err);
+            });
+        });
+
+        //Validate form
+         $(function validate() {
+
+            $("#NewWorkoutForm").validate({
+                rules: {
+                    workoutName: {
+                        required: true                        
+                    },
+                    exerciseName: {
+                        required: true
+                    },
+                    numberOfRepetitions: {
+                        required: true,
+                        number: true
+                    },
+                    weight: {
+                        required: true,
+                        number: true
+                    }                    
+                },
+                messages: {
+                    workoutName: {
+                        required: "Proszę podać nazwę treningu"                       
+                    },
+                    exerciseName: {
+                        required: "Proszę podać nazwę ćwiczenia"                       
+                    },
+                    numberOfRepetitions: {
+                        required: "Proszę podać liczbę powtórzeń",
+                        number: "Proszę podać wartość w liczbach"
+                    },
+                    weight: {
+                        required: "Proszę podać wagę",
+                        number: "Proszę podać wartość w liczbach"
+                    }
+                }
             });
         });
     </script>
