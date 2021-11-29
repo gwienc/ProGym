@@ -219,11 +219,8 @@
                 }
             });
         }
-
         //Collect Multiple Order List For Pass To Controller
-        $("#saveWorkout").click(function (e) {
-            e.preventDefault();
-
+        function save() {
             var workoutArr = [];
             workoutArr.length = 0;
 
@@ -240,15 +237,44 @@
                 workoutName: $("#workoutName").val(),
                 exercises: workoutArr
             });
-
-
-
             $.when(saveWorkout(data)).then(function (response) {
                 console.log(response);
             }).fail(function (err) {
                 console.log(err);
             });
-        });
+        }
+
+
+        //Collect Multiple Order List For Pass To Controller
+        //$("#saveWorkout").click(function (e) {
+        //    e.preventDefault();
+
+        //    var workoutArr = [];
+        //    workoutArr.length = 0;
+
+        //    $.each($(list), function (i, l) {
+        //        var parsed = $.parseHTML(l)
+        //        workoutArr.push({
+        //            Name: $(parsed).find('td:eq(0)').html(),
+        //            RepetitionsNumber: $(parsed).find('td:eq(1)').html(),
+        //            weight: $(parsed).find('td:eq(2)').html()
+        //        });
+        //    });
+
+        //    var data = JSON.stringify({
+        //        workoutName: $("#workoutName").val(),
+        //        exercises: workoutArr
+        //    });
+
+
+
+        //    $.when(saveWorkout(data)).then(function (response) {
+        //        console.log(response);
+        //    }).fail(function (err) {
+        //        console.log(err);
+        //    });
+        //});
+
 
         //Validate form
          $(function validate() {
@@ -285,6 +311,10 @@
                         required: "Proszę podać wagę",
                         number: "Proszę podać wartość w liczbach"
                     }
+                },
+                submitHandler: function (form) {
+                    save();
+                    
                 }
             });
         });
