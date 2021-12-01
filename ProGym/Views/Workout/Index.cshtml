@@ -78,9 +78,10 @@
                                 <table id="detailsTable" class="table">
                                     <thead>
                                         <tr>
-                                            <th style="width:40%">Nazwa ćwiczenia</th>
+                                            <th style="width:50%">Nazwa ćwiczenia</th>
                                             <th style="width:15%">Liczba powtórzeń</th>
                                             <th style="width:15%">Ciężar</th>
+                                            <th style="width:10%"></th>
                                         </tr>
                                     </thead>
                                     <tbody></tbody>
@@ -229,7 +230,7 @@
 
             detailsTableBody = $("#detailsTable tbody");
 
-            var exerciseItem = '<tr><td>' + exerciseName + '</td><td>' + numberOfRepetitions + '</td><td>' + weight + '</td></tr>';
+            var exerciseItem = '<tr><td>' + exerciseName + '</td><td>' + numberOfRepetitions + '</td><td>' + weight + '</td><td><a data-itemId="0" href="#" class="btn btn-sm btn-danger">Usuń</a></td></tr>';
             detailsTableBody.append(exerciseItem);
 
             list.push(exerciseItem);
@@ -251,14 +252,20 @@
 
 
         // After Add A New Order In The List, If You Want, You Can Remove It.
-        $(document).on('click', 'a.deleteItem', function (e) {
+        $(document).on('click', 'a.btn', function (e) {
             e.preventDefault();
+            var row = $(this).parents('tr').index();
             var $self = $(this);
             if ($(this).attr('data-itemId') == "0") {
                 $(this).parents('tr').css("background-color", "#ff6347").fadeOut(800, function () {
                     $(this).remove();
+                    list.splice(row, 1);
+                    if (list.length==0) {
+                        $("#saveButton").prop('disabled', true);
+                    }
                 });
             }
+            
         });
 
 
