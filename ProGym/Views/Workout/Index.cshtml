@@ -41,7 +41,7 @@
                                                 Nazwa treningu
                                             </label>
                                             <div class="col-lg-7 col-md-10">
-                                                <input type="text" id="workoutName" name="workoutName" placeholder="" class="form-control"/>
+                                                <input type="text" id="workoutName" name="workoutName" placeholder="" class="form-control" />
                                             </div>
                                         </div>
                                     </div>
@@ -68,28 +68,30 @@
                                                 <input type="text" id="weight" name="weight" placeholder="" class="form-control" />
                                             </div>
                                         </div>
-                                        <div class="row pt-3 pb-3">
-                                            <div class="col-md-4 col-lg-offset-4">
-                                                <a id="addToList" class="btn btn-sm btn-primary">Dodaj do listy</a>
-                                            </div>
-                                        </div>
-                                        <table id="detailsTable" class="table">
-                                            <thead>
-                                                <tr>
-                                                    <th style="width:40%">Nazwa ćwiczenia</th>
-                                                    <th style="width:15%">Liczba powtórzeń</th>
-                                                    <th style="width:15%">Ciężar</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody></tbody>
-                                        </table>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Zamknij</button>
-                                    <input class="submit btn btn-success" type="submit" value="Zapisz trening">
+                                    <input class="submit btn btn-success" type="submit" value="Dodaj trening">
                                 </div>
                             </form>
+                            <div class="p-2">
+                                <table id="detailsTable" class="table">
+                                    <thead>
+                                        <tr>
+                                            <th style="width:40%">Nazwa ćwiczenia</th>
+                                            <th style="width:15%">Liczba powtórzeń</th>
+                                            <th style="width:15%">Ciężar</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                            <div class="row pt-5">
+                                <div class="col-12 pb-2 pe-4 text-end">
+                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Zamknij</button>
+                                    <button type="button" id="saveButton" class="btn btn-success" disabled>Zapisz trening</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -162,11 +164,62 @@
         }
 
 
+
+        //Validate form
+        $(function validate() {
+
+
+
+            $("#NewWorkoutForm").validate({
+                rules: {
+                    workoutName: {
+                        required: true
+                    },
+                    exerciseName: {
+                        required: true
+                    },
+                    numberOfRepetitions: {
+                        required: true,
+                        number: true
+                    },
+                    weight: {
+                        required: true,
+                        number: true
+                    }
+                },
+                messages: {
+                    workoutName: {
+                        required: "Proszę podać nazwę treningu"
+                    },
+                    exerciseName: {
+                        required: "Proszę podać nazwę ćwiczenia"
+                    },
+                    numberOfRepetitions: {
+                        required: "Proszę podać liczbę powtórzeń",
+                        number: "Proszę podać wartość w liczbach"
+                    },
+                    weight: {
+                        required: "Proszę podać wagę",
+                        number: "Proszę podać wartość w liczbach"
+                    }
+                },
+                submitHandler: function (form) {
+                    {
+                        addToList();
+                    }
+
+
+                }
+            });
+        });
+
+
+
+
         var list = [];
 
         //Add Multiple Order.
-        $("#addToList").click(function (e) {
-            e.preventDefault();
+        function addToList() {
 
             if ($.trim($("#exerciseName").val()) == "" || $.trim($("#numberOfRepetitions").val()) == "" || $.trim($("#weight").val()) == "") return;
 
@@ -182,7 +235,11 @@
             list.push(exerciseItem);
             delete detailsTableBody;
             clearItem();
-        });
+
+            $("#saveButton").prop('disabled', false);
+        }
+
+
 
         //After Add A New Order In The List, Clear Clean The Form For Add More Order.
         function clearItem() {
@@ -190,6 +247,8 @@
             $("#numberOfRepetitions").val('');
             $("#weight").val('');
         }
+
+
 
         // After Add A New Order In The List, If You Want, You Can Remove It.
         $(document).on('click', 'a.deleteItem', function (e) {
@@ -202,24 +261,15 @@
             }
         });
 
-        //After Click Save Button Pass All Data View To Controller For Save Database
-        function saveWorkout(data) {
-            return $.ajax({
-                contentType: 'application/json; charset=utf-8',
-                dataType: 'json',
-                type: 'POST',
-                url: "/Workout/SaveWorkout",
-                data: data,
-                success: function (result) {
-                    alert(result);
-                    location.reload();
-                },
-                error: function () {
-                    alert("Błąd!")
-                }
-            });
-        }
+
+
         //Collect Multiple Order List For Pass To Controller
+        $("#saveButton").click(function (e) {
+            e.preventDefault();
+            save();
+
+        });
+
         function save() {
             var workoutArr = [];
             workoutArr.length = 0;
@@ -245,79 +295,26 @@
         }
 
 
-        //Collect Multiple Order List For Pass To Controller
-        //$("#saveWorkout").click(function (e) {
-        //    e.preventDefault();
 
-        //    var workoutArr = [];
-        //    workoutArr.length = 0;
-
-        //    $.each($(list), function (i, l) {
-        //        var parsed = $.parseHTML(l)
-        //        workoutArr.push({
-        //            Name: $(parsed).find('td:eq(0)').html(),
-        //            RepetitionsNumber: $(parsed).find('td:eq(1)').html(),
-        //            weight: $(parsed).find('td:eq(2)').html()
-        //        });
-        //    });
-
-        //    var data = JSON.stringify({
-        //        workoutName: $("#workoutName").val(),
-        //        exercises: workoutArr
-        //    });
-
-
-
-        //    $.when(saveWorkout(data)).then(function (response) {
-        //        console.log(response);
-        //    }).fail(function (err) {
-        //        console.log(err);
-        //    });
-        //});
-
-
-        //Validate form
-         $(function validate() {
-
-            $("#NewWorkoutForm").validate({
-                rules: {
-                    workoutName: {
-                        required: true                        
-                    },
-                    exerciseName: {
-                        required: true
-                    },
-                    numberOfRepetitions: {
-                        required: true,
-                        number: true
-                    },
-                    weight: {
-                        required: true,
-                        number: true
-                    }                    
+        //After Click Save Button Pass All Data View To Controller For Save Database
+        function saveWorkout(data) {
+            return $.ajax({
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                type: 'POST',
+                url: "/Workout/SaveWorkout",
+                data: data,
+                success: function (result) {
+                    alert(result);
+                    location.reload();
                 },
-                messages: {
-                    workoutName: {
-                        required: "Proszę podać nazwę treningu"                       
-                    },
-                    exerciseName: {
-                        required: "Proszę podać nazwę ćwiczenia"                       
-                    },
-                    numberOfRepetitions: {
-                        required: "Proszę podać liczbę powtórzeń",
-                        number: "Proszę podać wartość w liczbach"
-                    },
-                    weight: {
-                        required: "Proszę podać wagę",
-                        number: "Proszę podać wartość w liczbach"
-                    }
-                },
-                submitHandler: function (form) {
-                    save();
-                    
+                error: function () {
+                    alert("Błąd!")
                 }
             });
-        });
+        }
+
+
     </script>
 }
 
