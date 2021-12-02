@@ -119,7 +119,7 @@
                                 <div class="card border-success h-75">
                                     <div class="card-body">
                                         <h5 class="card-title">@workout.Name</h5>
-                                        <p class="card-text">@workout.CreateDate</p>
+                                        <p class="card-text">@workout.CreateDate.ToString("dd/MM/yyyy")</p>
                                         <p>
                                             @Ajax.ActionLink("Szczegóły", "GetDetailsWorkout", new { id = workout.WorkoutID }, new AjaxOptions
                                                 {
