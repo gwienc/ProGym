@@ -19,6 +19,7 @@ namespace ProGym.Controllers
             return View(workouts);
         }
 
+        [HttpPost]
         public ActionResult SaveWorkout(string workoutName, Exercise[] exercises)
         {
             string result = "Błąd!";
