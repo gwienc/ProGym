@@ -30,6 +30,10 @@
                             <div class="modal-header">
                                 <h4>Dodaj nowy trening</h4>
                             </div>
+                            @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "__AjaxAntiForgeryForm"}))
+                            {
+                                @Html.AntiForgeryToken()
+                            }
                             <form id="NewWorkoutForm">
                                 <div class="modal-body">
                                     <h5 style="color:#ff6347">Szczegóły treningu</h5>
@@ -215,8 +219,6 @@
         });
 
 
-
-
         var list = [];
 
         //Add Multiple Order.
@@ -290,11 +292,10 @@
                 });
             });
 
-            var data = JSON.stringify({
-                workoutName: $("#workoutName").val(),
-                exercises: workoutArr
-            });
-            $.when(saveWorkout(data)).then(function (response) {
+            var workoutName = $("#workoutName").val();                
+            var exercises = workoutArr;
+
+            $.when(saveWorkout(workoutName, exercises)).then(function (response) {
                 console.log(response);
             }).fail(function (err) {
                 console.log(err);
@@ -303,14 +304,20 @@
 
 
 
-        //After Click Save Button Pass All Data View To Controller For Save Database
-        function saveWorkout(data) {
-            return $.ajax({
-                contentType: 'application/json; charset=utf-8',
-                dataType: 'json',
+        //After Click Save Button Pass All Data View with AntiForgeryToken To Controller For Save Database
+        function saveWorkout(workoutName,exercises) {
+
+            var form = $('#__AjaxAntiForgeryForm');
+            var token = $('input[name="__RequestVerificationToken"]', form).val();
+
+            return $.ajax({                
                 type: 'POST',
                 url: "/Workout/SaveWorkout",
-                data: data,
+                data: {
+                    __RequestVerificationToken: token, 
+                    workoutName: workoutName,
+                    exercises: exercises
+                },
                 success: function (result) {
                     alert(result);
                     location.reload();
@@ -320,8 +327,6 @@
                 }
             });
         }
-
-
     </script>
 }
 

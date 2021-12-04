@@ -20,6 +20,7 @@ namespace ProGym.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult SaveWorkout(string workoutName, Exercise[] exercises)
         {
             string result = "Błąd!";
