@@ -131,12 +131,16 @@ body {
     padding-left: 15px;
     margin-bottom: 15px;
 }
+    .box p {
+        font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;
+        font-weight:600;
+    }
 
 .our-services {
     margin-top: 15px;
     padding-bottom: 30px;
     padding: 0 60px;
-    min-height: 138px;
+    min-height: 188px;
     text-align: center;
     border-radius: 10px;
     background-color: #fff;
@@ -155,37 +159,37 @@ body {
         color: #fff
     }
 
-.speedup:hover {
+.gym:hover {
     box-shadow: 0 0 25px 0 rgba(20, 27, 201, .05);
     cursor: pointer;
     background-image: linear-gradient(-45deg, #fb0054 0%, #f55b2a 100%)
 }
 
-.settings:hover {
+.account:hover {
     box-shadow: 0 0 25px 0 rgba(20, 27, 201, .05);
     cursor: pointer;
     background-image: linear-gradient(-45deg, #34b5bf 0%, #210c59 100%)
 }
 
-.privacy:hover {
+.shop_:hover {
     box-shadow: 0 0 25px 0 rgba(20, 27, 201, .05);
     cursor: pointer;
     background-image: linear-gradient(-45deg, #3615e7 0%, #44a2f6 100%)
 }
 
-.backups:hover {
+.personalTrainers:hover {
     box-shadow: 0 0 25px 0 rgba(20, 27, 201, .05);
     cursor: pointer;
     background-image: linear-gradient(-45deg, #fc6a0e 0%, #fdb642 100%)
 }
 
-.ssl:hover {
+.relaxes:hover {
     box-shadow: 0 0 25px 0 rgba(20, 27, 201, .05);
     cursor: pointer;
     background-image: linear-gradient(-45deg, #8d40fb 0%, #5a57fb 100%)
 }
 
-.database:hover {
+.exercises_:hover {
     box-shadow: 0 0 25px 0 rgba(20, 27, 201, .05);
     cursor: pointer;
     background-image: linear-gradient(-45deg, #27b88d 0%, #22dd73 100%)
