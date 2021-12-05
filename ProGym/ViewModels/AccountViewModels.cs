@@ -51,7 +51,8 @@ namespace ProGym.ViewModels
         public string Email { get; set; }
 
         [Required(ErrorMessage ="Proszę podać hasło")]
-        [StringLength(30,ErrorMessage = "{0} musi zawierać minimum {2} znaków, co najmniej jeden znak inny niż litera lub cyfra,co najmniej jedną cyfrę („0”-„9”), co najmniej jedną wielką literę („A”-„Z”).”", MinimumLength = 6)]
+        [RegularExpression(@"((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_]).{6,})",ErrorMessage = "Hasło musi zawierać co najmniej jeden znak specjalny,co najmniej jedną cyfrę („0”-„9”), co najmniej jedną wielką i małą literę („A”-„Z”) oraz minimum 6 znaków")]
+        [StringLength(30,ErrorMessage = "{0} musi zawierać minimum {2} znaków", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Hasło:")]
         public string Password { get; set; }
