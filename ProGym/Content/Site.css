@@ -88,7 +88,7 @@ ul.navbar-nav li a:hover, ul.nav li a:active {
 
 .top-footer {
     background-color: white;
-    font-family:Rockwell
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .middle-footer {
@@ -385,6 +385,11 @@ body {
 
 .about h1 {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.about p {
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight:600;
 }
 
 /* END ABOUT US*/
