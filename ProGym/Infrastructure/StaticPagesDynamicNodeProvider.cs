@@ -38,11 +38,11 @@ namespace ProGym.Infrastructure
             v.RouteValues.Add("viewname", "IndividualTraining");
             returnValue.Add(v);
 
-            v = new DynamicNode();
-            v.Title = "Cennik";
-            v.Key = "Page_" + 5;
-            v.RouteValues.Add("viewname", "Prices");
-            returnValue.Add(v);
+            //v = new DynamicNode();
+            //v.Title = "Cennik";
+            //v.Key = "Page_" + 5;
+            //v.RouteValues.Add("viewname", "Prices");
+            //returnValue.Add(v);
 
             v = new DynamicNode();
             v.Title = "Zajęcia z trenerem personalnym";

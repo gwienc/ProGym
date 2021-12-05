@@ -7,6 +7,7 @@
 		<mvcSiteMapNode title="Pages" controller="Home" action="StaticContent" dynamicNodeProvider="ProGym.Infrastructure.StaticPagesDynamicNodeProvider, ProGym">
 		</mvcSiteMapNode>
 		<mvcSiteMapNode title="Koszyk" controller="Cart" action="Index"></mvcSiteMapNode>
+    <mvcSiteMapNode title="Cennik" controller="Ticket" action="Index"></mvcSiteMapNode>
 		<mvcSiteMapNode title="Kalkulatory" controller="Calculators" action="Index"></mvcSiteMapNode>
     <mvcSiteMapNode title="Twoje Treningi" controller="Workout" action="Index"></mvcSiteMapNode>
 		<mvcSiteMapNode title="Sklep" controller="Store" action="Index">
