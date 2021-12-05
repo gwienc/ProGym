@@ -1,6 +1,7 @@
 ﻿using Hangfire;
 using ProGym.DAL;
 using ProGym.Infrastructure;
+using ProGym.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,13 @@ namespace ProGym.Controllers
         public ActionResult StaticContent(string viewname)
         {
             return View(viewname);
+        }
+
+        [HttpPost]
+        public ActionResult SendContactMessage(ContactEmail email)
+        {
+
+            return RedirectToAction("StaticContent", new { viewname = "Contact" });
         }
     }
 }

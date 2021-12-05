@@ -2,6 +2,7 @@
 using ProGym.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -65,5 +66,28 @@ namespace ProGym.ViewModels
         public string Name { get; set; }
         public string TicketName { get; set; }
         public DateTime ExpirationDate { get; set; }
+    }
+
+    public class ContactEmail : Email
+    {
+        public string To { get; set; }
+        
+        [Required(ErrorMessage = "Proszę podać swoje dane")]
+        public string Name { get; set; }
+        
+        [Required(ErrorMessage = "Proszę podać numer telefonu")]
+        [StringLength(9,MinimumLength =9,ErrorMessage ="Błędny format telefonu")]
+        [RegularExpression(@"(\+\d{2})*[\d\s-]+", ErrorMessage = "Błędny format numeru telefonu.")]
+        public int PhoneNumber { get; set; }
+        
+        [Required(ErrorMessage = "Proszę podać e-mail")]
+        [EmailAddress]
+        public string EmailAddress { get; set; }
+        
+        [Required(ErrorMessage = "Proszę podać temat wiadomości")]
+        public string MessageSubject { get; set; }
+
+        [Required(ErrorMessage = "Proszę wpisac treść wiadomości")]
+        public string MessageContent { get; set; }
     }
 }

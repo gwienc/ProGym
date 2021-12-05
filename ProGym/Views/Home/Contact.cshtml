@@ -1,4 +1,4 @@
-﻿
+﻿@model ProGym.ViewModels.ContactEmail
 @{
     ViewBag.Title = "Kontakt";
     Layout = "~/Views/Shared/_GymLayout.cshtml";
@@ -76,36 +76,45 @@
             <div class="col-lg-6 p-2">
                 <div class="shadow-sm card kontakt-form">
                     <div class="shadow p-3 bg-white roundedcard-bodycard-body kontakt-form text-center">
-                        <form action="">
-                            <div class="form-row">
-                                <div class="form-group col-md-6 pb-2">
-                                    <input type="text" class="form-control" placeholder="Dane *">
+                        @using (Html.BeginForm("SendContactMessage", "Home", FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+                            <form action="">
+                                <div class="form-row">
+                                    <div class="form-group col-md-6 pb-2">
+                                        @Html.TextBoxFor(x => x.Name, new { placeholder = "Dane *", @class = "form-control" })
+                                        @Html.ValidationMessageFor(x => x.Name)
+                                    </div>
+                                    <div class="form-group col-md-6 pb-2">
+                                        @Html.TextBoxFor(x => x.PhoneNumber, new { placeholder = "Numer telefonu *", @class = "form-control" })
+                                        @Html.ValidationMessageFor(x => x.PhoneNumber)
+                                    </div>
                                 </div>
-                                <div class="form-group col-md-6 pb-2">
-                                    <input type="text" class="form-control" placeholder="Numer telefonu*">
+                                <div class="form-row">
+                                    <div class="form-group col-md-12 pb-2">
+                                        @Html.TextBoxFor(x => x.EmailAddress, new { placeholder = "Adres e-mail *", @class = "form-control" })
+                                        @Html.ValidationMessageFor(x => x.EmailAddress)
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-12 pb-2">
-                                    <input type="text" class="form-control" placeholder="Adres e-mail  *">
+                                <div class="form-row">
+                                    <div class="form-group col-md-12 pb-2">
+                                        @Html.TextBoxFor(x => x.MessageSubject, new { placeholder = "Temat wiadomości *", @class = "form-control" })
+                                        @Html.ValidationMessageFor(x => x.MessageSubject)
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-12 pb-2">
-                                    <input type="text" class="form-control" placeholder="Temat wiadomości  *">
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        @Html.TextAreaFor(x => x.MessageContent, 5, 12, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(x => x.MessageContent)
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-12">
-                                    <textarea class="form-control" rows="5"></textarea>
+                                <div class="form-row pt-5">
+                                    <div class="form-group col-md-12 text-center">
+                                        <input type="submit" value="Wyślij wiadomość" class="btn btn-success">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-row pt-5">
-                                <div class="form-group col-md-12 text-center">
-                                    <button type="submit" class="btn btn-dark"><i class="fas fa-paper-plane"></i> Wyślij wiadomość</button>
-                                </div>
-                            </div>
-                        </form>
+                            </form>
+                        }                       
                     </div>
                 </div>
             </div>
@@ -113,3 +122,9 @@
         </div>
     </div>
 </section>
+@section ScriptsBottom{
+
+    <script src="~/Scripts/jquery-3.6.0.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+}
