@@ -1,4 +1,4 @@
-﻿@model ProGym.ViewModels.ContactEmail
+﻿@model ProGym.ViewModels.ContactMessageEmail
 @{
     ViewBag.Title = "Kontakt";
     Layout = "~/Views/Shared/_GymLayout.cshtml";
@@ -10,6 +10,16 @@
             <div class="row">
 
             </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container pt-2">
+        <div class="row text-center pt-2">
+            @if (ViewBag.ConfirmMessage != null)
+            {
+                <h1 style="color:#ff6347; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">@ViewBag.ConfirmMessage</h1>
+            }
         </div>
     </div>
 </section>
@@ -76,7 +86,7 @@
             <div class="col-lg-6 p-2">
                 <div class="shadow-sm card kontakt-form">
                     <div class="shadow p-3 bg-white roundedcard-bodycard-body kontakt-form text-center">
-                        @using (Html.BeginForm("SendContactMessage", "Home", FormMethod.Post))
+                        @using (Html.BeginForm("SendContactForm", "Home", FormMethod.Post))
                         {
                             @Html.AntiForgeryToken()
                             <form action="">

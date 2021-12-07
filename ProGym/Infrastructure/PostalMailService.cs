@@ -11,6 +11,7 @@ namespace ProGym.Infrastructure
     public class PostalMailService : IMailService
     {
         StoreContext db = new StoreContext();
+        const string emailAddressProGym = "progym1x1@gmail.com";
 
         public void SendConfirmationTicketEmail(Ticket ticket)
         {
@@ -91,6 +92,16 @@ namespace ProGym.Infrastructure
             email.Send();
         }
 
-        
+        public void SendContactMessageEmail(ContactMessageEmail email)
+        {
+            ContactMessageEmail contactEmail = new ContactMessageEmail();
+            contactEmail.To = emailAddressProGym;
+            contactEmail.Name = email.Name;
+            contactEmail.MessageSubject = email.MessageSubject;
+            contactEmail.MessageContent = email.MessageContent;
+            contactEmail.PhoneNumber = email.PhoneNumber;
+            contactEmail.EmailAddress = email.EmailAddress;
+            contactEmail.Send();
+        }
     }
 }

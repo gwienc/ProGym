@@ -1,4 +1,4 @@
-﻿@model ProGym.ViewModels.ContactEmail
+﻿@model ProGym.ViewModels.ContactMessageEmail
 Content-Type: text/html; charset=utf-8
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -512,12 +512,11 @@ Content-Type: text/html; charset=utf-8
 
                                                                                     <td class="mcnTextContent" valign="top" style="padding: 9px 18px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #606060;font-family: Helvetica;font-size: 15px;line-height: 150%;text-align: left;">
 
-                                                                                        <h1 style="margin: 0;padding: 0;display: block;font-family: Helvetica;font-size: 40px;font-style: normal;font-weight: bold;line-height: 125%;letter-spacing: -1px;text-align: left;color: #606060 !important;">Temat wiadomości: @Model.MessageSubject</h1>
-
-                                                                                        <h3 style="margin: 0;padding: 0;display: block;font-family: Helvetica;font-size: 18px;font-style: normal;font-weight: bold;line-height: 125%;letter-spacing: -.5px;text-align: left;color: #606060 !important;">Treść wiadomości : <br />@Model.MessageContent</h3>
+                                                                                        <h2 style="margin: 0;padding: 0;display: block;font-family: Helvetica;font-size: 40px;font-style: normal;font-weight: bold;line-height: 125%;letter-spacing: -1px;text-align: left;color: #ff6347 !important ;">Temat wiadomości:<br /></h2><h2 style="color:#606060 !important">@Model.MessageSubject</h2> <br /><br />
+                                                                                        <h2 style="margin: 0;padding: 0;display: block;font-family: Helvetica;font-size: 18px;font-style: normal;font-weight: bold;line-height: 125%;letter-spacing: -.5px;text-align: left;color: #ff6347 !important;">Treść wiadomości :</h2><h4>@Model.MessageContent</h4><br /><hr />
 
                                                                                         <p style="margin: 1em 0;padding: 0;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #606060;font-family: Helvetica;font-size: 15px;line-height: 150%;text-align: left;">
-                                                                                            Dane osoby kontaktowej:<br />
+                                                                                            <strong style="color:#ff6347">Dane osoby kontaktowej:</strong><br />
                                                                                             @Model.Name<br />
                                                                                             @Model.PhoneNumber<br />
                                                                                             @Model.EmailAddress

@@ -2218,9 +2218,9 @@
     <Content Include="Views\Calculators\Index.cshtml" />
     <Content Include="Views\Workout\Index.cshtml" />
     <Content Include="Views\Workout\_GetDetailsWorkout.cshtml" />
-    <Content Include="Views\Emails\Contact.cshtml" />
-    <Content Include="Views\Emails\Contact.Html.cshtml" />
-    <Content Include="Views\Emails\Contact.Text.cshtml" />
+    <Content Include="Views\Emails\ContactMessage.cshtml" />
+    <Content Include="Views\Emails\ContactMessage.Html.cshtml" />
+    <Content Include="Views\Emails\ContactMessage.Text.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

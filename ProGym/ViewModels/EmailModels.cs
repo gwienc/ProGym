@@ -68,7 +68,7 @@ namespace ProGym.ViewModels
         public DateTime ExpirationDate { get; set; }
     }
 
-    public class ContactEmail : Email
+    public class ContactMessageEmail : Email
     {
         public string To { get; set; }
         
@@ -78,7 +78,7 @@ namespace ProGym.ViewModels
         [Required(ErrorMessage = "Proszę podać numer telefonu")]
         [StringLength(9,MinimumLength =9,ErrorMessage ="Błędny format telefonu")]
         [RegularExpression(@"(\+\d{2})*[\d\s-]+", ErrorMessage = "Błędny format numeru telefonu.")]
-        public int PhoneNumber { get; set; }
+        public string PhoneNumber { get; set; }
         
         [Required(ErrorMessage = "Proszę podać e-mail")]
         [EmailAddress]

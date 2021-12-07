@@ -1,5 +1,6 @@
 ﻿using Hangfire;
 using ProGym.Models;
+using ProGym.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -79,6 +80,15 @@ namespace ProGym.Infrastructure
             string url = urlHelper.Action("TicketInactiveInformationEmail", "Manage", new { ticketId = ticket.TicketId, userId = ticket.UserId });
 
             BackgroundJob.Enqueue(() => HelpersHangfire.CallUrl2(url));
+        }
+
+        public void SendContactMessageEmail(ContactMessageEmail email)
+        {
+            var urlHelper = new UrlHelper(HttpContext.Current.Request.RequestContext);
+            string url = urlHelper.Action("SendContactMessageEmail", "Home", new { name = email.Name , messageSubject = email.MessageSubject, messageContent = email.MessageContent, phoneNumber = email.PhoneNumber, emailAddress = email.EmailAddress }, HttpContext.Current.Request.Url.Scheme);
+            
+            
+            BackgroundJob.Enqueue(() => HelpersHangfire.CallUrl(url));
         }
     }
 }

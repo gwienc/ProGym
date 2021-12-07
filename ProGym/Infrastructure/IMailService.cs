@@ -1,4 +1,5 @@
 ﻿using ProGym.Models;
+using ProGym.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,5 +15,6 @@ namespace ProGym.Infrastructure
         void SendConfirmationTicketEmail(Ticket ticket);
         void SendConfirmationTicketEmailActive(Ticket ticket);
         void TicketInactiveInformationEmail(Ticket ticket);
+        void SendContactMessageEmail(ContactMessageEmail email);
     }
 }
