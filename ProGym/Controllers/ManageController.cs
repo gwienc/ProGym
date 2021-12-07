@@ -188,7 +188,8 @@ namespace ProGym.Controllers
             return View(userOrders);
         }
 
-
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
         public OrderState ChangeOrderState(Order order)
         {
             Order orderToModify = db.Orders.Find(order.OrderID);
