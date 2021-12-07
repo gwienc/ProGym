@@ -38,14 +38,14 @@
                                 <thead>
                                     <tr>
                                         <td>
-                                            <strong>Status: </strong><br />
+                                            <strong>Zmień status: </strong><br />
 
                                             @if (ViewBag.UserIsAdmin)
                                             {
                                                 using (Html.BeginForm("ChangeOrderState", "Manage"))
                                                 {
                                                     @Html.HiddenFor(o => order.OrderID)
-                                                    @Html.EnumDropDownListFor(o => order.OrderState, new { @class = "orderstateddl" })
+                                                    @Html.EnumDropDownListFor(o => order.OrderState, new { @class = "form-control", style = "width:30%" })
                                                 }
                                             }
                                             else
@@ -57,7 +57,7 @@
                                             <strong>Nr zamówienia: </strong>
                                             @order.OrderID
                                         </td>
-                                        <td colspan="4" class="text-end">
+                                        <td colspan="4" class="text-end" width="15%">
                                             <strong>Data: </strong>
                                             @order.DateCreated.ToString("dd-MM-yyyy")
                                         </td>
@@ -123,7 +123,7 @@
 
 <script src="~/Scripts/jquery-3.6.0.js"></script>
 <script>
-    $(".orderstateddl").on('change', function (e) {
+    $(".form-control").on('change', function (e) {
         //e.preventDefault();
 
         var f = $(this.form);
