@@ -311,6 +311,11 @@ body {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
+    .our-tickets-student p {
+        font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        
+    }
+
     .our-tickets-student:hover h2,
     .our-tickets-student:hover p {
         color: #fff
@@ -332,6 +337,10 @@ body {
     background-color: #fff;
     transition: all .4s ease-in-out;
     box-shadow: 0 0 25px 0 rgba(20, 27, 202, .17);
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.our-tickets-open p {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
@@ -358,6 +367,10 @@ body {
     background-color: #fff;
     transition: all .4s ease-in-out;
     box-shadow: 0 0 25px 0 rgba(20, 27, 202, .17);
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.our-tickets-openmax p{
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
