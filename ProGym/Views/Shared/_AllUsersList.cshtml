@@ -2,6 +2,7 @@
 @using ProGym.Infrastructure
 @{
     ViewBag.Title = "UsersList";
+    int no = 1;
 }
 
 <section>
@@ -13,11 +14,12 @@
 </section>
 
 <div id="productlist-section pt-5">
-    <div class="row pb-4 pt-5">      
+    <div class="row pb-4 pt-5">
         <div class="table-responsive">
             <table class="table table-striped all-products pt-5">
                 <thead>
                     <tr>
+                        <th scope="col">#</th>
                         <th scope="col">ID Użytkownika</th>
                         <th scope="col">Użytkownik</th>
                         <th scope="col">Imię</th>
@@ -32,6 +34,7 @@
                 <tbody>
                     @foreach (var user in Model)
                     {
+
                         <tr>
                             @if (user.UserName == ViewBag.UserIsAdmin)
                             {
@@ -39,6 +42,7 @@
                             }
                             else
                             {
+                                <td width="5%">@(no++)</td>
                                 <td>@user.Id</td>
                                 <td>@user.UserName</td>
                                 <td>@user.UserData.FirstName</td>
