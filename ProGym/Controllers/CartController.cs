@@ -18,9 +18,13 @@ namespace ProGym.Controllers
     public class CartController : Controller
     {
         private ShoppingCartManager shoppingCartManager;
+
         private ISessionManager sessionManager;
+
         private StoreContext db = new StoreContext();
+
         private ApplicationUserManager _userManager;
+
         private IMailService mailService;
 
         public ApplicationUserManager UserManager
@@ -35,20 +39,18 @@ namespace ProGym.Controllers
             }
         }
 
-        
-        
-        
+                    
         public CartController(IMailService mailService, ISessionManager sessionManager)
         {
             this.mailService = mailService;
             this.sessionManager = sessionManager;
             this.shoppingCartManager = new ShoppingCartManager(this.sessionManager, this.db);
         }
-        // GET: Cart
+
         
         
         
-        
+       
         public ActionResult Index()
         {
             var cartItems = shoppingCartManager.GetCart();
@@ -118,6 +120,7 @@ namespace ProGym.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<ActionResult> Checkout(Order orderdetails)
         {
             if(ModelState.IsValid)

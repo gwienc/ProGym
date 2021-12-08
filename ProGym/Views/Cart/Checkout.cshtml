@@ -11,6 +11,7 @@
                 <div class="card-body">
                     @using (Html.BeginForm("Checkout", "Cart"))
                     {
+                        @Html.AntiForgeryToken()
                         <div class="row text-center pb-5 pt-3">
                             <h2>Uzupełnij dane zamówienia</h2>
                         </div>
