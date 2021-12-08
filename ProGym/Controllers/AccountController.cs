@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 
 namespace ProGym.Controllers
 {
+    [RequireHttps]
     public class AccountController : Controller
     {
         
@@ -50,6 +51,7 @@ namespace ProGym.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         [ValidateAntiForgeryToken]       
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
@@ -96,16 +98,15 @@ namespace ProGym.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-
-
-
-
         public ActionResult Register()
         {
             return View();
         }
 
+
+
         [HttpPost]
+        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
