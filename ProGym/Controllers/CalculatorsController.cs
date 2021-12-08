@@ -9,7 +9,6 @@ namespace ProGym.Controllers
 {
     public class CalculatorsController : Controller
     {
-        // GET: Calculators
         public ActionResult Index()
         {
             CalculatorsViewModel model = new CalculatorsViewModel();
@@ -20,6 +19,8 @@ namespace ProGym.Controllers
             return View();
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public JsonResult CalculateBMI(CalculatorsViewModel model)
         {
             model.Height = model.Height * 0.01;
@@ -63,12 +64,16 @@ namespace ProGym.Controllers
 
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public JsonResult CalculateOneRepMax(CalculatorsViewModel model)
         {
             model.ResultRepMax = model.Weight * model.NumberOfRepetitions * model.ConstantValue + model.Weight;
             return Json(model);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public JsonResult CalculateBMR(CalculatorsViewModel model)
         {
             switch (model.Gender.ToString())
@@ -84,32 +89,11 @@ namespace ProGym.Controllers
                     break;
             }
 
-            double sameWeight = 0;
-
-            switch (model.ActivityID)
-            {
-                case 1:
-                    sameWeight = model.ResultBMR * 1;
-                    break;
-                case 2:
-                    sameWeight = model.ResultBMR * 1.2;
-                    break;
-                case 3:
-                    sameWeight = model.ResultBMR * 1.4;
-                    break;
-                case 4:
-                    sameWeight = model.ResultBMR * 1.6;
-                    break;
-                case 5:
-                    sameWeight = model.ResultBMR * 1.8;
-                    break;
-                case 6:
-                    sameWeight = model.ResultBMR * 2;
-                    break;
-                default:
-                    break;
-            }
-           
+            
+            double sameWeight;
+            sameWeight = model.ResultBMR * model.ActivityID;
+ 
+            
             switch (model.PurposeID)
             {
                 case 1:
@@ -152,6 +136,8 @@ namespace ProGym.Controllers
 
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public JsonResult CalculatePerfectWeight(CalculatorsViewModel model)
         {
             switch (model.Gender)
@@ -173,6 +159,8 @@ namespace ProGym.Controllers
             return Json(model);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public JsonResult CalculateBodyFatIndex(CalculatorsViewModel model)
         {
             var a = 4.15 * model.Waist;

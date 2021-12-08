@@ -51,11 +51,11 @@ namespace ProGym.ViewModels
                 return new List<Activity>()
                 {
                     new Activity() {ID = 1, Description = "Leżący lub siedzący tryb życia, brak aktywności fizycznej"},
-                    new Activity() {ID = 2, Description = "Praca siedząca, aktywność fizyczna na niskim poziomie"},
-                    new Activity() {ID = 3, Description = "Praca niefizyczna, trening 2 razy w tygodniu"},
-                    new Activity() {ID = 4, Description = "Lekka praca fizyczna, trening 3-4 razy w tygodniu"},
-                    new Activity() {ID = 5, Description = "Praca fizyczna, trening 5 razy w tygodniu"},
-                    new Activity() {ID = 6, Description = "Ciężka praca fizyczna, codzienny trening"}
+                    new Activity() {ID = 1.2, Description = "Praca siedząca, aktywność fizyczna na niskim poziomie"},
+                    new Activity() {ID = 1.4, Description = "Praca niefizyczna, trening 2 razy w tygodniu"},
+                    new Activity() {ID = 1.6, Description = "Lekka praca fizyczna, trening 3-4 razy w tygodniu"},
+                    new Activity() {ID = 1.8, Description = "Praca fizyczna, trening 5 razy w tygodniu"},
+                    new Activity() {ID = 2, Description = "Ciężka praca fizyczna, codzienny trening"}
                 };
 
             }
