@@ -18,6 +18,7 @@ using System.Web.Mvc;
 
 namespace ProGym.Controllers
 {
+    [Authorize]
     public class ManageController : Controller
     {
 
@@ -223,6 +224,7 @@ namespace ProGym.Controllers
 
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult AddProduct(int? productId, bool? confirmSuccess)
         {
             Product product;
@@ -248,6 +250,7 @@ namespace ProGym.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult AddProduct(AddOrEditProductViewModel model, HttpPostedFileBase file)
         {
 
@@ -324,6 +327,7 @@ namespace ProGym.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult HideProduct(int? productId)
         {
             var product = db.Products.Find(productId);
@@ -334,6 +338,7 @@ namespace ProGym.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult UnhideProduct(int productId)
         {
             var product = db.Products.Find(productId);
@@ -343,6 +348,7 @@ namespace ProGym.Controllers
             return RedirectToAction("AddProduct", new { confirmSuccess = true });
         }
 
+        [AllowAnonymous]
         public ActionResult SendConfirmationEmail(int orderid, string lastname)
         {
             var order = db.Orders.Include("OrderItems").Include("OrderItems.Product").SingleOrDefault(o => o.OrderID == orderid && o.LastName == lastname);
@@ -361,6 +367,7 @@ namespace ProGym.Controllers
             return new HttpStatusCodeResult(System.Net.HttpStatusCode.OK);
         }
 
+        [AllowAnonymous]
         public ActionResult SendPreparedOrderEmail(int orderid, string lastname)
         {
             var order = db.Orders.Include("OrderItems").Include("OrderItems.Product").SingleOrDefault(o => o.OrderID == orderid && o.LastName == lastname);
@@ -378,6 +385,7 @@ namespace ProGym.Controllers
             return new HttpStatusCodeResult(System.Net.HttpStatusCode.OK);
         }
 
+        [AllowAnonymous]
         public ActionResult SendReceivedOrderEmail(int orderid, string lastname)
         {
             var order = db.Orders.Include("OrderItems").Include("OrderItems.Product").SingleOrDefault(o => o.OrderID == orderid && o.LastName == lastname);
@@ -394,6 +402,7 @@ namespace ProGym.Controllers
             return new HttpStatusCodeResult(System.Net.HttpStatusCode.OK);
         }
 
+        [AllowAnonymous]
         public ActionResult SendConfirmationTicketEmail(int ticketId, string userId)
         {
             var ticket = db.Tickets.Include("TypeOfTicket").SingleOrDefault(t => t.TicketId == ticketId && t.UserId == userId);
@@ -412,6 +421,7 @@ namespace ProGym.Controllers
             return new HttpStatusCodeResult(System.Net.HttpStatusCode.OK);
         }
 
+        [AllowAnonymous]
         public ActionResult SendConfirmationTicketEmailACtive(int ticketId, string userId)
         {
             var ticket = db.Tickets.Include("TypeOfTicket").SingleOrDefault(t => t.TicketId == ticketId && t.UserId == userId);
@@ -430,6 +440,7 @@ namespace ProGym.Controllers
             return new HttpStatusCodeResult(System.Net.HttpStatusCode.OK);
         }
 
+        [AllowAnonymous]
         public ActionResult TicketInactiveInformationEmail(int ticketId, string userId)
         {
             var ticket = db.Tickets.Include("TypeOfTicket").SingleOrDefault(t => t.TicketId == ticketId && t.UserId == userId);
