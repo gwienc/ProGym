@@ -589,7 +589,6 @@ Content-Type: text/html; charset=utf-8
 
                                                                                             <a href="@Url.Action("Details", "Store", new { id = orderItems.ElementAt(i * 2).Product.ProductID }, "https")">
 
-                                                                                                @* Warning: need to cast ViewBag before using in extension method! *@
                                                                                                 @Html.EmbedImage(Path.Combine(Model.CoverPath, orderItems.ElementAt(i * 2).Product.PhotoFileName), "", new { @width = 264, @class = "mcnImage", @style = "padding-bottom: 0px;max-width: 500px;border: 0;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;vertical-align: bottom;" })
 
                                                                                             </a>

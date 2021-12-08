@@ -22,19 +22,11 @@
                 {
                     <div class="row pb-5 pt-5">
                         <div class="table-responsive orders"
-                             
-                             @if (order.OrderState == ProGym.Models.OrderState.Completed) 
-                             { <text> id="orderCompleted" </text>  } 
-                             else if (order.OrderState == ProGym.Models.OrderState.Received) 
-                             { <text> id="orderReceived" </text>  }>
-                          
+                             @if (order.OrderState == ProGym.Models.OrderState.Completed) { <text> id="orderCompleted" </text>  } else if (order.OrderState == ProGym.Models.OrderState.Received) { <text> id="orderReceived" </text> }>
+
                             <table class="table orders"
-                                   
-                                   @if (order.OrderState == ProGym.Models.OrderState.Completed) 
-                                   { <text> id="orderCompleted" </text>  } 
-                                   else if (order.OrderState == ProGym.Models.OrderState.Received) 
-                                   { <text> id="orderReceived" </text>  } >
-                                
+                                   @if (order.OrderState == ProGym.Models.OrderState.Completed) { <text> id="orderCompleted" </text>  } else if (order.OrderState == ProGym.Models.OrderState.Received) { <text> id="orderReceived" </text> }>
+
                                 <thead>
                                     <tr>
                                         <td>
