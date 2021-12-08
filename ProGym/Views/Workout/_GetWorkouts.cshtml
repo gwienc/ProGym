@@ -1,0 +1,30 @@
+﻿@model IEnumerable<ProGym.Models.Workout>
+
+<div id="productlist-section">
+    <div class="row pb-4">
+        @foreach (var workout in Model)
+        {
+            <div class="col-xl-3 col-md-6 p-3">
+                <div class="card border-success h-75">
+                    <div class="card-body">
+                        <h5 class="card-title">@workout.Name</h5>
+                        <p class="card-text">@workout.CreateDate.ToString("dd/MM/yyyy")</p>
+                        <p>
+                            @Ajax.ActionLink("Szczegóły", "GetDetailsWorkout", new { id = workout.WorkoutID }, new AjaxOptions
+                                {
+                                    UpdateTargetId = "workoutDetails",
+                                    InsertionMode = InsertionMode.Replace,
+                                    OnSuccess = "Done()"
+                                },
+                                new { @class = "btn btn-success" })
+                        </p>
+                        <br /><br /><br />
+                    </div>
+                </div>
+            </div>
+        }
+        <div id="workoutDetails">
+
+        </div>
+    </div>
+</div>

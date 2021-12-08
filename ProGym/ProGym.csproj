@@ -2221,6 +2221,7 @@
     <Content Include="Views\Emails\ContactMessage.cshtml" />
     <Content Include="Views\Emails\ContactMessage.Html.cshtml" />
     <Content Include="Views\Emails\ContactMessage.Text.cshtml" />
+    <Content Include="Views\Workout\_GetWorkouts.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
