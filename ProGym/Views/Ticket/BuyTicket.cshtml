@@ -29,6 +29,7 @@
 
                                     @using (Html.BeginForm("BuyTicket", "Ticket"))
                                     {
+                                        @Html.AntiForgeryToken()
                                         <h2>@Html.DisplayFor(t => Model.TypeOfTicket.TypeTicket)</h2><br />
                                         <p>@Html.LabelFor(t => Model.TypeOfTicket.PeriodOfValidity) : @Html.DisplayFor(t => Model.TypeOfTicket.PeriodOfValidity)</p>
                                         <p>@Html.LabelFor(t => Model.DateOfPurchase) : @Html.DisplayFor(t => Model.DateOfPurchase)</p>
@@ -48,6 +49,7 @@
                                 <div class="our-tickets-open settings pt-3" style="min-height:258px">
                                     @using (Html.BeginForm("BuyTicket", "Ticket"))
                                     {
+                                        @Html.AntiForgeryToken()
                                         <h2>@Html.DisplayFor(t => Model.TypeOfTicket.TypeTicket)</h2><br />
                                         <p>@Html.LabelFor(t => Model.TypeOfTicket.PeriodOfValidity) : @Html.DisplayFor(t => Model.TypeOfTicket.PeriodOfValidity)</p>
                                         <p>@Html.LabelFor(t => Model.DateOfPurchase) : @Html.DisplayFor(t => Model.DateOfPurchase)</p>
@@ -67,6 +69,7 @@
                                 <div class="our-tickets-openmax settings pt-3">
                                     @using (Html.BeginForm("BuyTicket", "Ticket"))
                                     {
+                                        @Html.AntiForgeryToken()
                                         <h2>@Html.DisplayFor(t => Model.TypeOfTicket.TypeTicket)</h2><br />
                                         <p>@Html.LabelFor(t => Model.TypeOfTicket.PeriodOfValidity) : @Html.DisplayFor(t => Model.TypeOfTicket.PeriodOfValidity)</p>
                                         <p>@Html.LabelFor(t => Model.DateOfPurchase) : @Html.DisplayFor(t => Model.DateOfPurchase)</p>

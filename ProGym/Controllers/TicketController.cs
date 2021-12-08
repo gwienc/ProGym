@@ -121,6 +121,7 @@ namespace ProGym.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<ActionResult> BuyTicket(Ticket ticket)
         {
             if (ModelState.IsValid)
