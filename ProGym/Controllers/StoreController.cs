@@ -9,7 +9,12 @@ namespace ProGym.Controllers
 {
     public class StoreController : Controller
     {
-        StoreContext db = new StoreContext();
+        StoreContext db;
+
+        public StoreController(StoreContext context)
+        {
+            this.db = context;
+        }
 
         public ActionResult Index(string categoryname, string searchQuery = null)
         {

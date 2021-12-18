@@ -22,7 +22,7 @@ namespace ProGym.Controllers
     public class ManageController : Controller
     {
 
-        StoreContext db = new StoreContext();
+        StoreContext db;
 
         public enum ManageMessageId
         {
@@ -54,9 +54,14 @@ namespace ProGym.Controllers
         }
 
 
-        public ManageController(IMailService mailService)
+        public ManageController(IMailService mailService, StoreContext context)
         {
             this.mailService = mailService;
+            this.db = context;
+        }
+        public ManageController(ApplicationUserManager userManager)
+        {
+            UserManager = userManager;
         }
 
         public async Task<ActionResult> Index(ManageMessageId? message)

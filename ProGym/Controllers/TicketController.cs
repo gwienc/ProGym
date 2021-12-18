@@ -15,9 +15,7 @@ namespace ProGym.Controllers
 {
     public class TicketController : Controller
     {
-        StoreContext db = new StoreContext();
-
-
+        StoreContext db;    
         private IMailService mailService;
         private ApplicationUserManager _userManager;
         public ApplicationUserManager UserManager
@@ -32,9 +30,10 @@ namespace ProGym.Controllers
             }
         }
 
-        public TicketController(IMailService mailService)
+        public TicketController(IMailService mailService, StoreContext db)
         {
             this.mailService = mailService;
+            this.db = db;
         }
 
         public ActionResult Index()

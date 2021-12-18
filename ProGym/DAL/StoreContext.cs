@@ -26,12 +26,16 @@ namespace ProGym.DAL
             return new StoreContext();
         }
 
-        public DbSet<Product> Products { get; set; }
+        //add virtual to unit tests
+        public  DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
-        public DbSet<Order> Orders { get; set; }
+        //add virtual to unit tests
+        public  DbSet<Order> Orders { get; set; }
         public DbSet<OrderItem> OrderItems { get; set; }
-        public DbSet<TypeOfTicket> TypeOfTickets { get; set; }
-        public DbSet<Ticket> Tickets { get; set; }
+        //add  to unit testss
+        public  DbSet<TypeOfTicket> TypeOfTickets { get; set; }
+        //add to unit tests
+        public  DbSet<Ticket> Tickets { get; set; }
         public DbSet<Workout> Workouts { get; set; }
         public DbSet<Exercise> Exercises { get; set; }
 
