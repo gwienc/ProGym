@@ -208,7 +208,7 @@ namespace ProGym.Tests
         }
 
         [TestMethod]
-        public async Task Test_BuyTicketActionMethod_WithExistTicket()
+        public async Task Test_BuyTicketActionMethod()
         {
             var mailMock = new Mock<IMailService>();
 
@@ -241,14 +241,17 @@ namespace ProGym.Tests
             ticketMock.As<IQueryable<Ticket>>().Setup(m => m.GetEnumerator()).Returns(tickets.GetEnumerator());
 
             var mockContext = new Mock<StoreContext>();
-            //mockContext.Setup(c => c.TypeOfTickets).Returns(typeTicketMock.Object);
             mockContext.Setup(c => c.Tickets).Returns(ticketMock.Object);
             var controller = new TicketController(mailMock.Object, mockContext.Object);
             controller.ModelState.AddModelError("key", "error");
 
-            var result = (RedirectToRouteResult)await controller.BuyTicket(newTicket);
+            var ticket = (ViewResult) await controller.BuyTicket(newTicket);
+            var result = ticket.ViewData.Model as Ticket;
 
-            Assert.AreEqual("OrderConfirmation", result.RouteValues["Action"]);
+
+            Assert.AreEqual(1, result.TypeOfTicketId);
+            Assert.AreEqual("2", result.UserId);
+            Assert.AreEqual(false, result.IsActive);            
         }
     }
 }
