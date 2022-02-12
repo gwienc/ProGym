@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace ProGym.Models
 {
@@ -20,8 +16,7 @@ namespace ProGym.Models
         
         [Display(Name = "Miasto i kod pocztowy:")]
         public string CodeAndCity { get; set; }
-
-        
+       
         [RegularExpression(@"(\+\d{2})*[\d\s-]+",
             ErrorMessage = "Błędny format numeru telefonu.")]
         [Display(Name = "Numer telefonu:")]

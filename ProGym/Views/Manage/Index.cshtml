@@ -11,12 +11,10 @@
                 <div class="card-body">
                     @using (Html.BeginForm("ChangeProfile", "Manage"))
                     {
-
                         @Html.AntiForgeryToken()
                         <div id="login-error">
                             @Html.ValidationMessage("password-error", "")
                         </div>
-
                         <div class="row text-center pb-5 pt-3">
                             <h2>Zmień dane</h2>
                         </div>
@@ -104,7 +102,6 @@
                 <div class="card-body">
                     @using (Html.BeginForm("ChangePassword", "Manage", FormMethod.Post))
                     {
-
                         @Html.AntiForgeryToken()
                         <div id="login-error">
                             @Html.ValidationMessage("password-error", "")

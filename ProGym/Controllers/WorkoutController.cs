@@ -3,8 +3,8 @@ using ProGym.DAL;
 using ProGym.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace ProGym.Controllers
@@ -14,8 +14,7 @@ namespace ProGym.Controllers
         StoreContext db = new StoreContext();
         public ActionResult Index()
         {
-
-            IEnumerable<Workout> workouts = db.Workouts.Include("Exercises").ToList();
+            IEnumerable<Workout> workouts = db.Workouts.Include(x => x.Exercises).ToList();
             return View(workouts);
         }
 
@@ -24,7 +23,6 @@ namespace ProGym.Controllers
         public ActionResult SaveWorkout(string workoutName, Exercise[] exercises)
         {
             string result = "Błąd!";
-
             var userId = User.Identity.GetUserId();
 
             if (workoutName != null || exercises != null)
@@ -50,7 +48,6 @@ namespace ProGym.Controllers
 
                     };
                     db.Exercises.Add(newExercise);
-                    
                 }
                 db.SaveChanges();
                 result = "Sukces!";
@@ -58,11 +55,10 @@ namespace ProGym.Controllers
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
-
         public PartialViewResult GetDetailsWorkout(int id)
         {
             IEnumerable<Exercise> exercises = db.Exercises.Where(e => e.WorkoutID == id);
-            return PartialView("_GetDetailsWorkout",exercises);
+            return PartialView("_GetDetailsWorkout", exercises);
         }
 
         public PartialViewResult GetWorkouts()
@@ -72,5 +68,4 @@ namespace ProGym.Controllers
             return PartialView("_GetWorkouts", workouts);
         }
     }
-
 }

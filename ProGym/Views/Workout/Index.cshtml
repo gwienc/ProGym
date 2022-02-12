@@ -23,14 +23,13 @@
                         </div>
                     </div>
                 </div>
-                @*modal with new workout form*@
                 <div class="modal fade" id="newWorkoutModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered modal-lg">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h4>Dodaj nowy trening</h4>
                             </div>
-                            @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "__AjaxAntiForgeryForm"}))
+                            @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "__AjaxAntiForgeryForm" }))
                             {
                                 @Html.AntiForgeryToken()
                             }
@@ -115,7 +114,7 @@
     <div class="container pt-5">
         <div class="row">
             <div class="col-12">
-                @Html.Action("GetWorkouts","Workout")                
+                @Html.Action("GetWorkouts", "Workout")
             </div>
         </div>
     </div>
@@ -129,25 +128,15 @@
     <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
 
     <script>
-
-        //Show Modal.
         function addNewOWorkout() {
 
             $("#newWorkoutModal").modal();
 
         }
-
         function Done() {
             $('#trainingInfoModal').modal('show');
         }
-
-
-
-        //Validate form
         $(function validate() {
-
-
-
             $("#NewWorkoutForm").validate({
                 rules: {
                     workoutName: {
@@ -185,18 +174,11 @@
                     {
                         addToList();
                     }
-
-
                 }
             });
         });
-
-
         var list = [];
-
-        //Add Multiple Order.
         function addToList() {
-
             if ($.trim($("#exerciseName").val()) == "" || $.trim($("#numberOfRepetitions").val()) == "" || $.trim($("#weight").val()) == "") return;
 
             var exerciseName = $("#exerciseName").val(),
@@ -214,19 +196,12 @@
 
             $("#saveButton").prop('disabled', false);
         }
-
-
-
-        //After Add A New Order In The List, Clear Clean The Form For Add More Order.
         function clearItem() {
             $("#exerciseName").val('');
             $("#numberOfRepetitions").val('');
             $("#weight").val('');
         }
 
-
-
-        // After Add A New Order In The List, If You Want, You Can Remove It.
         $(document).on('click', 'a.btn', function (e) {
             e.preventDefault();
             var row = $(this).parents('tr').index();
@@ -235,17 +210,14 @@
                 $(this).parents('tr').css("background-color", "#ff6347").fadeOut(800, function () {
                     $(this).remove();
                     list.splice(row, 1);
-                    if (list.length==0) {
+                    if (list.length == 0) {
                         $("#saveButton").prop('disabled', true);
                     }
                 });
             }
-            
+
         });
 
-
-
-        //Collect Multiple Order List For Pass To Controller
         $("#saveButton").click(function (e) {
             e.preventDefault();
             save();
@@ -265,7 +237,7 @@
                 });
             });
 
-            var workoutName = $("#workoutName").val();                
+            var workoutName = $("#workoutName").val();
             var exercises = workoutArr;
 
             $.when(saveWorkout(workoutName, exercises)).then(function (response) {
@@ -275,19 +247,16 @@
             });
         }
 
-
-
-        //After Click Save Button Pass All Data View with AntiForgeryToken To Controller For Save Database
-        function saveWorkout(workoutName,exercises) {
+        function saveWorkout(workoutName, exercises) {
 
             var form = $('#__AjaxAntiForgeryForm');
             var token = $('input[name="__RequestVerificationToken"]', form).val();
 
-            return $.ajax({                
+            return $.ajax({
                 type: 'POST',
                 url: "/Workout/SaveWorkout",
                 data: {
-                    __RequestVerificationToken: token, 
+                    __RequestVerificationToken: token,
                     workoutName: workoutName,
                     exercises: exercises
                 },

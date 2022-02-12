@@ -1,8 +1,5 @@
 ﻿using ProGym.ViewModels;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace ProGym.Controllers
@@ -15,7 +12,6 @@ namespace ProGym.Controllers
             ViewBag.Activities = model.Activities;
             ViewBag.Purposes = model.Purposes;
             ViewBag.Types = model.Types;
-
             return View();
         }
 
@@ -59,9 +55,7 @@ namespace ProGym.Controllers
             {
                 model.Range = "Otyłość III stopnia chorobliwa";
             }
-
             return Json(model);
-
         }
 
         [HttpPost]
@@ -79,7 +73,6 @@ namespace ProGym.Controllers
             switch (model.Gender.ToString())
             {
                 case "M":
-                    //model.ResultBMR = 66.5 + (13.7 * model.Weight) + (5 * model.Height) - (6.8 * model.Age);
                     model.ResultBMR = (9.99 * model.Weight) + (6.25 * model.Height) - (4.92 * model.Age) + 5;
                     break;
                 case "K":
@@ -89,11 +82,9 @@ namespace ProGym.Controllers
                     break;
             }
 
-            
             double sameWeight;
             sameWeight = model.ResultBMR * model.ActivityID;
- 
-            
+
             switch (model.PurposeID)
             {
                 case 1:
@@ -133,7 +124,6 @@ namespace ProGym.Controllers
             model.TotalCaloricRequirement = Math.Round(model.TotalCaloricRequirement, 3);
             model.ResultBMR = Math.Round(model.ResultBMR, 3);
             return Json(model);
-
         }
 
         [HttpPost]
@@ -155,7 +145,6 @@ namespace ProGym.Controllers
                 default:
                     break;
             }
-
             return Json(model);
         }
 

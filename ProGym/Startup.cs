@@ -5,10 +5,7 @@ using Owin;
 using ProGym.DAL;
 using ProGym.Infrastructure;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using ProGym.Controllers;
 
 namespace ProGym
 {
@@ -18,18 +15,6 @@ namespace ProGym
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
-
-            //app.UseHangfire(config =>
-            //{
-            //    config.UseAuthorizationFilters(new AuthorizationFilter
-            //    {
-            //        Roles = "Admin"
-
-            //    });
-
-            //    config.UseSqlServerStorage("StoreContext");
-            //    config.UseServer();
-            //});
 
             var options = new DashboardOptions
             {
@@ -49,7 +34,6 @@ namespace ProGym
 
         public void CheckActiveTickets()
         {
-
             var tickets = db.Tickets.ToList();
 
             foreach (var ticket in tickets)
@@ -62,10 +46,8 @@ namespace ProGym
 
                     IMailService mailService = new HangFirePostalMailService();
                     mailService.TicketInactiveInformationEmail(ticket);
-
                 }
             }
         }
-
     }
 }

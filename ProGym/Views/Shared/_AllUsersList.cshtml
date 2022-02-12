@@ -12,7 +12,6 @@
         </div>
     </div>
 </section>
-
 <div id="productlist-section pt-5">
     <div class="row pb-4 pt-5">
         <div class="table-responsive">
@@ -34,7 +33,6 @@
                 <tbody>
                     @foreach (var user in Model)
                     {
-
                         <tr>
                             @if (user.UserName == ViewBag.UserIsAdmin)
                             {
@@ -60,7 +58,6 @@
                                     <td style="color:red" width="10%">Nie posiada karnetu </td>
                                 }
                             }
-
                         </tr>
                     }
                 </tbody>

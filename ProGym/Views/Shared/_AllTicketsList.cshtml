@@ -4,14 +4,13 @@
     ViewBag.Title = "TicketsList";
 }
 
-    <section>
-        <div class="container orderlist">
-            <div class="row text-center pb-5">
-                <h1>Lista karnetów</h1>
-            </div>
+<section>
+    <div class="container orderlist">
+        <div class="row text-center pb-5">
+            <h1>Lista karnetów</h1>
         </div>
-    </section>
-
+    </div>
+</section>
 <div id="productlist-section pt-5">
     <div class="row pb-4 pt-5">
         <div class="table-responsive">
@@ -44,8 +43,8 @@
                                 <td style="color:red">Nieaktywny <a href="@Url.Action("ChangeTicketState","Manage", new {ticketID = ticket.TicketId, status = ticket.IsActive})" class="mt-2 btn btn-sm btn-success"> Aktywuj </a></td>
 
                             }
-                            <td>@ticket.DateOfPurchase</td>
-                            <td>@ticket.ExpirationDate</td>
+                            <td>@ticket.DateOfPurchase.ToString("dd-MM-yyyy")</td>
+                            <td>@ticket.ExpirationDate.ToString("dd-MM-yyyy")</td>
                             <td>@ticket.UserId</td>
                             <td>@ticket.User.UserName</td>
                         </tr>

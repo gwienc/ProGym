@@ -1,31 +1,29 @@
 ﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using ProGym.App_Start;
 using ProGym.DAL;
 using ProGym.Infrastructure;
+using ProGym.Models;
 using ProGym.ViewModels;
-using System;
-using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using Microsoft.AspNet.Identity.Owin;
-using ProGym.App_Start;
-using ProGym.Models;
-using Hangfire;
 
 namespace ProGym.Controllers
 {
     public class CartController : Controller
     {
-        private ShoppingCartManager shoppingCartManager;
+        private ShoppingCartManager _shoppingCartManager;
 
-        private ISessionManager sessionManager;
+        private ISessionManager _sessionManager;
 
-        private StoreContext db = new StoreContext();
+        private StoreContext _db = new StoreContext();
 
         private ApplicationUserManager _userManager;
 
-        private IMailService mailService;
+        private IMailService _mailService;
 
         public ApplicationUserManager UserManager
         {
@@ -39,22 +37,17 @@ namespace ProGym.Controllers
             }
         }
 
-                    
         public CartController(IMailService mailService, ISessionManager sessionManager)
         {
-            this.mailService = mailService;
-            this.sessionManager = sessionManager;
-            this.shoppingCartManager = new ShoppingCartManager(this.sessionManager, this.db);
+            _mailService = mailService;
+            _sessionManager = sessionManager;
+            _shoppingCartManager = new ShoppingCartManager(_sessionManager, _db);
         }
 
-        
-        
-        
-       
         public ActionResult Index()
         {
-            var cartItems = shoppingCartManager.GetCart();
-            var cartTotalPrice = shoppingCartManager.GetCartTotalPrice();
+            var cartItems = _shoppingCartManager.GetCart();
+            var cartTotalPrice = _shoppingCartManager.GetCartTotalPrice();
 
             CartViewModel cartViewModel = new CartViewModel()
             {
@@ -67,21 +60,21 @@ namespace ProGym.Controllers
 
         public ActionResult AddToCart(int id)
         {
-            shoppingCartManager.addToCart(id);
+            _shoppingCartManager.AddToCart(id);
 
             return RedirectToAction("Index");
         }
 
         public int GetCartItemsCount()
         {
-            return shoppingCartManager.GetCartItemsCount();
+            return _shoppingCartManager.GetCartItemsCount();
         }
 
         public ActionResult RemoveFromCart(int productID)
         {
-            int itemCount = shoppingCartManager.RemoveFromCart(productID);
-            int cartItemsCount = shoppingCartManager.GetCartItemsCount();
-            decimal cartTotal = shoppingCartManager.GetCartTotalPrice();
+            var itemCount = _shoppingCartManager.RemoveFromCart(productID);
+            var cartItemsCount = _shoppingCartManager.GetCartItemsCount();
+            var cartTotal = _shoppingCartManager.GetCartTotalPrice();
 
             var result = new CartRemoveViewModel
             {
@@ -90,7 +83,6 @@ namespace ProGym.Controllers
                 CartTotal = cartTotal,
                 CartItemsCount = cartItemsCount
             };
-
             return Json(result);
         }
 
@@ -109,38 +101,32 @@ namespace ProGym.Controllers
                     Email = user.UserData.Email,
                     PhoneNumber = user.UserData.PhoneNumber
                 };
-
                 return View(order);
             }
             else
             {
-               return RedirectToAction("Login", "Account", new { returnUrl = Url.Action("Checkout", "Cart") });
+                return RedirectToAction("Login", "Account", new { returnUrl = Url.Action("Checkout", "Cart") });
             }
-
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Checkout(Order orderdetails)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 var userId = User.Identity.GetUserId();
+                var newOrder = _shoppingCartManager.CreateOrder(orderdetails, userId);
 
-                var newOrder = shoppingCartManager.CreateOrder(orderdetails, userId);
-
-                
                 var user = await UserManager.FindByIdAsync(userId);
                 TryUpdateModel(user.UserData);
                 await UserManager.UpdateAsync(user);
 
-                shoppingCartManager.EmptyCart();
+                _shoppingCartManager.EmptyCart();
 
-                var order = db.Orders.Include("OrderItems").Include("OrderItems.Product").SingleOrDefault(o => o.OrderID == newOrder.OrderID);
-                
+                var order = _db.Orders.Include(x => x.OrderItems.Select(p => p.Product)).SingleOrDefault(o => o.OrderID == newOrder.OrderID);
 
-                this.mailService.SendOrderConfirmationEmail(order);
-               
+                _mailService.SendOrderConfirmationEmail(order);
 
                 return RedirectToAction("OrderConfirmation");
             }

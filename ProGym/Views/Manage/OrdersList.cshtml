@@ -17,21 +17,17 @@
         <div class="row">
             @if (Model.Any())
             {
-
                 foreach (var order in Model)
                 {
                     <div class="row pb-5 pt-5">
                         <div class="table-responsive orders"
                              @if (order.OrderState == ProGym.Models.OrderState.Completed) { <text> id="orderCompleted" </text>  } else if (order.OrderState == ProGym.Models.OrderState.Received) { <text> id="orderReceived" </text> }>
-
                             <table class="table orders"
                                    @if (order.OrderState == ProGym.Models.OrderState.Completed) { <text> id="orderCompleted" </text>  } else if (order.OrderState == ProGym.Models.OrderState.Received) { <text> id="orderReceived" </text> }>
-
                                 <thead>
                                     <tr>
                                         <td>
                                             <strong>Status: </strong><br />
-
                                             @if (ViewBag.UserIsAdmin)
                                             {
                                                 using (Html.BeginForm("ChangeOrderState", "Manage"))
@@ -79,7 +75,6 @@
                                             </tr>
                                         }
                                     }
-
                                     <tr>
                                         <td>
                                             <strong>Uwagi: </strong><br />
@@ -90,12 +85,10 @@
                                         </td>
                                     </tr>
                                 </tbody>
-
                             </table>
                         </div>
                     </div>
                 }
-
             }
             else
             {
@@ -103,10 +96,7 @@
                     <h2>Brak zamówień</h2>
                     <hr />
                 </div>
-
-
             }
-
         </div>
     </div>
 </section>
@@ -116,11 +106,8 @@
 <script src="~/Scripts/jquery-3.6.0.js"></script>
 <script>
     $(".form-control").on('change', function (e) {
-        //e.preventDefault();
-
         var f = $(this.form);
         var table = f.closest("table");
-
         var action = f.attr("action");
         var serializedForm = f.serialize();
         $.post(action, serializedForm).done(function (data) {

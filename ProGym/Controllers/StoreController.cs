@@ -1,8 +1,6 @@
 ﻿using ProGym.DAL;
-using System;
-using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace ProGym.Controllers
@@ -23,7 +21,6 @@ namespace ProGym.Controllers
                 var products = db.Products.Where(p => !p.IsHidden).ToList();
                 return View(products);
             }
-
             else if ((categoryname == "Wszystkie" || categoryname == null) && searchQuery != null)
             {
                 var products = db.Products.Where(p => (p.Name.ToLower().Contains(searchQuery.ToLower()) || p.ProducerName.ToLower().Contains(searchQuery.ToLower())) && !p.IsHidden);
@@ -33,10 +30,10 @@ namespace ProGym.Controllers
                     return PartialView("_ProductList", products);
                 }
                 return View(products);
-            }        
+            }
             else
             {
-                var category = db.Categories.Include("Products").Where(c => c.CategoryName.ToUpper() == categoryname.ToUpper()).Single();
+                var category = db.Categories.Include(x => x.Products).Where(c => c.CategoryName.ToUpper() == categoryname.ToUpper()).Single();
                 var products = category.Products.Where(p => (searchQuery == null || p.Name.ToLower().Contains(searchQuery.ToLower()) || p.ProducerName.ToLower().Contains(searchQuery.ToLower())) && !p.IsHidden);
 
                 if (Request.IsAjaxRequest())
@@ -45,7 +42,6 @@ namespace ProGym.Controllers
                 }
                 return View(products);
             }
-
         }
 
 
@@ -62,7 +58,6 @@ namespace ProGym.Controllers
             var categories = db.Categories.ToList();
             return PartialView("_CategoriesMenu", categories);
         }
-
 
         public ActionResult ProductsSuggestions(string term)
         {

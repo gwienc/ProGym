@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace ProGym.Infrastructure
 {
@@ -13,5 +10,4 @@ namespace ProGym.Infrastructure
         void Set<T>(string name, T value);
         T TryGet<T>(string key);
     }
-
 }

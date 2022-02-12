@@ -1,7 +1,4 @@
-﻿using Postal;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
@@ -18,7 +15,6 @@ namespace Postal
             {
                 imagePathOrUrl = html.ViewContext.HttpContext.Server.MapPath(imagePathOrUrl);
             }
-            // Warning: better to change the code inside Postal - key can change after update
             var imageEmbedder = (ImageEmbedder)html.ViewData["Postal.ImageEmbedder"];
             var resource = imageEmbedder.ReferenceImage(imagePathOrUrl);
 
@@ -31,8 +27,7 @@ namespace Postal
 
         static bool IsFileName(string pathOrUrl)
         {
-            return !(pathOrUrl.StartsWith("http:", StringComparison.OrdinalIgnoreCase)
-                     || pathOrUrl.StartsWith("https:", StringComparison.OrdinalIgnoreCase));
+            return !(pathOrUrl.StartsWith("http:", StringComparison.OrdinalIgnoreCase) || pathOrUrl.StartsWith("https:", StringComparison.OrdinalIgnoreCase));
         }
     }
 }

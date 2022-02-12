@@ -1,15 +1,10 @@
 ﻿using MvcSiteMapProvider;
-using ProGym.DAL;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace ProGym.Infrastructure
 {
     public class StaticPagesDynamicNodeProvider : DynamicNodeProviderBase
-    {
-        
+    {       
         public override IEnumerable<DynamicNode> GetDynamicNodeCollection(ISiteMapNode node)
         {
             var returnValue = new List<DynamicNode>();
@@ -37,12 +32,6 @@ namespace ProGym.Infrastructure
             v.Key = "Page_" + 4;
             v.RouteValues.Add("viewname", "IndividualTraining");
             returnValue.Add(v);
-
-            //v = new DynamicNode();
-            //v.Title = "Cennik";
-            //v.Key = "Page_" + 5;
-            //v.RouteValues.Add("viewname", "Prices");
-            //returnValue.Add(v);
 
             v = new DynamicNode();
             v.Title = "Zajęcia z trenerem personalnym";

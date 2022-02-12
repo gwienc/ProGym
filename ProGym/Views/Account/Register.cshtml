@@ -12,16 +12,13 @@
                 <div class="card-body">
                     @using (Html.BeginForm("Register", "Account"))
                     {
-
                         @Html.AntiForgeryToken()
                         <div id="login-error">
                             @Html.ValidationMessage("loginerror", "")
                         </div>
-
                         <div class="row text-center pb-5 pt-3">
                             <h2>Zarejestruj się</h2>
                         </div>
-
                         <div class="row pb-2">
                             <div class="col-md-6">
                                 <div class="row ps-1">

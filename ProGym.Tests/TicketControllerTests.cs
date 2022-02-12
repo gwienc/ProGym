@@ -1,15 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Web.Mvc;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using ProGym.Controllers;
 using ProGym.DAL;
 using ProGym.Infrastructure;
 using ProGym.Models;
+using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace ProGym.Tests
 {
@@ -19,9 +19,6 @@ namespace ProGym.Tests
         [TestMethod]
         public void Test_ChooseTicketActionMethod_Count()
         {
-
-            //you have to add virtual to public DbSet<TypeOfTicket> TypeOfTickets { get; set; } in StoreContext.cs
-            //arrange
             var data = new List<TypeOfTicket>
             {
                 new TypeOfTicket {TypeTicket= TypeTicket.OpenMax, Price = 32, PeriodOfValidity = PeriodOfValidity.SixMonth, TypeOfTicketId = 1},
@@ -38,18 +35,11 @@ namespace ProGym.Tests
 
             var mockContext = new Mock<StoreContext>();
             mockContext.Setup(c => c.TypeOfTickets).Returns(mockSet.Object);
-
             var mailMock = new Mock<IMailService>();
-
-            var controller = new TicketController(mailMock.Object,mockContext.Object);
-
+            var controller = new TicketController(mailMock.Object, mockContext.Object);
             var type = "open";
 
-            //act
-
             var result = controller.ChooseTicket(type) as ViewResult;
-
-            //assert
 
             var viewModel = result.ViewData.Model as IEnumerable<TypeOfTicket>;
             Assert.IsTrue(viewModel.Count() == 2);
@@ -58,9 +48,6 @@ namespace ProGym.Tests
         [TestMethod]
         public void Test_ChooseTicketActionMethod_TypeOfTicket()
         {
-
-            //you have to add virtual to public DbSet<TypeOfTicket> TypeOfTickets { get; set; } in StoreContext.cs
-            //arrange
             var data = new List<TypeOfTicket>
             {
                 new TypeOfTicket {TypeTicket= TypeTicket.OpenMax, Price = 32, PeriodOfValidity = PeriodOfValidity.SixMonth, TypeOfTicketId = 1},
@@ -78,21 +65,14 @@ namespace ProGym.Tests
 
             var mockContext = new Mock<StoreContext>();
             mockContext.Setup(c => c.TypeOfTickets).Returns(mockSet.Object);
-
             var mailMock = new Mock<IMailService>();
-
-            var controller = new TicketController(mailMock.Object,mockContext.Object);
-
+            var controller = new TicketController(mailMock.Object, mockContext.Object);
             var type = "open";
-
-            //act
 
             var result = controller.ChooseTicket(type) as ViewResult;
 
-            //assert
-
             var viewModel = (result.ViewData.Model as IEnumerable<TypeOfTicket>).ToArray();
-            Assert.AreEqual(type.ToUpper(),viewModel[0].TypeTicket.ToString().ToUpper());
+            Assert.AreEqual(type.ToUpper(), viewModel[0].TypeTicket.ToString().ToUpper());
             Assert.AreEqual(type.ToUpper(), viewModel[1].TypeTicket.ToString().ToUpper());
             Assert.AreEqual(type.ToUpper(), viewModel[2].TypeTicket.ToString().ToUpper());
         }
@@ -100,9 +80,7 @@ namespace ProGym.Tests
         [TestMethod]
         public void Test_CreateTicketActionMethod()
         {
-            //arrange
             var mailMock = new Mock<IMailService>();
-            
             string userId = "1";
             var typeOfTicket = new TypeOfTicket
             {
@@ -120,7 +98,6 @@ namespace ProGym.Tests
                 TypeOfTicketId = typeOfTicket.TypeOfTicketId
 
             };
-
             var expectedTicket = new Ticket()
             {
                 UserId = userId,
@@ -132,15 +109,12 @@ namespace ProGym.Tests
             };
             var ticketMock = new Mock<DbSet<Ticket>>();
             ticketMock.Setup(m => m.Find(It.IsAny<int>())).Returns(ticket);
-
             var mockContext = new Mock<StoreContext>();
             mockContext.Setup(c => c.Tickets).Returns(ticketMock.Object);
-            var controller = new TicketController(mailMock.Object,mockContext.Object);
+            var controller = new TicketController(mailMock.Object, mockContext.Object);
 
-            //act
             var result = controller.CreateTicket(userId, ticket);
 
-            //assert
             Assert.AreEqual(expectedTicket.IsActive, result.IsActive);
             Assert.AreEqual(expectedTicket.DateOfPurchase, result.DateOfPurchase);
             Assert.AreEqual(expectedTicket.ExpirationDate, result.ExpirationDate);
@@ -148,13 +122,10 @@ namespace ProGym.Tests
             Assert.AreEqual(expectedTicket.UserId, result.UserId);
         }
 
-
         [TestMethod]
         public void Test_UpdateTicketActionMethod()
         {
-            //arrange
             var mailMock = new Mock<IMailService>();
-
             string userId = "2";
             var typeOfTicket = new TypeOfTicket
             {
@@ -162,12 +133,11 @@ namespace ProGym.Tests
                 Price = 32,
                 PeriodOfValidity = PeriodOfValidity.SixMonth,
                 TypeOfTicketId = 1
-            };           
+            };
             var tickets = new List<Ticket>
             {
                 new Ticket {UserId = userId, IsActive = true, DateOfPurchase = DateTime.Now, ExpirationDate = DateTime.Now.AddHours(2), TypeOfTicketId = typeOfTicket.TypeOfTicketId}
             }.AsQueryable();
-
             var expectedTicket = new Ticket()
             {
                 UserId = userId,
@@ -196,10 +166,8 @@ namespace ProGym.Tests
             mockContext.Setup(c => c.Tickets).Returns(ticketMock.Object);
             var controller = new TicketController(mailMock.Object, mockContext.Object);
 
-            //act
             var result = controller.UpdateTicket(userId, newTicket);
 
-            //assert
             Assert.AreEqual(expectedTicket.IsActive, result.IsActive);
             Assert.AreEqual(expectedTicket.DateOfPurchase, result.DateOfPurchase);
             Assert.AreEqual(expectedTicket.ExpirationDate, result.ExpirationDate);
@@ -211,7 +179,6 @@ namespace ProGym.Tests
         public async Task Test_BuyTicketActionMethod()
         {
             var mailMock = new Mock<IMailService>();
-
             string userId = "2";
             var typeOfTicket = new TypeOfTicket
             {
@@ -224,7 +191,6 @@ namespace ProGym.Tests
             {
                 new Ticket {UserId = userId, IsActive = true, DateOfPurchase = DateTime.Now, ExpirationDate = DateTime.Now.AddHours(2), TypeOfTicketId = typeOfTicket.TypeOfTicketId}
             }.AsQueryable();
-
             var newTicket = new Ticket()
             {
                 UserId = userId,
@@ -245,13 +211,12 @@ namespace ProGym.Tests
             var controller = new TicketController(mailMock.Object, mockContext.Object);
             controller.ModelState.AddModelError("key", "error");
 
-            var ticket = (ViewResult) await controller.BuyTicket(newTicket);
+            var ticket = (ViewResult)await controller.BuyTicket(newTicket);
             var result = ticket.ViewData.Model as Ticket;
-
 
             Assert.AreEqual(1, result.TypeOfTicketId);
             Assert.AreEqual("2", result.UserId);
-            Assert.AreEqual(false, result.IsActive);            
+            Assert.AreEqual(false, result.IsActive);
         }
     }
 }

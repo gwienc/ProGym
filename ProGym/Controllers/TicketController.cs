@@ -15,8 +15,8 @@ namespace ProGym.Controllers
 {
     public class TicketController : Controller
     {
-        StoreContext db;    
-        private IMailService mailService;
+        StoreContext db;
+        private IMailService _mailService;
         private ApplicationUserManager _userManager;
         public ApplicationUserManager UserManager
         {
@@ -32,7 +32,7 @@ namespace ProGym.Controllers
 
         public TicketController(IMailService mailService, StoreContext db)
         {
-            this.mailService = mailService;
+            _mailService = mailService;
             this.db = db;
         }
 
@@ -41,16 +41,12 @@ namespace ProGym.Controllers
             return View();
         }
 
-
-
         public ActionResult ChooseTicket(string type)
         {
             IEnumerable<TypeOfTicket> tickets;
             tickets = db.TypeOfTickets.Where(t => t.TypeTicket.ToString().ToUpper() == type.ToUpper());
             return View(tickets);
         }
-
-
 
         public async Task<ActionResult> BuyTicket(int ticketId, TypeTicket typeTicket, PeriodOfValidity periodOfValidity)
         {
@@ -64,9 +60,9 @@ namespace ProGym.Controllers
                 var currentTicket = db.Tickets.Where(t => t.UserId == user.Id).FirstOrDefault();
 
                 if (currentTicket != null && currentTicket.IsActive)
-                {                 
-                        ViewBag.CurrentTicket = "Posiadasz aktualny karnet";
-                        return View();                   
+                {
+                    ViewBag.CurrentTicket = "Posiadasz aktualny karnet";
+                    return View();
                 }
                 else
                 {
@@ -110,13 +106,11 @@ namespace ProGym.Controllers
                     }
                     return View(newTicket);
                 }
-
             }
             else
             {
                 return RedirectToAction("Login", "Account", new { returnUrl = Url.Action("BuyTicket", "Ticket", new { ticketId = ticketId, typeTicket = typeTicket, periodOfValidity = periodOfValidity }) });
             }
-
         }
 
         [HttpPost]
@@ -134,7 +128,7 @@ namespace ProGym.Controllers
                     Ticket updateTicket = UpdateTicket(userId, ticket);
                     var user = await UserManager.FindByIdAsync(userId);
                     TryUpdateModel(user.Tickets);
-                    this.mailService.SendConfirmationTicketEmail(updateTicket);
+                    _mailService.SendConfirmationTicketEmail(updateTicket);
                     return RedirectToAction("OrderConfirmation", "Cart");
                 }
                 else
@@ -145,19 +139,16 @@ namespace ProGym.Controllers
                     TryUpdateModel(user.Tickets);
                     await UserManager.UpdateAsync(user);
 
-                    this.mailService.SendConfirmationTicketEmail(newTicket);
+                    _mailService.SendConfirmationTicketEmail(newTicket);
 
                     return RedirectToAction("OrderConfirmation", "Cart");
                 }
-
-                
             }
             else
             {
                 return View(ticket);
             }
         }
-
 
         public Ticket CreateTicket(string userId, Ticket ticket)
         {
@@ -184,7 +175,7 @@ namespace ProGym.Controllers
             updateTicket.TypeOfTicketId = ticket.TypeOfTicketId;
             db.SaveChanges();
 
-            return updateTicket;            
+            return updateTicket;
         }
     }
 }

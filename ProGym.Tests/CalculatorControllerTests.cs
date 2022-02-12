@@ -1,11 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ProGym.Controllers;
 using ProGym.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace ProGym.Tests
@@ -13,8 +8,7 @@ namespace ProGym.Tests
     [TestClass]
     public class CalculatorControllerTests
     {
-
-        [TestMethod]       
+        [TestMethod]
         public void Test_TypeOfReturnedDataFromCalculateBMIActionMethod()
         {
             var controller = new CalculatorsController();
@@ -42,7 +36,7 @@ namespace ProGym.Tests
             var result = controller.CalculateBMI(data);
             var deserializedResult = (CalculatorsViewModel)result.Data;
 
-            Assert.AreEqual(18,6851211072664,deserializedResult.ResultBMI);
+            Assert.AreEqual(18, 6851211072664, deserializedResult.ResultBMI);
             Assert.AreEqual("Prawidłowa masa ciała", deserializedResult.Range);
         }
 

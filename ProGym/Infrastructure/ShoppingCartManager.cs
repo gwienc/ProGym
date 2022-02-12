@@ -1,9 +1,8 @@
 ﻿using ProGym.DAL;
+using ProGym.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using ProGym.Models;
 
 namespace ProGym.Infrastructure
 {
@@ -19,13 +18,10 @@ namespace ProGym.Infrastructure
             this.db = db;           
         }
 
-
-        public void addToCart(int productId)
+        public void AddToCart(int productId)
         {
             var cart = this.GetCart();
-
             var cartItem = cart.Find(p => p.Product.ProductID == productId);
-
             if (cartItem != null)
                 cartItem.Quantity++;
             else
@@ -38,13 +34,10 @@ namespace ProGym.Infrastructure
                         Product = productToAdd,
                         Quantity = 1,
                         TotalPrice = productToAdd.Price
-
                     };
-
                     cart.Add(newCartItem);
                 }
             }
-
             session.Set(CartSessionKey, cart);
         }
 
@@ -61,7 +54,6 @@ namespace ProGym.Infrastructure
             {
                 cart = session.Get<List<CartItem>>(CartSessionKey) as List<CartItem>;
             }
-
             return cart;
         }
 
@@ -69,9 +61,7 @@ namespace ProGym.Infrastructure
         public int RemoveFromCart(int productId)
         {
             var cart = this.GetCart();
-
             var cartItem = cart.Find(p => p.Product.ProductID == productId);
-
             if(cartItem != null)
             {
                 if (cartItem.Quantity > 1)
@@ -82,7 +72,6 @@ namespace ProGym.Infrastructure
                 else
                     cart.Remove(cartItem);
             }
-
             return 0;
         }
 
@@ -103,12 +92,9 @@ namespace ProGym.Infrastructure
         public Order CreateOrder(Order newOrder, string userId)
         {
             var cart = this.GetCart();
-
             newOrder.DateCreated = DateTime.Now;
             newOrder.UserId = userId;
-
             this.db.Orders.Add(newOrder);
-
             if (newOrder.OrderItems == null)
                 newOrder.OrderItems = new List<OrderItem>();
 
@@ -122,12 +108,9 @@ namespace ProGym.Infrastructure
                     Quantity = cartItem.Quantity,
                     UnitPrice = cartItem.Product.Price
                 };
-
                 cartTotal += (cartItem.Quantity * cartItem.Product.Price);
-
                 newOrder.OrderItems.Add(newOrderItem);
             }
-
             newOrder.TotalPrice = cartTotal;
             this.db.SaveChanges();
 

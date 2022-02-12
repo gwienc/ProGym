@@ -1,8 +1,6 @@
 ﻿@model IEnumerable<ProGym.Models.Category>
 
-
 <a href="@Url.Action("Index","Store", new { categoryname = "Wszystkie" })" class="list-group-item list-group-item-action">WSZYSTKIE </a>
-
 @foreach (var category in Model)
 {
     <a href="@Url.Action("Index","Store",new { categoryname = category.CategoryName.ToLower() })" class="list-group-item list-group-item-action">@category.CategoryName</a>

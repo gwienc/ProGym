@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Web;
+﻿using System.Configuration;
 
 namespace ProGym.Infrastructure
 {
     public class AppConfig
     {
         private static string _photosFolder = ConfigurationManager.AppSettings["PhotosFolder"];
-
         public static string PhotosFolder
         {
             get
@@ -17,6 +12,5 @@ namespace ProGym.Infrastructure
                 return _photosFolder;
             }
         }
-
     }
 }

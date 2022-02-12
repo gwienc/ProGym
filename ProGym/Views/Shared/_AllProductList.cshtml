@@ -4,7 +4,6 @@
     ViewBag.Title = "ProductList";
 }
 
-
 <div id="productlist-section pt-5">
     <div class="row pb-4 pt-5">
         <div class="table-responsive">
@@ -37,12 +36,10 @@
                             {
                                 <td width="10%">W aktualnej sprzedaży </td>
                             }
-
                             <td>
                                 <a href="@Url.Action("AddProduct", "Manage", new { productId = product.ProductID })" class="btn btn-sm btn-success"> Edytuj </a>
                             </td>
                         </tr>
-
                     }
                 </tbody>
             </table>

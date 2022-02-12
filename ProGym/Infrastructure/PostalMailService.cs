@@ -1,10 +1,7 @@
 ﻿using ProGym.DAL;
 using ProGym.Models;
 using ProGym.ViewModels;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
 namespace ProGym.Infrastructure
 {
@@ -12,7 +9,6 @@ namespace ProGym.Infrastructure
     {
         StoreContext db = new StoreContext();
         const string emailAddressProGym = "progym1x1@gmail.com";
-
         public void SendConfirmationTicketEmail(Ticket ticket)
         {
             var TicketToModify = db.Tickets.Include("TypeOfTicket").SingleOrDefault((t => t.TicketId == ticket.TicketId && t.User.UserData.LastName == ticket.User.UserData.LastName));
@@ -62,13 +58,11 @@ namespace ProGym.Infrastructure
             email.OrderNumber = orderToModify.OrderID;
             email.OrderItems = orderToModify.OrderItems;
             email.CoverPath = AppConfig.PhotosFolder;
-            email.Send();
-           
+            email.Send();          
         }
 
         public void SendOrderPreparedEmail(Order order)
-        {
-            
+        {           
             var orderToModify = db.Orders.Include("OrderItems").Include("OrderItems.Product").SingleOrDefault(o => o.OrderID == order.OrderID && o.LastName == order.LastName);
             OrderPreparedEmail email = new OrderPreparedEmail();
             email.To = orderToModify.Email;

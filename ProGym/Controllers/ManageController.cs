@@ -1,5 +1,4 @@
-﻿using Hangfire;
-using Microsoft.AspNet.Identity;
+﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using ProGym.App_Start;
@@ -21,18 +20,16 @@ namespace ProGym.Controllers
     [Authorize]
     public class ManageController : Controller
     {
-
         StoreContext db;
-
         public enum ManageMessageId
         {
             ChangePasswordSuccess,
             Error
         }
 
-        private IMailService mailService;
-
+        private IMailService _mailService;
         private ApplicationUserManager _userManager;
+
         public ApplicationUserManager UserManager
         {
             get
@@ -53,17 +50,15 @@ namespace ProGym.Controllers
             }
         }
 
-
         public ManageController(IMailService mailService, StoreContext context)
         {
-            this.mailService = mailService;
+            _mailService = mailService;
             this.db = context;
         }
         public ManageController(ApplicationUserManager userManager)
         {
             UserManager = userManager;
         }
-
         public async Task<ActionResult> Index(ManageMessageId? message)
         {
             if (TempData["ViewData"] != null)
@@ -88,8 +83,6 @@ namespace ProGym.Controllers
                 HasPassword = this.HasPassword(),
                 UserData = user.UserData
             };
-
-
             return View(model);
         }
 
@@ -100,7 +93,7 @@ namespace ProGym.Controllers
 
             if (user.Tickets != null && user.Tickets.Count != 0)
             {
-                ticket = db.Tickets.Include("TypeOfTicket").Where(c => c.UserId == user.Id).Single();
+                ticket = db.Tickets.Include(x => x.TypeOfTicket).Where(c => c.UserId == user.Id).Single();
                 var model = new ProfileViewModel
                 {
                     UserData = user.UserData,
@@ -116,7 +109,6 @@ namespace ProGym.Controllers
                 };
                 return View(model);
             }
-
         }
 
         [HttpPost]
@@ -128,7 +120,6 @@ namespace ProGym.Controllers
                 var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
                 user.UserData = userData;
                 var result = await UserManager.UpdateAsync(user);
-
                 AddErrors(result);
             }
 
@@ -140,10 +131,9 @@ namespace ProGym.Controllers
             return RedirectToAction("Index");
         }
 
-
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> ChangePassword([Bind(Prefix = "ChangePasswordViewModel")]ChangePasswordViewModel model)
+        public async Task<ActionResult> ChangePassword([Bind(Prefix = "ChangePasswordViewModel")] ChangePasswordViewModel model)
         {
             if (!ModelState.IsValid)
             {
@@ -174,7 +164,6 @@ namespace ProGym.Controllers
             return RedirectToAction("Index", new { Message = message });
         }
 
-
         public ActionResult OrdersList(Order orders)
         {
             bool isAdmin = User.IsInRole("Admin");
@@ -183,14 +172,13 @@ namespace ProGym.Controllers
 
             if (isAdmin)
             {
-                userOrders = db.Orders.Include("OrderItems").OrderByDescending(o => o.DateCreated).ToArray();
+                userOrders = db.Orders.Include(o => o.OrderItems).OrderByDescending(o => o.DateCreated).ToArray();
             }
             else
             {
                 var userId = User.Identity.GetUserId();
-                userOrders = db.Orders.Where(o => o.UserId == userId).Include("OrderItems").OrderByDescending(o => o.DateCreated).ToArray();
+                userOrders = db.Orders.Where(o => o.UserId == userId).Include(o => o.OrderItems).OrderByDescending(o => o.DateCreated).ToArray();
             }
-
             return View(userOrders);
         }
 
@@ -205,14 +193,13 @@ namespace ProGym.Controllers
             if (orderToModify.OrderState == OrderState.Completed)
             {
 
-                this.mailService.SendOrderPreparedEmail(orderToModify);
+                _mailService.SendOrderPreparedEmail(orderToModify);
             }
             else if (orderToModify.OrderState == OrderState.Received)
             {
 
-                this.mailService.SendOrderReceivedEmail(orderToModify);
+                _mailService.SendOrderReceivedEmail(orderToModify);
             }
-
             return order.OrderState;
         }
 
@@ -223,10 +210,9 @@ namespace ProGym.Controllers
             db.SaveChanges();
             if (ticketToModify.IsActive == true)
             {
-                this.mailService.SendConfirmationTicketEmailActive(ticketToModify);
+                _mailService.SendConfirmationTicketEmailActive(ticketToModify);
             }
             return RedirectToAction("TicketsList");
-
         }
 
         [Authorize(Roles = "Admin")]
@@ -244,10 +230,8 @@ namespace ProGym.Controllers
                 ViewBag.EditMode = false;
                 product = new Product();
             }
-
             var result = new AddOrEditProductViewModel();
             result.Categories = db.Categories.ToList();
-
             result.Product = product;
             result.ConfirmSuccess = confirmSuccess;
 
@@ -267,11 +251,8 @@ namespace ProGym.Controllers
             }
             else
             {
-
-
                 if (file != null && file.ContentLength > 0)
                 {
-
                     if (ModelState.IsValid)
                     {
                         var fileExt = Path.GetExtension(file.FileName);
@@ -280,13 +261,11 @@ namespace ProGym.Controllers
                         var path = Path.Combine(Server.MapPath(AppConfig.PhotosFolder), fileName);
                         file.SaveAs(path);
 
-
                         model.Product.PhotoFileName = fileName;
                         model.Product.DateAdded = DateTime.Now;
 
                         db.Entry(model.Product).State = EntityState.Added;
                         db.SaveChanges();
-
 
                         return RedirectToAction("AddProduct", new { confirmSuccess = true });
                     }
@@ -295,18 +274,13 @@ namespace ProGym.Controllers
                         ModelState.AddModelError("", "Nie wskazano pliku");
                         var categories = db.Categories.ToArray();
                         model.Categories = categories;
-
-
                         return View(model);
                     }
-
                 }
                 else
                 {
                     var categories = db.Categories.ToArray();
                     model.Categories = categories;
-
-
                     return View(model);
                 }
             }
@@ -356,8 +330,7 @@ namespace ProGym.Controllers
         [AllowAnonymous]
         public ActionResult SendConfirmationEmail(int orderid, string lastname)
         {
-            var order = db.Orders.Include("OrderItems").Include("OrderItems.Product").SingleOrDefault(o => o.OrderID == orderid && o.LastName == lastname);
-
+            var order = db.Orders.Include(x => x.OrderItems.Select(p => p.Product)).SingleOrDefault(o => o.OrderID == orderid && o.LastName == lastname);
             if (order == null) return new HttpStatusCodeResult(System.Net.HttpStatusCode.NotFound);
 
             OrderConfirmationEmail email = new OrderConfirmationEmail();
@@ -375,7 +348,7 @@ namespace ProGym.Controllers
         [AllowAnonymous]
         public ActionResult SendPreparedOrderEmail(int orderid, string lastname)
         {
-            var order = db.Orders.Include("OrderItems").Include("OrderItems.Product").SingleOrDefault(o => o.OrderID == orderid && o.LastName == lastname);
+            var order = db.Orders.Include(x => x.OrderItems.Select(p => p.Product)).SingleOrDefault(o => o.OrderID == orderid && o.LastName == lastname);
             if (order == null) return new HttpStatusCodeResult(System.Net.HttpStatusCode.NotFound);
 
             OrderPreparedEmail email = new OrderPreparedEmail();
@@ -393,7 +366,7 @@ namespace ProGym.Controllers
         [AllowAnonymous]
         public ActionResult SendReceivedOrderEmail(int orderid, string lastname)
         {
-            var order = db.Orders.Include("OrderItems").Include("OrderItems.Product").SingleOrDefault(o => o.OrderID == orderid && o.LastName == lastname);
+            var order = db.Orders.Include(x => x.OrderItems.Select(p => p.Product)).SingleOrDefault(o => o.OrderID == orderid && o.LastName == lastname);
             if (order == null) return new HttpStatusCodeResult(System.Net.HttpStatusCode.NotFound);
 
             OrderReceivedEmail email = new OrderReceivedEmail();
@@ -410,7 +383,7 @@ namespace ProGym.Controllers
         [AllowAnonymous]
         public ActionResult SendConfirmationTicketEmail(int ticketId, string userId)
         {
-            var ticket = db.Tickets.Include("TypeOfTicket").SingleOrDefault(t => t.TicketId == ticketId && t.UserId == userId);
+            var ticket = db.Tickets.Include(t => t.TypeOfTicket).SingleOrDefault(t => t.TicketId == ticketId && t.UserId == userId);
             if (ticket == null) return new HttpStatusCodeResult(System.Net.HttpStatusCode.NotFound);
 
             TicketConfirmationEmail email = new TicketConfirmationEmail();
@@ -429,7 +402,7 @@ namespace ProGym.Controllers
         [AllowAnonymous]
         public ActionResult SendConfirmationTicketEmailACtive(int ticketId, string userId)
         {
-            var ticket = db.Tickets.Include("TypeOfTicket").SingleOrDefault(t => t.TicketId == ticketId && t.UserId == userId);
+            var ticket = db.Tickets.Include(t => t.TypeOfTicket).SingleOrDefault(t => t.TicketId == ticketId && t.UserId == userId);
             if (ticket == null) return new HttpStatusCodeResult(System.Net.HttpStatusCode.NotFound);
 
             TicketConfirmationEmailActive email = new TicketConfirmationEmailActive();
@@ -448,7 +421,7 @@ namespace ProGym.Controllers
         [AllowAnonymous]
         public ActionResult TicketInactiveInformationEmail(int ticketId, string userId)
         {
-            var ticket = db.Tickets.Include("TypeOfTicket").SingleOrDefault(t => t.TicketId == ticketId && t.UserId == userId);
+            var ticket = db.Tickets.Include(t => t.TypeOfTicket).SingleOrDefault(t => t.TicketId == ticketId && t.UserId == userId);
             if (ticket == null) return new HttpStatusCodeResult(System.Net.HttpStatusCode.NotFound);
 
             TicketInactiveInformationEmail email = new TicketInactiveInformationEmail();
@@ -462,7 +435,6 @@ namespace ProGym.Controllers
             return new HttpStatusCodeResult(System.Net.HttpStatusCode.OK);
         }
 
-     
         private bool HasPassword()
         {
             var user = UserManager.FindById(User.Identity.GetUserId());
@@ -472,8 +444,6 @@ namespace ProGym.Controllers
             }
             return false;
         }
-
-
 
         private void AddErrors(IdentityResult result)
         {

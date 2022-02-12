@@ -6,14 +6,11 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Migrations;
-using System.Linq;
-using System.Web;
 
 namespace ProGym.DAL
 {
     public class StoreInitializer : MigrateDatabaseToLatestVersion<StoreContext,Configuration>
     {
-
         public static void SeedStoreData(StoreContext context)
         {
             var categories = new List<Category>
@@ -28,7 +25,6 @@ namespace ProGym.DAL
 
             categories.ForEach(c => context.Categories.AddOrUpdate(c));
             context.SaveChanges();
-
 
             var ticketTypes = new List<TypeOfTicket>
             {
@@ -296,7 +292,6 @@ namespace ProGym.DAL
             }
 
             };
-
             products.ForEach(p => context.Products.AddOrUpdate(p));
             context.SaveChanges();
         }
@@ -305,13 +300,9 @@ namespace ProGym.DAL
         {
             var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(db));
-
-            //var userManager = HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            //var roleManager = HttpContext.Current.GetOwinContext().Get<ApplicationRoleManager>();
             const string name = "admin@ProGym.pl";
             const string password = "P@ssw0rd";
             const string roleName = "Admin";
-
 
             var user = userManager.FindByName(name);
             if (user == null)
@@ -320,24 +311,12 @@ namespace ProGym.DAL
                 var result = userManager.Create(user, password);
                 result = userManager.SetLockoutEnabled(user.Id, false);
             }
-
-            //Create Role Admin if it does not exist
             var role = roleManager.FindByName(roleName);
             if (role == null)
             {
                 role = new IdentityRole(roleName);
                 var roleresult = roleManager.Create(role);
             }
-
-            //var user = userManager.FindByName(name);
-            //if (user == null)
-            //{
-            //    user = new ApplicationUser { UserName = name, Email = name };
-            //    var result = userManager.Create(user, password);
-            //    result = userManager.SetLockoutEnabled(user.Id, false);
-            //}
-
-            // Add user admin to Role Admin if not already added
             var rolesForUser = userManager.GetRoles(user.Id);
             if (!rolesForUser.Contains(role.Name))
             {
@@ -345,6 +324,4 @@ namespace ProGym.DAL
             }
         }
     }
-
-
 }

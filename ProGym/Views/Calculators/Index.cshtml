@@ -9,8 +9,6 @@
     {
         Layout = "~/Views/Shared/_GymLayout.cshtml";
     }
-
-
     AjaxOptions bmi = new AjaxOptions()
     {
         Url = Url.Action("CalculateBMI", "Calculators"),
@@ -41,7 +39,6 @@
         HttpMethod = "Post",
         OnSuccess = "CalculateBodyFatIndex"
     };
-
 }
 
 @Html.Partial("_BreadCrumb")
@@ -54,7 +51,6 @@
                 @using (Ajax.BeginForm(bmi))
                 {
                     @Html.AntiForgeryToken()
-
                     <div class="row p-2">
                         <div class="col-md-6 text-md-end">
                             @Html.LabelFor(x => x.Weight, "Twoja masa (kg):")
@@ -73,7 +69,6 @@
                             @Html.ValidationMessageFor(o => o.Height)
                         </div>
                     </div>
-
                     <input type="submit" value="Oblicz" class="btn btn-success ps-4 pe-4" />
                 }
                 <div class="mb-3 row pt-5 p-2 text-center">
@@ -123,14 +118,12 @@
                             @Html.ValidationMessageFor(o => o.NumberOfRepetitions)
                         </div>
                     </div>
-
                     <input type="submit" value="Oblicz" class="btn btn-success ps-4 pe-4" />
                 }
                 <div class="mb-3 row pt-5 p-2 text-center">
                     <div class="col-12" style="display:inline-block">
                         @Html.LabelFor(x => x.ResultRepMax, "1RM: ")
                         <div id="resultOneRepMax" style="display:inline-block">
-
                         </div>
                     </div>
                 </div>
@@ -228,7 +221,6 @@
                     <div class="col-12" style="display:inline-block">
                         @Html.LabelFor(x => x.ResultBMR, "BMR: ")
                         <div id="resultBMR" style="display:inline-block">
-
                         </div>
                     </div>
                 </div>
@@ -236,7 +228,6 @@
                     <div class="col-12" style="display:inline-block">
                         @Html.LabelFor(x => x.TotalCaloricRequirement, "Całkowite zapotrzebowanie kaloryczne: ")
                         <div id="totalCaloricRequirement" style="display:inline-block">
-
                         </div>
                     </div>
                 </div>
@@ -275,7 +266,6 @@
                             <div class="form-check form-check-inline">
                                 <div id="inlineRadio2">@Html.RadioButtonFor(x => x.Gender, "K", new { @class = "form-check-input" })</div>
                                 <label class="form-check-label" for="inlineRadio2">Kobieta</label>
-
                             </div>
                             <br />
                             @Html.ValidationMessageFor(o => o.Gender)
@@ -352,7 +342,6 @@
                             <div class="form-check form-check-inline">
                                 <div id="inlineRadio2">@Html.RadioButtonFor(x => x.Gender, "K", new { @class = "form-check-input" })</div>
                                 <label class="form-check-label" for="inlineRadio2">Kobieta</label>
-
                             </div>
                             <br />
                             @Html.ValidationMessageFor(o => o.Gender)
@@ -416,7 +405,6 @@
             $(container).append(resultBMI);
         }
     </script>
-
     <script>
         function DisplayOneRepMax(data) {
             var container = $('#resultOneRepMax');
@@ -425,7 +413,6 @@
             $(container).append(resultOneRepMax);
         }
     </script>
-
     <script>
         function DisplayBMR(data) {
             var container = $('#resultBMR');
@@ -441,7 +428,6 @@
             $(container2).append(totalCaloricRequirement);
         }
     </script>
-
     <script>
         function DisplayPerfectWeight(data) {
             var container = $('#perfectWeightBroc');
@@ -469,5 +455,4 @@
             $(container).append(bodyFatIndex);
         }
     </script>
-
 }

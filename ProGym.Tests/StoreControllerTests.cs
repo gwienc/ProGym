@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Web.Mvc;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using ProGym.Controllers;
 using ProGym.DAL;
 using ProGym.Models;
+using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
+using System.Web.Mvc;
 
 namespace ProGym.Tests
 {
@@ -17,7 +17,6 @@ namespace ProGym.Tests
         [TestMethod]
         public void TestIndexActionMethod()
         {
-            //arrange
             var data = new List<Product>()
             {
                 new Product()
@@ -58,25 +57,17 @@ namespace ProGym.Tests
             var mockContext = new Mock<StoreContext>();
             mockContext.Setup(c => c.Products).Returns(mockSet.Object);
 
-            //act
             var controller = new StoreController(mockContext.Object);
-
-            string all = "Wszystkie";           
-
+            string all = "Wszystkie";
             var result = controller.Index(all) as ViewResult;
-
             var viewModel = result.ViewData.Model as IEnumerable<Product>;
 
-
-            //assert
             Assert.IsTrue(viewModel.Count() == 2);
-
         }
 
         [TestMethod]
         public void TestDetailsActionMethod()
         {
-            //arrange
             var products = new List<Product>
             {
                 new Product (){ProductID = 1,
@@ -115,10 +106,8 @@ namespace ProGym.Tests
             mockSet.As<IQueryable<Product>>().Setup(m => m.GetEnumerator()).Returns(products.GetEnumerator());
             mockSet.Setup(m => m.Find(It.IsAny<int>())).Returns(products.Single(p => p.ProductID == id));
 
-
             var mockContext = new Mock<StoreContext>();
             mockContext.Setup(p => p.Products).Returns(mockSet.Object);
-
             var controller = new StoreController(mockContext.Object);
 
             var product = new Product()
@@ -139,10 +128,9 @@ namespace ProGym.Tests
                 CategoryID = 1
 
             };
-            //act
+
             var result = controller.Details(id) as ViewResult;
 
-            //assert
             var viewModel = result.ViewData.Model as Product;
             Assert.AreEqual(product.ProductID, viewModel.ProductID);
         }
