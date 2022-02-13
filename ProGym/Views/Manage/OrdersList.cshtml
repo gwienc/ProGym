@@ -33,7 +33,7 @@
                                                 using (Html.BeginForm("ChangeOrderState", "Manage"))
                                                 {
                                                     @Html.HiddenFor(o => order.OrderID)
-                                                    @Html.EnumDropDownListFor(o => order.OrderState, new { @class = "form-control", style = "width:30%" })
+                                                    @Html.EnumDropDownListFor(o => order.OrderState, new { @class = "status", style = "width:30%" })
                                                 }
                                             }
                                             else
@@ -105,21 +105,23 @@
 
 <script src="~/Scripts/jquery-3.6.0.js"></script>
 <script>
-    $(".form-control").on('change', function (e) {
+    $(".status").on('change', function (e) {
         var f = $(this.form);
         var table = f.closest("table");
         var action = f.attr("action");
         var serializedForm = f.serialize();
         $.post(action, serializedForm).done(function (data) {
             if (data == '@ProGym.Models.OrderState.Completed.ToString()') {
-                table.addClass("orderCompleted")
+                table.prop('id', 'orderCompleted');
+                table.parent().prop('id', 'orderCompleted');
             }
             else if (data == '@ProGym.Models.OrderState.Received.ToString()') {
-                table.addClass("orderReceived")
+                table.prop('id', 'orderReceived');
+                table.parent().prop('id', 'orderReceived');
             }
             else {
-                table.removeClass("orderCompleted");
-                table.removeClass("orderReceived");
+                table.removeAttr('id');
+                table.parent().removeAttr('id');
             }
           });
     });
